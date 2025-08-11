@@ -1,0 +1,32 @@
+name: Scrape Multiple Sites
+
+on:
+  schedule:
+    # Run every 4 hours
+    - cron: '0 */4 * * *'
+  workflow_dispatch: # Allow manual triggering
+
+jobs:
+  scrape-sites:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    
+    strategy:
+      matrix:
+        include:
+          - url: https://jank-lang.org/progress/
+            feed_name: jank-progress
+          - url: https://example.com/news
+            feed_name: example-news
+          # Add more sites here as needed
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Scrape ${{ matrix.feed_name }}
+        uses: ./
+        with:
+          url: ${{ matrix.url }}
+          feed_name: ${{ matrix.feed_name }}

@@ -1,0 +1,17 @@
+[project]
+name = "watcher"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "ask-human-mcp",
+    "trafilatura>=1.6.0",
+    "feedgenerator>=2.1.0",
+    "requests>=2.31.0",
+    "gitpython>=3.1.0",
+    "python-dateutil>=2.8.0",
+]
+
+[tool.uv.sources]
+ask-human-mcp = { git = "https://github.com/Masony817/ask-human-mcp", rev = "24793b6362e000c12418cae7be5b8caa93cd371a" }
