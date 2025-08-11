@@ -1,7 +1,7 @@
 [project]
 name = "watcher"
 version = "0.1.0"
-description = "Add your description here"
+description = "A git-scraping tool with RSS feed generation"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
@@ -12,6 +12,24 @@ dependencies = [
     "gitpython>=3.1.0",
     "python-dateutil>=2.8.0",
 ]
+
+[project.scripts]
+watcher = "watcher.cli:main"
+watcher-batch = "watcher.cli_batch:main"
+
+[project.optional-dependencies]
+test = [
+    "pytest>=7.0.0",
+    "pytest-cov>=4.0.0",
+    "pytest-mock>=3.0.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/watcher"]
 
 [tool.uv.sources]
 ask-human-mcp = { git = "https://github.com/Masony817/ask-human-mcp", rev = "24793b6362e000c12418cae7be5b8caa93cd371a" }

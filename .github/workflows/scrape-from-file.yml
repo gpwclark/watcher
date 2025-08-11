@@ -1,4 +1,4 @@
-name: Scrape Multiple Sites
+name: Scrape Sites from Config
 
 on:
   schedule:
@@ -7,19 +7,10 @@ on:
   workflow_dispatch: # Allow manual triggering
 
 jobs:
-  scrape-sites:
+  scrape-all:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-
-    strategy:
-      matrix:
-        include:
-          - url: https://jank-lang.org/progress/
-            feed_name: jank-progress
-          - url: https://example.com/news
-            feed_name: example-news
-          # Add more sites here as needed
 
     steps:
       - name: Checkout repository
@@ -32,19 +23,25 @@ jobs:
 
       - name: Setup environment with Flox
         run: |
+          # Create a basic flox environment with uv
           flox init
           flox install uv
 
+      # For users who want to use the published package:
+      # - name: Install watcher from GitHub
+      #   run: uv pip install git+https://github.com/gpwclark/watcher.git
+
+      # For development/this repo:
       - name: Install dependencies
         run: flox activate -- uv sync
 
-      - name: Scrape ${{ matrix.feed_name }}
+      - name: Run batch scraper
         run: |
           # Auto-construct base URL from GitHub context
           BASE_URL="https://github.com/${{ github.repository }}/blob/${{ github.ref_name }}"
 
-          # Run watcher
-          flox activate -- uv run watcher "${{ matrix.url }}" "${{ matrix.feed_name }}" --base-url "$BASE_URL"
+          # Run watcher-batch with sites.toml
+          flox activate -- uv run watcher-batch --config sites.toml --base-url "$BASE_URL"
 
       - name: Commit changes
         run: |
@@ -58,6 +55,6 @@ jobs:
           if git diff --staged --quiet; then
             echo "No changes to commit"
           else
-            git commit -m "Update ${{ matrix.feed_name }}: $(date -u +'%Y-%m-%d %H:%M:%S UTC')"
+            git commit -m "Update feeds from sites.toml: $(date -u +'%Y-%m-%d %H:%M:%S UTC')"
             git push
           fi

@@ -1,0 +1,44 @@
+# Save this as .github/workflows/update-feeds.yml in your repository
+name: Update RSS Feeds
+
+on:
+  schedule:
+    - cron: '0 */4 * * *'  # Every 4 hours
+  workflow_dispatch:  # Manual trigger button in GitHub UI
+
+jobs:
+  update-feeds:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install Flox
+        uses: flox/install-flox-action@v3
+
+      - name: Setup environment and install watcher
+        run: |
+          flox init
+          flox install uv
+          flox activate -- uv pip install git+https://github.com/gpwclark/watcher.git
+
+      - name: Update feeds
+        run: |
+          BASE_URL="https://github.com/${{ github.repository }}/blob/${{ github.ref_name }}"
+          flox activate -- watcher-batch --config sites.toml --base-url "$BASE_URL"
+
+      - name: Commit changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add feeds/ content/ || true
+          if git diff --staged --quiet; then
+            echo "No changes"
+          else
+            git commit -m "Update feeds: $(date -u +'%Y-%m-%d %H:%M:%S UTC')"
+            git push
+          fi

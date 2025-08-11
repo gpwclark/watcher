@@ -27,6 +27,7 @@ uv.pkg-path = "uv"
 ##      as well as [hook], [profile] scripts and [services] below.
 ## -------------------------------------------------------------------
 [vars]
+UV_VENV_CLEAR="1"
 # INTRO_MESSAGE = "It's gettin' Flox in here"
 
 
@@ -47,43 +48,14 @@ if [[ -z ${GITHUB_PERSONAL_TOKEN} ]]; then
 	exit 1;
 fi
 
-cat > ${FLOX_ENV_PROJECT}/.mcp.json << EOF
-{
-	"mcpServers": {
-		"ask-human": { "command": "ask-human-mcp",
-					"description": "If there is any fact that you do not know, e.g. configuration, external resource or endpoint rather than hallucinating, use this mcp plugin to see if the human asking you questions can answer.",
-                        "args": ["--file",
-                            "./ask_human.md"
-                        ]},
-		"language-server": {
-			"command": "mcp-language-server",
-			"description": "Use to answer questions about the rust codebase, standard LSP implementation for the rust programming language, better than manually searching the text because it is language aware.",
-			"args": [ "--workspace",
-				".",
-				"--lsp",
-				"rust-analyzer"
-				]
-		},
-		"github": {
-			"type": "http",
-			"description": "Allow interaction with the GitHub MCP Server to allow for interaction with the Github review/issue/pull request workflows common in development shops.",
-			"url": "https://api.githubcopilot.com/mcp/",
-			"headers": {
-				"Authorization": "Bearer $GITHUB_PERSONAL_TOKEN"
-			}
-		}
-	}
-}
-EOF
 export GOPATH="${FLOX_ENV_CACHE}/go"
 mkdir -p ${GOPATH}
 export PATH=${GOPATH}/bin:${PATH}
 go install github.com/isaacphi/mcp-language-server@latest
-uv init
+uv venv
+source .venv/bin/activate
 #uv pip install ask-human-mcp
-uv add git+https://github.com/Masony817/ask-human-mcp --rev 24793b6362e000c12418cae7be5b8caa93cd371a
 source "${FLOX_ENV_PROJECT}/.venv/bin/activate"
-#claude --mcp-config .mcp.json $CLAUDE_ARGS
 '''
 
 
