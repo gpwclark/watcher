@@ -68,7 +68,7 @@ class RSSManager:
 
         # Wrap description in CDATA if it contains diff
         description = new_item.get('description', 'Content update')
-        if '\n@@' in description or '\n+' in description or '\n-' in description:
+        if description and ('\n@@' in description or '\n+' in description or '\n-' in description):
             # Contains diff content, wrap in CDATA
             description = f"<![CDATA[{description}]]>"
 

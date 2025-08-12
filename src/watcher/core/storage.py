@@ -55,35 +55,35 @@ class ContentStorage:
             return DiffUtils.generate_unified_diff(old_file_path, new_file_path)
         return None
     
-    def extract_markdown_from_html(self, html_path: Path) -> Optional[str]:
-        """Extract embedded markdown content from HTML file."""
+    def extract_html_content_from_file(self, html_path: Path) -> Optional[str]:
+        """Extract HTML content from the body of the HTML file."""
         try:
             with open(html_path, 'r', encoding='utf-8') as f:
                 content = f.read()
             
-            # Extract markdown from HTML comment
+            # Extract content from the div with class="content"
             import re
-            match = re.search(r'<!-- MARKDOWN-CONTENT\n(.*?)\nMARKDOWN-CONTENT -->', content, re.DOTALL)
+            match = re.search(r'<div class="content">\s*(.*?)\s*</div>\s*</body>', content, re.DOTALL)
             if match:
-                return match.group(1)
+                return match.group(1).strip()
             return None
         except Exception:
             return None
     
-    def get_markdown_diff(self, new_html_path: Path, old_html_path: Path) -> Optional[str]:
-        """Generate diff between markdown content embedded in HTML files."""
-        new_markdown = self.extract_markdown_from_html(new_html_path)
-        old_markdown = self.extract_markdown_from_html(old_html_path)
+    def get_html_diff(self, new_html_path: Path, old_html_path: Path) -> Optional[str]:
+        """Generate diff between HTML content embedded in HTML files."""
+        new_html = self.extract_html_content_from_file(new_html_path)
+        old_html = self.extract_html_content_from_file(old_html_path)
         
-        if new_markdown and old_markdown:
+        if new_html and old_html:
             # Create temporary files for diffing
             import tempfile
-            with tempfile.NamedTemporaryFile(mode='w', suffix='.md', delete=False) as new_temp:
-                new_temp.write(new_markdown)
+            with tempfile.NamedTemporaryFile(mode='w', suffix='.html', delete=False) as new_temp:
+                new_temp.write(new_html)
                 new_temp_path = Path(new_temp.name)
             
-            with tempfile.NamedTemporaryFile(mode='w', suffix='.md', delete=False) as old_temp:
-                old_temp.write(old_markdown)
+            with tempfile.NamedTemporaryFile(mode='w', suffix='.html', delete=False) as old_temp:
+                old_temp.write(old_html)
                 old_temp_path = Path(old_temp.name)
             
             try:
@@ -107,14 +107,10 @@ class ContentStorage:
         html_filename = f"{timestamp}.html"
         html_filepath = self.content_dir / html_filename
 
-        # Generate static HTML from markdown
-        import markdown
+        # Use the HTML content directly from trafilatura
+        html_content_body = content_data['content']
         
-        # Convert markdown to HTML
-        md = markdown.Markdown(extensions=['tables', 'fenced_code'])
-        html_content_body = md.convert(content_data['content'])
-        
-        # Create static HTML document with embedded markdown in a comment for diffs
+        # Create static HTML document
         html_content = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -124,9 +120,6 @@ class ContentStorage:
     <meta name="source-url" content="{content_data['url']}">
     <meta name="scraped-at" content="{content_data['timestamp']}">
     <meta name="content-hash" content="{content_data['hash']}">
-    <!-- MARKDOWN-CONTENT
-{content_data['content']}
-MARKDOWN-CONTENT -->
     <style>
         body {{
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
@@ -192,8 +185,8 @@ MARKDOWN-CONTENT -->
         if 'last_filename' in metadata:
             old_filepath = self.content_dir / metadata['last_filename']
             if old_filepath.exists():
-                # Extract markdown content from HTML files for diffing
-                diff_content = self.get_markdown_diff(html_filepath, old_filepath)
+                # Extract HTML content from HTML files for diffing
+                diff_content = self.get_html_diff(html_filepath, old_filepath)
 
         # Update metadata to track HTML file
         metadata['last_hash'] = content_data['hash']

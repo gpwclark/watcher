@@ -279,7 +279,7 @@
                 <div class="view-tabs">
                     <button class="tab-btn active" data-view="rendered">📄 Rendered</button>
                     <button class="tab-btn" data-view="diff">🔍 Diff</button>
-                    <button class="tab-btn" data-view="markdown">📝 Markdown</button>
+                    <button class="tab-btn" data-view="source">📝 Source HTML</button>
                 </div>
             </div>
             <div class="content-body" id="content-body">
@@ -353,10 +353,8 @@
             // Try to load a directory listing or use known feeds
             // This is a simplified version - in production, you'd have a feeds index
             const knownFeeds = [
-                'markdown-test',
                 'static-html-test',
                 'new-years-even-counter',
-                'new-years-markdown-test',
                 'epochconverter',
                 'jank-lang-dot-org-slash-progress'
             ];
@@ -523,7 +521,6 @@
             const response = await fetch(`../${this.currentFeed}/${latestFilename}`);
             const text = await response.text();
             
-            // Extract markdown from HTML
             const { metadata, content } = this.extractFromHTML(text);
             
             // If this is the file we want, return it
@@ -550,9 +547,9 @@
         }
 
         extractFromHTML(htmlText) {
-            // Extract markdown from HTML comment
-            const markdownMatch = htmlText.match(/<!-- MARKDOWN-CONTENT\n(.*?)\nMARKDOWN-CONTENT -->/s);
-            const markdown = markdownMatch ? markdownMatch[1] : '';
+            // Extract HTML content from the content div
+            const contentMatch = htmlText.match(/<div class="content">\s*(.*?)\s*<\/div>\s*<\/body>/s);
+            const htmlContent = contentMatch ? contentMatch[1].trim() : '';
             
             // Extract metadata from meta tags
             const parser = new DOMParser();
@@ -565,7 +562,7 @@
                 content_hash: doc.querySelector('meta[name="content-hash"]')?.content || ''
             };
             
-            return { metadata, content: markdown };
+            return { metadata, content: htmlContent };
         }
 
         parseMarkdownFile(text) {
@@ -634,14 +631,15 @@
                 case 'diff':
                     this.displayDiff(data, contentBody);
                     break;
-                case 'markdown':
-                    this.displayMarkdown(data, contentBody);
+                case 'source':
+                    this.displaySource(data, contentBody);
                     break;
             }
         }
 
         displayRendered(data, container) {
-            const html = marked.parse(data.content);
+            // Display the HTML content directly
+            const html = data.content;
             container.innerHTML = `
                 ${data.metadata ? `
                     <div class="metadata-box">
@@ -681,10 +679,10 @@ ${data.diff}`;
             diff2htmlUi.draw();
         }
 
-        displayMarkdown(data, container) {
-            const markdown = data.content;
+        displaySource(data, container) {
+            const htmlContent = data.content;
             container.innerHTML = `
-                <pre style="white-space: pre-wrap; word-wrap: break-word;"><code>${this.escapeHtml(markdown)}</code></pre>
+                <pre style="white-space: pre-wrap; word-wrap: break-word;"><code>${this.escapeHtml(htmlContent)}</code></pre>
             `;
         }
 

@@ -1,15 +1,3 @@
-# Example GitHub Actions Workflow for RSS Feed Watcher
-# 
-# This workflow automatically monitors websites and creates RSS feeds with diffs.
-# Copy this file to .github/workflows/monitor-sites.yml in your repository.
-#
-# Features:
-#   ✅ Monitors multiple websites for changes
-#   ✅ Creates RSS feeds with clean markdown diffs
-#   ✅ Saves static HTML snapshots of each version
-#   ✅ Works with GitHub Pages for hosting
-#   ✅ Includes interactive history explorer
-
 name: Monitor Sites and Update RSS Feeds
 
 on:
