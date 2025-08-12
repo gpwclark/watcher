@@ -108,13 +108,7 @@ class ContentStorage:
         html_filepath = self.content_dir / html_filename
 
         # Generate static HTML from markdown
-        try:
-            import markdown
-        except ImportError:
-            # Install markdown if not available
-            import subprocess
-            subprocess.run(['uv', 'pip', 'install', 'markdown'], check=True)
-            import markdown
+        import markdown
         
         # Convert markdown to HTML
         md = markdown.Markdown(extensions=['tables', 'fenced_code'])

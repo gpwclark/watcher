@@ -5,12 +5,14 @@ description = "A git-scraping tool with RSS feed generation"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
-    "ask-human-mcp",
     "trafilatura>=1.6.0",
     "feedgenerator>=2.1.0",
     "requests>=2.31.0",
     "gitpython>=3.1.0",
     "python-dateutil>=2.8.0",
+    "markdownify",
+    "markdown>=3.4.0",
+	"uv",
 ]
 
 [project.scripts]
