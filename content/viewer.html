@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Content Viewer</title>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        #history-controls {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background: white;
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+            max-width: 300px;
+        }
+        #history-controls h3 {
+            margin: 0 0 10px 0;
+            font-size: 14px;
+            color: #666;
+        }
+        #history-select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+            font-size: 14px;
+        }
+        #status {
+            margin-top: 10px;
+            font-size: 12px;
+            color: #666;
+        }
+        #content {
+            margin-top: 20px;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f5f5f5;
+        }
+        code {
+            background: #f4f4f4;
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+        pre {
+            background: #f4f4f4;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        .diff-add {
+            background-color: #e6ffed;
+            color: #24292e;
+        }
+        .diff-remove {
+            background-color: #ffeef0;
+            color: #24292e;
+        }
+        #metadata {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+        #metadata dt {
+            font-weight: bold;
+            display: inline-block;
+            width: 120px;
+        }
+        #metadata dd {
+            display: inline;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="history-controls">
+        <h3>📜 View History</h3>
+        <select id="history-select">
+            <option value="">Current Version</option>
+        </select>
+        <div id="status"></div>
+    </div>
+
+    <div id="metadata"></div>
+    <div id="content"></div>
+
+    <script>
+    class MarkdownViewer {
+        constructor() {
+            this.currentContent = null;
+            this.currentMetadata = null;
+            this.entries = [];
+            this.feedUrl = null;
+            this.contentPath = null;
+            this.init();
+        }
+
+        async init() {
+            // Get URL parameters
+            const urlParams = new URLSearchParams(window.location.search);
+            this.contentPath = urlParams.get('file');
+            const targetDate = urlParams.get('date');
+
+            if (!this.contentPath) {
+                document.getElementById('content').innerHTML = '<p>No file specified. Use ?file=path/to/file.md</p>';
+                return;
+            }
+
+            // Load current markdown file
+            await this.loadCurrentFile();
+
+            // Determine RSS feed URL from metadata
+            if (this.currentMetadata && this.currentMetadata.feed_name) {
+                this.feedUrl = `../../feeds/${this.currentMetadata.feed_name}.xml`;
+                await this.loadRSSFeed();
+                this.populateHistorySelect();
+            }
+
+            // If date parameter exists, reconstruct that version
+            if (targetDate) {
+                await this.reconstructVersion(targetDate);
+            }
+        }
+
+        async loadCurrentFile() {
+            try {
+                const response = await fetch(this.contentPath);
+                const text = await response.text();
+                
+                // Parse YAML frontmatter and content
+                const { metadata, content } = this.parseMarkdownFile(text);
+                this.currentMetadata = metadata;
+                this.currentContent = content;
+                
+                // Display current version
+                this.displayContent(content, metadata);
+            } catch (error) {
+                console.error('Failed to load markdown file:', error);
+                document.getElementById('content').innerHTML = '<p>Error loading file</p>';
+            }
+        }
+
+        parseMarkdownFile(text) {
+            const parts = text.split('---');
+            if (parts.length >= 3) {
+                const yamlText = parts[1].trim();
+                const content = parts.slice(2).join('---').trim();
+                
+                try {
+                    const metadata = jsyaml.load(yamlText);
+                    return { metadata, content };
+                } catch (e) {
+                    console.error('Failed to parse YAML:', e);
+                    return { metadata: {}, content: text };
+                }
+            }
+            return { metadata: {}, content: text };
+        }
+
+        async loadRSSFeed() {
+            try {
+                const response = await fetch(this.feedUrl);
+                const text = await response.text();
+                const parser = new DOMParser();
+                const xml = parser.parseFromString(text, 'text/xml');
+                
+                // Parse RSS items
+                const items = xml.querySelectorAll('item');
+                this.entries = Array.from(items).map(item => {
+                    const description = item.querySelector('description')?.textContent || '';
+                    const pubDate = item.querySelector('pubDate')?.textContent || '';
+                    const link = item.querySelector('link')?.textContent || '';
+                    
+                    // Extract diff from description (after the description text)
+                    let diff = null;
+                    const diffMatch = description.match(/\n(@@ .+)/s);
+                    if (diffMatch) {
+                        diff = diffMatch[1];
+                    }
+                    
+                    return {
+                        date: new Date(pubDate),
+                        link: link,
+                        diff: diff,
+                        description: description
+                    };
+                }).sort((a, b) => b.date - a.date);
+            } catch (error) {
+                console.error('Failed to load RSS feed:', error);
+            }
+        }
+
+        populateHistorySelect() {
+            const select = document.getElementById('history-select');
+            select.innerHTML = '<option value="">Current Version</option>';
+            
+            this.entries.forEach(entry => {
+                const option = document.createElement('option');
+                option.value = entry.date.toISOString();
+                option.textContent = entry.date.toLocaleString();
+                select.appendChild(option);
+            });
+            
+            select.addEventListener('change', async (e) => {
+                const selectedDate = e.target.value;
+                if (selectedDate) {
+                    await this.reconstructVersion(selectedDate);
+                    // Update URL
+                    const url = new URL(window.location);
+                    url.searchParams.set('date', selectedDate);
+                    window.history.replaceState({}, '', url);
+                } else {
+                    // Show current version
+                    this.displayContent(this.currentContent, this.currentMetadata);
+                    // Remove date from URL
+                    const url = new URL(window.location);
+                    url.searchParams.delete('date');
+                    window.history.replaceState({}, '', url);
+                }
+            });
+        }
+
+        async reconstructVersion(targetDate) {
+            const status = document.getElementById('status');
+            status.textContent = 'Reconstructing...';
+            
+            try {
+                const target = new Date(targetDate);
+                let content = this.currentContent;
+                
+                // Find all entries newer than target date
+                const newerEntries = this.entries.filter(entry => entry.date > target);
+                
+                // Apply reverse diffs
+                for (const entry of newerEntries) {
+                    if (entry.diff) {
+                        content = this.applyReverseDiff(content, entry.diff);
+                    }
+                }
+                
+                // Display reconstructed version
+                this.displayContent(content, {
+                    ...this.currentMetadata,
+                    reconstructed_at: target.toISOString()
+                });
+                
+                status.textContent = `Showing version from ${target.toLocaleString()}`;
+                
+                // Update select
+                const select = document.getElementById('history-select');
+                select.value = targetDate;
+            } catch (error) {
+                console.error('Failed to reconstruct version:', error);
+                status.textContent = 'Error reconstructing version';
+            }
+        }
+
+        applyReverseDiff(content, diff) {
+            const lines = content.split('\n');
+            const diffLines = diff.split('\n');
+            let result = [...lines];
+            
+            // Process diff hunks
+            let i = 0;
+            while (i < diffLines.length) {
+                const line = diffLines[i];
+                
+                if (line.startsWith('@@')) {
+                    const match = line.match(/@@ -(\d+),?(\d*) \+(\d+),?(\d*) @@/);
+                    if (match) {
+                        const newStart = parseInt(match[3]) - 1;
+                        
+                        // Process the hunk
+                        i++;
+                        let offset = 0;
+                        while (i < diffLines.length && !diffLines[i].startsWith('@@')) {
+                            const hunkLine = diffLines[i];
+                            
+                            if (hunkLine.startsWith('+')) {
+                                // In reverse, remove added lines
+                                result.splice(newStart + offset, 1);
+                                offset--;
+                            } else if (hunkLine.startsWith('-')) {
+                                // In reverse, add removed lines
+                                result.splice(newStart + offset, 0, hunkLine.substring(1));
+                                offset++;
+                            }
+                            // Context lines (starting with space) are kept as-is
+                            i++;
+                        }
+                        continue;
+                    }
+                }
+                i++;
+            }
+            
+            return result.join('\n');
+        }
+
+        displayContent(markdownContent, metadata) {
+            // Display metadata
+            const metadataEl = document.getElementById('metadata');
+            if (metadata && Object.keys(metadata).length > 0) {
+                metadataEl.innerHTML = `
+                    <dl>
+                        ${metadata.title ? `<dt>Title:</dt><dd>${metadata.title}</dd><br>` : ''}
+                        ${metadata.source_url ? `<dt>Source:</dt><dd><a href="${metadata.source_url}">${metadata.source_url}</a></dd><br>` : ''}
+                        ${metadata.scraped_at ? `<dt>Scraped:</dt><dd>${new Date(metadata.scraped_at).toLocaleString()}</dd><br>` : ''}
+                        ${metadata.reconstructed_at ? `<dt>Version:</dt><dd>${new Date(metadata.reconstructed_at).toLocaleString()}</dd>` : ''}
+                    </dl>
+                `;
+            }
+            
+            // Render markdown content
+            const contentEl = document.getElementById('content');
+            contentEl.innerHTML = marked.parse(markdownContent);
+        }
+    }
+
+    // Initialize viewer when DOM is ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => new MarkdownViewer());
+    } else {
+        new MarkdownViewer();
+    }
+    </script>
+</body>
+</html>

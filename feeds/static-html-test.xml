@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>static-html-test Updates</title><link>https://github.com/owner/repo/blob/main/content/static-html-test/20250812-022746.md</link><description>Updates from static-html-test</description><language>en</language><lastBuildDate>Tue, 12 Aug 2025 02:27:46 +0000</lastBuildDate><item><title>Countdown to New Year 2026</title><link>https://github.com/owner/repo/blob/main/content/static-html-test/20250812-022746.html</link><description>&lt;![CDATA[Count the seconds to the New Year in any location or time zone.
+
+@@ -1,8 +1,8 @@
+ ---
+ title: Countdown to New Year 2026
+ source_url: https://www.timeanddate.com/counters/newyear.html
+-scraped_at: 2025-08-12T02:26:07.661632+00:00
+-content_hash: 3171ef631981e7dc02629c41f08ab1bd32bdc96694e8415b1128aba06d93fab8
++scraped_at: 2025-08-12T02:27:46.813237+00:00
++content_hash: 98e68d4cf8ea14bd224032e9e221a7146fb4fc1e5af31f683c37c2e72bfd33e9
+ feed_name: static-html-test
+ ---
+ 
+@@ -12,21 +12,21 @@ days
+ 3410
+ hours
+ 
+-204633
++204632
+ minutes
+ 
+-12278034
++12277934
+ seconds
+ 
+ until Thursday, January 1, 2026 ([Raleigh](/worldclock/usa/raleigh) time)
+ 
+-142 days, 2 hours, 33 minutes, 54 seconds
++142 days, 2 hours, 32 minutes, 14 seconds
+ 
+ until Thursday, January 1, 2026 ([Raleigh](/worldclock/usa/raleigh) time)
+ 
+ [One hour wrong? Daylight Saving Time!](/countdown/one-hour-off)
+ 
+-Current time is Monday, August 11, 2025 at 10:26:06 pm [EDT](/time/zones/edt) (local time in [Raleigh](/worldclock/usa/raleigh))
++Current time is Monday, August 11, 2025 at 10:27:46 pm [EDT](/time/zones/edt) (local time in [Raleigh](/worldclock/usa/raleigh))
+ 
+ You may need to press Reload or Refresh on your browser to update the numbers.
+ ]]&gt;</description><pubDate>Tue, 12 Aug 2025 02:27:46 +0000</pubDate><guid>static-html-test-98e68d4c</guid></item><item><title>Countdown to New Year 2026</title><link>https://github.com/owner/repo/blob/main/content/static-html-test/20250812-022607.html</link><description>Count the seconds to the New Year in any location or time zone.</description><pubDate>Tue, 12 Aug 2025 02:26:07 +0000</pubDate><guid>static-html-test-3171ef63</guid></item></channel></rss>

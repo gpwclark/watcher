@@ -1,0 +1,11 @@
+# Watcher Sites Configuration
+# Add your sites to track here
+
+[[sites]]
+url = "https://jank-lang.org/progress/"
+feed_name = "jank-progress"
+min_hours = 24  # Check once a day
+
+[[sites]]
+url = "https://www.timeanddate.com/counters/newyear.html"
+feed_name = "example-changelog"

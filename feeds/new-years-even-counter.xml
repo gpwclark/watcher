@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>new-years-even-counter Updates</title><link>https://github.com/gpwclark/watcher/content/new-years-even-counter/20250812-023740.md</link><description>Updates from new-years-even-counter</description><language>en</language><lastBuildDate>Tue, 12 Aug 2025 02:37:40 +0000</lastBuildDate><item><title>Countdown to New Year 2026</title><link>https://github.com/gpwclark/watcher/content/new-years-even-counter/20250812-023740.html</link><description>&lt;![CDATA[Count the seconds to the New Year in any location or time zone.
+
+@@ -1,8 +1,8 @@
+ ---
+ title: Countdown to New Year 2026
+ source_url: https://www.timeanddate.com/counters/newyear.html
+-scraped_at: 2025-08-12T02:37:32.800529+00:00
+-content_hash: b97fddae8c5ff0cc9d795a40eae467ec7b6e317d71baeb48da52a43fe6a64707
++scraped_at: 2025-08-12T02:37:40.820776+00:00
++content_hash: 103aef6061c18fccfa320829e5cb08d309cf4689bec2f4c22f2115fb7324a14e
+ feed_name: new-years-even-counter
+ ---
+ 
+@@ -15,18 +15,18 @@ hours
+ 204622
+ minutes
+ 
+-12277348
++12277340
+ seconds
+ 
+ until Thursday, January 1, 2026 ([Raleigh](/worldclock/usa/raleigh) time)
+ 
+-142 days, 2 hours, 22 minutes, 28 seconds
++142 days, 2 hours, 22 minutes, 20 seconds
+ 
+ until Thursday, January 1, 2026 ([Raleigh](/worldclock/usa/raleigh) time)
+ 
+ [One hour wrong? Daylight Saving Time!](/countdown/one-hour-off)
+ 
+-Current time is Monday, August 11, 2025 at 10:37:32 pm [EDT](/time/zones/edt) (local time in [Raleigh](/worldclock/usa/raleigh))
++Current time is Monday, August 11, 2025 at 10:37:40 pm [EDT](/time/zones/edt) (local time in [Raleigh](/worldclock/usa/raleigh))
+ 
+ You may need to press Reload or Refresh on your browser to update the numbers.
+ ]]&gt;</description><pubDate>Tue, 12 Aug 2025 02:37:40 +0000</pubDate><guid>new-years-even-counter-103aef60</guid></item><item><title>Countdown to New Year 2026</title><link>https://github.com/gpwclark/watcher/content/new-years-even-counter/20250812-023732.html</link><description>Count the seconds to the New Year in any location or time zone.</description><pubDate>Tue, 12 Aug 2025 02:37:32 +0000</pubDate><guid>new-years-even-counter-b97fddae</guid></item><item><title>Countdown to New Year 2026</title><link>https://github.com/gpwclark/watcher/content/new-years-even-counter/20250812-023705.html</link><description>Count the seconds to the New Year in any location or time zone.</description><pubDate>Tue, 12 Aug 2025 02:37:05 +0000</pubDate><guid>new-years-even-counter-c48a2c18</guid></item><item><title>Countdown to New Year 2026</title><link>https://github.com/gpwclark/watcher/content/new-years-even-counter/20250811-214943.html?date=2025-08-11T21:49:43.451525+00:00</link><description>&lt;![CDATA[Count the seconds to the New Year in any location or time zone.
+
+@@ -4,8 +4,8 @@
+     &lt;meta charset="utf-8"&gt;
+     &lt;title&gt;Countdown to New Year 2026&lt;/title&gt;
+     &lt;meta name="source-url" content="https://www.timeanddate.com/counters/newyear.html"&gt;
+-    &lt;meta name="scraped-at" content="2025-08-11T21:49:37.034981+00:00"&gt;
+-    &lt;meta name="content-hash" content="3fb6d94af071f0f34a4133f445c632ee9f1be9ad98918d72685f822316c2cfa1"&gt;
++    &lt;meta name="scraped-at" content="2025-08-11T21:49:43.451525+00:00"&gt;
++    &lt;meta name="content-hash" content="471809c820fa807f4653674856c338c78339862e85fb88edd935b17c3c35cfec"&gt;
+     &lt;meta name="rss-feed-url" content="../../../feeds/new-years-even-counter.xml"&gt;
+     &lt;script src="../../history-viewer.js"&gt;&lt;/script&gt;
+ &lt;/head&gt;
+@@ -26,17 +26,17 @@
+         &lt;cell&gt;minutes&lt;/cell&gt;
+       &lt;/row&gt;
+       &lt;row&gt;
+-        &lt;cell&gt;12294624&lt;/cell&gt;
++        &lt;cell&gt;12294618&lt;/cell&gt;
+         &lt;cell&gt;seconds&lt;/cell&gt;
+       &lt;/row&gt;
+     &lt;/table&gt;
+     &lt;p&gt;until Thursday, January 1, 2026 (&lt;a href="/worldclock/usa/raleigh"&gt;Raleigh&lt;/a&gt; time)&lt;/p&gt;
+-    &lt;p&gt;142 days, 7 hours, 10 minutes, 24 seconds&lt;/p&gt;
++    &lt;p&gt;142 days, 7 hours, 10 minutes, 18 seconds&lt;/p&gt;
+     &lt;p&gt;until Thursday, January 1, 2026 (&lt;a href="/worldclock/usa/raleigh"&gt;Raleigh&lt;/a&gt; time)&lt;/p&gt;
+     &lt;p&gt;
+       &lt;a href="/countdown/one-hour-off"&gt;One hour wrong? Daylight Saving Time!&lt;/a&gt;
+     &lt;/p&gt;
+-    &lt;p&gt;Current time is Monday, August 11, 2025 at 5:49:36 pm &lt;a href="/time/zones/edt"&gt;EDT&lt;/a&gt; (local time in &lt;a href="/worldclock/usa/raleigh"&gt;Raleigh&lt;/a&gt;) &lt;/p&gt;
++    &lt;p&gt;Current time is Monday, August 11, 2025 at 5:49:42 pm &lt;a href="/time/zones/edt"&gt;EDT&lt;/a&gt; (local time in &lt;a href="/worldclock/usa/raleigh"&gt;Raleigh&lt;/a&gt;) &lt;/p&gt;
+     &lt;p&gt;You may need to press Reload or Refresh on your browser to update the numbers.&lt;/p&gt;
+     &lt;h2&gt;Full-Screen Countdown&lt;/h2&gt;
+     &lt;p&gt;The links below will open in a new popup window, some popup-blockers might block them from opening.&lt;/p&gt;]]&gt;</description><pubDate>Mon, 11 Aug 2025 21:49:43 +0000</pubDate><guid>new-years-even-counter-471809c8</guid></item><item><title>Countdown to New Year 2026</title><link>https://github.com/gpwclark/watcher/content/new-years-even-counter/20250811-214937.html?date=2025-08-11T21:49:37.034981+00:00</link><description>&lt;![CDATA[Count the seconds to the New Year in any location or time zone.
+
+@@ -4,8 +4,8 @@
+     &lt;meta charset="utf-8"&gt;
+     &lt;title&gt;Countdown to New Year 2026&lt;/title&gt;
+     &lt;meta name="source-url" content="https://www.timeanddate.com/counters/newyear.html"&gt;
+-    &lt;meta name="scraped-at" content="2025-08-11T21:49:28.935974+00:00"&gt;
+-    &lt;meta name="content-hash" content="1aa74eb8353256c5930602e9112aca4a902200dbb8c7f97bc53fffaceb6e8506"&gt;
++    &lt;meta name="scraped-at" content="2025-08-11T21:49:37.034981+00:00"&gt;
++    &lt;meta name="content-hash" content="3fb6d94af071f0f34a4133f445c632ee9f1be9ad98918d72685f822316c2cfa1"&gt;
+     &lt;meta name="rss-feed-url" content="../../../feeds/new-years-even-counter.xml"&gt;
+     &lt;script src="../../history-viewer.js"&gt;&lt;/script&gt;
+ &lt;/head&gt;
+@@ -26,17 +26,17 @@
+         &lt;cell&gt;minutes&lt;/cell&gt;
+       &lt;/row&gt;
+       &lt;row&gt;
+-        &lt;cell&gt;12294632&lt;/cell&gt;
++        &lt;cell&gt;12294624&lt;/cell&gt;
+         &lt;cell&gt;seconds&lt;/cell&gt;
+       &lt;/row&gt;
+     &lt;/table&gt;
+     &lt;p&gt;until Thursday, January 1, 2026 (&lt;a href="/worldclock/usa/raleigh"&gt;Raleigh&lt;/a&gt; time)&lt;/p&gt;
+-    &lt;p&gt;142 days, 7 hours, 10 minutes, 32 seconds&lt;/p&gt;
++    &lt;p&gt;142 days, 7 hours, 10 minutes, 24 seconds&lt;/p&gt;
+     &lt;p&gt;until Thursday, January 1, 2026 (&lt;a href="/worldclock/usa/raleigh"&gt;Raleigh&lt;/a&gt; time)&lt;/p&gt;
+     &lt;p&gt;
+       &lt;a href="/countdown/one-hour-off"&gt;One hour wrong? Daylight Saving Time!&lt;/a&gt;
+     &lt;/p&gt;
+-    &lt;p&gt;Current time is Monday, August 11, 2025 at 5:49:28 pm &lt;a href="/time/zones/edt"&gt;EDT&lt;/a&gt; (local time in &lt;a href="/worldclock/usa/raleigh"&gt;Raleigh&lt;/a&gt;) &lt;/p&gt;
++    &lt;p&gt;Current time is Monday, August 11, 2025 at 5:49:36 pm &lt;a href="/time/zones/edt"&gt;EDT&lt;/a&gt; (local time in &lt;a href="/worldclock/usa/raleigh"&gt;Raleigh&lt;/a&gt;) &lt;/p&gt;
+     &lt;p&gt;You may need to press Reload or Refresh on your browser to update the numbers.&lt;/p&gt;
+     &lt;h2&gt;Full-Screen Countdown&lt;/h2&gt;
+     &lt;p&gt;The links below will open in a new popup window, some popup-blockers might block them from opening.&lt;/p&gt;]]&gt;</description><pubDate>Mon, 11 Aug 2025 21:49:37 +0000</pubDate><guid>new-years-even-counter-3fb6d94a</guid></item><item><title>Countdown to New Year 2026</title><link>https://github.com/gpwclark/watcher/content/new-years-even-counter/20250811-214928.html?date=2025-08-11T21:49:28.935974+00:00</link><description>Count the seconds to the New Year in any location or time zone.</description><pubDate>Mon, 11 Aug 2025 21:49:28 +0000</pubDate><guid>new-years-even-counter-1aa74eb8</guid></item></channel></rss>

@@ -4,6 +4,7 @@ import json
 from typing import Dict, Optional, Tuple
 import subprocess
 import os
+from .diff_utils import DiffUtils
 
 class ContentStorage:
     def __init__(self, feed_name: str):
@@ -50,50 +51,50 @@ class ContentStorage:
 
     def get_content_diff(self, new_file_path: Path, old_file_path: Optional[Path] = None) -> Optional[str]:
         """Get git diff between old and new content files."""
+        if old_file_path and old_file_path.exists():
+            return DiffUtils.generate_unified_diff(old_file_path, new_file_path)
+        return None
+    
+    def extract_markdown_from_html(self, html_path: Path) -> Optional[str]:
+        """Extract embedded markdown content from HTML file."""
         try:
-            if old_file_path and old_file_path.exists():
-                # Use git diff to compare only the body content
-                # This gives us a cleaner diff without the HTML wrapper
-                result = subprocess.run(
-                    [
-                        'git', 'diff',
-                        '--no-index',
-                        '--no-prefix',
-                        '--unified=3',  # Show 3 lines of context
-                        '-w',  # Ignore whitespace changes
-                        str(old_file_path),
-                        str(new_file_path)
-                    ],
-                    capture_output=True,
-                    text=True,
-                    cwd=os.getcwd()
-                )
-                if result.returncode in [0, 1]:  # 0 = no diff, 1 = diff exists
-                    diff_text = result.stdout
-                    if diff_text:
-                        # Clean up the diff header to be more readable
-                        lines = diff_text.split('\n')
-                        cleaned_lines = []
-                        skip_next = False
-
-                        for line in lines:
-                            # Skip the diff header lines
-                            if line.startswith('diff --git') or line.startswith('index '):
-                                skip_next = True
-                                continue
-                            if skip_next and (line.startswith('---') or line.startswith('+++')):
-                                continue
-                            skip_next = False
-
-                            # Keep the actual diff content
-                            if line.startswith('@@') or line.startswith('+') or line.startswith('-') or line.startswith(' '):
-                                cleaned_lines.append(line)
-
-                        return '\n'.join(cleaned_lines)
+            with open(html_path, 'r', encoding='utf-8') as f:
+                content = f.read()
+            
+            # Extract markdown from HTML comment
+            import re
+            match = re.search(r'<!-- MARKDOWN-CONTENT\n(.*?)\nMARKDOWN-CONTENT -->', content, re.DOTALL)
+            if match:
+                return match.group(1)
             return None
-        except Exception as e:
-            print(f"Error getting diff: {e}")
+        except Exception:
             return None
+    
+    def get_markdown_diff(self, new_html_path: Path, old_html_path: Path) -> Optional[str]:
+        """Generate diff between markdown content embedded in HTML files."""
+        new_markdown = self.extract_markdown_from_html(new_html_path)
+        old_markdown = self.extract_markdown_from_html(old_html_path)
+        
+        if new_markdown and old_markdown:
+            # Create temporary files for diffing
+            import tempfile
+            with tempfile.NamedTemporaryFile(mode='w', suffix='.md', delete=False) as new_temp:
+                new_temp.write(new_markdown)
+                new_temp_path = Path(new_temp.name)
+            
+            with tempfile.NamedTemporaryFile(mode='w', suffix='.md', delete=False) as old_temp:
+                old_temp.write(old_markdown)
+                old_temp_path = Path(old_temp.name)
+            
+            try:
+                diff = DiffUtils.generate_unified_diff(old_temp_path, new_temp_path)
+                return diff
+            finally:
+                # Clean up temp files
+                new_temp_path.unlink(missing_ok=True)
+                old_temp_path.unlink(missing_ok=True)
+        
+        return None
 
     def save_content(self, content_data: Dict[str, str]) -> Optional[Tuple[str, Optional[str]]]:
         """Save content to file and return filename if content is new."""
@@ -103,26 +104,92 @@ class ContentStorage:
 
         # Generate filename with timestamp
         timestamp = datetime.now(timezone.utc).strftime("%Y%m%d-%H%M%S")
-        filename = f"{timestamp}.html"
-        filepath = self.content_dir / filename
+        html_filename = f"{timestamp}.html"
+        html_filepath = self.content_dir / html_filename
 
-        # Create HTML document with metadata
+        # Generate static HTML from markdown
+        try:
+            import markdown
+        except ImportError:
+            # Install markdown if not available
+            import subprocess
+            subprocess.run(['uv', 'pip', 'install', 'markdown'], check=True)
+            import markdown
+        
+        # Convert markdown to HTML
+        md = markdown.Markdown(extensions=['tables', 'fenced_code'])
+        html_content_body = md.convert(content_data['content'])
+        
+        # Create static HTML document with embedded markdown in a comment for diffs
         html_content = f"""<!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{content_data['title']}</title>
     <meta name="source-url" content="{content_data['url']}">
     <meta name="scraped-at" content="{content_data['timestamp']}">
     <meta name="content-hash" content="{content_data['hash']}">
+    <!-- MARKDOWN-CONTENT
+{content_data['content']}
+MARKDOWN-CONTENT -->
+    <style>
+        body {{
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }}
+        table {{
+            border-collapse: collapse;
+            width: 100%;
+            margin: 20px 0;
+        }}
+        th, td {{
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }}
+        th {{
+            background-color: #f5f5f5;
+        }}
+        code {{
+            background: #f4f4f4;
+            padding: 2px 5px;
+            border-radius: 3px;
+        }}
+        pre {{
+            background: #f4f4f4;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }}
+        .metadata {{
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }}
+    </style>
 </head>
 <body>
-{content_data['content']}
+    <div class="metadata">
+        <strong>Source:</strong> <a href="{content_data['url']}">{content_data['url']}</a><br>
+        <strong>Captured:</strong> {content_data['timestamp']}<br>
+        <strong>Title:</strong> {content_data['title']}<br>
+        <strong>📜 <a href="../history-explorer.html?feed={self.feed_name}" style="color: #667eea;">View Full History with Diffs</a></strong>
+    </div>
+    <div class="content">
+        {html_content_body}
+    </div>
 </body>
 </html>"""
 
-        # Save content
-        with open(filepath, 'w', encoding='utf-8') as f:
+        # Save static HTML file
+        with open(html_filepath, 'w', encoding='utf-8') as f:
             f.write(html_content)
 
         # Get diff with previous version if it exists
@@ -130,13 +197,15 @@ class ContentStorage:
         diff_content = None
         if 'last_filename' in metadata:
             old_filepath = self.content_dir / metadata['last_filename']
-            diff_content = self.get_content_diff(filepath, old_filepath)
+            if old_filepath.exists():
+                # Extract markdown content from HTML files for diffing
+                diff_content = self.get_markdown_diff(html_filepath, old_filepath)
 
-        # Update metadata
+        # Update metadata to track HTML file
         metadata['last_hash'] = content_data['hash']
         metadata['last_update'] = content_data['timestamp']
-        metadata['last_filename'] = filename
+        metadata['last_filename'] = html_filename
         self.save_metadata(metadata)
 
-        print(f"Saved new content to {filepath}")
-        return filename, diff_content
+        print(f"Saved new content to {html_filepath}")
+        return html_filename, diff_content

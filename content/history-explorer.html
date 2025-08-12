@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>History Explorer</title>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/diff2html@3.4.47/bundles/js/diff2html-ui.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/diff2html@3.4.47/bundles/css/diff2html.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+        }
+        
+        .container {
+            display: flex;
+            height: 100vh;
+        }
+        
+        .sidebar {
+            width: 350px;
+            background: white;
+            border-right: 1px solid #ddd;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        
+        .sidebar-header {
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .sidebar-header h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        
+        .feed-selector {
+            margin-top: 15px;
+        }
+        
+        .feed-selector select {
+            width: 100%;
+            padding: 8px;
+            border: none;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        
+        .timeline {
+            flex: 1;
+            overflow-y: auto;
+            padding: 10px;
+        }
+        
+        .timeline-item {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: all 0.2s;
+            position: relative;
+        }
+        
+        .timeline-item:hover {
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transform: translateX(5px);
+        }
+        
+        .timeline-item.active {
+            background: #f0f7ff;
+            border-color: #667eea;
+            border-width: 2px;
+        }
+        
+        .timeline-date {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+        
+        .timeline-title {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        
+        .timeline-stats {
+            display: flex;
+            gap: 15px;
+            font-size: 12px;
+            color: #888;
+        }
+        
+        .stat-add {
+            color: #28a745;
+        }
+        
+        .stat-remove {
+            color: #dc3545;
+        }
+        
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        
+        .content-header {
+            background: white;
+            padding: 20px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .view-tabs {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .tab-btn {
+            padding: 8px 16px;
+            border: 1px solid #ddd;
+            background: white;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .tab-btn:hover {
+            background: #f5f5f5;
+        }
+        
+        .tab-btn.active {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+        
+        .content-body {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+            background: white;
+        }
+        
+        .content-rendered {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .content-rendered table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 20px 0;
+        }
+        
+        .content-rendered th,
+        .content-rendered td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        
+        .content-rendered th {
+            background-color: #f5f5f5;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+        }
+        
+        .error {
+            background: #fee;
+            border: 1px solid #fcc;
+            color: #c00;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 20px;
+        }
+        
+        .metadata-box {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+        
+        .metadata-box dt {
+            font-weight: bold;
+            display: inline-block;
+            width: 100px;
+        }
+        
+        .metadata-box dd {
+            display: inline;
+            margin: 0;
+        }
+        
+        .no-data {
+            text-align: center;
+            padding: 40px;
+            color: #999;
+        }
+        
+        .timeline-connector {
+            position: absolute;
+            left: -5px;
+            top: 50%;
+            width: 10px;
+            height: 10px;
+            background: #667eea;
+            border-radius: 50%;
+            transform: translateY(-50%);
+        }
+        
+        .timeline-item:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            left: -1px;
+            top: 50%;
+            width: 2px;
+            height: calc(100% + 10px);
+            background: #e0e0e0;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                width: 100%;
+                height: 300px;
+                border-right: none;
+                border-bottom: 1px solid #ddd;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h1>📜 History Explorer</h1>
+                <p>Navigate through time with diffs</p>
+                <div class="feed-selector">
+                    <select id="feed-select">
+                        <option value="">Select a feed...</option>
+                    </select>
+                </div>
+            </div>
+            <div class="timeline" id="timeline">
+                <div class="no-data">Select a feed to view history</div>
+            </div>
+        </div>
+        
+        <div class="main-content">
+            <div class="content-header">
+                <h2 id="content-title">Welcome</h2>
+                <div class="view-tabs">
+                    <button class="tab-btn active" data-view="rendered">📄 Rendered</button>
+                    <button class="tab-btn" data-view="diff">🔍 Diff</button>
+                    <button class="tab-btn" data-view="markdown">📝 Markdown</button>
+                </div>
+            </div>
+            <div class="content-body" id="content-body">
+                <div class="no-data">Select a version from the timeline to view content</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    class HistoryExplorer {
+        constructor() {
+            this.entries = [];
+            this.currentFeed = null;
+            this.currentEntry = null;
+            this.currentView = 'rendered';
+            this.contentCache = {};
+            this.init();
+        }
+
+        async init() {
+            this.setupEventListeners();
+            await this.loadAvailableFeeds();
+            
+            // Check for feed parameter in URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const feedParam = urlParams.get('feed');
+            if (feedParam) {
+                // Set the select value and load the feed
+                const select = document.getElementById('feed-select');
+                select.value = feedParam;
+                await this.loadFeed(feedParam);
+            }
+        }
+
+        setupEventListeners() {
+            // Feed selector
+            document.getElementById('feed-select').addEventListener('change', async (e) => {
+                if (e.target.value) {
+                    await this.loadFeed(e.target.value);
+                }
+            });
+
+            // View tabs
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const view = e.target.dataset.view;
+                    this.switchView(view);
+                });
+            });
+        }
+
+        async loadAvailableFeeds() {
+            try {
+                // In a real implementation, this would scan the feeds directory
+                // For now, we'll look for common feed names
+                const feedNames = await this.discoverFeeds();
+                const select = document.getElementById('feed-select');
+                
+                feedNames.forEach(name => {
+                    const option = document.createElement('option');
+                    option.value = name;
+                    option.textContent = name.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+                    select.appendChild(option);
+                });
+            } catch (error) {
+                console.error('Failed to load feeds:', error);
+            }
+        }
+
+        async discoverFeeds() {
+            // Try to load a directory listing or use known feeds
+            // This is a simplified version - in production, you'd have a feeds index
+            const knownFeeds = [
+                'markdown-test',
+                'static-html-test',
+                'new-years-even-counter',
+                'new-years-markdown-test',
+                'epochconverter',
+                'jank-lang-dot-org-slash-progress'
+            ];
+            
+            const availableFeeds = [];
+            for (const feed of knownFeeds) {
+                try {
+                    const response = await fetch(`../feeds/${feed}.xml`);
+                    if (response.ok) {
+                        availableFeeds.push(feed);
+                    }
+                } catch (e) {
+                    // Feed doesn't exist
+                }
+            }
+            
+            return availableFeeds;
+        }
+
+        async loadFeed(feedName) {
+            this.currentFeed = feedName;
+            const timeline = document.getElementById('timeline');
+            timeline.innerHTML = '<div class="loading">Loading timeline...</div>';
+            
+            try {
+                const response = await fetch(`../feeds/${feedName}.xml`);
+                const text = await response.text();
+                const parser = new DOMParser();
+                const xml = parser.parseFromString(text, 'text/xml');
+                
+                // Parse RSS items
+                const items = xml.querySelectorAll('item');
+                this.entries = Array.from(items).map(item => {
+                    const description = item.querySelector('description')?.textContent || '';
+                    const pubDate = item.querySelector('pubDate')?.textContent || '';
+                    const title = item.querySelector('title')?.textContent || '';
+                    const link = item.querySelector('link')?.textContent || '';
+                    
+                    // Extract filename from link
+                    const filenameMatch = link.match(/\/([^\/]+\.(md|html))$/);
+                    const filename = filenameMatch ? filenameMatch[1] : null;
+                    
+                    // Extract diff from description
+                    let diff = null;
+                    let additions = 0;
+                    let deletions = 0;
+                    
+                    // Clean CDATA wrapper if present
+                    let cleanDesc = description.replace(/<!\[CDATA\[/, '').replace(/\]\]>/, '');
+                    const diffMatch = cleanDesc.match(/\n(@@ .+)/s);
+                    if (diffMatch) {
+                        diff = diffMatch[1];
+                        // Count additions and deletions
+                        additions = (diff.match(/^\+[^+]/gm) || []).length;
+                        deletions = (diff.match(/^-[^-]/gm) || []).length;
+                    }
+                    
+                    return {
+                        date: new Date(pubDate),
+                        title: title,
+                        filename: filename,
+                        diff: diff,
+                        additions: additions,
+                        deletions: deletions,
+                        description: cleanDesc.split('\n@@')[0].trim()
+                    };
+                }).sort((a, b) => b.date - a.date);
+                
+                this.renderTimeline();
+                
+                // Auto-select the most recent entry
+                if (this.entries.length > 0) {
+                    await this.selectEntry(0);
+                }
+            } catch (error) {
+                timeline.innerHTML = '<div class="error">Failed to load feed</div>';
+                console.error('Failed to load feed:', error);
+            }
+        }
+
+        renderTimeline() {
+            const timeline = document.getElementById('timeline');
+            
+            if (this.entries.length === 0) {
+                timeline.innerHTML = '<div class="no-data">No entries found</div>';
+                return;
+            }
+            
+            timeline.innerHTML = this.entries.map((entry, index) => `
+                <div class="timeline-item" data-index="${index}">
+                    <div class="timeline-connector"></div>
+                    <div class="timeline-date">${entry.date.toLocaleString()}</div>
+                    <div class="timeline-title">${entry.title}</div>
+                    ${entry.diff ? `
+                        <div class="timeline-stats">
+                            <span class="stat-add">+${entry.additions}</span>
+                            <span class="stat-remove">-${entry.deletions}</span>
+                        </div>
+                    ` : '<div class="timeline-stats">Initial version</div>'}
+                </div>
+            `).join('');
+            
+            // Add click handlers
+            timeline.querySelectorAll('.timeline-item').forEach(item => {
+                item.addEventListener('click', async () => {
+                    const index = parseInt(item.dataset.index);
+                    await this.selectEntry(index);
+                });
+            });
+        }
+
+        async selectEntry(index) {
+            // Update UI
+            document.querySelectorAll('.timeline-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            document.querySelector(`.timeline-item[data-index="${index}"]`)?.classList.add('active');
+            
+            this.currentEntry = this.entries[index];
+            document.getElementById('content-title').textContent = 
+                `${this.currentEntry.title} - ${this.currentEntry.date.toLocaleString()}`;
+            
+            // Load content
+            await this.loadContent();
+        }
+
+        async loadContent() {
+            const contentBody = document.getElementById('content-body');
+            
+            if (!this.currentEntry || !this.currentEntry.filename) {
+                contentBody.innerHTML = '<div class="no-data">No content available</div>';
+                return;
+            }
+            
+            contentBody.innerHTML = '<div class="loading">Loading content...</div>';
+            
+            try {
+                // Use the filename as-is (should be HTML)
+                const filename = this.currentEntry.filename;
+                const cacheKey = `${this.currentFeed}/${filename}`;
+                
+                let content;
+                if (this.contentCache[cacheKey]) {
+                    content = this.contentCache[cacheKey];
+                } else {
+                    // For older versions, we need to reconstruct by applying reverse diffs
+                    content = await this.reconstructContent(filename);
+                    this.contentCache[cacheKey] = content;
+                }
+                
+                // Display based on current view
+                this.displayContent(content);
+            } catch (error) {
+                contentBody.innerHTML = '<div class="error">Failed to load content</div>';
+                console.error('Failed to load content:', error);
+            }
+        }
+
+        async reconstructContent(targetFilename) {
+            // Load the latest HTML file
+            const latestEntry = this.entries[0];
+            const latestFilename = latestEntry.filename;
+            
+            const response = await fetch(`../${this.currentFeed}/${latestFilename}`);
+            const text = await response.text();
+            
+            // Extract markdown from HTML
+            const { metadata, content } = this.extractFromHTML(text);
+            
+            // If this is the file we want, return it
+            if (latestFilename === targetFilename) {
+                return { metadata, content, diff: null };
+            }
+            
+            // Otherwise, apply reverse diffs to reconstruct
+            let reconstructedContent = content;
+            const targetIndex = this.entries.findIndex(e => e.filename === targetFilename);
+            
+            // Apply diffs in reverse from newest to target
+            for (let i = 0; i < targetIndex; i++) {
+                if (this.entries[i].diff) {
+                    reconstructedContent = this.applyReverseDiff(reconstructedContent, this.entries[i].diff);
+                }
+            }
+            
+            return {
+                metadata: metadata,
+                content: reconstructedContent,
+                diff: this.currentEntry.diff
+            };
+        }
+
+        extractFromHTML(htmlText) {
+            // Extract markdown from HTML comment
+            const markdownMatch = htmlText.match(/<!-- MARKDOWN-CONTENT\n(.*?)\nMARKDOWN-CONTENT -->/s);
+            const markdown = markdownMatch ? markdownMatch[1] : '';
+            
+            // Extract metadata from meta tags
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(htmlText, 'text/html');
+            
+            const metadata = {
+                title: doc.querySelector('title')?.textContent || '',
+                source_url: doc.querySelector('meta[name="source-url"]')?.content || '',
+                scraped_at: doc.querySelector('meta[name="scraped-at"]')?.content || '',
+                content_hash: doc.querySelector('meta[name="content-hash"]')?.content || ''
+            };
+            
+            return { metadata, content: markdown };
+        }
+
+        parseMarkdownFile(text) {
+            const parts = text.split('---');
+            if (parts.length >= 3) {
+                const yamlText = parts[1].trim();
+                const content = parts.slice(2).join('---').trim();
+                
+                try {
+                    const metadata = jsyaml.load(yamlText);
+                    return { metadata, content };
+                } catch (e) {
+                    return { metadata: {}, content: text };
+                }
+            }
+            return { metadata: {}, content: text };
+        }
+
+        applyReverseDiff(content, diff) {
+            const lines = content.split('\n');
+            const diffLines = diff.split('\n');
+            let result = [...lines];
+            
+            let i = 0;
+            while (i < diffLines.length) {
+                const line = diffLines[i];
+                
+                if (line.startsWith('@@')) {
+                    const match = line.match(/@@ -(\d+),?(\d*) \+(\d+),?(\d*) @@/);
+                    if (match) {
+                        const newStart = parseInt(match[3]) - 1;
+                        
+                        // Process the hunk
+                        i++;
+                        let offset = 0;
+                        while (i < diffLines.length && !diffLines[i].startsWith('@@')) {
+                            const hunkLine = diffLines[i];
+                            
+                            if (hunkLine.startsWith('+')) {
+                                // In reverse, remove added lines
+                                result.splice(newStart + offset, 1);
+                                offset--;
+                            } else if (hunkLine.startsWith('-')) {
+                                // In reverse, add removed lines
+                                result.splice(newStart + offset, 0, hunkLine.substring(1));
+                                offset++;
+                            }
+                            i++;
+                        }
+                        continue;
+                    }
+                }
+                i++;
+            }
+            
+            return result.join('\n');
+        }
+
+        displayContent(data) {
+            const contentBody = document.getElementById('content-body');
+            
+            switch (this.currentView) {
+                case 'rendered':
+                    this.displayRendered(data, contentBody);
+                    break;
+                case 'diff':
+                    this.displayDiff(data, contentBody);
+                    break;
+                case 'markdown':
+                    this.displayMarkdown(data, contentBody);
+                    break;
+            }
+        }
+
+        displayRendered(data, container) {
+            const html = marked.parse(data.content);
+            container.innerHTML = `
+                ${data.metadata ? `
+                    <div class="metadata-box">
+                        <dl>
+                            ${data.metadata.title ? `<dt>Title:</dt><dd>${data.metadata.title}</dd><br>` : ''}
+                            ${data.metadata.source_url ? `<dt>Source:</dt><dd><a href="${data.metadata.source_url}" target="_blank">${data.metadata.source_url}</a></dd><br>` : ''}
+                            ${data.metadata.scraped_at ? `<dt>Captured:</dt><dd>${new Date(data.metadata.scraped_at).toLocaleString()}</dd>` : ''}
+                        </dl>
+                    </div>
+                ` : ''}
+                <div class="content-rendered">
+                    ${html}
+                </div>
+            `;
+        }
+
+        displayDiff(data, container) {
+            if (!data.diff) {
+                container.innerHTML = '<div class="no-data">No diff available for this version</div>';
+                return;
+            }
+            
+            // Create a unified diff format for diff2html
+            const unifiedDiff = `--- a/content.md
++++ b/content.md
+${data.diff}`;
+            
+            container.innerHTML = '<div id="diff-container"></div>';
+            
+            const targetElement = document.getElementById('diff-container');
+            const diff2htmlUi = new Diff2HtmlUI(targetElement, unifiedDiff, {
+                drawFileList: false,
+                matching: 'lines',
+                outputFormat: 'side-by-side',
+                synchronisedScroll: true
+            });
+            diff2htmlUi.draw();
+        }
+
+        displayMarkdown(data, container) {
+            const markdown = data.content;
+            container.innerHTML = `
+                <pre style="white-space: pre-wrap; word-wrap: break-word;"><code>${this.escapeHtml(markdown)}</code></pre>
+            `;
+        }
+
+        switchView(view) {
+            this.currentView = view;
+            
+            // Update tab buttons
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector(`.tab-btn[data-view="${view}"]`).classList.add('active');
+            
+            // Reload content in new view
+            if (this.currentEntry) {
+                this.loadContent();
+            }
+        }
+
+        escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+    }
+
+    // Initialize when DOM is ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => new HistoryExplorer());
+    } else {
+        new HistoryExplorer();
+    }
+    </script>
+</body>
+</html>

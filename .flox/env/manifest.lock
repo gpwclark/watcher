@@ -33,27 +33,27 @@
     {
       "attr_path": "claude-code",
       "broken": false,
-      "derivation": "/nix/store/0i09xgc9sj2przvr2n96865invi1jax8-claude-code-1.0.35.drv",
+      "derivation": "/nix/store/ld2z6smqg82asr7zp28iwiajd5gyj1a1-claude-code-1.0.71.drv",
       "description": "Agentic coding tool that lives in your terminal, understands your codebase, and helps you code faster",
       "install_id": "claude-code",
       "license": "Unfree",
-      "locked_url": "https://github.com/flox/nixpkgs?rev=30e2e2857ba47844aa71991daa6ed1fc678bcbb7",
-      "name": "claude-code-1.0.35",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=85dbfc7aaf52ecb755f87e577ddbe6dbbdbc1054",
+      "name": "claude-code-1.0.71",
       "pname": "claude-code",
-      "rev": "30e2e2857ba47844aa71991daa6ed1fc678bcbb7",
-      "rev_count": 822156,
-      "rev_date": "2025-06-27T08:03:01Z",
-      "scrape_date": "2025-06-29T04:56:13.900869Z",
+      "rev": "85dbfc7aaf52ecb755f87e577ddbe6dbbdbc1054",
+      "rev_count": 841808,
+      "rev_date": "2025-08-09T07:48:19Z",
+      "scrape_date": "2025-08-11T00:19:42.429207Z",
       "stabilities": [
         "unstable"
       ],
       "unfree": true,
-      "version": "1.0.35",
+      "version": "1.0.71",
       "outputs_to_install": [
         "out"
       ],
       "outputs": {
-        "out": "/nix/store/4d8mgixibh6k9is1gpnxmpbsdb13wq69-claude-code-1.0.35"
+        "out": "/nix/store/9r8bh27pw4zdmscga068fl4xf506d60a-claude-code-1.0.71"
       },
       "system": "aarch64-darwin",
       "group": "toplevel",
@@ -62,27 +62,27 @@
     {
       "attr_path": "claude-code",
       "broken": false,
-      "derivation": "/nix/store/9x0ypw6vfkl2qbsdpb252wawsj5q3r3c-claude-code-1.0.35.drv",
+      "derivation": "/nix/store/cy49vmdizzb4qlpd2rl0bw9nsc85r0h3-claude-code-1.0.71.drv",
       "description": "Agentic coding tool that lives in your terminal, understands your codebase, and helps you code faster",
       "install_id": "claude-code",
       "license": "Unfree",
-      "locked_url": "https://github.com/flox/nixpkgs?rev=30e2e2857ba47844aa71991daa6ed1fc678bcbb7",
-      "name": "claude-code-1.0.35",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=85dbfc7aaf52ecb755f87e577ddbe6dbbdbc1054",
+      "name": "claude-code-1.0.71",
       "pname": "claude-code",
-      "rev": "30e2e2857ba47844aa71991daa6ed1fc678bcbb7",
-      "rev_count": 822156,
-      "rev_date": "2025-06-27T08:03:01Z",
-      "scrape_date": "2025-06-29T05:19:53.701365Z",
+      "rev": "85dbfc7aaf52ecb755f87e577ddbe6dbbdbc1054",
+      "rev_count": 841808,
+      "rev_date": "2025-08-09T07:48:19Z",
+      "scrape_date": "2025-08-11T19:29:27.591203Z",
       "stabilities": [
         "unstable"
       ],
       "unfree": true,
-      "version": "1.0.35",
+      "version": "1.0.71",
       "outputs_to_install": [
         "out"
       ],
       "outputs": {
-        "out": "/nix/store/3c6fffy4yz2jvq59jd2g9niv0fhaqfjz-claude-code-1.0.35"
+        "out": "/nix/store/f0mfm4hpm848snahidk42afwlkw2kvsc-claude-code-1.0.71"
       },
       "system": "aarch64-linux",
       "group": "toplevel",
@@ -91,27 +91,27 @@
     {
       "attr_path": "claude-code",
       "broken": false,
-      "derivation": "/nix/store/ydl0da6prd9fpl89068jh6j2f50dldxr-claude-code-1.0.35.drv",
+      "derivation": "/nix/store/dj8siz10vi0k7v90igdbb87sk2x7v321-claude-code-1.0.71.drv",
       "description": "Agentic coding tool that lives in your terminal, understands your codebase, and helps you code faster",
       "install_id": "claude-code",
       "license": "Unfree",
-      "locked_url": "https://github.com/flox/nixpkgs?rev=30e2e2857ba47844aa71991daa6ed1fc678bcbb7",
-      "name": "claude-code-1.0.35",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=85dbfc7aaf52ecb755f87e577ddbe6dbbdbc1054",
+      "name": "claude-code-1.0.71",
       "pname": "claude-code",
-      "rev": "30e2e2857ba47844aa71991daa6ed1fc678bcbb7",
-      "rev_count": 822156,
-      "rev_date": "2025-06-27T08:03:01Z",
-      "scrape_date": "2025-06-29T05:38:12.517112Z",
+      "rev": "85dbfc7aaf52ecb755f87e577ddbe6dbbdbc1054",
+      "rev_count": 841808,
+      "rev_date": "2025-08-09T07:48:19Z",
+      "scrape_date": "2025-08-11T20:31:45.182105Z",
       "stabilities": [
         "unstable"
       ],
       "unfree": true,
-      "version": "1.0.35",
+      "version": "1.0.71",
       "outputs_to_install": [
         "out"
       ],
       "outputs": {
-        "out": "/nix/store/fy75g8dvilgc95dwk01629vkqlnyb1c2-claude-code-1.0.35"
+        "out": "/nix/store/2pb39f9p600v9ngi9nyci72yrmxnii56-claude-code-1.0.71"
       },
       "system": "x86_64-darwin",
       "group": "toplevel",
@@ -120,27 +120,27 @@
     {
       "attr_path": "claude-code",
       "broken": false,
-      "derivation": "/nix/store/ab2f1z10l5fg2081wy0ikqr61jw4x67b-claude-code-1.0.35.drv",
+      "derivation": "/nix/store/dd4zn2041d0mv2j633a24vgh1f0rwl0q-claude-code-1.0.71.drv",
       "description": "Agentic coding tool that lives in your terminal, understands your codebase, and helps you code faster",
       "install_id": "claude-code",
       "license": "Unfree",
-      "locked_url": "https://github.com/flox/nixpkgs?rev=30e2e2857ba47844aa71991daa6ed1fc678bcbb7",
-      "name": "claude-code-1.0.35",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=85dbfc7aaf52ecb755f87e577ddbe6dbbdbc1054",
+      "name": "claude-code-1.0.71",
       "pname": "claude-code",
-      "rev": "30e2e2857ba47844aa71991daa6ed1fc678bcbb7",
-      "rev_count": 822156,
-      "rev_date": "2025-06-27T08:03:01Z",
-      "scrape_date": "2025-06-29T06:00:01.841408Z",
+      "rev": "85dbfc7aaf52ecb755f87e577ddbe6dbbdbc1054",
+      "rev_count": 841808,
+      "rev_date": "2025-08-09T07:48:19Z",
+      "scrape_date": "2025-08-11T21:44:33.501379Z",
       "stabilities": [
         "unstable"
       ],
       "unfree": true,
-      "version": "1.0.35",
+      "version": "1.0.71",
       "outputs_to_install": [
         "out"
       ],
       "outputs": {
-        "out": "/nix/store/ag3jvlab0aa5wi4xxkyx44l94pi86avy-claude-code-1.0.35"
+        "out": "/nix/store/fynq1ccwa6x161maj4nn5d31xr904m3y-claude-code-1.0.71"
       },
       "system": "x86_64-linux",
       "group": "toplevel",
@@ -149,27 +149,27 @@
     {
       "attr_path": "go",
       "broken": false,
-      "derivation": "/nix/store/7i15lyhdhcpr16yqxlxm2ipjdn560w5x-go-1.24.4.drv",
+      "derivation": "/nix/store/64rdsj50y7y019hy08vjn9bbkqs4xv94-go-1.24.5.drv",
       "description": "Go Programming language",
       "install_id": "go",
       "license": "BSD-3-Clause",
-      "locked_url": "https://github.com/flox/nixpkgs?rev=30e2e2857ba47844aa71991daa6ed1fc678bcbb7",
-      "name": "go-1.24.4",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=85dbfc7aaf52ecb755f87e577ddbe6dbbdbc1054",
+      "name": "go-1.24.5",
       "pname": "go",
-      "rev": "30e2e2857ba47844aa71991daa6ed1fc678bcbb7",
-      "rev_count": 822156,
-      "rev_date": "2025-06-27T08:03:01Z",
-      "scrape_date": "2025-06-29T04:56:14.564470Z",
+      "rev": "85dbfc7aaf52ecb755f87e577ddbe6dbbdbc1054",
+      "rev_count": 841808,
+      "rev_date": "2025-08-09T07:48:19Z",
+      "scrape_date": "2025-08-11T00:19:43.102777Z",
       "stabilities": [
         "unstable"
       ],
       "unfree": false,
-      "version": "1.24.4",
+      "version": "1.24.5",
       "outputs_to_install": [
         "out"
       ],
       "outputs": {
-        "out": "/nix/store/rq7irijkj3nhapmjcv9d96xgkisj55x2-go-1.24.4"
+        "out": "/nix/store/kw1vd98s15vj700m3gx2x2xca2z477i3-go-1.24.5"
       },
       "system": "aarch64-darwin",
       "group": "toplevel",
@@ -178,27 +178,27 @@
     {
       "attr_path": "go",
       "broken": false,
-      "derivation": "/nix/store/qhrgsw4303gv415fl0q48qki3xjrysn2-go-1.24.4.drv",
+      "derivation": "/nix/store/w5wx665g669d26ms6q6wyl7ga4vqqfbh-go-1.24.5.drv",
       "description": "Go Programming language",
       "install_id": "go",
       "license": "BSD-3-Clause",
-      "locked_url": "https://github.com/flox/nixpkgs?rev=30e2e2857ba47844aa71991daa6ed1fc678bcbb7",
-      "name": "go-1.24.4",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=85dbfc7aaf52ecb755f87e577ddbe6dbbdbc1054",
+      "name": "go-1.24.5",
       "pname": "go",
-      "rev": "30e2e2857ba47844aa71991daa6ed1fc678bcbb7",
-      "rev_count": 822156,
-      "rev_date": "2025-06-27T08:03:01Z",
-      "scrape_date": "2025-06-29T05:19:55.048877Z",
+      "rev": "85dbfc7aaf52ecb755f87e577ddbe6dbbdbc1054",
+      "rev_count": 841808,
+      "rev_date": "2025-08-09T07:48:19Z",
+      "scrape_date": "2025-08-11T19:29:29.322977Z",
       "stabilities": [
         "unstable"
       ],
       "unfree": false,
-      "version": "1.24.4",
+      "version": "1.24.5",
       "outputs_to_install": [
         "out"
       ],
       "outputs": {
-        "out": "/nix/store/9f64p4ip4iz2nba4wyhn1baq6b6pb6ss-go-1.24.4"
+        "out": "/nix/store/5bzlaj0c4mqw9p0zrcx5g9vz16vd45dl-go-1.24.5"
       },
       "system": "aarch64-linux",
       "group": "toplevel",
@@ -207,27 +207,27 @@
     {
       "attr_path": "go",
       "broken": false,
-      "derivation": "/nix/store/c3247n9gz359k8w7m0x690ip4d1h0xj2-go-1.24.4.drv",
+      "derivation": "/nix/store/sblxqar4xfxgxy55z3h3mdfgrp7vm1lj-go-1.24.5.drv",
       "description": "Go Programming language",
       "install_id": "go",
       "license": "BSD-3-Clause",
-      "locked_url": "https://github.com/flox/nixpkgs?rev=30e2e2857ba47844aa71991daa6ed1fc678bcbb7",
-      "name": "go-1.24.4",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=85dbfc7aaf52ecb755f87e577ddbe6dbbdbc1054",
+      "name": "go-1.24.5",
       "pname": "go",
-      "rev": "30e2e2857ba47844aa71991daa6ed1fc678bcbb7",
-      "rev_count": 822156,
-      "rev_date": "2025-06-27T08:03:01Z",
-      "scrape_date": "2025-06-29T05:38:13.185236Z",
+      "rev": "85dbfc7aaf52ecb755f87e577ddbe6dbbdbc1054",
+      "rev_count": 841808,
+      "rev_date": "2025-08-09T07:48:19Z",
+      "scrape_date": "2025-08-11T20:31:46.060123Z",
       "stabilities": [
         "unstable"
       ],
       "unfree": false,
-      "version": "1.24.4",
+      "version": "1.24.5",
       "outputs_to_install": [
         "out"
       ],
       "outputs": {
-        "out": "/nix/store/n0gqcdpdk0ap2ikasi36r0szwpk2g35q-go-1.24.4"
+        "out": "/nix/store/b72n20ixzl5ja9vciwahkr30bhmsn5jc-go-1.24.5"
       },
       "system": "x86_64-darwin",
       "group": "toplevel",
@@ -236,27 +236,27 @@
     {
       "attr_path": "go",
       "broken": false,
-      "derivation": "/nix/store/55apw0ij2wcvrvmkvdgi6ixx7nqqw0hh-go-1.24.4.drv",
+      "derivation": "/nix/store/n3ggn80wfjjbrgnlh0q8zrmfmdlcmd0b-go-1.24.5.drv",
       "description": "Go Programming language",
       "install_id": "go",
       "license": "BSD-3-Clause",
-      "locked_url": "https://github.com/flox/nixpkgs?rev=30e2e2857ba47844aa71991daa6ed1fc678bcbb7",
-      "name": "go-1.24.4",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=85dbfc7aaf52ecb755f87e577ddbe6dbbdbc1054",
+      "name": "go-1.24.5",
       "pname": "go",
-      "rev": "30e2e2857ba47844aa71991daa6ed1fc678bcbb7",
-      "rev_count": 822156,
-      "rev_date": "2025-06-27T08:03:01Z",
-      "scrape_date": "2025-06-29T06:00:03.376794Z",
+      "rev": "85dbfc7aaf52ecb755f87e577ddbe6dbbdbc1054",
+      "rev_count": 841808,
+      "rev_date": "2025-08-09T07:48:19Z",
+      "scrape_date": "2025-08-11T21:44:35.410803Z",
       "stabilities": [
         "unstable"
       ],
       "unfree": false,
-      "version": "1.24.4",
+      "version": "1.24.5",
       "outputs_to_install": [
         "out"
       ],
       "outputs": {
-        "out": "/nix/store/mdn9hnvf0qmxywbrpbywmxww2adxdn5v-go-1.24.4"
+        "out": "/nix/store/y4awwzp30ka130wmjrpaqjmjdf9p010w-go-1.24.5"
       },
       "system": "x86_64-linux",
       "group": "toplevel",
@@ -265,27 +265,27 @@
     {
       "attr_path": "uv",
       "broken": false,
-      "derivation": "/nix/store/nr48fpmqanysscs2n0ivghpy7gk3l2jz-uv-0.7.15.drv",
+      "derivation": "/nix/store/rhn7jhy9gmg19rqsphqj644hz6ybdnjq-uv-0.8.2.drv",
       "description": "Extremely fast Python package installer and resolver, written in Rust",
       "install_id": "uv",
       "license": "[ Apache-2.0, MIT ]",
-      "locked_url": "https://github.com/flox/nixpkgs?rev=30e2e2857ba47844aa71991daa6ed1fc678bcbb7",
-      "name": "uv-0.7.15",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=85dbfc7aaf52ecb755f87e577ddbe6dbbdbc1054",
+      "name": "uv-0.8.2",
       "pname": "uv",
-      "rev": "30e2e2857ba47844aa71991daa6ed1fc678bcbb7",
-      "rev_count": 822156,
-      "rev_date": "2025-06-27T08:03:01Z",
-      "scrape_date": "2025-06-29T04:57:14.176555Z",
+      "rev": "85dbfc7aaf52ecb755f87e577ddbe6dbbdbc1054",
+      "rev_count": 841808,
+      "rev_date": "2025-08-09T07:48:19Z",
+      "scrape_date": "2025-08-11T00:20:44.022357Z",
       "stabilities": [
         "unstable"
       ],
       "unfree": false,
-      "version": "0.7.15",
+      "version": "0.8.2",
       "outputs_to_install": [
         "out"
       ],
       "outputs": {
-        "out": "/nix/store/7k6s0mqd2qy62lanrwh900g2yd25r1jn-uv-0.7.15"
+        "out": "/nix/store/db9y1b002zlnyjgpsnbl9hvlwsiqajl4-uv-0.8.2"
       },
       "system": "aarch64-darwin",
       "group": "toplevel",
@@ -294,27 +294,27 @@
     {
       "attr_path": "uv",
       "broken": false,
-      "derivation": "/nix/store/swg11aj9xnhzqszbpwvkjm1ppwmxrzps-uv-0.7.15.drv",
+      "derivation": "/nix/store/knnv1wc9r7slfyx367sdlyyz8r4sy7r6-uv-0.8.2.drv",
       "description": "Extremely fast Python package installer and resolver, written in Rust",
       "install_id": "uv",
       "license": "[ Apache-2.0, MIT ]",
-      "locked_url": "https://github.com/flox/nixpkgs?rev=30e2e2857ba47844aa71991daa6ed1fc678bcbb7",
-      "name": "uv-0.7.15",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=85dbfc7aaf52ecb755f87e577ddbe6dbbdbc1054",
+      "name": "uv-0.8.2",
       "pname": "uv",
-      "rev": "30e2e2857ba47844aa71991daa6ed1fc678bcbb7",
-      "rev_count": 822156,
-      "rev_date": "2025-06-27T08:03:01Z",
-      "scrape_date": "2025-06-29T05:21:23.118094Z",
+      "rev": "85dbfc7aaf52ecb755f87e577ddbe6dbbdbc1054",
+      "rev_count": 841808,
+      "rev_date": "2025-08-09T07:48:19Z",
+      "scrape_date": "2025-08-11T19:31:29.982937Z",
       "stabilities": [
         "unstable"
       ],
       "unfree": false,
-      "version": "0.7.15",
+      "version": "0.8.2",
       "outputs_to_install": [
         "out"
       ],
       "outputs": {
-        "out": "/nix/store/pvplspmljgafacfm7n9v36q6c0rq7hab-uv-0.7.15"
+        "out": "/nix/store/bdps6h2gn2rysavc3cq2slqnjlsyyk03-uv-0.8.2"
       },
       "system": "aarch64-linux",
       "group": "toplevel",
@@ -323,27 +323,27 @@
     {
       "attr_path": "uv",
       "broken": false,
-      "derivation": "/nix/store/sgnlvdby38wixvi0ygl66ln0a846rkcv-uv-0.7.15.drv",
+      "derivation": "/nix/store/50fr7pg0vf9s8x360ddk5pv5hkr1j17i-uv-0.8.2.drv",
       "description": "Extremely fast Python package installer and resolver, written in Rust",
       "install_id": "uv",
       "license": "[ Apache-2.0, MIT ]",
-      "locked_url": "https://github.com/flox/nixpkgs?rev=30e2e2857ba47844aa71991daa6ed1fc678bcbb7",
-      "name": "uv-0.7.15",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=85dbfc7aaf52ecb755f87e577ddbe6dbbdbc1054",
+      "name": "uv-0.8.2",
       "pname": "uv",
-      "rev": "30e2e2857ba47844aa71991daa6ed1fc678bcbb7",
-      "rev_count": 822156,
-      "rev_date": "2025-06-27T08:03:01Z",
-      "scrape_date": "2025-06-29T05:39:10.594608Z",
+      "rev": "85dbfc7aaf52ecb755f87e577ddbe6dbbdbc1054",
+      "rev_count": 841808,
+      "rev_date": "2025-08-09T07:48:19Z",
+      "scrape_date": "2025-08-11T20:33:03.772894Z",
       "stabilities": [
         "unstable"
       ],
       "unfree": false,
-      "version": "0.7.15",
+      "version": "0.8.2",
       "outputs_to_install": [
         "out"
       ],
       "outputs": {
-        "out": "/nix/store/i58l5bmcqn8rfdr064rhg5818qz9w8p2-uv-0.7.15"
+        "out": "/nix/store/91g6383zq1wbiik2an7g6yfrj294c19v-uv-0.8.2"
       },
       "system": "x86_64-darwin",
       "group": "toplevel",
@@ -352,27 +352,27 @@
     {
       "attr_path": "uv",
       "broken": false,
-      "derivation": "/nix/store/04cwfzvb5dk31npcai4vv1g4d6icmf4g-uv-0.7.15.drv",
+      "derivation": "/nix/store/z5cy5l307s6b8wsmf4l3fmlp0lxigd8f-uv-0.8.2.drv",
       "description": "Extremely fast Python package installer and resolver, written in Rust",
       "install_id": "uv",
       "license": "[ Apache-2.0, MIT ]",
-      "locked_url": "https://github.com/flox/nixpkgs?rev=30e2e2857ba47844aa71991daa6ed1fc678bcbb7",
-      "name": "uv-0.7.15",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=85dbfc7aaf52ecb755f87e577ddbe6dbbdbc1054",
+      "name": "uv-0.8.2",
       "pname": "uv",
-      "rev": "30e2e2857ba47844aa71991daa6ed1fc678bcbb7",
-      "rev_count": 822156,
-      "rev_date": "2025-06-27T08:03:01Z",
-      "scrape_date": "2025-06-29T06:01:39.502810Z",
+      "rev": "85dbfc7aaf52ecb755f87e577ddbe6dbbdbc1054",
+      "rev_count": 841808,
+      "rev_date": "2025-08-09T07:48:19Z",
+      "scrape_date": "2025-08-11T21:46:56.607046Z",
       "stabilities": [
         "unstable"
       ],
       "unfree": false,
-      "version": "0.7.15",
+      "version": "0.8.2",
       "outputs_to_install": [
         "out"
       ],
       "outputs": {
-        "out": "/nix/store/kdnf2h0nzznm09w2cgdx5wsgcq2x3wa0-uv-0.7.15"
+        "out": "/nix/store/swq8qrr7n5gkc1b4940q62a3ll52prgl-uv-0.8.2"
       },
       "system": "x86_64-linux",
       "group": "toplevel",

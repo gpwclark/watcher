@@ -5,6 +5,7 @@ import xml.etree.ElementTree as ET
 from pathlib import Path
 from typing import List, Dict, Optional
 import os
+import glob
 
 class RSSManager:
     def __init__(self, feed_name: str, base_url: str = None):
@@ -25,12 +26,32 @@ class RSSManager:
         except Exception:
             return None
 
+    def get_latest_content_file(self) -> Optional[str]:
+        """Get the latest content file for this feed."""
+        content_dir = Path("content") / self.feed_name
+        if not content_dir.exists():
+            return None
+
+        # Look for HTML files
+        html_files = list(content_dir.glob("*.html"))
+        
+        if not html_files:
+            return None
+
+        # Sort by filename (which includes timestamp)
+        latest = sorted(html_files)[-1]
+        return latest.name
+
     def create_or_update_feed(self, new_item: Dict[str, str]) -> None:
         """Add a new item to the RSS feed or create a new feed."""
+        # Get latest file for feed link
+        latest_file = self.get_latest_content_file()
+        latest_link = f"{self.base_url}/content/{self.feed_name}/{latest_file}" if latest_file else f"{self.base_url}/feeds/{self.feed_name}.xml"
+
         # Create feed object
         feed = Rss201rev2Feed(
             title=f"{self.feed_name} Updates",
-            link=f"{self.base_url}/feeds/{self.feed_name}.xml",
+            link=latest_link,  # Link to latest content file
             description=f"Updates from {self.feed_name}",
             language="en",
         )
@@ -40,11 +61,22 @@ class RSSManager:
 
         # Add new item
         content_path = f"content/{self.feed_name}/{new_item['filename']}"
+        timestamp = parser.parse(new_item['timestamp'])
+        
+        # Link directly to static HTML files (no date parameter needed - each file is a snapshot)
+        link = f"{self.base_url}/{content_path}"
+
+        # Wrap description in CDATA if it contains diff
+        description = new_item.get('description', 'Content update')
+        if '\n@@' in description or '\n+' in description or '\n-' in description:
+            # Contains diff content, wrap in CDATA
+            description = f"<![CDATA[{description}]]>"
+
         feed.add_item(
             title=new_item['title'],
-            link=f"{self.base_url}/{content_path}",
-            description=new_item.get('description', 'Content update'),
-            pubdate=parser.parse(new_item['timestamp']),
+            link=link,
+            description=description,
+            pubdate=timestamp,
             unique_id=f"{self.feed_name}-{new_item['hash'][:8]}",
         )
 
