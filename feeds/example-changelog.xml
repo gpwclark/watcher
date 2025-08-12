@@ -1,2 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>example-changelog Updates</title><link>https://github.com/gpwclark/watcher/blob/main/content/example-changelog/20250812-044112.html</link><description>Updates from example-changelog</description><language>en</language><lastBuildDate>Tue, 12 Aug 2025 04:41:12 +0000</lastBuildDate><item><title>Countdown to New Year 2026</title><link>https://github.com/gpwclark/watcher/blob/main/content/example-changelog/20250812-044112.html</link><description>Count the seconds to the New Year in any location or time zone.</description><pubDate>Tue, 12 Aug 2025 04:41:12 +0000</pubDate><guid>example-changelog-4f67bb8d</guid></item></channel></rss>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>example-changelog Updates</title><link>https://github.com/gpwclark/watcher/blob/main/content/example-changelog/20250812-060221.html</link><description>Updates from example-changelog</description><language>en</language><lastBuildDate>Tue, 12 Aug 2025 06:02:21 +0000</lastBuildDate><item><title>Countdown to New Year 2026</title><link>https://github.com/gpwclark/watcher/blob/main/content/example-changelog/20250812-060221.html</link><description>&lt;![CDATA[Count the seconds to the New Year in any location or time zone.
+
+@@ -1,16 +1,25 @@
+-&lt;p&gt;142
+-days&lt;/p&gt;
+-&lt;p&gt;3411
+-hours&lt;/p&gt;
+-&lt;p&gt;204678
+-minutes&lt;/p&gt;
+-&lt;p&gt;12280730
+-seconds&lt;/p&gt;
+-&lt;p&gt;until Thursday, January 1, 2026 (&lt;a href="/worldclock/usa/san-jose"&gt;San Jose, California&lt;/a&gt; time)&lt;/p&gt;
+-&lt;p&gt;142 days, 3 hours, 18 minutes, 50 seconds&lt;/p&gt;
+-&lt;p&gt;until Thursday, January 1, 2026 (&lt;a href="/worldclock/usa/san-jose"&gt;San Jose, California&lt;/a&gt; time)&lt;/p&gt;
+-&lt;p&gt;&lt;a href="/countdown/one-hour-off"&gt;One hour wrong? Daylight Saving Time!&lt;/a&gt;&lt;/p&gt;
+-&lt;p&gt;Current time is Monday, August 11, 2025 at 9:41:10 pm &lt;a href="/time/zones/pdt"&gt;PDT&lt;/a&gt; (local time in &lt;a href="/worldclock/usa/san-jose"&gt;San Jose, California&lt;/a&gt;)&lt;/p&gt;
++&lt;table&gt;
++      &lt;row span="2"&gt;
++        &lt;cell&gt;142&lt;/cell&gt;
++        &lt;cell&gt;days&lt;/cell&gt;
++      &lt;/row&gt;
++      &lt;row span="2"&gt;
++        &lt;cell&gt;3408&lt;/cell&gt;
++        &lt;cell&gt;hours&lt;/cell&gt;
++      &lt;/row&gt;
++      &lt;row span="2"&gt;
++        &lt;cell&gt;204537&lt;/cell&gt;
++        &lt;cell&gt;minutes&lt;/cell&gt;
++      &lt;/row&gt;
++      &lt;row&gt;
++        &lt;cell&gt;12272260&lt;/cell&gt;
++        &lt;cell&gt;seconds&lt;/cell&gt;
++      &lt;/row&gt;
++    &lt;/table&gt;
++    &lt;p&gt;until Thursday, January 1, 2026 (&lt;a href="/worldclock/usa/phoenix"&gt;Phoenix&lt;/a&gt; time)&lt;/p&gt;
++    &lt;p&gt;142 days, 0 hours, 57 minutes, 40 seconds&lt;/p&gt;
++    &lt;p&gt;until Thursday, January 1, 2026 (&lt;a href="/worldclock/usa/phoenix"&gt;Phoenix&lt;/a&gt; time)&lt;/p&gt;
++    &lt;p&gt;Current time is Monday, August 11, 2025 at 11:02:20 pm &lt;a href="/time/zones/mst"&gt;MST&lt;/a&gt; (local time in &lt;a href="/worldclock/usa/phoenix"&gt;Phoenix&lt;/a&gt;) &lt;/p&gt;
+     &lt;p&gt;You may need to press Reload or Refresh on your browser to update the numbers.&lt;/p&gt;
+     &lt;h2&gt;Full-Screen Countdown&lt;/h2&gt;
+     &lt;p&gt;The links below will open in a new popup window, some popup-blockers might block them from opening.&lt;/p&gt;]]&gt;</description><pubDate>Tue, 12 Aug 2025 06:02:21 +0000</pubDate><guid>example-changelog-48cc4d93</guid></item><item><title>Countdown to New Year 2026</title><link>https://github.com/gpwclark/watcher/blob/main/content/example-changelog/20250812-044112.html</link><description>Count the seconds to the New Year in any location or time zone.</description><pubDate>Tue, 12 Aug 2025 04:41:12 +0000</pubDate><guid>example-changelog-4f67bb8d</guid></item></channel></rss>
