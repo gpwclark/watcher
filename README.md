@@ -6,17 +6,18 @@ does something similar except a bit more opinionated and distributes updates thr
 
 A powerful tool that monitors websites for changes and generates RSS feeds with **git diffs**, leveraging Git for version control and GitHub Actions for automation. Perfect for tracking updates on sites that don't provide RSS feeds.
 
-## 🌟 NEW: Deploy to GitHub Pages
+## Deploy to GitHub Pages
 
 **Now with GitHub Pages support!** Deploy your RSS tracker to GitHub Pages without touching your main branch. Perfect for:
 - Adding tracking to existing repositories
 - Keeping your main branch clean
 - Professional URLs like `username.github.io/repo/watcher/`
 - Interactive history explorer with diffs
+- j
 
 [Jump to GitHub Pages Setup →](#-github-pages-deployment)
 
-## <� Key Features
+## Key Features
 
 - = **Automatic Change Detection**: Only creates new RSS entries when content actually changes
 - =� **Git Diffs in RSS**: Each RSS entry includes the actual changes (diff) in the description
@@ -27,43 +28,52 @@ A powerful tool that monitors websites for changes and generates RSS feeds with 
 - <� **Multi-Site Support**: Track as many sites as you want with separate feeds
 - >� **Clean Content Extraction**: Uses Trafilatura for high-quality content extraction
 
-## =� What Makes This Different
+## What Makes This Different
 
 Unlike traditional RSS scrapers, Watcher includes the **actual changes** in each RSS entry. When content changes, you'll see exactly what was added or removed right in your RSS reader - no need to visit the site to understand what changed!
 
-## 🚀 GitHub Pages Deployment
+## GitHub Pages Deployment
 
 Deploy your RSS tracker to GitHub Pages in minutes! This is the **easiest way** to get started - no commits to main branch, professional URLs, and includes an interactive history explorer.
 
-### Quick Setup (3 steps!)
+### Quick Start
 
-#### 1. Create `sites.toml` in your repository root
+### Step 1: Create a new repository on GitHub
+
+Go to https://github.com/new and create a new repository (can be public or private).
+
+### Step 2: Add these two files to your repository
+
+#### File 1: `sites.toml`
+This tells the tracker what websites to monitor:
 
 ```toml
-# sites.toml - Configure what sites to track
+# sites.toml - Put this in your repository root
 [[sites]]
 url = "https://example.com/blog"
 feed_name = "example-blog"
 
 [[sites]]
-url = "https://news.site.com"
-feed_name = "news-site"
+url = "https://news.ycombinator.com"
+feed_name = "hackernews"
+
+# Add as many sites as you want!
 ```
 
-#### 2. Create `.github/workflows/tracker.yml`
-
-Copy this **complete workflow file** to `.github/workflows/tracker.yml` in your repository:
+#### File 2: `.github/workflows/tracker.yml`
+This is the GitHub Action that does the tracking:
 
 ```yaml
+# .github/workflows/tracker.yml - This runs the tracker
 name: Track Websites
 
 on:
   schedule:
-    - cron: '0 */6 * * *'  # Every 6 hours
-  workflow_dispatch:  # Manual trigger button
+    - cron: '0 */6 * * *'  # Runs every 6 hours
+  workflow_dispatch:  # Lets you run it manually
   push:
     branches: [ main ]
-    paths: [ 'sites.toml' ]  # Re-run when config changes
+    paths: [ 'sites.toml' ]  # Re-runs when you update sites
 
 permissions:
   contents: read
@@ -92,29 +102,68 @@ jobs:
       - name: Install watcher
         run: |
           pip install uv
-          uv pip install --system git+https://github.com/yourusername/watcher.git
+          uv pip install --system git+https://github.com/gpwclark/watcher.git
       
       - name: Run tracker
         run: |
-          # Set base URL for GitHub Pages
+          # This sets up the URLs correctly
           if [ "${{ github.event.repository.name }}" = "${{ github.repository_owner }}.github.io" ]; then
-            BASE_URL="https://${{ github.repository_owner }}.github.io"
-          else  
+            BASE_URL="https://${{ github.repository_owner }}.github.io/watcher"
+          else
             BASE_URL="https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}"
           fi
           
           python -m watcher.cli_batch --config sites.toml --base-url "$BASE_URL"
       
-      - name: Prepare deployment
+      - name: Prepare files for GitHub Pages
         run: |
           mkdir -p deploy
           cp -r content/* deploy/ 2>/dev/null || true
           cp -r feeds deploy/ 2>/dev/null || true
+
+          # Create a nice homepage
+          if [ ! -f deploy/index.html ]; then
+            echo '<!DOCTYPE html>
+            <html>
+            <head>
+              <title>My RSS Tracker</title>
+              <style>
+                body { font-family: system-ui; max-width: 800px; margin: 0 auto; padding: 2rem; }
+                .feed { background: #f5f5f5; padding: 1rem; margin: 1rem 0; border-radius: 8px; }
+                a { color: #0066cc; }
+              </style>
+            </head>
+            <body>
+              <h1>📡 Website Tracker</h1>
+              <p>This page tracks website changes and provides RSS feeds.</p>
+              <div id="feeds"></div>
+              <script>
+                fetch("feeds/").then(r => r.text()).then(html => {
+                  const parser = new DOMParser();
+                  const doc = parser.parseFromString(html, "text/html");
+                  const links = doc.querySelectorAll("a");
+                  const feedsDiv = document.getElementById("feeds");
+                  links.forEach(link => {
+                    if (link.href.endsWith(".xml")) {
+                      const name = link.textContent.replace(".xml", ""
+                      feedsDiv.innerHTML += `
+                        <div class="feed">
+                          <strong>${name}</strong><br>
+                          <a href="feeds/${link.textContent}">RSS Feed</a> |
+                          <a href="history-explorer.html?feed=${name}">View History</a>
+                        </div>`;
+                    }
+                  });
+                });
+              </script>
+            </body>
+            </html>' > deploy/index.html
+          fi
       
       - name: Setup Pages
         uses: actions/configure-pages@v5
       
-      - name: Upload artifact
+      - name: Upload to Pages
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./deploy
@@ -124,22 +173,80 @@ jobs:
         uses: actions/deploy-pages@v4
 ```
 
-**This is the complete workflow - just copy and paste it!**
+### Step 3: Enable GitHub Pages
 
-#### 3. Enable GitHub Pages
+1. Go to your repository on GitHub
+2. Click **Settings** (in the top menu)
+3. Scroll down to **Pages** (in the left sidebar)
+4. Under **Source**, select **GitHub Actions**
+5. Click **Save**
 
-1. Go to your repo's **Settings** → **Pages**
-2. Under **Source**, select **GitHub Actions**
-3. Save
+### Step 4: Run the workflow
 
-#### That's it! 🎉
+1. Go to the **Actions** tab in your repository
+2. Click on "Track Websites" workflow
+3. Click "Run workflow" button
+4. Wait about 2 minutes for it to complete
 
-After the workflow runs, access your tracker at:
-- **Dashboard**: `https://username.github.io/repo/`
-- **RSS Feeds**: `https://username.github.io/repo/feeds/example-blog.xml`
-- **History Explorer**: `https://username.github.io/repo/history-explorer.html`
+### ✅ That's it!
 
-> **Note**: The workflow file above is complete and ready to use. Just copy it exactly as shown into `.github/workflows/tracker.yml`
+Your RSS feeds are now live at:
+- Homepage: `https://YOUR-USERNAME.github.io/YOUR-REPO/`
+- RSS feeds: `https://YOUR-USERNAME.github.io/YOUR-REPO/feeds/example-blog.xml`
+- History viewer: `https://YOUR-USERNAME.github.io/YOUR-REPO/history-explorer.html`
+
+### What happens next?
+
+- The tracker will run automatically every 6 hours
+- When sites change, the RSS feeds update with diffs showing exactly what changed
+- You can add these RSS feeds to any RSS reader (Feedly, Inoreader, etc.)
+- All history is preserved - you can browse past changes anytime
+
+### Customization
+
+#### Change how often it runs
+Edit the `cron` line in the workflow:
+- `'0 */6 * * *'` = every 6 hours
+- `'0 */12 * * *'` = every 12 hours
+- `'0 9 * * *'` = daily at 9 AM
+- `'*/30 * * * *'` = every 30 minutes
+
+#### Add more websites
+Just edit `sites.toml` and add more entries:
+```toml
+[[sites]]
+url = "https://another-site.com/breaking-news"
+feed_name = "another-site"
+```
+
+### Troubleshooting
+
+**Workflow fails?**
+- Check the Actions tab for error messages
+- Make sure the URLs in sites.toml are accessible
+- Some sites block automated access - try finding an alternative URL
+
+**Don't see your feeds?**
+- Wait for the workflow to complete (check Actions tab)
+- Make sure GitHub Pages is enabled with "GitHub Actions" source
+- Check that your repository is public (or you have GitHub Pro for private Pages)
+
+**Want to track JavaScript-heavy sites?**
+- This tool works best with static content
+- For JavaScript-heavy sites, look for a `/print` or text-only version
+- Many sites have hidden RSS feeds - try adding `/feed` or `/rss` to the URL first
+
+### Examples of what to track
+
+- Blog posts and news sites
+- Documentation and API changes
+- Government announcements
+- Product changelogs
+- Status pages
+- Job boards
+- Price changes
+- Legal/terms of service updates
+- Information about live events, e.g. natural disasters, FEMA sites.
 
 ### Features of GitHub Pages Deployment
 
@@ -607,7 +714,7 @@ request = ScraperRequest(
     url="https://example.com/updates",
     feed_name="example-updates",
     base_url="https://github.com/user/repo/blob/main"
-)
+)/
 
 # Scrape and update
 result = scrape_and_update_feed(request)
