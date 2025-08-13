@@ -545,14 +545,15 @@
         }
 
         extractFromHTML(htmlText) {
-            // Extract HTML content from the content div
-            const contentMatch = htmlText.match(/<div class="content">\s*(.*?)\s*<\/div>\s*<\/body>/s);
-            const htmlContent = contentMatch ? contentMatch[1].trim() : '';
-            
-            // Extract metadata from meta tags
+            // Parse HTML using DOMParser instead of regex
             const parser = new DOMParser();
             const doc = parser.parseFromString(htmlText, 'text/html');
             
+            // Extract content from the content div
+            const contentDiv = doc.querySelector('div.content');
+            const htmlContent = contentDiv ? contentDiv.innerHTML.trim() : '';
+            
+            // Extract metadata from meta tags
             const metadata = {
                 title: doc.querySelector('title')?.textContent || '',
                 source_url: doc.querySelector('meta[name="source-url"]')?.content || '',

@@ -32,17 +32,29 @@ jobs:
       - name: Checkout gh-pages branch (if exists) to preserve history
         continue-on-error: true
         run: |
-          git fetch origin gh-pages:gh-pages || true
+          echo "=== Checking for existing gh-pages branch ==="
+          git fetch origin gh-pages:gh-pages || echo "No gh-pages branch found"
+          
           if git show-ref --quiet refs/heads/gh-pages; then
+            echo "Found gh-pages branch, preserving history..."
             git worktree add gh-pages-content gh-pages
+            
             # Copy existing content and feeds to preserve history
             if [ -d "gh-pages-content/content" ]; then
+              echo "Copying existing content..."
               cp -r gh-pages-content/content .
+              echo "Content files copied: $(find content -name "*.html" | wc -l)"
             fi
+            
             if [ -d "gh-pages-content/feeds" ]; then
+              echo "Copying existing feeds..."
               cp -r gh-pages-content/feeds .
+              echo "Feed files copied: $(find feeds -name "*.xml" | wc -l)"
             fi
+            
             git worktree remove gh-pages-content
+          else
+            echo "No gh-pages branch found - this appears to be the first run"
           fi
 
       - name: Install Flox
@@ -63,6 +75,12 @@ jobs:
             BASE_URL="https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}"
           fi
           flox activate -- uv run watcher-batch --config sites.toml --base-url "$BASE_URL"
+          
+          echo "=== After running watcher ==="
+          echo "Content directories:"
+          ls -la content/ 2>/dev/null || echo "No content directory"
+          echo "Feed files:"
+          ls -la feeds/ 2>/dev/null || echo "No feeds directory"
 
       - name: Prepare files for GitHub Pages
         run: |
@@ -337,3 +355,12 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+        
+      - name: Check deployment status
+        run: |
+          echo "Deployment completed!"
+          echo "Page URL: ${{ steps.deployment.outputs.page_url }}"
+          echo "Note: If historical data is not preserved, ensure:"
+          echo "1. The gh-pages branch exists and is being used by GitHub Pages"
+          echo "2. The workflow has write permissions to the repository"
+          echo "3. Check the Actions log for any errors during the history preservation step"
