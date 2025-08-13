@@ -27,15 +27,15 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Setup Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
+      - name: Install Flox
+        uses: flox/install-flox-action@v2
 
-      - name: Install watcher
+      #flox activate -- uv python install 3.13
+      - name: Setup environment and install watcher
         run: |
-          pip install uv
-          uv pip install --system git+https://github.com/gpwclark/watcher.git
+          flox init
+          flox install uv
+          flox activate -- uv pip install git+https://github.com/gpwclark/watcher.git
 
       - name: Run tracker
         run: |
@@ -45,8 +45,7 @@ jobs:
           else
             BASE_URL="https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}"
           fi
-          
-          python -m watcher.cli_batch --config sites.toml --base-url "$BASE_URL"
+          flox activate -- watcher-batch --config sites.toml --base-url "$BASE_URL"
 
       - name: Prepare files for GitHub Pages
         run: |

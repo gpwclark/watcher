@@ -38,9 +38,7 @@ Deploy your RSS tracker to GitHub Pages in minutes! This is the **easiest way** 
 
 ### Quick Start
 
-### Step 1: Create a new repository on GitHub
-
-Go to https://github.com/new and create a new repository (can be public or private).
+### Step 1: Choose an existing repository or create a new one.
 
 ### Step 2: Add these two files to your repository
 
@@ -63,114 +61,8 @@ feed_name = "hackernews"
 #### File 2: `.github/workflows/tracker.yml`
 This is the GitHub Action that does the tracking:
 
+.github/workflows/tracker.yml - This runs the tracker
 ```yaml
-# .github/workflows/tracker.yml - This runs the tracker
-name: Track Websites
-
-on:
-  schedule:
-    - cron: '0 */6 * * *'  # Runs every 6 hours
-  workflow_dispatch:  # Lets you run it manually
-  push:
-    branches: [ main ]
-    paths: [ 'sites.toml' ]  # Re-runs when you update sites
-
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
-
-jobs:
-  track-and-deploy:
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    
-    steps:
-      - uses: actions/checkout@v4
-      
-      - name: Setup Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
-      
-      - name: Install watcher
-        run: |
-          pip install uv
-          uv pip install --system git+https://github.com/gpwclark/watcher.git
-      
-      - name: Run tracker
-        run: |
-          # This sets up the URLs correctly
-          if [ "${{ github.event.repository.name }}" = "${{ github.repository_owner }}.github.io" ]; then
-            BASE_URL="https://${{ github.repository_owner }}.github.io/watcher"
-          else
-            BASE_URL="https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}"
-          fi
-          
-          python -m watcher.cli_batch --config sites.toml --base-url "$BASE_URL"
-      
-      - name: Prepare files for GitHub Pages
-        run: |
-          mkdir -p deploy
-          cp -r content/* deploy/ 2>/dev/null || true
-          cp -r feeds deploy/ 2>/dev/null || true
-
-          # Create a nice homepage
-          if [ ! -f deploy/index.html ]; then
-            echo '<!DOCTYPE html>
-            <html>
-            <head>
-              <title>My RSS Tracker</title>
-              <style>
-                body { font-family: system-ui; max-width: 800px; margin: 0 auto; padding: 2rem; }
-                .feed { background: #f5f5f5; padding: 1rem; margin: 1rem 0; border-radius: 8px; }
-                a { color: #0066cc; }
-              </style>
-            </head>
-            <body>
-              <h1>📡 Website Tracker</h1>
-              <p>This page tracks website changes and provides RSS feeds.</p>
-              <div id="feeds"></div>
-              <script>
-                fetch("feeds/").then(r => r.text()).then(html => {
-                  const parser = new DOMParser();
-                  const doc = parser.parseFromString(html, "text/html");
-                  const links = doc.querySelectorAll("a");
-                  const feedsDiv = document.getElementById("feeds");
-                  links.forEach(link => {
-                    if (link.href.endsWith(".xml")) {
-                      const name = link.textContent.replace(".xml", ""
-                      feedsDiv.innerHTML += `
-                        <div class="feed">
-                          <strong>${name}</strong><br>
-                          <a href="feeds/${link.textContent}">RSS Feed</a> |
-                          <a href="history-explorer.html?feed=${name}">View History</a>
-                        </div>`;
-                    }
-                  });
-                });
-              </script>
-            </body>
-            </html>' > deploy/index.html
-          fi
-      
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-      
-      - name: Upload to Pages
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: ./deploy
-      
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
 ```
 
 ### Step 3: Enable GitHub Pages
@@ -338,11 +230,12 @@ jobs:
       - name: Install Flox
         uses: flox/install-flox-action@v3
 
+#flox activate -- uv python install 3.13
       - name: Setup environment and install watcher
         run: |
           flox init
           flox install uv
-          flox activate -- uv pip install git+https://github.com/yourusername/watcher.git
+          flox activate -- uv pip install git+https://github.com/gpwclark/watcher.git
 
       - name: Update feeds
         run: |
