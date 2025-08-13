@@ -33,7 +33,6 @@ jobs:
       #flox activate -- uv python install 3.13
       - name: Setup environment and install watcher
         run: |
-          flox init
           flox install uv
           flox activate -- uv pip install git+https://github.com/gpwclark/watcher.git
 
