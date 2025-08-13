@@ -39,11 +39,6 @@ on-activate = '''
   #      - FLOX_ENV=/home/user/example/.flox/run
   #      - FLOX_ENV_CACHE=/home/user/example/.flox/cache
 
-if [[ -z ${GITHUB_PERSONAL_TOKEN} ]]; then
-	echo -e "Must set environment variable GITHUB_PERSONAL_TOKEN"
-	exit 1;
-fi
-
 uv venv
 source "${FLOX_ENV_PROJECT}/.venv/bin/activate"
 '''
