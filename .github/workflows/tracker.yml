@@ -9,7 +9,7 @@ on:
     paths: [ 'sites.toml' ]  # Re-runs when you update sites
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -81,6 +81,42 @@ jobs:
           ls -la content/ 2>/dev/null || echo "No content directory"
           echo "Feed files:"
           ls -la feeds/ 2>/dev/null || echo "No feeds directory"
+      - name: Commit to gh-pages branch
+        run: |
+          echo "=== Committing content to gh-pages branch ==="
+          # Configure git
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "GitHub Actions"
+          # Stash current changes
+          git stash push -m "Stash main branch content" content feeds || true
+          # Create or checkout gh-pages branch
+          if git show-ref --quiet refs/remotes/origin/gh-pages; then
+            echo "Checking out existing gh-pages branch..."
+            git checkout -b gh-pages origin/gh-pages
+          else
+            echo "Creating new gh-pages branch..."
+            git checkout --orphan gh-pages
+            git rm -rf . || true
+          fi
+
+          # Apply stashed content
+          git stash pop || true
+          # Add .nojekyll to prevent GitHub Pages from processing
+          touch .nojekyll
+          # Add and commit
+          git add content feeds .nojekyll
+          echo "Files to be committed:"
+          git status --porcelain
+          git commit -m "Update tracked content - $(date +'%Y-%m-%d %H:%M:%S')" || echo "No changes to commit"
+
+          # Push to gh-pages
+          git push origin gh-pages
+
+          echo "Total content files in gh-pages: $(find content -name "*.html" 2>/dev/null | wc -l)"
+          echo "Total feed files in gh-pages: $(find feeds -name "*.xml" 2>/dev/null | wc -l)"
+
+          # Switch back to main branch
+          git checkout main
 
       - name: Prepare files for GitHub Pages
         run: |
@@ -95,7 +131,7 @@ jobs:
             cp content/history-viewer.js deploy/
             cp content/viewer.html deploy/
           fi
-          
+
           # Create a JSON index of feeds for the frontend
           if [ -d "feeds" ]; then
             echo "[" > deploy/feeds.json
