@@ -29,6 +29,22 @@ jobs:
         with:
           fetch-depth: 0  # Get full history for better git operations
 
+      - name: Checkout gh-pages branch (if exists) to preserve history
+        continue-on-error: true
+        run: |
+          git fetch origin gh-pages:gh-pages || true
+          if git show-ref --quiet refs/heads/gh-pages; then
+            git worktree add gh-pages-content gh-pages
+            # Copy existing content and feeds to preserve history
+            if [ -d "gh-pages-content/content" ]; then
+              cp -r gh-pages-content/content .
+            fi
+            if [ -d "gh-pages-content/feeds" ]; then
+              cp -r gh-pages-content/feeds .
+            fi
+            git worktree remove gh-pages-content
+          fi
+
       - name: Install Flox
         uses: flox/install-flox-action@v2
 
@@ -51,9 +67,11 @@ jobs:
       - name: Prepare files for GitHub Pages
         run: |
           mkdir -p deploy
-          cp -r content/* deploy/ 2>/dev/null || true
+          # Preserve directory structure for content and feeds
+          cp -r content deploy/ 2>/dev/null || true
           cp -r feeds deploy/ 2>/dev/null || true
-          # Copy history explorer files to root for direct access
+
+          # Also copy history explorer files to root for direct access
           if [ -f "content/history-explorer.html" ]; then
             cp content/history-explorer.html deploy/
             cp content/history-viewer.js deploy/
@@ -277,7 +295,14 @@ jobs:
           </body>
           </html>
           EOF
-          ls deploy -latrhR
+          echo "=== Deploy directory structure ==="
+          ls -la deploy/
+          echo "=== Content directory ==="
+          ls -la deploy/content/ 2>/dev/null || echo "No content directory"
+          echo "=== Feeds directory ==="
+          ls -la deploy/feeds/ 2>/dev/null || echo "No feeds directory"
+          echo "=== Full recursive listing ==="
+          find deploy -type f | head -20
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
