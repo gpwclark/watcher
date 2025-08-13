@@ -51,7 +51,6 @@ jobs:
           mkdir -p deploy
           cp -r content/* deploy/ 2>/dev/null || true
           cp -r feeds deploy/ 2>/dev/null || true
-          
           # Create a nice homepage
           if [ ! -f deploy/index.html ]; then
             echo '<!DOCTYPE html>
@@ -90,6 +89,7 @@ jobs:
             </body>
             </html>' > deploy/index.html
           fi
+          ls deploy -latrhR
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
