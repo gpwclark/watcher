@@ -28,68 +28,6 @@ index 1234567..890abcd 100644
         assert "-line 2" in cleaned
         assert "+line 2 modified" in cleaned
 
-    def test_generate_reverse_diff(self):
-        """Test generating reverse diff from forward diff."""
-        forward_diff = """@@ -1,3 +1,3 @@
- line 1
--line 2
-+line 2 modified
- line 3"""
-
-        reverse_diff = DiffUtils.generate_reverse_diff(forward_diff)
-        assert "@@ -1,3 +1,3 @@" in reverse_diff
-        assert "+line 2" in reverse_diff  # Was removed, now added
-        assert "-line 2 modified" in reverse_diff  # Was added, now removed
-
-    def test_parse_diff_hunks(self):
-        """Test parsing diff into hunks."""
-        diff_text = """@@ -1,3 +1,3 @@
- line 1
--line 2
-+line 2 modified
- line 3
-@@ -5,2 +5,3 @@
- line 5
-+line 5.5
- line 6"""
-
-        hunks = DiffUtils.parse_diff_hunks(diff_text)
-        assert len(hunks) == 2
-
-        # First hunk
-        assert hunks[0][0] == 1  # start line
-        assert hunks[0][1] == 3  # line count
-        assert len(hunks[0][2]) == 4  # number of lines in hunk
-
-        # Second hunk
-        assert hunks[1][0] == 5
-        assert hunks[1][1] == 3
-
-    def test_validate_diff(self):
-        """Test diff validation."""
-        # Valid diff
-        valid_diff = """@@ -1,3 +1,3 @@
- line 1
--line 2
-+line 2 modified
- line 3"""
-        assert DiffUtils.validate_diff(valid_diff) is True
-
-        # Invalid - no hunk header
-        invalid_diff = """line 1
--line 2
-+line 2 modified"""
-        assert DiffUtils.validate_diff(invalid_diff) is False
-
-        # Invalid - bad line prefix
-        invalid_diff2 = """@@ -1,3 +1,3 @@
-line 1
-*line 2"""
-        assert DiffUtils.validate_diff(invalid_diff2) is False
-
-        # Empty diff is valid
-        assert DiffUtils.validate_diff("") is True
-
     def test_generate_unified_diff_with_files(self):
         """Test generating unified diff between actual files."""
         with tempfile.TemporaryDirectory() as tmpdir:

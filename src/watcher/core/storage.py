@@ -49,12 +49,6 @@ class ContentStorage:
         except Exception:
             return True
 
-    def get_content_diff(self, new_file_path: Path, old_file_path: Optional[Path] = None) -> Optional[str]:
-        """Get git diff between old and new content files."""
-        if old_file_path and old_file_path.exists():
-            return DiffUtils.generate_unified_diff(old_file_path, new_file_path)
-        return None
-    
     def extract_html_content_from_file(self, html_path: Path) -> Optional[str]:
         """Extract HTML content from the body of the HTML file."""
         try:
@@ -88,7 +82,8 @@ class ContentStorage:
             
             try:
                 diff = DiffUtils.generate_unified_diff(old_temp_path, new_temp_path)
-                return diff
+                # Return diff only if it's not empty
+                return diff if diff else None
             finally:
                 # Clean up temp files
                 new_temp_path.unlink(missing_ok=True)
@@ -102,8 +97,8 @@ class ContentStorage:
             print(f"No changes detected for {self.feed_name}")
             return None
 
-        # Generate filename with timestamp
-        timestamp = datetime.now(timezone.utc).strftime("%Y%m%d-%H%M%S")
+        # Generate filename with timestamp including microseconds to ensure uniqueness
+        timestamp = datetime.now(timezone.utc).strftime("%Y%m%d-%H%M%S%f")
         html_filename = f"{timestamp}.html"
         html_filepath = self.content_dir / html_filename
 
@@ -120,6 +115,8 @@ class ContentStorage:
     <meta name="source-url" content="{content_data['url']}">
     <meta name="scraped-at" content="{content_data['timestamp']}">
     <meta name="content-hash" content="{content_data['hash']}">
+    <meta name="rss-feed-url" content="../../../feeds/{self.feed_name}.xml">
+    <script src="../../history-viewer.js"></script>
     <style>
         body {{
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;

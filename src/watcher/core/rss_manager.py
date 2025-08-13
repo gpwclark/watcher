@@ -63,14 +63,11 @@ class RSSManager:
         content_path = f"content/{self.feed_name}/{new_item['filename']}"
         timestamp = parser.parse(new_item['timestamp'])
         
-        # Link directly to static HTML files (no date parameter needed - each file is a snapshot)
-        link = f"{self.base_url}/{content_path}"
+        # Link directly to static HTML files with date parameter for history viewer
+        link = f"{self.base_url}/{content_path}?date={new_item['timestamp']}"
 
-        # Wrap description in CDATA if it contains diff
+        # Use description as-is (feedgenerator will handle escaping)
         description = new_item.get('description', 'Content update')
-        if description and ('\n@@' in description or '\n+' in description or '\n-' in description):
-            # Contains diff content, wrap in CDATA
-            description = f"<![CDATA[{description}]]>"
 
         feed.add_item(
             title=new_item['title'],

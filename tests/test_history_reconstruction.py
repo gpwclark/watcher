@@ -72,8 +72,8 @@ class TestHistoryReconstruction:
                 assert '?date=' in feed_content
                 assert timestamp.isoformat() in feed_content
 
-                # Check that diff is wrapped in CDATA
-                assert '<![CDATA[' in feed_content
+                # Check that diff is in the feed (feedgenerator escapes CDATA)
+                assert '@@ -1,3 +1,3 @@' in feed_content
 
             finally:
                 os.chdir(old_cwd)
