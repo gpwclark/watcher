@@ -26,6 +26,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Get full history for better git operations
 
       - name: Install Flox
         uses: flox/install-flox-action@v2
@@ -56,6 +58,25 @@ jobs:
             cp content/history-explorer.html deploy/
             cp content/history-viewer.js deploy/
             cp content/viewer.html deploy/
+          fi
+          
+          # Create a JSON index of feeds for the frontend
+          if [ -d "feeds" ]; then
+            echo "[" > deploy/feeds.json
+            first=true
+            for feed in feeds/*.xml; do
+              if [ -f "$feed" ]; then
+                if [ "$first" = true ]; then
+                  first=false
+                else
+                  echo "," >> deploy/feeds.json
+                fi
+                basename "$feed" | sed 's/^/  "/' | sed 's/$/"/' >> deploy/feeds.json
+              fi
+            done
+            echo "]" >> deploy/feeds.json
+          else
+            echo "[]" > deploy/feeds.json
           fi
 
           # Create a nice index page
@@ -212,21 +233,16 @@ jobs:
                       const container = document.getElementById('feedsContainer');
 
                       try {
-                          // Try to fetch the feeds directory listing
-                          const response = await fetch('feeds/');
-                          const text = await response.text();
-                          const parser = new DOMParser();
-                          const doc = parser.parseFromString(text, 'text/html');
-                          const links = Array.from(doc.querySelectorAll('a'))
-                              .filter(a => a.href.endsWith('.xml'))
-                              .map(a => a.textContent);
+                          // Fetch the feeds JSON index
+                          const response = await fetch('feeds.json');
+                          const feeds = await response.json();
 
-                          if (links.length === 0) {
+                          if (feeds.length === 0) {
                               container.innerHTML = '<div class="loading">No feeds found yet. They will appear after the first run.</div>';
                               return;
                           }
 
-                          container.innerHTML = links.map(filename => {
+                          container.innerHTML = feeds.map(filename => {
                               const feedName = filename.replace('.xml', '');
                               const displayName = feedName.replace(/-/g, ' ')
                                   .replace(/\b\w/g, l => l.toUpperCase());
@@ -237,7 +253,7 @@ jobs:
                                       <div class="feed-links">
                                           <a href="feeds/${filename}" class="feed-link rss">📡 RSS</a>
                                           <a href="history-explorer.html?feed=${feedName}" class="feed-link">📜 History</a>
-                                          <a href="${feedName}/" class="feed-link">📁 Files</a>
+                                          <a href="content/${feedName}/" class="feed-link">📁 Files</a>
                                       </div>
                                   </div>
                               `;
