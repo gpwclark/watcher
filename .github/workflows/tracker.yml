@@ -4,6 +4,12 @@ on:
   schedule:
     - cron: '0 */6 * * *'  # Runs every 6 hours
   workflow_dispatch:  # Lets you run it manually
+    inputs:
+      subdirectory:
+        description: 'Subdirectory to deploy to (e.g., "tracker" for /tracker/)'
+        required: false
+        default: ''
+        type: string
   push:
     branches: [ main ]
     paths: [ 'sites.toml' ]  # Re-runs when you update sites
@@ -23,6 +29,8 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
+    env:
+      SUBDIR: ${{ github.event.inputs.subdirectory || '' }}
 
     steps:
       - uses: actions/checkout@v4
@@ -70,10 +78,17 @@ jobs:
         run: |
           # Handle user/org pages vs project pages
           if [ "${{ github.event.repository.name }}" = "${{ github.repository_owner }}.github.io" ]; then
-            BASE_URL="https://${{ github.repository_owner }}.github.io/"
+            BASE_URL="https://${{ github.repository_owner }}.github.io"
           else
             BASE_URL="https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}"
           fi
+          
+          # Add subdirectory if specified
+          if [ -n "$SUBDIR" ]; then
+            BASE_URL="$BASE_URL/$SUBDIR"
+          fi
+          
+          echo "Using base URL: $BASE_URL"
           flox activate -- uv run watcher-batch --config sites.toml --base-url "$BASE_URL"
           
           echo "=== After running watcher ==="
@@ -92,7 +107,8 @@ jobs:
           # Create or checkout gh-pages branch
           if git show-ref --quiet refs/remotes/origin/gh-pages; then
             echo "Checking out existing gh-pages branch..."
-            git checkout -b gh-pages origin/gh-pages
+            git fetch origin gh-pages
+            git checkout gh-pages
           else
             echo "Creating new gh-pages branch..."
             git checkout --orphan gh-pages
@@ -121,34 +137,43 @@ jobs:
       - name: Prepare files for GitHub Pages
         run: |
           mkdir -p deploy
+          
+          # Create subdirectory if specified
+          if [ -n "$SUBDIR" ]; then
+            DEPLOY_PATH="deploy/$SUBDIR"
+            mkdir -p "$DEPLOY_PATH"
+          else
+            DEPLOY_PATH="deploy"
+          fi
+          
           # Preserve directory structure for content and feeds
-          cp -r content deploy/ 2>/dev/null || true
-          cp -r feeds deploy/ 2>/dev/null || true
+          cp -r content "$DEPLOY_PATH/" 2>/dev/null || true
+          cp -r feeds "$DEPLOY_PATH/" 2>/dev/null || true
 
-          # Also copy history explorer files to root for direct access
+          # Also copy history explorer files to deployment root
           if [ -f "content/history-explorer.html" ]; then
-            cp content/history-explorer.html deploy/
-            cp content/history-viewer.js deploy/
-            cp content/viewer.html deploy/
+            cp content/history-explorer.html "$DEPLOY_PATH/"
+            cp content/history-viewer.js "$DEPLOY_PATH/"
+            cp content/viewer.html "$DEPLOY_PATH/"
           fi
 
           # Create a JSON index of feeds for the frontend
           if [ -d "feeds" ]; then
-            echo "[" > deploy/feeds.json
+            echo "[" > "$DEPLOY_PATH/feeds.json"
             first=true
             for feed in feeds/*.xml; do
               if [ -f "$feed" ]; then
                 if [ "$first" = true ]; then
                   first=false
                 else
-                  echo "," >> deploy/feeds.json
+                  echo "," >> "$DEPLOY_PATH/feeds.json"
                 fi
-                basename "$feed" | sed 's/^/  "/' | sed 's/$/"/' >> deploy/feeds.json
+                basename "$feed" | sed 's/^/  "/' | sed 's/$/"/' >> "$DEPLOY_PATH/feeds.json"
               fi
             done
-            echo "]" >> deploy/feeds.json
+            echo "]" >> "$DEPLOY_PATH/feeds.json"
           else
-            echo "[]" > deploy/feeds.json
+            echo "[]" > "$DEPLOY_PATH/feeds.json"
           fi
 
           # Create file listings for each feed
@@ -156,25 +181,25 @@ jobs:
             for feed_dir in content/*/; do
               if [ -d "$feed_dir" ]; then
                 feed_name=$(basename "$feed_dir")
-                echo "[" > "deploy/content/${feed_name}/files.json"
+                echo "[" > "$DEPLOY_PATH/content/${feed_name}/files.json"
                 first=true
                 for file in "$feed_dir"*.html; do
                   if [ -f "$file" ]; then
                     if [ "$first" = true ]; then
                       first=false
                     else
-                      echo "," >> "deploy/content/${feed_name}/files.json"
+                      echo "," >> "$DEPLOY_PATH/content/${feed_name}/files.json"
                     fi
-                    basename "$file" | sed 's/^/  "/' | sed 's/$/"/' >> "deploy/content/${feed_name}/files.json"
+                    basename "$file" | sed 's/^/  "/' | sed 's/$/"/' >> "$DEPLOY_PATH/content/${feed_name}/files.json"
                   fi
                 done
-                echo "]" >> "deploy/content/${feed_name}/files.json"
+                echo "]" >> "$DEPLOY_PATH/content/${feed_name}/files.json"
               fi
             done
           fi
 
           # Create a nice index page
-          cat > deploy/index.html << 'EOF'
+          cat > "$DEPLOY_PATH/index.html" << 'EOF'
           <!DOCTYPE html>
           <html lang="en">
           <head>
