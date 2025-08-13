@@ -391,9 +391,16 @@
                     const title = item.querySelector('title')?.textContent || '';
                     const link = item.querySelector('link')?.textContent || '';
                     
-                    // Extract filename from link
-                    const filenameMatch = link.match(/\/([^\/]+\.(md|html))$/);
+                    // Extract filename from link (handle query parameters)
+                    const filenameMatch = link.match(/\/([^\/]+\.(md|html))(\?|$)/);
                     const filename = filenameMatch ? filenameMatch[1] : null;
+                    
+                    // Debug logging
+                    console.log('Processing RSS item:', {
+                        link: link,
+                        filenameMatch: filenameMatch,
+                        filename: filename
+                    });
                     
                     // Extract diff from description
                     let diff = null;
@@ -482,8 +489,14 @@
         async loadContent() {
             const contentBody = document.getElementById('content-body');
             
+            console.log('loadContent called with:', {
+                currentEntry: this.currentEntry,
+                currentFeed: this.currentFeed
+            });
+            
             if (!this.currentEntry || !this.currentEntry.filename) {
                 contentBody.innerHTML = '<div class="no-data">No content available</div>';
+                console.warn('No current entry or filename');
                 return;
             }
             
@@ -516,7 +529,13 @@
             const latestEntry = this.entries[0];
             const latestFilename = latestEntry.filename;
             
-            const response = await fetch(`content/${this.currentFeed}/${latestFilename}`);
+            const url = `content/${this.currentFeed}/${latestFilename}`;
+            console.log('Fetching content from:', url);
+            
+            const response = await fetch(url);
+            if (!response.ok) {
+                throw new Error(`Failed to fetch ${url}: ${response.status} ${response.statusText}`);
+            }
             const text = await response.text();
             
             const { metadata, content } = this.extractFromHTML(text);
@@ -552,6 +571,12 @@
             // Extract content from the content div
             const contentDiv = doc.querySelector('div.content');
             const htmlContent = contentDiv ? contentDiv.innerHTML.trim() : '';
+            
+            console.log('Extracted content:', {
+                hasContentDiv: !!contentDiv,
+                contentLength: htmlContent.length,
+                firstChars: htmlContent.substring(0, 100)
+            });
             
             // Extract metadata from meta tags
             const metadata = {

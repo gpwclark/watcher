@@ -42,24 +42,24 @@ jobs:
         run: |
           echo "=== Checking for existing gh-pages branch ==="
           git fetch origin gh-pages:gh-pages || echo "No gh-pages branch found"
-          
+
           if git show-ref --quiet refs/heads/gh-pages; then
             echo "Found gh-pages branch, preserving history..."
             git worktree add gh-pages-content gh-pages
-            
+
             # Copy existing content and feeds to preserve history
             if [ -d "gh-pages-content/content" ]; then
               echo "Copying existing content..."
               cp -r gh-pages-content/content .
               echo "Content files copied: $(find content -name "*.html" | wc -l)"
             fi
-            
+
             if [ -d "gh-pages-content/feeds" ]; then
               echo "Copying existing feeds..."
               cp -r gh-pages-content/feeds .
               echo "Feed files copied: $(find feeds -name "*.xml" | wc -l)"
             fi
-            
+
             git worktree remove gh-pages-content
           else
             echo "No gh-pages branch found - this appears to be the first run"
@@ -82,15 +82,15 @@ jobs:
           else
             BASE_URL="https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}"
           fi
-          
+
           # Add subdirectory if specified
           if [ -n "$SUBDIR" ]; then
             BASE_URL="$BASE_URL/$SUBDIR"
           fi
-          
+
           echo "Using base URL: $BASE_URL"
           flox activate -- uv run watcher-batch --config sites.toml --base-url "$BASE_URL"
-          
+
           echo "=== After running watcher ==="
           echo "Content directories:"
           ls -la content/ 2>/dev/null || echo "No content directory"
@@ -102,21 +102,27 @@ jobs:
           # Configure git
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "GitHub Actions"
-          # Stash current changes
-          git stash push -m "Stash main branch content" content feeds || true
+
+          # Save the generated content temporarily
+          mkdir -p /tmp/watcher-content
+          cp -r content /tmp/watcher-content/ 2>/dev/null || true
+          cp -r feeds /tmp/watcher-content/ 2>/dev/null || true
+
           # Create or checkout gh-pages branch
           if git show-ref --quiet refs/remotes/origin/gh-pages; then
             echo "Checking out existing gh-pages branch..."
             git fetch origin gh-pages
-            git checkout gh-pages
+            # Force checkout to avoid conflicts
+            git checkout -f gh-pages
           else
             echo "Creating new gh-pages branch..."
             git checkout --orphan gh-pages
             git rm -rf . || true
           fi
 
-          # Apply stashed content
-          git stash pop || true
+          # Copy back the generated content
+          cp -r /tmp/watcher-content/content . 2>/dev/null || true
+          cp -r /tmp/watcher-content/feeds . 2>/dev/null || true
           # Add .nojekyll to prevent GitHub Pages from processing
           touch .nojekyll
           # Add and commit
@@ -137,7 +143,7 @@ jobs:
       - name: Prepare files for GitHub Pages
         run: |
           mkdir -p deploy
-          
+
           # Create subdirectory if specified
           if [ -n "$SUBDIR" ]; then
             DEPLOY_PATH="deploy/$SUBDIR"
@@ -145,7 +151,7 @@ jobs:
           else
             DEPLOY_PATH="deploy"
           fi
-          
+
           # Preserve directory structure for content and feeds
           cp -r content "$DEPLOY_PATH/" 2>/dev/null || true
           cp -r feeds "$DEPLOY_PATH/" 2>/dev/null || true
@@ -327,11 +333,11 @@ jobs:
                       <h1>📡 Website Change Tracker</h1>
                       <p class="subtitle">Monitoring websites for updates via RSS feeds</p>
                   </div>
-          
+
                   <div id="feedsContainer" class="feeds-grid">
                       <div class="loading">Loading feeds...</div>
                   </div>
-          
+
                   <div class="explorer-banner">
                       <h2>📜 Explore Change History</h2>
                       <p>View detailed diffs and navigate through the complete history of tracked websites</p>
@@ -398,10 +404,14 @@ jobs:
           EOF
           echo "=== Deploy directory structure ==="
           ls -la deploy/
+          if [ -n "$SUBDIR" ]; then
+            echo "=== Subdirectory contents ==="
+            ls -la "deploy/$SUBDIR/" 2>/dev/null || echo "No subdirectory"
+          fi
           echo "=== Content directory ==="
-          ls -la deploy/content/ 2>/dev/null || echo "No content directory"
+          ls -la "$DEPLOY_PATH/content/" 2>/dev/null || echo "No content directory"
           echo "=== Feeds directory ==="
-          ls -la deploy/feeds/ 2>/dev/null || echo "No feeds directory"
+          ls -la "$DEPLOY_PATH/feeds/" 2>/dev/null || echo "No feeds directory"
           echo "=== Full recursive listing ==="
           find deploy -type f | head -20
 
@@ -416,11 +426,15 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-        
+
       - name: Check deployment status
         run: |
           echo "Deployment completed!"
           echo "Page URL: ${{ steps.deployment.outputs.page_url }}"
+          if [ -n "$SUBDIR" ]; then
+            echo "Tracker deployed to subdirectory: /$SUBDIR/"
+            echo "Access your tracker at: ${{ steps.deployment.outputs.page_url }}$SUBDIR/"
+          fi
           echo "Note: If historical data is not preserved, ensure:"
           echo "1. The gh-pages branch exists and is being used by GitHub Pages"
           echo "2. The workflow has write permissions to the repository"
