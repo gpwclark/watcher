@@ -97,6 +97,28 @@ jobs:
             echo "[]" > deploy/feeds.json
           fi
 
+          # Create file listings for each feed
+          if [ -d "content" ]; then
+            for feed_dir in content/*/; do
+              if [ -d "$feed_dir" ]; then
+                feed_name=$(basename "$feed_dir")
+                echo "[" > "deploy/content/${feed_name}/files.json"
+                first=true
+                for file in "$feed_dir"*.html; do
+                  if [ -f "$file" ]; then
+                    if [ "$first" = true ]; then
+                      first=false
+                    else
+                      echo "," >> "deploy/content/${feed_name}/files.json"
+                    fi
+                    basename "$file" | sed 's/^/  "/' | sed 's/$/"/' >> "deploy/content/${feed_name}/files.json"
+                  fi
+                done
+                echo "]" >> "deploy/content/${feed_name}/files.json"
+              fi
+            done
+          fi
+
           # Create a nice index page
           cat > deploy/index.html << 'EOF'
           <!DOCTYPE html>
@@ -271,7 +293,7 @@ jobs:
                                       <div class="feed-links">
                                           <a href="feeds/${filename}" class="feed-link rss">📡 RSS</a>
                                           <a href="history-explorer.html?feed=${feedName}" class="feed-link">📜 History</a>
-                                          <a href="content/${feedName}/" class="feed-link">📁 Files</a>
+                                          <a href="history-explorer.html?feed=${feedName}" class="feed-link">📁 Files</a>
                                       </div>
                                   </div>
                               `;

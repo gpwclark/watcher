@@ -350,28 +350,26 @@
         }
 
         async discoverFeeds() {
-            // Try to load a directory listing or use known feeds
-            // This is a simplified version - in production, you'd have a feeds index
-            const knownFeeds = [
-                'static-html-test',
-                'new-years-even-counter',
-                'epochconverter',
-                'jank-lang-dot-org-slash-progress'
-            ];
-            
-            const availableFeeds = [];
-            for (const feed of knownFeeds) {
-                try {
-                    const response = await fetch(`../feeds/${feed}.xml`);
-                    if (response.ok) {
-                        availableFeeds.push(feed);
-                    }
-                } catch (e) {
-                    // Feed doesn't exist
+            try {
+                // Load the feeds.json file that's generated during deployment
+                const response = await fetch('feeds.json');
+                if (response.ok) {
+                    const feedFiles = await response.json();
+                    // Extract feed names from filenames (remove .xml extension)
+                    return feedFiles.map(filename => filename.replace('.xml', ''));
                 }
+            } catch (e) {
+                console.error('Failed to load feeds.json:', e);
             }
             
-            return availableFeeds;
+            // Fallback: try to detect feeds from URL parameter
+            const urlParams = new URLSearchParams(window.location.search);
+            const feedParam = urlParams.get('feed');
+            if (feedParam) {
+                return [feedParam];
+            }
+            
+            return [];
         }
 
         async loadFeed(feedName) {
@@ -380,7 +378,7 @@
             timeline.innerHTML = '<div class="loading">Loading timeline...</div>';
             
             try {
-                const response = await fetch(`../feeds/${feedName}.xml`);
+                const response = await fetch(`feeds/${feedName}.xml`);
                 const text = await response.text();
                 const parser = new DOMParser();
                 const xml = parser.parseFromString(text, 'text/xml');
@@ -518,7 +516,7 @@
             const latestEntry = this.entries[0];
             const latestFilename = latestEntry.filename;
             
-            const response = await fetch(`../${this.currentFeed}/${latestFilename}`);
+            const response = await fetch(`content/${this.currentFeed}/${latestFilename}`);
             const text = await response.text();
             
             const { metadata, content } = this.extractFromHTML(text);
