@@ -1,6 +1,6 @@
 # Website Change Tracker
 
-Automatically track changes to websites and get a beautiful, hosted changelog - all within your existing GitHub repository.
+Automatically track changes to websites and generate RSS feeds with a beautiful GitHub Pages site.
 
 ## What You Get
 
@@ -12,55 +12,108 @@ Automatically track changes to websites and get a beautiful, hosted changelog - 
 
 View live example: [https://gpwclark.github.io/watcher/](https://gpwclark.github.io/watcher/)
 
-## Quick Start (3 Steps)
+## Quick Start (2 Minutes)
 
-### 1. Add Your Sites to Track
+### 1. Create Your Repository
 
-Create `sites.toml` in your repository root:
+Use this repository as a template or create your own with these two files:
 
+**`sites.toml`** - List the websites you want to track:
 ```toml
-[[site]]
-url = "https://example.com"        # URL to track
-name = "Example Site"              # Display name
-selector = "article"               # CSS selector (optional)
+[[sites]]
+url = "https://example.com/changelog"
+feed_name = "example-changelog"
+
+[[sites]]
+url = "https://news.site.com"
+feed_name = "news-site"
 ```
 
-### 2. Copy the Workflow
+**`.github/workflows/tracker.yml`** - The GitHub Action that does everything:
+```yaml
+name: Track Website Changes
 
-Copy [`.github/workflows/tracker.yml`](.github/workflows/tracker.yml) to your repository's `.github/workflows/` directory.
+on:
+  schedule:
+    - cron: '0 */6 * * *'  # Every 6 hours
+  workflow_dispatch:       # Manual trigger
+  push:
+    branches: [ main ]
+    paths: [ 'sites.toml' ]
 
-The workflow will:
-- Run every 6 hours (customizable)
-- Track all sites in your `sites.toml`
-- Automatically deploy to GitHub Pages
-- Preserve history across runs
+permissions:
+  contents: write
+  pages: write
+  id-token: write
 
-That's it! Your tracker will run automatically and publish to `https://your-username.github.io/your-repo/`
+jobs:
+  track:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.tracker.outputs.deployment-url }}
+    
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      - name: Track websites and deploy
+        id: tracker
+        uses: gpwclark/watcher@main
+```
 
-## Customization
+### 2. Enable GitHub Pages
 
-### Change Update Frequency
+1. Go to Settings → Pages
+2. Set Source to "GitHub Actions"
+3. Save
 
-Edit the cron schedule in your workflow:
-- `'0 * * * *'` - Every hour
-- `'0 */6 * * *'` - Every 6 hours
-- `'0 0 * * *'` - Daily at midnight
-- `'0 0 * * 0'` - Weekly on Sunday
+### 3. That's It!
 
-### Track Multiple Sites
+Push your files and the action will:
+- Run automatically every 6 hours
+- Track changes to all your sites
+- Generate RSS feeds
+- Deploy a beautiful site to GitHub Pages
 
-Add more entries to `sites.toml`:
+Your site will be live at: `https://YOUR-USERNAME.github.io/YOUR-REPO/`
+
+## Configuration
+
+### sites.toml Format
 
 ```toml
-[[site]]
-url = "https://example.com"
-name = "Example Site"
+[[sites]]
+url = "https://example.com/changelog"  # Required: URL to track
+feed_name = "example-changelog"        # Required: Name for the feed (alphanumeric + hyphens)
+min_hours = 1.0                        # Optional: Minimum hours between checks (default: no limit)
+```
 
-[[site]]
-url = "https://another-site.com"
-name = "Another Site"
-selector = ".main-content"  # Track only specific content
-min_hours = 24  # if desired frequency of checking is > 6 hours or w/e time is set in the GitHub Actions.
+### Action Options
+
+The action supports these inputs (all have sensible defaults):
+
+```yaml
+- uses: gpwclark/watcher@main
+  with:
+    sites-config: sites.toml    # Path to config file
+    subdirectory: /             # Deploy to root or subdirectory like /tracker
+    generate-site: true         # Generate the GitHub Pages site
+    deploy-to-pages: true       # Deploy to GitHub Pages
+    commit-to-gh-pages: true    # Save history to gh-pages branch
+```
+
+### Update Frequency
+
+Change the cron schedule in your workflow:
+```yaml
+on:
+  schedule:
+    - cron: '0 * * * *'     # Every hour
+    - cron: '0 */6 * * *'   # Every 6 hours (default)
+    - cron: '0 0 * * *'     # Daily at midnight
+    - cron: '0 0 * * 0'     # Weekly on Sunday
 ```
 ## Examples of What to Track
 

@@ -1,18 +1,18 @@
-name: GitHub Actions Website Snapshotting and Rss Feed Generation
+name: Track Website Changes
 
 on:
   schedule:
-    - cron: '0 */6 * * *'  # Runs every 6 hours
-  workflow_dispatch:  # Lets you run it manually
+    - cron: '0 */6 * * *'  # Every 6 hours
+  workflow_dispatch:
     inputs:
       subdirectory:
-        description: 'Subdirectory to deploy to (e.g., "tracker" for /tracker/)'
+        description: 'Subdirectory to deploy to'
         required: false
-        default: ''
+        default: '/'
         type: string
   push:
     branches: [ main ]
-    paths: [ 'sites.toml' ]  # Re-runs when you update sites
+    paths: [ 'sites.toml' ]
 
 permissions:
   contents: write
@@ -24,145 +24,33 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  track-and-deploy:
+  track:
     runs-on: ubuntu-latest
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    env:
-      SUBDIR: ${{ github.event.inputs.subdirectory || '/' }}
-
+      url: ${{ steps.tracker.outputs.deployment-url }}
+    
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # Get full history for better git operations
-
-      - name: Checkout gh-pages branch (if exists) to preserve history
-        continue-on-error: true
-        run: |
-          echo "=== Checking for existing gh-pages branch ==="
-          git fetch origin gh-pages:gh-pages || echo "No gh-pages branch found"
-
-          if git show-ref --quiet refs/heads/gh-pages; then
-            echo "Found gh-pages branch, preserving history..."
-            git worktree add gh-pages-content gh-pages
-
-            # Copy existing content and feeds to preserve history
-            if [ -d "gh-pages-content/content" ]; then
-              echo "Copying existing content..."
-              cp -r gh-pages-content/content .
-              echo "Content files copied: $(find content -name "*.html" | wc -l)"
-            fi
-
-            if [ -d "gh-pages-content/feeds" ]; then
-              echo "Copying existing feeds..."
-              cp -r gh-pages-content/feeds .
-              echo "Feed files copied: $(find feeds -name "*.xml" | wc -l)"
-            fi
-
-            git worktree remove gh-pages-content
-          else
-            echo "No gh-pages branch found - this appears to be the first run"
-          fi
-
-      - name: Install Flox
-        uses: flox/install-flox-action@v2
-
-      - name: Setup environment and install watcher
-        run: |
-          flox install uv
-          flox activate -- uv pip install git+https://github.com/gpwclark/watcher.git
-
-      - name: Run tracker and generate site
-        run: |
-          # Handle user/org pages vs project pages
-          if [ "${{ github.event.repository.name }}" = "${{ github.repository_owner }}.github.io" ]; then
-            BASE_URL="https://${{ github.repository_owner }}.github.io"
-          else
-            BASE_URL="https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}"
-          fi
-
-          echo "Using base URL: $BASE_URL"
-          
-          # Run watcher-batch with site generation
-          flox activate -- uv run watcher-batch \
-            --config sites.toml \
-            --base-url "$BASE_URL" \
-            --generate-site \
-            --output-dir deploy \
-            --subdirectory "$SUBDIR"
-
-          echo "=== After running watcher ==="
-          echo "Content directories:"
-          ls -la content/ 2>/dev/null || echo "No content directory"
-          echo "Feed files:"
-          ls -la feeds/ 2>/dev/null || echo "No feeds directory"
-          echo "Deploy directory:"
-          ls -la deploy/ 2>/dev/null || echo "No deploy directory"
-
-      - name: Commit to gh-pages branch
-        run: |
-          echo "=== Committing content to gh-pages branch ==="
-          # Configure git
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "GitHub Actions"
-
-          # Save the generated content temporarily
-          mkdir -p /tmp/watcher-content
-          cp -r content /tmp/watcher-content/ 2>/dev/null || true
-          cp -r feeds /tmp/watcher-content/ 2>/dev/null || true
-
-          # Create or checkout gh-pages branch
-          if git show-ref --quiet refs/remotes/origin/gh-pages; then
-            echo "Checking out existing gh-pages branch..."
-            git fetch origin gh-pages
-            # Force checkout to avoid conflicts
-            git checkout -f gh-pages
-          else
-            echo "Creating new gh-pages branch..."
-            git checkout --orphan gh-pages
-            git rm -rf . || true
-          fi
-
-          # Copy back the generated content
-          cp -r /tmp/watcher-content/content . 2>/dev/null || true
-          cp -r /tmp/watcher-content/feeds . 2>/dev/null || true
-          
-          # Add .nojekyll to prevent GitHub Pages from processing
-          touch .nojekyll
-          
-          # Add and commit
-          git add content feeds .nojekyll
-          echo "Files to be committed:"
-          git status --porcelain
-          git commit -m "Update tracked content - $(date +'%Y-%m-%d %H:%M:%S')" || echo "No changes to commit"
-
-          # Push to gh-pages
-          git push origin gh-pages
-
-          echo "Total content files in gh-pages: $(find content -name "*.html" 2>/dev/null | wc -l)"
-          echo "Total feed files in gh-pages: $(find feeds -name "*.xml" 2>/dev/null | wc -l)"
-
-          # Switch back to main branch
-          git checkout main
-
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-
-      - name: Upload to Pages
-        uses: actions/upload-pages-artifact@v3
+          fetch-depth: 0
+      
+      - name: Track websites and deploy
+        id: tracker
+        uses: ./  # Use the action from this repo
         with:
-          path: ./deploy
-
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
-
-      - name: Check deployment status
+          sites-config: sites.toml
+          subdirectory: ${{ github.event.inputs.subdirectory || '/' }}
+          # Other available options we're using defaults for:
+          # generate-site: true      # We want the static site
+          # output-dir: deploy       # Standard deployment directory
+          # base-url: ''             # Auto-detected from repo name
+          # commit-to-gh-pages: true # Preserve history
+          # deploy-to-pages: true    # Deploy to GitHub Pages
+      
+      - name: Summary
         run: |
-          echo "Deployment completed!"
-          echo "Page URL: ${{ steps.deployment.outputs.page_url }}"
-          if [ -n "$SUBDIR" ]; then
-            echo "Tracker deployed to subdirectory: /$SUBDIR/"
-            echo "Access your tracker at: ${{ steps.deployment.outputs.page_url }}$SUBDIR/"
-          fi
+          echo "### Tracking Results" >> $GITHUB_STEP_SUMMARY
+          echo "- Updated: ${{ steps.tracker.outputs.updated-count }} sites" >> $GITHUB_STEP_SUMMARY
+          echo "- Errors: ${{ steps.tracker.outputs.error-count }} sites" >> $GITHUB_STEP_SUMMARY
+          echo "- [View Site](${{ steps.tracker.outputs.deployment-url }})" >> $GITHUB_STEP_SUMMARY

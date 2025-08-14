@@ -1,0 +1,197 @@
+name: 'Website Change Tracker'
+description: 'Track website changes and generate RSS feeds with GitHub Pages deployment'
+author: 'gpwclark'
+branding:
+  icon: 'rss'
+  color: 'orange'
+
+inputs:
+  sites-config:
+    description: 'Path to sites.toml configuration file'
+    required: false
+    default: 'sites.toml'
+  
+  generate-site:
+    description: 'Generate static site for GitHub Pages'
+    required: false
+    default: 'true'
+  
+  output-dir:
+    description: 'Output directory for static site'
+    required: false
+    default: 'deploy'
+  
+  subdirectory:
+    description: 'Subdirectory for deployment (must start with "/", e.g., "/tracker", "/" for root)'
+    required: false
+    default: '/'
+  
+  base-url:
+    description: 'Base URL for RSS feed links (auto-detected if not provided)'
+    required: false
+    default: ''
+  
+  commit-to-gh-pages:
+    description: 'Commit content and feeds to gh-pages branch for history'
+    required: false
+    default: 'true'
+  
+  deploy-to-pages:
+    description: 'Deploy the static site to GitHub Pages'
+    required: false
+    default: 'true'
+
+outputs:
+  updated-count:
+    description: 'Number of sites that were updated'
+    value: ${{ steps.run-watcher.outputs.updated-count }}
+  
+  error-count:
+    description: 'Number of sites that had errors'
+    value: ${{ steps.run-watcher.outputs.error-count }}
+  
+  deployment-url:
+    description: 'URL where the site was deployed (if deployment was enabled)'
+    value: ${{ steps.deployment.outputs.page_url }}
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Checkout gh-pages branch (if exists) to preserve history
+      if: inputs.commit-to-gh-pages == 'true'
+      shell: bash
+      continue-on-error: true
+      run: |
+        echo "=== Checking for existing gh-pages branch ==="
+        git fetch origin gh-pages:gh-pages || echo "No gh-pages branch found"
+
+        if git show-ref --quiet refs/heads/gh-pages; then
+          echo "Found gh-pages branch, preserving history..."
+          git worktree add gh-pages-content gh-pages
+
+          # Copy existing content and feeds to preserve history
+          if [ -d "gh-pages-content/content" ]; then
+            echo "Copying existing content..."
+            cp -r gh-pages-content/content .
+            echo "Content files copied: $(find content -name "*.html" | wc -l)"
+          fi
+
+          if [ -d "gh-pages-content/feeds" ]; then
+            echo "Copying existing feeds..."
+            cp -r gh-pages-content/feeds .
+            echo "Feed files copied: $(find feeds -name "*.xml" | wc -l)"
+          fi
+
+          git worktree remove gh-pages-content
+        else
+          echo "No gh-pages branch found - this appears to be the first run"
+        fi
+
+    - name: Install Flox
+      uses: flox/install-flox-action@v2
+
+    - name: Setup environment and install watcher
+      shell: bash
+      run: |
+        flox install uv
+        flox activate -- uv pip install git+https://github.com/gpwclark/watcher.git
+
+    - name: Determine base URL
+      id: base-url
+      shell: bash
+      run: |
+        if [ -n "${{ inputs.base-url }}" ]; then
+          BASE_URL="${{ inputs.base-url }}"
+        elif [ "${{ github.event.repository.name }}" = "${{ github.repository_owner }}.github.io" ]; then
+          BASE_URL="https://${{ github.repository_owner }}.github.io"
+        else
+          BASE_URL="https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}"
+        fi
+        echo "Base URL: $BASE_URL"
+        echo "base-url=$BASE_URL" >> $GITHUB_OUTPUT
+
+    - name: Run watcher
+      id: run-watcher
+      shell: bash
+      run: |
+        # Build command arguments
+        ARGS="--config ${{ inputs.sites-config }} --base-url ${{ steps.base-url.outputs.base-url }}"
+        
+        if [ "${{ inputs.generate-site }}" = "true" ]; then
+          ARGS="$ARGS --generate-site --output-dir ${{ inputs.output-dir }} --subdirectory ${{ inputs.subdirectory }}"
+        fi
+        
+        # Run watcher-batch and capture output
+        OUTPUT=$(flox activate -- uv run watcher-batch $ARGS 2>&1)
+        echo "$OUTPUT"
+        
+        # Extract counts from output
+        UPDATED=$(echo "$OUTPUT" | grep -o "Updated: [0-9]*" | grep -o "[0-9]*" || echo "0")
+        ERRORS=$(echo "$OUTPUT" | grep -o "Errors: [0-9]*" | grep -o "[0-9]*" || echo "0")
+        
+        echo "updated-count=$UPDATED" >> $GITHUB_OUTPUT
+        echo "error-count=$ERRORS" >> $GITHUB_OUTPUT
+        
+        # Exit with error if there were any errors
+        if [ "$ERRORS" -gt 0 ]; then
+          exit 1
+        fi
+
+    - name: Commit to gh-pages branch
+      if: inputs.commit-to-gh-pages == 'true'
+      shell: bash
+      run: |
+        echo "=== Committing content to gh-pages branch ==="
+        # Configure git
+        git config --local user.email "github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "GitHub Actions"
+
+        # Save the generated content temporarily
+        mkdir -p /tmp/watcher-content
+        cp -r content /tmp/watcher-content/ 2>/dev/null || true
+        cp -r feeds /tmp/watcher-content/ 2>/dev/null || true
+
+        # Create or checkout gh-pages branch
+        if git show-ref --quiet refs/remotes/origin/gh-pages; then
+          echo "Checking out existing gh-pages branch..."
+          git fetch origin gh-pages
+          git checkout -f gh-pages
+        else
+          echo "Creating new gh-pages branch..."
+          git checkout --orphan gh-pages
+          git rm -rf . || true
+        fi
+
+        # Copy back the generated content
+        cp -r /tmp/watcher-content/content . 2>/dev/null || true
+        cp -r /tmp/watcher-content/feeds . 2>/dev/null || true
+        
+        # Add .nojekyll to prevent GitHub Pages from processing
+        touch .nojekyll
+        
+        # Add and commit
+        git add content feeds .nojekyll || true
+        if ! git diff --staged --quiet; then
+          git commit -m "Update tracked content - $(date +'%Y-%m-%d %H:%M:%S')"
+          git push origin gh-pages
+        else
+          echo "No changes to commit"
+        fi
+
+        # Switch back to original branch
+        git checkout -
+
+    - name: Setup Pages
+      if: inputs.deploy-to-pages == 'true' && inputs.generate-site == 'true'
+      uses: actions/configure-pages@v5
+
+    - name: Upload to Pages
+      if: inputs.deploy-to-pages == 'true' && inputs.generate-site == 'true'
+      uses: actions/upload-pages-artifact@v3
+      with:
+        path: ${{ inputs.output-dir }}
+
+    - name: Deploy to GitHub Pages
+      id: deployment
+      if: inputs.deploy-to-pages == 'true' && inputs.generate-site == 'true'
+      uses: actions/deploy-pages@v4
