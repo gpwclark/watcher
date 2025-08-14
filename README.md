@@ -16,13 +16,16 @@ View live example: [https://gpwclark.github.io/watcher/](https://gpwclark.github
 
 ### 1.  Use this repository as a template or create your own with these two files:
 
-**`sites.toml`** - List the websites you want to track:
+**`watcher-config.toml`** - List the websites you want to track:
 ```toml
-[[sites]]
+[watcher]
+# Future settings will go here
+
+[[watcher.sites]]
 url = "https://example.com/changelog"
 feed_name = "example-changelog"
 
-[[sites]]
+[[watcher.sites]]
 url = "https://news.site.com"
 feed_name = "news-site"
 ```
@@ -37,7 +40,7 @@ on:
   workflow_dispatch:       # Manual trigger
   push:
     branches: [ main ]
-    paths: [ 'sites.toml' ]
+    paths: [ 'watcher-config.toml' ]
 
 permissions:
   contents: write
@@ -79,13 +82,16 @@ YOUR-USERNAME in which case your site will live at: `https://YOUR-USERNAME.githu
 
 ## Configuration
 
-### sites.toml Format
+### watcher-config.toml Format
 
 ```toml
-[[sites]]
+[watcher]
+# Global settings can be added here in the future
+
+[[watcher.sites]]
 url = "https://example.com/changelog"  # Required: URL to track
 feed_name = "example-changelog"        # Required: Name for the feed (alphanumeric + hyphens)
-min_hours = 24                        # Optional: Minimum hours between checks (default: no limit) but practically it won't matter unless it's greater than the number of hours set in the cronjob.
+min_hours = 24                        # Optional: Minimum hours between checks (default: no limit)
 ```
 
 ### Action Options
@@ -95,7 +101,7 @@ The action supports these inputs (all have sensible defaults):
 ```yaml
 - uses: gpwclark/watcher@main
   with:
-    sites-config: sites.toml    # Path to config file
+    sites-config: watcher-config.toml    # Path to config file
     subdirectory: /             # Deploy to root or subdirectory like /tracker
     generate-site: true         # Generate the GitHub Pages site
     deploy-to-pages: true       # Deploy to GitHub Pages
@@ -126,3 +132,6 @@ on:
 - Government pages that might should not change but you'd like to know either way
 - Event schedules
 - API documentation
+
+## Local testing
+Check the p

@@ -7,9 +7,9 @@ branding:
 
 inputs:
   sites-config:
-    description: 'Path to sites.toml configuration file'
+    description: 'Path to watcher-config.toml configuration file'
     required: false
-    default: 'sites.toml'
+    default: 'watcher-config.toml'
   
   generate-site:
     description: 'Generate static site for GitHub Pages'
@@ -121,20 +121,21 @@ runs:
           ARGS="$ARGS --generate-site --output-dir ${{ inputs.output-dir }} --subdirectory ${{ inputs.subdirectory }}"
         fi
         
-        # Run watcher-batch and capture output
-        OUTPUT=$(flox activate -- uv run watcher-batch $ARGS 2>&1)
-        echo "$OUTPUT"
+        # Run watcher-batch - DO NOT CAPTURE OUTPUT, LET IT STREAM
+        flox activate -- uv run watcher-batch $ARGS | tee /tmp/watcher-output.txt
+        EXIT_CODE=${PIPESTATUS[0]}
         
         # Extract counts from output
-        UPDATED=$(echo "$OUTPUT" | grep -o "Updated: [0-9]*" | grep -o "[0-9]*" || echo "0")
-        ERRORS=$(echo "$OUTPUT" | grep -o "Errors: [0-9]*" | grep -o "[0-9]*" || echo "0")
+        UPDATED=$(grep -o "Updated: [0-9]*" /tmp/watcher-output.txt | grep -o "[0-9]*" || echo "0")
+        ERRORS=$(grep -o "Errors: [0-9]*" /tmp/watcher-output.txt | grep -o "[0-9]*" || echo "0")
         
         echo "updated-count=$UPDATED" >> $GITHUB_OUTPUT
         echo "error-count=$ERRORS" >> $GITHUB_OUTPUT
         
-        # Exit with error if there were any errors
-        if [ "$ERRORS" -gt 0 ]; then
-          exit 1
+        # Exit with the actual exit code from watcher-batch
+        if [ $EXIT_CODE -ne 0 ]; then
+          echo "::error::watcher-batch failed with exit code $EXIT_CODE"
+          exit $EXIT_CODE
         fi
 
     - name: Commit to gh-pages branch

@@ -12,7 +12,7 @@ on:
         type: string
   push:
     branches: [ main ]
-    paths: [ 'sites.toml' ]
+    paths: [ 'watcher-config.toml', 'sites.toml' ]  # Support both for transition
 
 permissions:
   contents: write
@@ -39,7 +39,7 @@ jobs:
         id: tracker
         uses: ./  # Use the action from this repo
         with:
-          sites-config: sites.toml
+          sites-config: watcher-config.toml
           subdirectory: ${{ github.event.inputs.subdirectory || '/' }}
           # Other available options we're using defaults for:
           # generate-site: true      # We want the static site

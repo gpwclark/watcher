@@ -16,8 +16,8 @@ def main():
     )
     parser.add_argument(
         "--config",
-        default="sites.toml",
-        help="Path to TOML configuration file (default: sites.toml)",
+        default="watcher-config.toml",
+        help="Path to TOML configuration file (default: watcher-config.toml)",
     )
     parser.add_argument(
         "--base-url", help="Base URL for RSS links (defaults to GitHub repo URL)"
@@ -58,9 +58,18 @@ def main():
         print(f"Error reading configuration: {e}")
         sys.exit(1)
 
-    sites = config.get("sites", [])
+    # Support both old format (top-level sites array) and new format (nested under watcher.sites)
+    sites = []
+    if "watcher" in config and "sites" in config["watcher"]:
+        # New format: watcher.sites
+        sites = config["watcher"]["sites"]
+    elif "sites" in config:
+        # Old format: top-level sites array
+        sites = config["sites"]
+        print("Note: Using legacy config format. Consider moving 'sites' under 'watcher' section.")
+    
     if not sites:
-        print("No sites found in configuration")
+        print("No sites found in configuration (looked for 'watcher.sites' and 'sites')")
         sys.exit(1)
 
     print(f"Processing {len(sites)} sites from {config_path}")
