@@ -18,7 +18,7 @@ def scrape_and_update_feed(request: ScraperRequest) -> ScraperResult:
     """
     try:
         # Initialize components
-        scraper = ContentScraper(request.url)
+        scraper = ContentScraper(request.url, request.exclude_tags)
         storage = ContentStorage(request.feed_name)
         rss_manager = RSSManager(request.feed_name, request.base_url)
 

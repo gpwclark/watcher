@@ -1,7 +1,7 @@
 """Data models for the watcher library."""
 
 from dataclasses import dataclass
-from typing import Optional
+from typing import Optional, List
 
 
 @dataclass
@@ -12,6 +12,7 @@ class ScraperRequest:
     feed_name: str
     base_url: Optional[str] = None
     min_hours: Optional[float] = None  # Minimum hours between checks
+    exclude_tags: Optional[List[str]] = None  # Tags to remove during scraping
 
 
 @dataclass

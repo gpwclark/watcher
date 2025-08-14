@@ -2,6 +2,7 @@
 url = "https://jank-lang.org/progress/"
 feed_name = "jank-progress"
 min_hours = 24  # Check once a day
+# exclude_tags = ["script", "style", "nav", "header", "footer"]  # Default tags excluded
 
 [[watcher.sites]]
 url = "https://www.timeanddate.com/counters/newyear.html"
@@ -14,6 +15,8 @@ feed_name = "example-changelog"
 [[watcher.sites]]
 url = "https://www.nih.gov/news-events/news-releases"
 feed_name = "nih-news"
+# Example: Also exclude aside and form elements for this site
+# exclude_tags = ["script", "style", "nav", "header", "footer", "aside", "form"]
 
 [[watcher.sites]]
 url = "https://disa.mil/NewsandEvents"

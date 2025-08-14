@@ -102,8 +102,15 @@ def main():
         # Get optional min_hours from config
         min_hours = site.get("min_hours")
 
+        # Get optional exclude_tags from config
+        exclude_tags = site.get("exclude_tags")
+
         request = ScraperRequest(
-            url=url, feed_name=feed_name, base_url=args.base_url, min_hours=min_hours
+            url=url,
+            feed_name=feed_name,
+            base_url=args.base_url,
+            min_hours=min_hours,
+            exclude_tags=exclude_tags
         )
 
         try:

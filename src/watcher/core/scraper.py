@@ -2,15 +2,16 @@ import requests
 from inscriptis import get_text
 from inscriptis.css_profiles import CSS_PROFILES
 from inscriptis.model.config import ParserConfig
-from typing import Optional, Dict
+from typing import Optional, Dict, List
 import hashlib
 from datetime import datetime, timezone
 from bs4 import BeautifulSoup
 
 
 class ContentScraper:
-    def __init__(self, url: str):
+    def __init__(self, url: str, exclude_tags: Optional[List[str]] = None):
         self.url = url
+        self.exclude_tags = exclude_tags or ["script", "style", "nav", "header", "footer"]
 
     def fetch_content(self) -> Optional[Dict[str, str]]:
         """Fetch and extract content from the URL using inscriptis."""
@@ -38,9 +39,7 @@ class ContentScraper:
             description = desc_tag.get("content", "").strip() if desc_tag else ""
 
             # Remove unwanted elements
-            for element in soup.find_all(
-                ["script", "style", "nav", "header", "footer"]
-            ):
+            for element in soup.find_all(self.exclude_tags):
                 element.decompose()
 
             # Get the body or main content
