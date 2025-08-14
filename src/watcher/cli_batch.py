@@ -34,10 +34,16 @@ def main():
     )
     parser.add_argument(
         "--subdirectory",
-        help='Subdirectory for deployment (e.g., "tracker" for /tracker/)',
+        default="/",
+        help='Subdirectory for deployment (must start with "/", e.g., "/tracker", "/" for root)',
     )
 
     args = parser.parse_args()
+
+    # Validate subdirectory
+    if args.subdirectory and not args.subdirectory.startswith("/"):
+        print(f"Error: Subdirectory must start with '/' (got: '{args.subdirectory}')")
+        sys.exit(1)
 
     # Load configuration
     config_path = Path(args.config)
@@ -125,8 +131,8 @@ def main():
                 content_dir=content_dir,
                 feeds_dir=feeds_dir,
                 base_url=args.base_url or "",
-                output_dir=output_dir,
                 subdirectory=args.subdirectory,
+                output_dir=output_dir,
             )
             print(f"Static site generated in: {output_dir}")
         except Exception as e:

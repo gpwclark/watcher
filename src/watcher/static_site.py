@@ -14,14 +14,15 @@ class StaticSiteGenerator:
         self.output_dir = Path(output_dir)
 
     def generate_site(
-        self, content_dir: Path, feeds_dir: Path, subdirectory: Optional[str] = None
+        self, content_dir: Path, feeds_dir: Path, subdirectory: str,
     ) -> None:
         """Generate complete static site with all necessary files."""
         # Create deployment directory
         self.output_dir.mkdir(exist_ok=True)
 
         # Determine deployment path
-        if subdirectory:
+        # Treat "/" as root (no subdirectory)
+        if subdirectory and subdirectory != "/":
             deploy_path = self.output_dir / subdirectory
             deploy_path.mkdir(parents=True, exist_ok=True)
         else:
@@ -280,8 +281,8 @@ def prepare_github_pages_content(
     content_dir: Path,
     feeds_dir: Path,
     base_url: str,
+    subdirectory: str,
     output_dir: Path = Path("deploy"),
-    subdirectory: Optional[str] = None,
 ) -> None:
     """Convenience function to generate static site for GitHub Pages."""
     generator = StaticSiteGenerator(base_url, output_dir)
