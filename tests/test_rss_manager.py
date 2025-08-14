@@ -51,10 +51,9 @@ class TestRSSManager:
 
         # Check that write was called
         mock_file().write.assert_called()
-        written_content = b"".join(
+        written_content = "".join(
             call.args[0] for call in mock_file().write.call_args_list
         )
-        written_content = written_content.decode("utf-8")
 
         # Verify RSS structure
         assert "<rss" in written_content
