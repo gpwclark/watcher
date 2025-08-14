@@ -1,4 +1,4 @@
-name: Track Websites (Simplified)
+name: GitHub Actions Website Snapshotting and Rss Feed Generation
 
 on:
   schedule:
@@ -30,7 +30,7 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     env:
-      SUBDIR: ${{ github.event.inputs.subdirectory || '' }}
+      SUBDIR: ${{ github.event.inputs.subdirectory || '/' }}
 
     steps:
       - uses: actions/checkout@v4
@@ -80,11 +80,6 @@ jobs:
             BASE_URL="https://${{ github.repository_owner }}.github.io"
           else
             BASE_URL="https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}"
-          fi
-
-          # Add subdirectory if specified
-          if [ -n "$SUBDIR" ]; then
-            BASE_URL="$BASE_URL/$SUBDIR"
           fi
 
           echo "Using base URL: $BASE_URL"
