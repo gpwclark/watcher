@@ -6,6 +6,7 @@ import tomllib
 from pathlib import Path
 from .lib import scrape_and_update_feed
 from .core.models import ScraperRequest
+from .static_site import prepare_github_pages_content
 
 
 def main():
@@ -22,6 +23,20 @@ def main():
     parser.add_argument(
         '--base-url',
         help='Base URL for RSS links (defaults to GitHub repo URL)'
+    )
+    parser.add_argument(
+        '--generate-site',
+        action='store_true',
+        help='Generate static site files for GitHub Pages'
+    )
+    parser.add_argument(
+        '--output-dir',
+        default='deploy',
+        help='Output directory for static site (default: deploy)'
+    )
+    parser.add_argument(
+        '--subdirectory',
+        help='Subdirectory for deployment (e.g., "tracker" for /tracker/)'
     )
 
     args = parser.parse_args()
@@ -97,6 +112,31 @@ def main():
     print(f"  Updated: {changed}")
     print(f"  Errors: {errors}")
     print(f"  Unchanged: {total - changed - errors}")
+
+    # Generate static site if requested
+    if args.generate_site:
+        print(f"\nGenerating static site...")
+        content_dir = Path("content")
+        feeds_dir = Path("feeds")
+        output_dir = Path(args.output_dir)
+
+        if not content_dir.exists():
+            print("Warning: No content directory found")
+        if not feeds_dir.exists():
+            print("Warning: No feeds directory found")
+
+        try:
+            prepare_github_pages_content(
+                content_dir=content_dir,
+                feeds_dir=feeds_dir,
+                base_url=args.base_url or "",
+                output_dir=output_dir,
+                subdirectory=args.subdirectory
+            )
+            print(f"Static site generated in: {output_dir}")
+        except Exception as e:
+            print(f"Error generating static site: {e}")
+            errors += 1
 
     # Exit with error if any failed
     sys.exit(1 if errors > 0 else 0)

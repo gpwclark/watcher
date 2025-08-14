@@ -55,7 +55,7 @@ def scrape_and_update_feed(request: ScraperRequest) -> ScraperResult:
         description = content_data.get('description', f'Update from {request.url}')
         if diff_content:
             # Include full diff without truncation, wrapped in pre/code tags
-            # The RSS manager will handle CDATA wrapping
+            # The RSS manager will wrap this in CDATA sections
             description = f"{description}\n\n<pre><code>{diff_content}</code></pre>"
 
         # Update RSS feed

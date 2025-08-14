@@ -5,7 +5,8 @@ description = "A git-scraping tool with RSS feed generation"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
-    "trafilatura>=1.6.0",
+    "inscriptis>=2.3.0",
+    "beautifulsoup4>=4.12.0",
     "feedgenerator>=2.1.0",
     "requests>=2.31.0",
     "gitpython>=3.1.0",
@@ -16,6 +17,7 @@ dependencies = [
 [project.scripts]
 watcher = "watcher.cli:main"
 watcher-batch = "watcher.cli_batch:main"
+watcher-preview = "watcher.local_preview:main"
 
 [project.optional-dependencies]
 test = [

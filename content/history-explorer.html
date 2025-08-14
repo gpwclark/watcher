@@ -303,14 +303,51 @@
             this.setupEventListeners();
             await this.loadAvailableFeeds();
             
-            // Check for feed parameter in URL
+            // Parse all URL parameters
             const urlParams = new URLSearchParams(window.location.search);
             const feedParam = urlParams.get('feed');
+            const viewParam = urlParams.get('view');
+            const entryParam = urlParams.get('entry');
+            const dateParam = urlParams.get('date');
+            
+            // Set initial view if specified
+            if (viewParam && ['diff', 'rendered', 'source'].includes(viewParam)) {
+                this.currentView = viewParam;
+                // Update tab UI
+                document.querySelectorAll('.tab-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                document.querySelector(`.tab-btn[data-view="${viewParam}"]`)?.classList.add('active');
+            }
+            
             if (feedParam) {
                 // Set the select value and load the feed
                 const select = document.getElementById('feed-select');
                 select.value = feedParam;
                 await this.loadFeed(feedParam);
+                
+                // Select specific entry if specified
+                if (this.entries.length > 0) {
+                    let indexToSelect = 0;
+                    
+                    if (entryParam !== null && entryParam !== undefined) {
+                        const entryIndex = parseInt(entryParam);
+                        if (!isNaN(entryIndex) && entryIndex >= 0 && entryIndex < this.entries.length) {
+                            indexToSelect = entryIndex;
+                        }
+                    } else if (dateParam) {
+                        // Find entry by date
+                        const targetDate = new Date(dateParam);
+                        const closestIndex = this.entries.findIndex(entry => 
+                            Math.abs(entry.date - targetDate) < 1000 // Within 1 second
+                        );
+                        if (closestIndex !== -1) {
+                            indexToSelect = closestIndex;
+                        }
+                    }
+                    
+                    await this.selectEntry(indexToSelect);
+                }
             }
         }
 
@@ -385,7 +422,7 @@
                 
                 // Parse RSS items
                 const items = xml.querySelectorAll('item');
-                this.entries = Array.from(items).map(item => {
+                this.entries = Array.from(items).map((item, i) => {
                     const description = item.querySelector('description')?.textContent || '';
                     const pubDate = item.querySelector('pubDate')?.textContent || '';
                     const title = item.querySelector('title')?.textContent || '';
@@ -407,14 +444,30 @@
                     let additions = 0;
                     let deletions = 0;
                     
-                    // Clean CDATA wrapper if present
-                    let cleanDesc = description.replace(/<!\[CDATA\[/, '').replace(/\]\]>/, '');
-                    const diffMatch = cleanDesc.match(/\n(@@ .+)/s);
+                    // Extract diff from raw CDATA content (handle both encoded and non-encoded)
+                    const diffMatch = description.match(/\n\n(?:<pre><code>|&lt;pre&gt;&lt;code&gt;)(@@[\s\S]*)(?:<\/code><\/pre>|&lt;\/code&gt;&lt;\/pre&gt;)/);
                     if (diffMatch) {
                         diff = diffMatch[1];
+                        // Decode HTML entities if present
+                        const tempDiv = document.createElement('div');
+                        tempDiv.innerHTML = diff;
+                        diff = tempDiv.textContent || tempDiv.innerText || '';
                         // Count additions and deletions
                         additions = (diff.match(/^\+[^+]/gm) || []).length;
                         deletions = (diff.match(/^-[^-]/gm) || []).length;
+                    }
+                    
+                    // Debug logging for the newest entry
+                    if (i === 0) {
+                        console.log('First entry debug:', {
+                            title,
+                            descriptionLength: description.length,
+                            descriptionPreview: description.substring(0, 200),
+                            hasPreCode: description.includes('<pre><code>'),
+                            hasEncodedPreCode: description.includes('&lt;pre&gt;&lt;code&gt;'),
+                            diffMatchFound: !!diffMatch,
+                            diff: diff ? diff.substring(0, 100) + '...' : null
+                        });
                     }
                     
                     return {
@@ -424,7 +477,7 @@
                         diff: diff,
                         additions: additions,
                         deletions: deletions,
-                        description: cleanDesc.split('\n@@')[0].trim()
+                        description: description.split('\n\n<pre>')[0].trim()
                     };
                 }).sort((a, b) => b.date - a.date);
                 
@@ -479,8 +532,12 @@
             document.querySelector(`.timeline-item[data-index="${index}"]`)?.classList.add('active');
             
             this.currentEntry = this.entries[index];
+            this.selectedIndex = index;
             document.getElementById('content-title').textContent = 
                 `${this.currentEntry.title} - ${this.currentEntry.date.toLocaleString()}`;
+            
+            // Update URL with current state
+            this.updateURL();
             
             // Load content
             await this.loadContent();
@@ -653,7 +710,8 @@
                     this.displayRendered(data, contentBody);
                     break;
                 case 'diff':
-                    this.displayDiff(data, contentBody);
+                    // Pass the current entry which contains the diff
+                    this.displayDiff(this.currentEntry, contentBody);
                     break;
                 case 'source':
                     this.displaySource(data, contentBody);
@@ -681,6 +739,13 @@
         }
 
         displayDiff(data, container) {
+            console.log('displayDiff called with data:', {
+                hasDiff: !!data.diff,
+                diffLength: data.diff ? data.diff.length : 0,
+                diffPreview: data.diff ? data.diff.substring(0, 100) : null,
+                currentEntry: this.currentEntry
+            });
+            
             if (!data.diff) {
                 container.innerHTML = '<div class="no-data">No diff available for this version</div>';
                 return;
@@ -719,10 +784,33 @@ ${data.diff}`;
             });
             document.querySelector(`.tab-btn[data-view="${view}"]`).classList.add('active');
             
+            // Update URL with current state
+            this.updateURL();
+            
             // Reload content in new view
             if (this.currentEntry) {
                 this.loadContent();
             }
+        }
+        
+        updateURL() {
+            const params = new URLSearchParams();
+            
+            if (this.currentFeed) {
+                params.set('feed', this.currentFeed);
+            }
+            
+            if (this.currentView !== 'rendered') {
+                params.set('view', this.currentView);
+            }
+            
+            if (this.selectedIndex !== null && this.selectedIndex !== undefined && this.selectedIndex !== 0) {
+                params.set('entry', this.selectedIndex);
+            }
+            
+            // Update URL without page reload
+            const newURL = window.location.pathname + '?' + params.toString();
+            window.history.replaceState({}, '', newURL);
         }
 
         escapeHtml(text) {

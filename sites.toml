@@ -8,4 +8,8 @@ min_hours = 24  # Check once a day
 
 [[sites]]
 url = "https://www.timeanddate.com/counters/newyear.html"
+feed_name = "example-changelog2"
+
+[[sites]]
+url = "https://www.timeanddate.com/counters/newyear.html"
 feed_name = "example-changelog"
