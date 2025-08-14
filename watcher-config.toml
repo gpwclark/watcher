@@ -18,3 +18,9 @@ feed_name = "nih-news"
 [[watcher.sites]]
 url = "https://disa.mil/NewsandEvents"
 feed_name = "disa-mil-news"
+
+[[watcher.sites]]
+url = "https://www.dni.gov/index.php/newsroom/press-releases/press-releases-2025"
+feed_name = "ohhhhhhhh-dni"
+
+
