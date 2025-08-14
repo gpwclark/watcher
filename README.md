@@ -1,22 +1,20 @@
 # Website Change Tracker
 
-Automatically track changes to websites and generate RSS feeds with a beautiful GitHub Pages site.
+Automatically track changes to websites and generate RSS feeds with a GitHub Pages site.
 
 ## What You Get
 
-- 📊 A hosted webpage showing all changes to tracked websites
-- 📰 RSS feeds for each tracked site
-- 🔍 Visual diffs showing exactly what changed
-- 📅 Complete history of all changes
-- 🚀 Zero infrastructure - runs entirely on GitHub Actions
+-  A hosted webpage showing all changes to tracked websites
+-  RSS feeds for each tracked site with a link to a plain html file that is mostly what you want.
+-  Visual diffs showing exactly what changed
+-  Complete history of all changes
+-  Zero infrastructure - runs entirely on GitHub Actions
 
 View live example: [https://gpwclark.github.io/watcher/](https://gpwclark.github.io/watcher/)
 
-## Quick Start (2 Minutes)
+## Quick Start 
 
-### 1. Create Your Repository
-
-Use this repository as a template or create your own with these two files:
+### 1.  Use this repository as a template or create your own with these two files:
 
 **`sites.toml`** - List the websites you want to track:
 ```toml
@@ -72,12 +70,12 @@ jobs:
 ### 3. That's It!
 
 Push your files and the action will:
-- Run automatically every 6 hours
-- Track changes to all your sites
-- Generate RSS feeds
-- Deploy a beautiful site to GitHub Pages
+- Run automatically every 6 hours.
+- Generate RSS feeds that update when changes are detected showing the diffs and linking to the new source.
+- All hosted on GitHub pages, statically.
 
-Your site will be live at: `https://YOUR-USERNAME.github.io/YOUR-REPO/`
+Your site will be live at: `https://YOUR-USERNAME.github.io/YOUR-REPO/` unless it is in a repo called
+YOUR-USERNAME in which case your site will live at: `https://YOUR-USERNAME.github.io/`
 
 ## Configuration
 
@@ -87,7 +85,7 @@ Your site will be live at: `https://YOUR-USERNAME.github.io/YOUR-REPO/`
 [[sites]]
 url = "https://example.com/changelog"  # Required: URL to track
 feed_name = "example-changelog"        # Required: Name for the feed (alphanumeric + hyphens)
-min_hours = 1.0                        # Optional: Minimum hours between checks (default: no limit)
+min_hours = 24                        # Optional: Minimum hours between checks (default: no limit) but practically it won't matter unless it's greater than the number of hours set in the cronjob.
 ```
 
 ### Action Options
@@ -123,5 +121,8 @@ on:
 - Documentation updates
 - Competition websites
 - Government announcements
+- Government pages that change
+- Government pages that might change
+- Government pages that might should not change but you'd like to know either way
 - Event schedules
 - API documentation
