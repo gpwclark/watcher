@@ -95,7 +95,9 @@ class PreviewServer:
         # Don't use check=True - we want to continue even if some sites fail
         result = subprocess.run(cmd, cwd=self.repo_path)
         if result.returncode != 0:
-            print(f"Warning: watcher-batch exited with code {result.returncode} (some sites may have failed)")
+            print(
+                f"Warning: watcher-batch exited with code {result.returncode} (some sites may have failed)"
+            )
 
     def generate_static_site(self, subdirectory: Optional[str] = None) -> Path:
         """Generate static site files."""

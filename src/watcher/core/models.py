@@ -25,3 +25,4 @@ class ScraperResult:
     error_message: Optional[str] = None
     content_hash: Optional[str] = None
     skipped: bool = False  # True if skipped due to min_hours
+    error_details: Optional[dict] = None  # Full error details including stack trace

@@ -1,9 +1,12 @@
 """Batch CLI for processing multiple sites from a TOML file."""
 
 import argparse
+import json
 import sys
 import tomllib
+import traceback
 from pathlib import Path
+from datetime import datetime
 from .lib import scrape_and_update_feed
 from .core.models import ScraperRequest
 from .static_site import prepare_github_pages_content
@@ -66,10 +69,14 @@ def main():
     elif "sites" in config:
         # Old format: top-level sites array
         sites = config["sites"]
-        print("Note: Using legacy config format. Consider moving 'sites' under 'watcher' section.")
-    
+        print(
+            "Note: Using legacy config format. Consider moving 'sites' under 'watcher' section."
+        )
+
     if not sites:
-        print("No sites found in configuration (looked for 'watcher.sites' and 'sites')")
+        print(
+            "No sites found in configuration (looked for 'watcher.sites' and 'sites')"
+        )
         sys.exit(1)
 
     print(f"Processing {len(sites)} sites from {config_path}")
@@ -78,6 +85,7 @@ def main():
     total = len(sites)
     changed = 0
     errors = 0
+    error_details = []  # Track detailed error information
 
     # Process each site
     for site in sites:
@@ -104,6 +112,32 @@ def main():
             if not result.success:
                 print(f"  Error: {result.error_message}")
                 errors += 1
+                # Use full error details if available
+                if result.error_details:
+                    error_info = {
+                        "timestamp": datetime.utcnow().isoformat(),
+                        "feed_name": feed_name,
+                        "url": url,
+                        "error": result.error_message,
+                        "error_type": result.error_details.get(
+                            "error_type", "ScraperError"
+                        ),
+                        "error_module": result.error_details.get("error_module"),
+                        "stack_trace": result.error_details.get("stack_trace"),
+                        "min_hours": min_hours,
+                        "site_config": site,
+                    }
+                else:
+                    error_info = {
+                        "timestamp": datetime.utcnow().isoformat(),
+                        "feed_name": feed_name,
+                        "url": url,
+                        "error": result.error_message,
+                        "error_type": "ScraperError",
+                        "min_hours": min_hours,
+                        "site_config": site,
+                    }
+                error_details.append(error_info)
             elif result.skipped:
                 print(f"  Skipped: {result.error_message}")
             elif result.changed:
@@ -115,6 +149,20 @@ def main():
         except Exception as e:
             print(f"  Unexpected error: {e}")
             errors += 1
+            # Capture full error details including stack trace
+            error_details.append(
+                {
+                    "timestamp": datetime.utcnow().isoformat(),
+                    "feed_name": feed_name,
+                    "url": url,
+                    "error": str(e),
+                    "error_type": type(e).__name__,
+                    "error_module": type(e).__module__,
+                    "stack_trace": traceback.format_exc(),
+                    "min_hours": min_hours,
+                    "site_config": site,  # Include full site config
+                }
+            )
 
     # Summary
     print("\nSummary:")
@@ -122,6 +170,13 @@ def main():
     print(f"  Updated: {changed}")
     print(f"  Errors: {errors}")
     print(f"  Unchanged: {total - changed - errors}")
+
+    # Save error details to JSON file
+    if error_details:
+        error_file = Path("errors.json")
+        with open(error_file, "w") as f:
+            json.dump(error_details, f, indent=2)
+        print(f"\nError details saved to: {error_file}")
 
     # Generate static site if requested
     if args.generate_site:

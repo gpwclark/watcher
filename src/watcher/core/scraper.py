@@ -90,5 +90,15 @@ class ContentScraper:
             }
 
         except Exception as e:
+            import traceback
+
             print(f"Error scraping {self.url}: {str(e)}")
-            return None
+            # Return error details instead of None
+            return {
+                "error": True,
+                "error_message": str(e),
+                "error_type": type(e).__name__,
+                "error_module": type(e).__module__,
+                "stack_trace": traceback.format_exc(),
+                "url": self.url,
+            }

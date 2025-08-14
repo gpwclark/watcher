@@ -40,6 +40,15 @@ def scrape_and_update_feed(request: ScraperRequest) -> ScraperResult:
                 error_message="Failed to fetch content from URL",
             )
 
+        # Check if it's an error response
+        if isinstance(content_data, dict) and content_data.get("error"):
+            return ScraperResult(
+                success=False,
+                changed=False,
+                error_message=content_data.get("error_message", "Unknown error"),
+                error_details=content_data,  # Pass along all error details
+            )
+
         # Save content if changed
         save_result = storage.save_content(content_data)
         if not save_result:

@@ -14,7 +14,10 @@ class StaticSiteGenerator:
         self.output_dir = Path(output_dir)
 
     def generate_site(
-        self, content_dir: Path, feeds_dir: Path, subdirectory: str,
+        self,
+        content_dir: Path,
+        feeds_dir: Path,
+        subdirectory: str,
     ) -> None:
         """Generate complete static site with all necessary files."""
         # Create deployment directory
@@ -34,6 +37,11 @@ class StaticSiteGenerator:
 
         if feeds_dir.exists():
             shutil.copytree(feeds_dir, deploy_path / "feeds", dirs_exist_ok=True)
+
+        # Copy errors.json if it exists
+        errors_file = Path("errors.json")
+        if errors_file.exists():
+            shutil.copy2(errors_file, deploy_path / "errors.json")
 
         # Copy history explorer files to deployment root
         history_files = [
@@ -203,6 +211,9 @@ class StaticSiteGenerator:
         <div class="header">
             <h1>📡 Website Change Tracker</h1>
             <p class="subtitle">Monitoring websites for updates via RSS feeds</p>
+            <p id="errorNotice" style="color: #d32f2f; font-size: 0.9em; margin-top: 10px; display: none;">
+                ⚠️ Check the bottom of the page for issues with some feeds
+            </p>
         </div>
 
         <div id="feedsContainer" class="feeds-grid">
@@ -215,6 +226,13 @@ class StaticSiteGenerator:
             <a href="history-explorer.html" class="explorer-button">Open History Explorer</a>
         </div>
 
+        <div id="errorsContainer" style="display: none;">
+            <div style="background: white; border-radius: 12px; padding: 30px; margin-top: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                <h2 style="color: #d32f2f; margin-bottom: 20px;">⚠️ Feed Processing Errors</h2>
+                <div id="errorsList"></div>
+            </div>
+        </div>
+
         <div class="last-updated">
             Last updated: <span id="lastUpdated"></span>
         </div>
@@ -223,6 +241,61 @@ class StaticSiteGenerator:
     <script>
         // Set last updated time
         document.getElementById('lastUpdated').textContent = new Date().toLocaleString();
+
+        // Load errors if any
+        async function loadErrors() {
+            try {
+                const response = await fetch('errors.json');
+                if (response.ok) {
+                    const errors = await response.json();
+                    if (errors && errors.length > 0) {
+                        document.getElementById('errorNotice').style.display = 'block';
+                        document.getElementById('errorsContainer').style.display = 'block';
+
+                        const errorsList = document.getElementById('errorsList');
+                        errorsList.innerHTML = errors.map((error, index) => `
+                            <div style="background: #ffebee; border-left: 4px solid #d32f2f; padding: 15px; margin-bottom: 15px; border-radius: 4px;">
+                                <div style="font-weight: 600; color: #d32f2f; margin-bottom: 10px;">
+                                    ${error.feed_name}
+                                </div>
+                                <div style="color: #666; font-size: 0.9em; margin-bottom: 8px;">
+                                    <strong>URL:</strong> <code style="background: #f5f5f5; padding: 2px 4px; border-radius: 3px;">${error.url}</code>
+                                </div>
+                                <div style="color: #666; font-size: 0.9em; margin-bottom: 8px;">
+                                    <strong>Error Type:</strong> ${error.error_type || 'Unknown'}
+                                    ${error.error_module ? ` (${error.error_module})` : ''}
+                                </div>
+                                <div style="color: #666; font-size: 0.9em; margin-bottom: 8px;">
+                                    <strong>Error Message:</strong> ${error.error}
+                                </div>
+                                ${error.stack_trace ? `
+                                    <details style="margin-top: 10px;">
+                                        <summary style="cursor: pointer; color: #666; font-size: 0.9em; font-weight: 600;">
+                                            Show Full Stack Trace
+                                        </summary>
+                                        <pre style="background: #f5f5f5; padding: 10px; border-radius: 3px; overflow-x: auto; font-size: 0.8em; margin-top: 5px; white-space: pre-wrap; word-wrap: break-word;">${error.stack_trace}</pre>
+                                    </details>
+                                ` : ''}
+                                ${error.site_config ? `
+                                    <details style="margin-top: 10px;">
+                                        <summary style="cursor: pointer; color: #666; font-size: 0.9em; font-weight: 600;">
+                                            Show Site Configuration
+                                        </summary>
+                                        <pre style="background: #f5f5f5; padding: 10px; border-radius: 3px; overflow-x: auto; font-size: 0.8em; margin-top: 5px;">${JSON.stringify(error.site_config, null, 2)}</pre>
+                                    </details>
+                                ` : ''}
+                                <div style="color: #999; font-size: 0.85em; margin-top: 10px;">
+                                    Occurred at: ${new Date(error.timestamp).toLocaleString()}
+                                    ${error.min_hours ? ` • Min hours between checks: ${error.min_hours}` : ''}
+                                </div>
+                            </div>
+                        `).join('');
+                    }
+                }
+            } catch (error) {
+                console.log('No errors file found or error loading it:', error);
+            }
+        }
 
         // Load feeds dynamically
         async function loadFeeds() {
@@ -269,6 +342,7 @@ class StaticSiteGenerator:
         }
 
         loadFeeds();
+        loadErrors();
     </script>
 </body>
 </html>"""

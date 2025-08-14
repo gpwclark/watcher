@@ -134,4 +134,7 @@ on:
 - API documentation
 
 ## Local testing
-Check the p
+
+flox activate -- uv run watcher-preview
+
+runs a server locally!
