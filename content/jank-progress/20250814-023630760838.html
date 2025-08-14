@@ -1,0 +1,1463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jank programming language - Clojure/LLVM/C++</title>
+    <meta name="source-url" content="https://jank-lang.org/progress/">
+    <meta name="scraped-at" content="2025-08-14T02:36:30.760625+00:00">
+    <meta name="content-hash" content="a04cbacde5851f012c69449b17396b5dcbfce0133f96bad7c9add89c015f3564">
+    <meta name="rss-feed-url" content="../../../feeds/jank-progress.xml">
+    <script src="../../history-viewer.js"></script>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f5f5f5;
+        }
+        code {
+            background: #f4f4f4;
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+        pre {
+            background: #f4f4f4;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        .metadata {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="metadata">
+        <strong>Source:</strong> <a href="https://jank-lang.org/progress/">https://jank-lang.org/progress/</a><br>
+        <strong>Captured:</strong> 2025-08-14T02:36:30.760625+00:00<br>
+        <strong>Title:</strong> jank programming language - Clojure/LLVM/C++<br>
+        <strong>📜 <a href="../history-explorer.html?feed=jank-progress" style="color: #667eea;">View Full History with Diffs</a></strong>
+    </div>
+    <div class="content">
+        <p>jank is under heavy development. It's safest to assume that any feature advertised is partially developed or in the planning stages. There is no sales pitch here; just a lot of work and some big plans. All development happens on Github, so watch the repo there!</p>
+<p>[Github](https://github.com/jank-lang/jank)[Sponsor](https://github.com/sponsors/jeaye)</p>
+<p>Milestone: Clojure syntax parityStatus: 93% complete</p>
+<p>Feature</p>
+<pre>comments                            lex   parse</pre>
+<pre>nil                                 lex   parse  analyze  eval</pre>
+<pre>integers                            lex   parse  analyze  eval</pre>
+<pre>reals                               lex   parse  analyze  eval</pre>
+<pre>bools                               lex   parse  analyze  eval</pre>
+<pre>chars                               lex   parse  analyze  eval</pre>
+<pre>strings                             lex   parse  analyze  eval</pre>
+<pre>keywords/unqualified                lex   parse  analyze  eval</pre>
+<pre>keywords/qualified                  lex   parse  analyze  eval</pre>
+<p>keywords/auto-resolved-unqualified  lex   parse  analyze  eval</p>
+<pre>keywords/auto-resolved-qualified    lex   parse  analyze  eval</pre>
+<pre>maps                                lex   parse  analyze  eval</pre>
+<pre>vectors                             lex   parse  analyze  eval</pre>
+<pre>sets                                lex   parse  analyze  eval</pre>
+<pre>lists                               lex   parse  analyze  eval</pre>
+<pre>symbols                             lex   parse  analyze  eval</pre>
+<pre>ratios                              lex   parse  analyze  eval</pre>
+<pre>specials/def                        lex   parse  analyze  eval</pre>
+<pre>specials/if                         lex   parse  analyze  eval</pre>
+<pre>specials/do                         lex   parse  analyze  eval</pre>
+<pre>specials/let*                       lex   parse  analyze  eval</pre>
+<pre>specials/quote                      lex   parse  analyze  eval</pre>
+<pre>specials/var                        lex   parse  analyze  eval</pre>
+<pre>specials/fn*/base                   lex   parse  analyze  eval</pre>
+<pre>specials/fn*/arities                lex   parse  analyze  eval</pre>
+<pre>specials/fn*/variadic               lex   parse  analyze  eval</pre>
+<pre>specials/fn*/recur                  lex   parse  analyze  eval</pre>
+<pre>specials/loop*                      lex   parse  analyze  eval</pre>
+<pre>specials/loop*/recur                lex   parse  analyze  eval</pre>
+<pre>specials/throw                      lex   parse  analyze  eval</pre>
+<pre>specials/try                        lex   parse  analyze  eval</pre>
+<pre>specials/monitor-enter              na</pre>
+<pre>specials/monitor-exit               na</pre>
+<pre>specials/set!                       lex   parse  analyze  eval</pre>
+<pre>specials/case*                      lex   parse  analyze  eval</pre>
+<pre>specials/letfn*                     lex   parse  analyze  eval</pre>
+<pre>bindings/thread-local               done</pre>
+<pre>bindings/conveyance                 done</pre>
+<pre>calls                               lex   parse  analyze  eval</pre>
+<pre>destructuring                       lex   parse  analyze  eval</pre>
+<pre>macros                              lex   parse  analyze  eval</pre>
+<pre>macros/&env param                   pass  set</pre>
+<pre>syntax-quoting                      lex   parse</pre>
+<pre>syntax-quoting/unquote              lex   parse</pre>
+<pre>meta hints                          lex   parse</pre>
+<pre>reader macros/comment               lex   parse</pre>
+<pre>reader macros/set                   lex   parse</pre>
+<pre>reader macros/shorthand fns         lex   parse</pre>
+<pre>reader-macros/regex                 lex   parse</pre>
+<pre>reader-macros/deref                 lex   parse</pre>
+<pre>reader-macros/quote                 lex   parse</pre>
+<pre>reader-macros/var quoting           lex   parse</pre>
+<pre>reader-macros/conditional           lex   parse</pre>
+<pre>reader-macros/tagged-literal        lex   parse</pre>
+<br>
+<p>Milestone: Clojure library parityStatus: 57% complete</p>
+<p>Feature</p>
+<pre>*                             done</pre>
+<pre>*'                            done</pre>
+<pre>*1                            done</pre>
+<pre>*2                            done</pre>
+<pre>*3                            done</pre>
+<pre>*agent*                       done</pre>
+<pre>*allow-unresolved-vars*       done</pre>
+<pre>*assert*                      done</pre>
+<pre>*clojure-version*             done</pre>
+<pre>*command-line-args*           done</pre>
+<pre>*compile-files*               done</pre>
+<pre>*compile-path*                done</pre>
+<pre>*compiler-options*            done</pre>
+<pre>*data-readers*                done</pre>
+<pre>*default-data-reader-fn*      done</pre>
+<pre>*e                            done</pre>
+<pre>*err*                         done</pre>
+<pre>*file*                        done</pre>
+<pre>*flush-on-newline*            done</pre>
+<pre>*fn-loader*                   done</pre>
+<pre>*in*                          done</pre>
+<pre>*math-context*                done</pre>
+<pre>*ns*                          done</pre>
+<pre>*out*                         done</pre>
+<pre>*print-dup*                   done</pre>
+<pre>*print-length*                done</pre>
+<pre>*print-level*                 done</pre>
+<pre>*print-meta*                  done</pre>
+<pre>*print-namespace-maps*        done</pre>
+<pre>*print-readably*              done</pre>
+<pre>*read-eval*                   done</pre>
+<pre>*reader-resolver*             done</pre>
+<pre>*source-path*                 done</pre>
+<pre>*suppress-read*               done</pre>
+<pre>*unchecked-math*              done</pre>
+<pre>*verbose-defrecords*          done</pre>
+<pre>+                             done</pre>
+<pre>+'                            done</pre>
+<pre>-                             done</pre>
+<pre>-'                            done</pre>
+<pre>->                            done</pre>
+<pre>->>                           done</pre>
+<pre>/                             done</pre>
+<pre><                             done</pre>
+<pre><=                            done</pre>
+<pre>=                             done</pre>
+<pre>==                            done</pre>
+<pre>>                             done</pre>
+<pre>>=                            done</pre>
+<pre>Inst                          done</pre>
+<pre>NaN?                          done</pre>
+<p>accessor</p>
+<pre>aclone                        done</pre>
+<pre>add-classpath                 done</pre>
+<pre>add-tap                       done</pre>
+<pre>add-watch                     done</pre>
+<pre>agent                         done</pre>
+<pre>agent-error                   done</pre>
+<pre>agent-errors                  done</pre>
+<pre>aget                          done</pre>
+<pre>alength                       done</pre>
+<pre>alias                         done</pre>
+<pre>all-ns                        done</pre>
+<pre>alter                         done</pre>
+<pre>alter-meta!                   done</pre>
+<pre>alter-var-root                done</pre>
+<pre>amap                          done</pre>
+<pre>ancestors                     done</pre>
+<pre>and                           done</pre>
+<pre>any?                          done</pre>
+<pre>apply                         done</pre>
+<pre>areduce                       done</pre>
+<pre>array-map                     done</pre>
+<pre>as->                          done</pre>
+<pre>aset                          done</pre>
+<pre>aset-boolean                  done</pre>
+<pre>aset-byte                     done</pre>
+<pre>aset-char                     done</pre>
+<pre>aset-double                   done</pre>
+<pre>aset-float                    done</pre>
+<pre>aset-int                      done</pre>
+<pre>aset-long                     done</pre>
+<pre>aset-short                    done</pre>
+<pre>assert                        done</pre>
+<pre>assoc                         done</pre>
+<pre>assoc!                        done</pre>
+<pre>assoc-in                      done</pre>
+<pre>associative?                  done</pre>
+<pre>atom                          done</pre>
+<pre>await                         done</pre>
+<pre>await-for                     done</pre>
+<pre>await1                        done</pre>
+<pre>bases                         na</pre>
+<pre>bean                          done</pre>
+<pre>bigdec                        done</pre>
+<pre>bigint                        done</pre>
+<pre>biginteger                    done</pre>
+<pre>binding                       done</pre>
+<pre>bit-and                       done</pre>
+<pre>bit-and-not                   done</pre>
+<pre>bit-clear                     done</pre>
+<pre>bit-flip                      done</pre>
+<pre>bit-not                       done</pre>
+<pre>bit-or                        done</pre>
+<pre>bit-set                       done</pre>
+<pre>bit-shift-left                done</pre>
+<pre>bit-shift-right               done</pre>
+<pre>bit-test                      done</pre>
+<pre>bit-xor                       done</pre>
+<pre>boolean                       done</pre>
+<pre>boolean-array                 done</pre>
+<pre>boolean?                      done</pre>
+<pre>booleans                      done</pre>
+<pre>bound-fn                      done</pre>
+<pre>bound-fn*                     done</pre>
+<pre>bound?                        done</pre>
+<pre>bounded-count                 done</pre>
+<pre>butlast                       done</pre>
+<pre>byte                          done</pre>
+<pre>byte-array                    done</pre>
+<pre>bytes                         done</pre>
+<pre>bytes?                        done</pre>
+<pre>case                          done</pre>
+<pre>cast                          done</pre>
+<pre>cat                           done</pre>
+<pre>char                          done</pre>
+<pre>char-array                    done</pre>
+<pre>char-escape-string            done</pre>
+<pre>char-name-string              done</pre>
+<pre>char?                         done</pre>
+<pre>chars                         done</pre>
+<pre>chunk                         done</pre>
+<pre>chunk-append                  done</pre>
+<pre>chunk-buffer                  done</pre>
+<pre>chunk-cons                    done</pre>
+<pre>chunk-first                   done</pre>
+<pre>chunk-next                    done</pre>
+<pre>chunk-rest                    done</pre>
+<pre>chunked-seq?                  done</pre>
+<pre>class                         done</pre>
+<pre>class?                        done</pre>
+<pre>clear-agent-errors            done</pre>
+<pre>clojure-version               done</pre>
+<pre>coll?                         done</pre>
+<pre>comment                       done</pre>
+<pre>commute                       done</pre>
+<pre>comp                          done</pre>
+<pre>comparator                    done</pre>
+<pre>compare                       done</pre>
+<pre>compare-and-set!              done</pre>
+<pre>compile                       done</pre>
+<pre>complement                    done</pre>
+<pre>completing                    done</pre>
+<pre>concat                        done</pre>
+<pre>cond                          done</pre>
+<pre>cond->                        done</pre>
+<pre>cond->>                       done</pre>
+<pre>condp                         done</pre>
+<pre>conj                          done</pre>
+<pre>conj!                         done</pre>
+<pre>cons                          done</pre>
+<pre>constantly                    done</pre>
+<pre>construct-proxy               done</pre>
+<pre>contains?                     done</pre>
+<pre>count                         done</pre>
+<pre>counted?                      done</pre>
+<pre>create-ns                     done</pre>
+<p>create-struct</p>
+<pre>cycle                         done</pre>
+<pre>dec                           done</pre>
+<pre>dec'                          done</pre>
+<pre>decimal?                      done</pre>
+<pre>declare                       done</pre>
+<pre>dedupe                        done</pre>
+<pre>default-data-readers          done</pre>
+<pre>definline                     done</pre>
+<pre>definterface                  done</pre>
+<pre>defmacro                      done</pre>
+<pre>defmethod                     done</pre>
+<pre>defmulti                      done</pre>
+<pre>defn                          done</pre>
+<pre>defn-                         done</pre>
+<pre>defonce                       done</pre>
+<pre>defprotocol                   done</pre>
+<pre>defrecord                     done</pre>
+<p>defstruct</p>
+<pre>deftype                       done</pre>
+<pre>delay                         done</pre>
+<pre>delay?                        done</pre>
+<pre>deliver                       done</pre>
+<pre>denominator                   done</pre>
+<pre>deref                         done</pre>
+<pre>derive                        done</pre>
+<pre>descendants                   done</pre>
+<pre>destructure                   done</pre>
+<pre>disj                          done</pre>
+<pre>disj!                         done</pre>
+<pre>dissoc                        done</pre>
+<pre>dissoc!                       done</pre>
+<pre>distinct                      done</pre>
+<pre>distinct?                     done</pre>
+<pre>doall                         done</pre>
+<pre>dorun                         done</pre>
+<pre>doseq                         done</pre>
+<pre>dosync                        done</pre>
+<pre>dotimes                       done</pre>
+<pre>doto                          done</pre>
+<pre>double                        done</pre>
+<pre>double-array                  done</pre>
+<pre>double?                       done</pre>
+<pre>doubles                       done</pre>
+<pre>drop                          done</pre>
+<pre>drop-last                     done</pre>
+<pre>drop-while                    done</pre>
+<pre>eduction                      done</pre>
+<pre>empty                         done</pre>
+<pre>empty?                        done</pre>
+<pre>ensure                        done</pre>
+<pre>ensure-reduced                done</pre>
+<pre>enumeration-seq               na</pre>
+<pre>error-handler                 done</pre>
+<pre>error-mode                    done</pre>
+<pre>eval                          done</pre>
+<pre>even?                         done</pre>
+<pre>every-pred                    done</pre>
+<pre>every?                        done</pre>
+<pre>ex-cause                      done</pre>
+<pre>ex-data                       done</pre>
+<pre>ex-info                       done</pre>
+<pre>ex-message                    done</pre>
+<pre>extend                        done</pre>
+<pre>extend-protocol               done</pre>
+<pre>extend-type                   done</pre>
+<pre>extenders                     done</pre>
+<pre>extends?                      done</pre>
+<pre>false?                        done</pre>
+<pre>ffirst                        done</pre>
+<pre>file-seq                      done</pre>
+<pre>filter                        done</pre>
+<pre>filterv                       done</pre>
+<pre>find                          done</pre>
+<pre>find-keyword                  done</pre>
+<pre>find-ns                       done</pre>
+<pre>find-protocol-impl            done</pre>
+<pre>find-protocol-method          done</pre>
+<pre>find-var                      done</pre>
+<pre>first                         done</pre>
+<pre>flatten                       done</pre>
+<pre>float                         done</pre>
+<pre>float-array                   done</pre>
+<pre>float?                        done</pre>
+<pre>floats                        done</pre>
+<pre>flush                         done</pre>
+<pre>fn                            done</pre>
+<pre>fn?                           done</pre>
+<pre>fnext                         done</pre>
+<pre>fnil                          done</pre>
+<pre>for                           done</pre>
+<pre>force                         done</pre>
+<pre>format                        done</pre>
+<pre>frequencies                   done</pre>
+<pre>future                        done</pre>
+<pre>future-call                   done</pre>
+<pre>future-cancel                 done</pre>
+<pre>future-cancelled?             done</pre>
+<pre>future-done?                  done</pre>
+<pre>future?                       done</pre>
+<p>gen-class</p>
+<p>gen-interface</p>
+<pre>gensym                        done</pre>
+<pre>get                           done</pre>
+<pre>get-in                        done</pre>
+<pre>get-method                    done</pre>
+<pre>get-proxy-class               done</pre>
+<pre>get-thread-bindings           done</pre>
+<pre>get-validator                 done</pre>
+<pre>group-by                      done</pre>
+<pre>halt-when                     done</pre>
+<pre>hash                          done</pre>
+<pre>hash-combine                  done</pre>
+<pre>hash-map                      done</pre>
+<pre>hash-ordered-coll             done</pre>
+<pre>hash-set                      done</pre>
+<pre>hash-unordered-coll           done</pre>
+<pre>ident?                        done</pre>
+<pre>identical?                    done</pre>
+<pre>identity                      done</pre>
+<pre>if-let                        done</pre>
+<pre>if-not                        done</pre>
+<pre>if-some                       done</pre>
+<pre>ifn?                          done</pre>
+<pre>import                        done</pre>
+<pre>in-ns                         done</pre>
+<pre>inc                           done</pre>
+<pre>inc'                          done</pre>
+<pre>indexed?                      done</pre>
+<pre>infinite?                     done</pre>
+<pre>init-proxy                    done</pre>
+<pre>inst-ms                       done</pre>
+<pre>inst-ms*                      done</pre>
+<pre>inst?                         done</pre>
+<pre>instance?                     done</pre>
+<pre>int                           done</pre>
+<pre>int-array                     done</pre>
+<pre>int?                          done</pre>
+<pre>integer?                      done</pre>
+<pre>interleave                    done</pre>
+<pre>intern                        done</pre>
+<pre>interpose                     done</pre>
+<pre>into                          done</pre>
+<pre>into-array                    done</pre>
+<pre>ints                          done</pre>
+<pre>io!                           done</pre>
+<pre>isa?                          done</pre>
+<pre>iterate                       done</pre>
+<pre>iteration                     done</pre>
+<pre>iterator-seq                  na</pre>
+<pre>juxt                          done</pre>
+<pre>keep                          done</pre>
+<pre>keep-indexed                  done</pre>
+<pre>key                           done</pre>
+<pre>keys                          done</pre>
+<pre>keyword                       done</pre>
+<pre>keyword?                      done</pre>
+<pre>last                          done</pre>
+<pre>lazy-cat                      done</pre>
+<pre>lazy-seq                      done</pre>
+<pre>let                           done</pre>
+<pre>letfn                         done</pre>
+<pre>line-seq                      done</pre>
+<pre>list                          done</pre>
+<pre>list*                         done</pre>
+<pre>list?                         done</pre>
+<pre>load                          done</pre>
+<pre>load-file                     done</pre>
+<pre>load-reader                   done</pre>
+<pre>load-string                   done</pre>
+<pre>loaded-libs                   done</pre>
+<pre>locking                       done</pre>
+<pre>long                          done</pre>
+<pre>long-array                    done</pre>
+<pre>longs                         done</pre>
+<pre>loop                          done</pre>
+<pre>macroexpand                   done</pre>
+<pre>macroexpand-1                 done</pre>
+<pre>make-array                    done</pre>
+<pre>make-hierarchy                done</pre>
+<pre>map                           done</pre>
+<pre>map-entry?                    done</pre>
+<pre>map-indexed                   done</pre>
+<pre>map?                          done</pre>
+<pre>mapcat                        done</pre>
+<pre>mapv                          done</pre>
+<pre>max                           done</pre>
+<pre>max-key                       done</pre>
+<pre>memfn                         done</pre>
+<pre>memoize                       done</pre>
+<pre>merge                         done</pre>
+<pre>merge-with                    done</pre>
+<pre>meta                          done</pre>
+<pre>method-sig                    done</pre>
+<pre>methods                       done</pre>
+<pre>min                           done</pre>
+<pre>min-key                       done</pre>
+<pre>mix-collection-hash           done</pre>
+<pre>mod                           done</pre>
+<pre>munge                         done</pre>
+<pre>name                          done</pre>
+<pre>namespace                     done</pre>
+<pre>namespace-munge               done</pre>
+<pre>nat-int?                      done</pre>
+<pre>neg-int?                      done</pre>
+<pre>neg?                          done</pre>
+<pre>newline                       done</pre>
+<pre>next                          done</pre>
+<pre>nfirst                        done</pre>
+<pre>nil?                          done</pre>
+<pre>nnext                         done</pre>
+<pre>not                           done</pre>
+<pre>not-any?                      done</pre>
+<pre>not-empty                     done</pre>
+<pre>not-every?                    done</pre>
+<pre>not=                          done</pre>
+<pre>ns                            done</pre>
+<pre>ns-aliases                    done</pre>
+<pre>ns-imports                    done</pre>
+<pre>ns-interns                    done</pre>
+<pre>ns-map                        done</pre>
+<pre>ns-name                       done</pre>
+<pre>ns-publics                    done</pre>
+<pre>ns-refers                     done</pre>
+<pre>ns-resolve                    done</pre>
+<pre>ns-unalias                    done</pre>
+<pre>ns-unmap                      done</pre>
+<pre>nth                           done</pre>
+<pre>nthnext                       done</pre>
+<pre>nthrest                       done</pre>
+<pre>num                           done</pre>
+<pre>number?                       done</pre>
+<pre>numerator                     done</pre>
+<pre>object-array                  done</pre>
+<pre>odd?                          done</pre>
+<pre>or                            done</pre>
+<pre>parents                       done</pre>
+<pre>parse-boolean                 done</pre>
+<pre>parse-double                  done</pre>
+<pre>parse-long                    done</pre>
+<pre>parse-uuid                    done</pre>
+<pre>partial                       done</pre>
+<pre>partition                     done</pre>
+<pre>partition-all                 done</pre>
+<pre>partition-by                  done</pre>
+<pre>pcalls                        done</pre>
+<pre>peek                          done</pre>
+<pre>persistent!                   done</pre>
+<pre>pmap                          done</pre>
+<pre>pop                           done</pre>
+<pre>pop!                          done</pre>
+<pre>pop-thread-bindings           done</pre>
+<pre>pos-int?                      done</pre>
+<pre>pos?                          done</pre>
+<pre>pr                            done</pre>
+<pre>pr-str                        done</pre>
+<pre>prefer-method                 done</pre>
+<pre>prefers                       done</pre>
+<pre>primitives-classnames         done</pre>
+<pre>print                         done</pre>
+<pre>print-ctor                    done</pre>
+<pre>print-dup                     done</pre>
+<pre>print-method                  done</pre>
+<pre>print-simple                  done</pre>
+<pre>print-str                     done</pre>
+<pre>printf                        done</pre>
+<pre>println                       done</pre>
+<pre>println-str                   done</pre>
+<pre>prn                           done</pre>
+<pre>prn-str                       done</pre>
+<pre>promise                       done</pre>
+<pre>proxy                         done</pre>
+<pre>proxy-call-with-super         done</pre>
+<pre>proxy-mappings                done</pre>
+<pre>proxy-name                    done</pre>
+<pre>proxy-super                   done</pre>
+<pre>push-thread-bindings          done</pre>
+<pre>pvalues                       done</pre>
+<pre>qualified-ident?              done</pre>
+<pre>qualified-keyword?            done</pre>
+<pre>qualified-symbol?             done</pre>
+<pre>quot                          done</pre>
+<pre>rand                          done</pre>
+<pre>rand-int                      done</pre>
+<pre>rand-nth                      done</pre>
+<pre>random-sample                 done</pre>
+<pre>random-uuid                   done</pre>
+<pre>range                         done</pre>
+<pre>ratio?                        done</pre>
+<pre>rational?                     done</pre>
+<pre>rationalize                   done</pre>
+<pre>re-find                       done</pre>
+<pre>re-groups                     done</pre>
+<pre>re-matcher                    done</pre>
+<pre>re-matches                    done</pre>
+<pre>re-pattern                    done</pre>
+<pre>re-seq                        done</pre>
+<pre>read                          done</pre>
+<pre>read+string                   done</pre>
+<pre>read-line                     done</pre>
+<pre>read-string                   done</pre>
+<pre>reader-conditional            done</pre>
+<pre>reader-conditional?           done</pre>
+<pre>realized?                     done</pre>
+<pre>record?                       done</pre>
+<pre>reduce                        done</pre>
+<pre>reduce-kv                     done</pre>
+<pre>reduced                       done</pre>
+<pre>reduced?                      done</pre>
+<pre>reductions                    done</pre>
+<pre>ref                           done</pre>
+<pre>ref-history-count             done</pre>
+<pre>ref-max-history               done</pre>
+<pre>ref-min-history               done</pre>
+<pre>ref-set                       done</pre>
+<pre>refer                         done</pre>
+<pre>refer-clojure                 done</pre>
+<pre>reify                         done</pre>
+<pre>release-pending-sends         done</pre>
+<pre>rem                           done</pre>
+<pre>remove                        done</pre>
+<pre>remove-all-methods            done</pre>
+<pre>remove-method                 done</pre>
+<pre>remove-ns                     done</pre>
+<pre>remove-tap                    done</pre>
+<pre>remove-watch                  done</pre>
+<pre>repeat                        done</pre>
+<pre>repeatedly                    done</pre>
+<pre>replace                       done</pre>
+<pre>replicate                     done</pre>
+<pre>require                       done</pre>
+<pre>requiring-resolve             done</pre>
+<pre>reset!                        done</pre>
+<pre>reset-meta!                   done</pre>
+<pre>reset-vals!                   done</pre>
+<pre>resolve                       done</pre>
+<pre>rest                          done</pre>
+<pre>restart-agent                 done</pre>
+<pre>resultset-seq                 na</pre>
+<pre>reverse                       done</pre>
+<pre>reversible?                   done</pre>
+<pre>rseq                          done</pre>
+<pre>rsubseq                       done</pre>
+<pre>run!                          done</pre>
+<p>satisfies?</p>
+<pre>second                        done</pre>
+<pre>select-keys                   done</pre>
+<pre>send                          done</pre>
+<pre>send-off                      done</pre>
+<pre>send-via                      done</pre>
+<pre>seq                           done</pre>
+<p>seq-to-map-for-destructuring  done</p>
+<pre>seq?                          done</pre>
+<pre>seqable?                      done</pre>
+<pre>seque                         done</pre>
+<pre>sequence                      done</pre>
+<pre>sequential?                   done</pre>
+<pre>set                           done</pre>
+<pre>set-agent-send-executor!      done</pre>
+<p>set-agent-send-off-executor!  done</p>
+<pre>set-error-handler!            done</pre>
+<pre>set-error-mode!               done</pre>
+<pre>set-validator!                done</pre>
+<pre>set?                          done</pre>
+<pre>short                         done</pre>
+<pre>short-array                   done</pre>
+<pre>shorts                        done</pre>
+<pre>shuffle                       done</pre>
+<pre>shutdown-agents               done</pre>
+<pre>simple-ident?                 done</pre>
+<pre>simple-keyword?               done</pre>
+<pre>simple-symbol?                done</pre>
+<pre>slurp                         done</pre>
+<pre>some                          done</pre>
+<pre>some->                        done</pre>
+<pre>some->>                       done</pre>
+<pre>some-fn                       done</pre>
+<pre>some?                         done</pre>
+<pre>sort                          done</pre>
+<pre>sort-by                       done</pre>
+<pre>sorted-map                    done</pre>
+<pre>sorted-map-by                 done</pre>
+<pre>sorted-set                    done</pre>
+<pre>sorted-set-by                 done</pre>
+<pre>sorted?                       done</pre>
+<pre>special-symbol?               done</pre>
+<pre>spit                          done</pre>
+<pre>split-at                      done</pre>
+<pre>split-with                    done</pre>
+<pre>str                           done</pre>
+<pre>string?                       done</pre>
+<p>struct</p>
+<p>struct-map</p>
+<pre>subs                          done</pre>
+<pre>subseq                        done</pre>
+<pre>subvec                        done</pre>
+<pre>supers                        na</pre>
+<pre>swap!                         done</pre>
+<pre>swap-vals!                    done</pre>
+<pre>symbol                        done</pre>
+<pre>symbol?                       done</pre>
+<pre>sync                          done</pre>
+<pre>tagged-literal                done</pre>
+<pre>tagged-literal?               done</pre>
+<pre>take                          done</pre>
+<pre>take-last                     done</pre>
+<pre>take-nth                      done</pre>
+<pre>take-while                    done</pre>
+<pre>tap>                          done</pre>
+<pre>test                          done</pre>
+<pre>the-ns                        done</pre>
+<pre>thread-bound?                 done</pre>
+<pre>time                          done</pre>
+<pre>to-array                      done</pre>
+<pre>to-array-2d                   done</pre>
+<pre>trampoline                    done</pre>
+<pre>transduce                     done</pre>
+<pre>transient                     done</pre>
+<pre>tree-seq                      done</pre>
+<pre>true?                         done</pre>
+<pre>type                          done</pre>
+<pre>unchecked-add                 done</pre>
+<pre>unchecked-add-int             done</pre>
+<pre>unchecked-byte                done</pre>
+<pre>unchecked-char                done</pre>
+<pre>unchecked-dec                 done</pre>
+<pre>unchecked-dec-int             done</pre>
+<pre>unchecked-divide-int          done</pre>
+<pre>unchecked-double              done</pre>
+<pre>unchecked-float               done</pre>
+<pre>unchecked-inc                 done</pre>
+<pre>unchecked-inc-int             done</pre>
+<pre>unchecked-int                 done</pre>
+<pre>unchecked-long                done</pre>
+<pre>unchecked-multiply            done</pre>
+<pre>unchecked-multiply-int        done</pre>
+<pre>unchecked-negate              done</pre>
+<pre>unchecked-negate-int          done</pre>
+<pre>unchecked-remainder-int       done</pre>
+<pre>unchecked-short               done</pre>
+<pre>unchecked-subtract            done</pre>
+<pre>unchecked-subtract-int        done</pre>
+<pre>underive                      done</pre>
+<pre>unquote                       done</pre>
+<pre>unquote-splicing              done</pre>
+<pre>unreduced                     done</pre>
+<pre>unsigned-bit-shift-right      done</pre>
+<pre>update                        done</pre>
+<pre>update-in                     done</pre>
+<pre>update-keys                   done</pre>
+<pre>update-proxy                  done</pre>
+<pre>update-vals                   done</pre>
+<pre>uri?                          done</pre>
+<pre>use                           done</pre>
+<pre>uuid?                         done</pre>
+<pre>val                           done</pre>
+<pre>vals                          done</pre>
+<pre>var-get                       done</pre>
+<pre>var-set                       done</pre>
+<pre>var?                          done</pre>
+<pre>vary-meta                     done</pre>
+<pre>vec                           done</pre>
+<pre>vector                        done</pre>
+<pre>vector-of                     done</pre>
+<pre>vector?                       done</pre>
+<pre>volatile!                     done</pre>
+<pre>volatile?                     done</pre>
+<pre>vreset!                       done</pre>
+<pre>vswap!                        done</pre>
+<pre>when                          done</pre>
+<pre>when-first                    done</pre>
+<pre>when-let                      done</pre>
+<pre>when-not                      done</pre>
+<pre>when-some                     done</pre>
+<pre>while                         done</pre>
+<pre>with-bindings                 done</pre>
+<pre>with-bindings*                done</pre>
+<pre>with-in-str                   done</pre>
+<pre>with-loading-context          done</pre>
+<pre>with-local-vars               done</pre>
+<pre>with-meta                     done</pre>
+<pre>with-open                     done</pre>
+<pre>with-out-str                  done</pre>
+<pre>with-precision                done</pre>
+<pre>with-redefs                   done</pre>
+<pre>with-redefs-fn                done</pre>
+<pre>xml-seq                       done</pre>
+<pre>zero?                         done</pre>
+<pre>zipmap                        done</pre>
+<br>
+<p>Milestone: Clojure library testsStatus: 0% complete</p>
+<p>Feature</p>
+<pre>*                             tested</pre>
+<pre>*'                            tested</pre>
+<pre>*1                            tested</pre>
+<pre>*2                            tested</pre>
+<pre>*3                            tested</pre>
+<pre>*agent*                       tested</pre>
+<pre>*allow-unresolved-vars*       tested</pre>
+<pre>*assert*                      tested</pre>
+<pre>*clojure-version*             tested</pre>
+<pre>*command-line-args*           tested</pre>
+<pre>*compile-files*               tested</pre>
+<pre>*compile-path*                tested</pre>
+<pre>*compiler-options*            tested</pre>
+<pre>*data-readers*                tested</pre>
+<pre>*default-data-reader-fn*      tested</pre>
+<pre>*e                            tested</pre>
+<pre>*err*                         tested</pre>
+<pre>*file*                        tested</pre>
+<pre>*flush-on-newline*            tested</pre>
+<pre>*fn-loader*                   tested</pre>
+<pre>*in*                          tested</pre>
+<pre>*math-context*                tested</pre>
+<pre>*ns*                          tested</pre>
+<pre>*out*                         tested</pre>
+<pre>*print-dup*                   tested</pre>
+<pre>*print-length*                tested</pre>
+<pre>*print-level*                 tested</pre>
+<pre>*print-meta*                  tested</pre>
+<pre>*print-namespace-maps*        tested</pre>
+<pre>*print-readably*              tested</pre>
+<pre>*read-eval*                   tested</pre>
+<pre>*reader-resolver*             tested</pre>
+<pre>*source-path*                 tested</pre>
+<pre>*suppress-read*               tested</pre>
+<pre>*unchecked-math*              tested</pre>
+<pre>*verbose-defrecords*          tested</pre>
+<pre>+                             tested</pre>
+<pre>+'                            tested</pre>
+<pre>-                             tested</pre>
+<pre>-'                            tested</pre>
+<pre>->                            tested</pre>
+<pre>->>                           tested</pre>
+<pre>/                             tested</pre>
+<pre><                             tested</pre>
+<pre><=                            tested</pre>
+<pre>=                             tested</pre>
+<pre>==                            tested</pre>
+<pre>>                             tested</pre>
+<pre>>=                            tested</pre>
+<pre>Inst                          tested</pre>
+<pre>NaN?                          tested</pre>
+<p>accessor</p>
+<pre>aclone                        tested</pre>
+<pre>add-classpath                 tested</pre>
+<pre>add-tap                       tested</pre>
+<pre>add-watch                     tested</pre>
+<pre>agent                         tested</pre>
+<pre>agent-error                   tested</pre>
+<pre>agent-errors                  tested</pre>
+<pre>aget                          tested</pre>
+<pre>alength                       tested</pre>
+<pre>alias                         tested</pre>
+<pre>all-ns                        tested</pre>
+<pre>alter                         tested</pre>
+<pre>alter-meta!                   tested</pre>
+<pre>alter-var-root                tested</pre>
+<pre>amap                          tested</pre>
+<pre>ancestors                     tested</pre>
+<pre>and                           tested</pre>
+<pre>any?                          tested</pre>
+<pre>apply                         tested</pre>
+<pre>areduce                       tested</pre>
+<pre>array-map                     tested</pre>
+<pre>as->                          tested</pre>
+<pre>aset                          tested</pre>
+<pre>aset-boolean                  tested</pre>
+<pre>aset-byte                     tested</pre>
+<pre>aset-char                     tested</pre>
+<pre>aset-double                   tested</pre>
+<pre>aset-float                    tested</pre>
+<pre>aset-int                      tested</pre>
+<pre>aset-long                     tested</pre>
+<pre>aset-short                    tested</pre>
+<pre>assert                        tested</pre>
+<pre>assoc                         tested</pre>
+<pre>assoc!                        tested</pre>
+<pre>assoc-in                      tested</pre>
+<pre>associative?                  tested</pre>
+<pre>atom                          tested</pre>
+<pre>await                         tested</pre>
+<pre>await-for                     tested</pre>
+<pre>await1                        tested</pre>
+<pre>bases                         tested</pre>
+<pre>bean                          tested</pre>
+<pre>bigdec                        tested</pre>
+<pre>bigint                        tested</pre>
+<pre>biginteger                    tested</pre>
+<pre>binding                       tested</pre>
+<pre>bit-and                       tested</pre>
+<pre>bit-and-not                   tested</pre>
+<pre>bit-clear                     tested</pre>
+<pre>bit-flip                      tested</pre>
+<pre>bit-not                       tested</pre>
+<pre>bit-or                        tested</pre>
+<pre>bit-set                       tested</pre>
+<pre>bit-shift-left                tested</pre>
+<pre>bit-shift-right               tested</pre>
+<pre>bit-test                      tested</pre>
+<pre>bit-xor                       tested</pre>
+<pre>boolean                       tested</pre>
+<pre>boolean-array                 tested</pre>
+<pre>boolean?                      tested</pre>
+<pre>booleans                      tested</pre>
+<pre>bound-fn                      tested</pre>
+<pre>bound-fn*                     tested</pre>
+<pre>bound?                        tested</pre>
+<pre>bounded-count                 tested</pre>
+<pre>butlast                       tested</pre>
+<pre>byte                          tested</pre>
+<pre>byte-array                    tested</pre>
+<pre>bytes                         tested</pre>
+<pre>bytes?                        tested</pre>
+<pre>case                          tested</pre>
+<pre>cast                          tested</pre>
+<pre>cat                           tested</pre>
+<pre>char                          tested</pre>
+<pre>char-array                    tested</pre>
+<pre>char-escape-string            tested</pre>
+<pre>char-name-string              tested</pre>
+<pre>char?                         tested</pre>
+<pre>chars                         tested</pre>
+<pre>chunk                         tested</pre>
+<pre>chunk-append                  tested</pre>
+<pre>chunk-buffer                  tested</pre>
+<pre>chunk-cons                    tested</pre>
+<pre>chunk-first                   tested</pre>
+<pre>chunk-next                    tested</pre>
+<pre>chunk-rest                    tested</pre>
+<pre>chunked-seq?                  tested</pre>
+<pre>class                         tested</pre>
+<pre>class?                        tested</pre>
+<pre>clear-agent-errors            tested</pre>
+<pre>clojure-version               tested</pre>
+<pre>coll?                         tested</pre>
+<pre>comment                       tested</pre>
+<pre>commute                       tested</pre>
+<pre>comp                          tested</pre>
+<pre>comparator                    tested</pre>
+<pre>compare                       tested</pre>
+<pre>compare-and-set!              tested</pre>
+<pre>compile                       tested</pre>
+<pre>complement                    tested</pre>
+<pre>completing                    tested</pre>
+<pre>concat                        tested</pre>
+<pre>cond                          tested</pre>
+<pre>cond->                        tested</pre>
+<pre>cond->>                       tested</pre>
+<pre>condp                         tested</pre>
+<pre>conj                          tested</pre>
+<pre>conj!                         tested</pre>
+<pre>cons                          tested</pre>
+<pre>constantly                    tested</pre>
+<pre>construct-proxy               tested</pre>
+<pre>contains?                     tested</pre>
+<pre>count                         tested</pre>
+<pre>counted?                      tested</pre>
+<pre>create-ns                     tested</pre>
+<p>create-struct</p>
+<pre>cycle                         tested</pre>
+<pre>dec                           tested</pre>
+<pre>dec'                          tested</pre>
+<pre>decimal?                      tested</pre>
+<pre>declare                       tested</pre>
+<pre>dedupe                        tested</pre>
+<pre>default-data-readers          tested</pre>
+<pre>definline                     tested</pre>
+<pre>definterface                  tested</pre>
+<pre>defmacro                      tested</pre>
+<pre>defmethod                     tested</pre>
+<pre>defmulti                      tested</pre>
+<pre>defn                          tested</pre>
+<pre>defn-                         tested</pre>
+<pre>defonce                       tested</pre>
+<pre>defprotocol                   tested</pre>
+<pre>defrecord                     tested</pre>
+<p>defstruct</p>
+<pre>deftype                       tested</pre>
+<pre>delay                         tested</pre>
+<pre>delay?                        tested</pre>
+<pre>deliver                       tested</pre>
+<pre>denominator                   tested</pre>
+<pre>deref                         tested</pre>
+<pre>derive                        tested</pre>
+<pre>descendants                   tested</pre>
+<pre>destructure                   tested</pre>
+<pre>disj                          tested</pre>
+<pre>disj!                         tested</pre>
+<pre>dissoc                        tested</pre>
+<pre>dissoc!                       tested</pre>
+<pre>distinct                      tested</pre>
+<pre>distinct?                     tested</pre>
+<pre>doall                         tested</pre>
+<pre>dorun                         tested</pre>
+<pre>doseq                         tested</pre>
+<pre>dosync                        tested</pre>
+<pre>dotimes                       tested</pre>
+<pre>doto                          tested</pre>
+<pre>double                        tested</pre>
+<pre>double-array                  tested</pre>
+<pre>double?                       tested</pre>
+<pre>doubles                       tested</pre>
+<pre>drop                          tested</pre>
+<pre>drop-last                     tested</pre>
+<pre>drop-while                    tested</pre>
+<pre>eduction                      tested</pre>
+<pre>empty                         tested</pre>
+<pre>empty?                        tested</pre>
+<pre>ensure                        tested</pre>
+<pre>ensure-reduced                tested</pre>
+<pre>enumeration-seq               tested</pre>
+<pre>error-handler                 tested</pre>
+<pre>error-mode                    tested</pre>
+<pre>eval                          tested</pre>
+<pre>even?                         tested</pre>
+<pre>every-pred                    tested</pre>
+<pre>every?                        tested</pre>
+<pre>ex-cause                      tested</pre>
+<pre>ex-data                       tested</pre>
+<pre>ex-info                       tested</pre>
+<pre>ex-message                    tested</pre>
+<pre>extend                        tested</pre>
+<pre>extend-protocol               tested</pre>
+<pre>extend-type                   tested</pre>
+<pre>extenders                     tested</pre>
+<pre>extends?                      tested</pre>
+<pre>false?                        tested</pre>
+<pre>ffirst                        tested</pre>
+<pre>file-seq                      tested</pre>
+<pre>filter                        tested</pre>
+<pre>filterv                       tested</pre>
+<pre>find                          tested</pre>
+<pre>find-keyword                  tested</pre>
+<pre>find-ns                       tested</pre>
+<pre>find-protocol-impl            tested</pre>
+<pre>find-protocol-method          tested</pre>
+<pre>find-var                      tested</pre>
+<pre>first                         tested</pre>
+<pre>flatten                       tested</pre>
+<pre>float                         tested</pre>
+<pre>float-array                   tested</pre>
+<pre>float?                        tested</pre>
+<pre>floats                        tested</pre>
+<pre>flush                         tested</pre>
+<pre>fn                            tested</pre>
+<pre>fn?                           tested</pre>
+<pre>fnext                         tested</pre>
+<pre>fnil                          tested</pre>
+<pre>for                           tested</pre>
+<pre>force                         tested</pre>
+<pre>format                        tested</pre>
+<pre>frequencies                   tested</pre>
+<pre>future                        tested</pre>
+<pre>future-call                   tested</pre>
+<pre>future-cancel                 tested</pre>
+<pre>future-cancelled?             tested</pre>
+<pre>future-done?                  tested</pre>
+<pre>future?                       tested</pre>
+<p>gen-class</p>
+<p>gen-interface</p>
+<pre>gensym                        tested</pre>
+<pre>get                           tested</pre>
+<pre>get-in                        tested</pre>
+<pre>get-method                    tested</pre>
+<pre>get-proxy-class               tested</pre>
+<pre>get-thread-bindings           tested</pre>
+<pre>get-validator                 tested</pre>
+<pre>group-by                      tested</pre>
+<pre>halt-when                     tested</pre>
+<pre>hash                          tested</pre>
+<pre>hash-combine                  tested</pre>
+<pre>hash-map                      tested</pre>
+<pre>hash-ordered-coll             tested</pre>
+<pre>hash-set                      tested</pre>
+<pre>hash-unordered-coll           tested</pre>
+<pre>ident?                        tested</pre>
+<pre>identical?                    tested</pre>
+<pre>identity                      tested</pre>
+<pre>if-let                        tested</pre>
+<pre>if-not                        tested</pre>
+<pre>if-some                       tested</pre>
+<pre>ifn?                          tested</pre>
+<pre>import                        tested</pre>
+<pre>in-ns                         tested</pre>
+<pre>inc                           tested</pre>
+<pre>inc'                          tested</pre>
+<pre>indexed?                      tested</pre>
+<pre>infinite?                     tested</pre>
+<pre>init-proxy                    tested</pre>
+<pre>inst-ms                       tested</pre>
+<pre>inst-ms*                      tested</pre>
+<pre>inst?                         tested</pre>
+<pre>instance?                     tested</pre>
+<pre>int                           tested</pre>
+<pre>int-array                     tested</pre>
+<pre>int?                          tested</pre>
+<pre>integer?                      tested</pre>
+<pre>interleave                    tested</pre>
+<pre>intern                        tested</pre>
+<pre>interpose                     tested</pre>
+<pre>into                          tested</pre>
+<pre>into-array                    tested</pre>
+<pre>ints                          tested</pre>
+<pre>io!                           tested</pre>
+<pre>isa?                          tested</pre>
+<pre>iterate                       tested</pre>
+<pre>iteration                     tested</pre>
+<pre>iterator-seq                  tested</pre>
+<pre>juxt                          tested</pre>
+<pre>keep                          tested</pre>
+<pre>keep-indexed                  tested</pre>
+<pre>key                           tested</pre>
+<pre>keys                          tested</pre>
+<pre>keyword                       tested</pre>
+<pre>keyword?                      tested</pre>
+<pre>last                          tested</pre>
+<pre>lazy-cat                      tested</pre>
+<pre>lazy-seq                      tested</pre>
+<pre>let                           tested</pre>
+<pre>letfn                         tested</pre>
+<pre>line-seq                      tested</pre>
+<pre>list                          tested</pre>
+<pre>list*                         tested</pre>
+<pre>list?                         tested</pre>
+<pre>load                          tested</pre>
+<pre>load-file                     tested</pre>
+<pre>load-reader                   tested</pre>
+<pre>load-string                   tested</pre>
+<pre>loaded-libs                   tested</pre>
+<pre>locking                       tested</pre>
+<pre>long                          tested</pre>
+<pre>long-array                    tested</pre>
+<pre>longs                         tested</pre>
+<pre>loop                          tested</pre>
+<pre>macroexpand                   tested</pre>
+<pre>macroexpand-1                 tested</pre>
+<pre>make-array                    tested</pre>
+<pre>make-hierarchy                tested</pre>
+<pre>map                           tested</pre>
+<pre>map-entry?                    tested</pre>
+<pre>map-indexed                   tested</pre>
+<pre>map?                          tested</pre>
+<pre>mapcat                        tested</pre>
+<pre>mapv                          tested</pre>
+<pre>max                           tested</pre>
+<pre>max-key                       tested</pre>
+<pre>memfn                         tested</pre>
+<pre>memoize                       tested</pre>
+<pre>merge                         tested</pre>
+<pre>merge-with                    tested</pre>
+<pre>meta                          tested</pre>
+<pre>method-sig                    tested</pre>
+<pre>methods                       tested</pre>
+<pre>min                           tested</pre>
+<pre>min-key                       tested</pre>
+<pre>mix-collection-hash           tested</pre>
+<pre>mod                           tested</pre>
+<pre>munge                         tested</pre>
+<pre>name                          tested</pre>
+<pre>namespace                     tested</pre>
+<pre>namespace-munge               tested</pre>
+<pre>nat-int?                      tested</pre>
+<pre>neg-int?                      tested</pre>
+<pre>neg?                          tested</pre>
+<pre>newline                       tested</pre>
+<pre>next                          tested</pre>
+<pre>nfirst                        tested</pre>
+<pre>nil?                          tested</pre>
+<pre>nnext                         tested</pre>
+<pre>not                           tested</pre>
+<pre>not-any?                      tested</pre>
+<pre>not-empty                     tested</pre>
+<pre>not-every?                    tested</pre>
+<pre>not=                          tested</pre>
+<pre>ns                            tested</pre>
+<pre>ns-aliases                    tested</pre>
+<pre>ns-imports                    tested</pre>
+<pre>ns-interns                    tested</pre>
+<pre>ns-map                        tested</pre>
+<pre>ns-name                       tested</pre>
+<pre>ns-publics                    tested</pre>
+<pre>ns-refers                     tested</pre>
+<pre>ns-resolve                    tested</pre>
+<pre>ns-unalias                    tested</pre>
+<pre>ns-unmap                      tested</pre>
+<pre>nth                           tested</pre>
+<pre>nthnext                       tested</pre>
+<pre>nthrest                       tested</pre>
+<pre>num                           tested</pre>
+<pre>number?                       tested</pre>
+<pre>numerator                     tested</pre>
+<pre>object-array                  tested</pre>
+<pre>odd?                          tested</pre>
+<pre>or                            tested</pre>
+<pre>parents                       tested</pre>
+<pre>parse-boolean                 tested</pre>
+<pre>parse-double                  tested</pre>
+<pre>parse-long                    tested</pre>
+<pre>parse-uuid                    tested</pre>
+<pre>partial                       tested</pre>
+<pre>partition                     tested</pre>
+<pre>partition-all                 tested</pre>
+<pre>partition-by                  tested</pre>
+<pre>pcalls                        tested</pre>
+<pre>peek                          tested</pre>
+<pre>persistent!                   tested</pre>
+<pre>pmap                          tested</pre>
+<pre>pop                           tested</pre>
+<pre>pop!                          tested</pre>
+<pre>pop-thread-bindings           tested</pre>
+<pre>pos-int?                      tested</pre>
+<pre>pos?                          tested</pre>
+<pre>pr                            tested</pre>
+<pre>pr-str                        tested</pre>
+<pre>prefer-method                 tested</pre>
+<pre>prefers                       tested</pre>
+<pre>primitives-classnames         tested</pre>
+<pre>print                         tested</pre>
+<pre>print-ctor                    tested</pre>
+<pre>print-dup                     tested</pre>
+<pre>print-method                  tested</pre>
+<pre>print-simple                  tested</pre>
+<pre>print-str                     tested</pre>
+<pre>printf                        tested</pre>
+<pre>println                       tested</pre>
+<pre>println-str                   tested</pre>
+<pre>prn                           tested</pre>
+<pre>prn-str                       tested</pre>
+<pre>promise                       tested</pre>
+<pre>proxy                         tested</pre>
+<pre>proxy-call-with-super         tested</pre>
+<pre>proxy-mappings                tested</pre>
+<pre>proxy-name                    tested</pre>
+<pre>proxy-super                   tested</pre>
+<pre>push-thread-bindings          tested</pre>
+<pre>pvalues                       tested</pre>
+<pre>qualified-ident?              tested</pre>
+<pre>qualified-keyword?            tested</pre>
+<pre>qualified-symbol?             tested</pre>
+<pre>quot                          tested</pre>
+<pre>rand                          tested</pre>
+<pre>rand-int                      tested</pre>
+<pre>rand-nth                      tested</pre>
+<pre>random-sample                 tested</pre>
+<pre>random-uuid                   tested</pre>
+<pre>range                         tested</pre>
+<pre>ratio?                        tested</pre>
+<pre>rational?                     tested</pre>
+<pre>rationalize                   tested</pre>
+<pre>re-find                       tested</pre>
+<pre>re-groups                     tested</pre>
+<pre>re-matcher                    tested</pre>
+<pre>re-matches                    tested</pre>
+<pre>re-pattern                    tested</pre>
+<pre>re-seq                        tested</pre>
+<pre>read                          tested</pre>
+<pre>read+string                   tested</pre>
+<pre>read-line                     tested</pre>
+<pre>read-string                   tested</pre>
+<pre>reader-conditional            tested</pre>
+<pre>reader-conditional?           tested</pre>
+<pre>realized?                     tested</pre>
+<pre>record?                       tested</pre>
+<pre>reduce                        tested</pre>
+<pre>reduce-kv                     tested</pre>
+<pre>reduced                       tested</pre>
+<pre>reduced?                      tested</pre>
+<pre>reductions                    tested</pre>
+<pre>ref                           tested</pre>
+<pre>ref-history-count             tested</pre>
+<pre>ref-max-history               tested</pre>
+<pre>ref-min-history               tested</pre>
+<pre>ref-set                       tested</pre>
+<pre>refer                         tested</pre>
+<pre>refer-clojure                 tested</pre>
+<pre>reify                         tested</pre>
+<pre>release-pending-sends         tested</pre>
+<pre>rem                           tested</pre>
+<pre>remove                        tested</pre>
+<pre>remove-all-methods            tested</pre>
+<pre>remove-method                 tested</pre>
+<pre>remove-ns                     tested</pre>
+<pre>remove-tap                    tested</pre>
+<pre>remove-watch                  tested</pre>
+<pre>repeat                        tested</pre>
+<pre>repeatedly                    tested</pre>
+<pre>replace                       tested</pre>
+<pre>replicate                     tested</pre>
+<pre>require                       tested</pre>
+<pre>requiring-resolve             tested</pre>
+<pre>reset!                        tested</pre>
+<pre>reset-meta!                   tested</pre>
+<pre>reset-vals!                   tested</pre>
+<pre>resolve                       tested</pre>
+<pre>rest                          tested</pre>
+<pre>restart-agent                 tested</pre>
+<pre>resultset-seq                 tested</pre>
+<pre>reverse                       tested</pre>
+<pre>reversible?                   tested</pre>
+<pre>rseq                          tested</pre>
+<pre>rsubseq                       tested</pre>
+<pre>run!                          tested</pre>
+<p>satisfies?</p>
+<pre>second                        tested</pre>
+<pre>select-keys                   tested</pre>
+<pre>send                          tested</pre>
+<pre>send-off                      tested</pre>
+<pre>send-via                      tested</pre>
+<pre>seq                           tested</pre>
+<p>seq-to-map-for-destructuring  tested</p>
+<pre>seq?                          tested</pre>
+<pre>seqable?                      tested</pre>
+<pre>seque                         tested</pre>
+<pre>sequence                      tested</pre>
+<pre>sequential?                   tested</pre>
+<pre>set                           tested</pre>
+<pre>set-agent-send-executor!      tested</pre>
+<p>set-agent-send-off-executor!  tested</p>
+<pre>set-error-handler!            tested</pre>
+<pre>set-error-mode!               tested</pre>
+<pre>set-validator!                tested</pre>
+<pre>set?                          tested</pre>
+<pre>short                         tested</pre>
+<pre>short-array                   tested</pre>
+<pre>shorts                        tested</pre>
+<pre>shuffle                       tested</pre>
+<pre>shutdown-agents               tested</pre>
+<pre>simple-ident?                 tested</pre>
+<pre>simple-keyword?               tested</pre>
+<pre>simple-symbol?                tested</pre>
+<pre>slurp                         tested</pre>
+<pre>some                          tested</pre>
+<pre>some->                        tested</pre>
+<pre>some->>                       tested</pre>
+<pre>some-fn                       tested</pre>
+<pre>some?                         tested</pre>
+<pre>sort                          tested</pre>
+<pre>sort-by                       tested</pre>
+<pre>sorted-map                    tested</pre>
+<pre>sorted-map-by                 tested</pre>
+<pre>sorted-set                    tested</pre>
+<pre>sorted-set-by                 tested</pre>
+<pre>sorted?                       tested</pre>
+<pre>special-symbol?               tested</pre>
+<pre>spit                          tested</pre>
+<pre>split-at                      tested</pre>
+<pre>split-with                    tested</pre>
+<pre>str                           tested</pre>
+<pre>string?                       tested</pre>
+<p>struct</p>
+<p>struct-map</p>
+<pre>subs                          tested</pre>
+<pre>subseq                        tested</pre>
+<pre>subvec                        tested</pre>
+<pre>supers                        tested</pre>
+<pre>swap!                         tested</pre>
+<pre>swap-vals!                    tested</pre>
+<pre>symbol                        tested</pre>
+<pre>symbol?                       tested</pre>
+<pre>sync                          tested</pre>
+<pre>tagged-literal                tested</pre>
+<pre>tagged-literal?               tested</pre>
+<pre>take                          tested</pre>
+<pre>take-last                     tested</pre>
+<pre>take-nth                      tested</pre>
+<pre>take-while                    tested</pre>
+<pre>tap>                          tested</pre>
+<pre>test                          tested</pre>
+<pre>the-ns                        tested</pre>
+<pre>thread-bound?                 tested</pre>
+<pre>time                          tested</pre>
+<pre>to-array                      tested</pre>
+<pre>to-array-2d                   tested</pre>
+<pre>trampoline                    tested</pre>
+<pre>transduce                     tested</pre>
+<pre>transient                     tested</pre>
+<pre>tree-seq                      tested</pre>
+<pre>true?                         tested</pre>
+<pre>type                          tested</pre>
+<pre>unchecked-add                 tested</pre>
+<pre>unchecked-add-int             tested</pre>
+<pre>unchecked-byte                tested</pre>
+<pre>unchecked-char                tested</pre>
+<pre>unchecked-dec                 tested</pre>
+<pre>unchecked-dec-int             tested</pre>
+<pre>unchecked-divide-int          tested</pre>
+<pre>unchecked-double              tested</pre>
+<pre>unchecked-float               tested</pre>
+<pre>unchecked-inc                 tested</pre>
+<pre>unchecked-inc-int             tested</pre>
+<pre>unchecked-int                 tested</pre>
+<pre>unchecked-long                tested</pre>
+<pre>unchecked-multiply            tested</pre>
+<pre>unchecked-multiply-int        tested</pre>
+<pre>unchecked-negate              tested</pre>
+<pre>unchecked-negate-int          tested</pre>
+<pre>unchecked-remainder-int       tested</pre>
+<pre>unchecked-short               tested</pre>
+<pre>unchecked-subtract            tested</pre>
+<pre>unchecked-subtract-int        tested</pre>
+<pre>underive                      tested</pre>
+<pre>unquote                       tested</pre>
+<pre>unquote-splicing              tested</pre>
+<pre>unreduced                     tested</pre>
+<pre>unsigned-bit-shift-right      tested</pre>
+<pre>update                        tested</pre>
+<pre>update-in                     tested</pre>
+<pre>update-keys                   tested</pre>
+<pre>update-proxy                  tested</pre>
+<pre>update-vals                   tested</pre>
+<pre>uri?                          tested</pre>
+<pre>use                           tested</pre>
+<pre>uuid?                         tested</pre>
+<pre>val                           tested</pre>
+<pre>vals                          tested</pre>
+<pre>var-get                       tested</pre>
+<pre>var-set                       tested</pre>
+<pre>var?                          tested</pre>
+<pre>vary-meta                     tested</pre>
+<pre>vec                           tested</pre>
+<pre>vector                        tested</pre>
+<pre>vector-of                     tested</pre>
+<pre>vector?                       tested</pre>
+<pre>volatile!                     tested</pre>
+<pre>volatile?                     tested</pre>
+<pre>vreset!                       tested</pre>
+<pre>vswap!                        tested</pre>
+<pre>when                          tested</pre>
+<pre>when-first                    tested</pre>
+<pre>when-let                      tested</pre>
+<pre>when-not                      tested</pre>
+<pre>when-some                     tested</pre>
+<pre>while                         tested</pre>
+<pre>with-bindings                 tested</pre>
+<pre>with-bindings*                tested</pre>
+<pre>with-in-str                   tested</pre>
+<pre>with-loading-context          tested</pre>
+<pre>with-local-vars               tested</pre>
+<pre>with-meta                     tested</pre>
+<pre>with-open                     tested</pre>
+<pre>with-out-str                  tested</pre>
+<pre>with-precision                tested</pre>
+<pre>with-redefs                   tested</pre>
+<pre>with-redefs-fn                tested</pre>
+<pre>xml-seq                       tested</pre>
+<pre>zero?                         tested</pre>
+<pre>zipmap                        tested</pre>
+<br>
+<p>Milestone: C++ interopStatus: 100% complete</p>
+<p>Feature</p>
+<pre>interop/include headers                        done</pre>
+<pre>interop/link libraries                         done</pre>
+<pre>interop/represent native objects               done</pre>
+<pre>interop/call native functions                  done</pre>
+<pre>interop/explicitly box unbox native objects    done</pre>
+<pre>interop/refer to native globals                done</pre>
+<pre>interop/access native members                  done</pre>
+<p>interop/extract native value from jank object  done</p>
+<pre>interop/convert native value to jank object    done</pre>
+<pre>interop/create native objects                  done</pre>
+<br>
+<p>Milestone: ToolingStatus: 0% complete</p>
+<p>Feature</p>
+<p>leiningen support  done</p>
+<pre>deps.edn           done</pre>
+<pre>nrepl support      done</pre>
+<pre>lsp server         done</pre>
+<pre>dap server         done</pre>
+<br>
+<br>
+    </div>
+</body>
+</html>
