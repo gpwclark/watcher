@@ -17,3 +17,7 @@ feed_name = "example-changelog"
 [[sites]]
 url = "https://www.cisa.gov/news-events/news"
 feed_name = "cisa-gov-news"
+
+[[sites]]
+url = "https://disa.mil/NewsandEvents"
+feed_name = "disa-mil-news"
