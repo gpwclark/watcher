@@ -122,8 +122,10 @@ runs:
         fi
         
         # Run watcher-batch - DO NOT CAPTURE OUTPUT, LET IT STREAM
+        set +e  # Don't exit on error
         flox activate -- uv run watcher-batch $ARGS | tee /tmp/watcher-output.txt
         EXIT_CODE=${PIPESTATUS[0]}
+        set -e  # Re-enable exit on error
         
         # Extract counts from output
         UPDATED=$(grep -o "Updated: [0-9]*" /tmp/watcher-output.txt | grep -o "[0-9]*" || echo "0")
@@ -132,10 +134,10 @@ runs:
         echo "updated-count=$UPDATED" >> $GITHUB_OUTPUT
         echo "error-count=$ERRORS" >> $GITHUB_OUTPUT
         
-        # Exit with the actual exit code from watcher-batch
+        # Log if there were errors but don't fail the action
         if [ $EXIT_CODE -ne 0 ]; then
-          echo "::error::watcher-batch failed with exit code $EXIT_CODE"
-          exit $EXIT_CODE
+          echo "::warning::watcher-batch reported $ERRORS errors (exit code $EXIT_CODE)"
+          echo "Despite errors, continuing with deployment of successful sites..."
         fi
 
     - name: Commit to gh-pages branch

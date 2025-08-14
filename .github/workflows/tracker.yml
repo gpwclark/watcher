@@ -12,7 +12,7 @@ on:
         type: string
   push:
     branches: [ main ]
-    paths: [ 'watcher-config.toml', 'sites.toml' ]  # Support both for transition
+    paths: [ 'watcher-config.toml' ]
 
 permissions:
   contents: write
