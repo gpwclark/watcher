@@ -1,11 +1,9 @@
 """Static site generation for watcher - extracted from GitHub Actions workflow."""
 
 import json
-import os
 import shutil
 from pathlib import Path
-from typing import List, Optional
-from datetime import datetime
+from typing import Optional
 
 
 class StaticSiteGenerator:
@@ -15,7 +13,9 @@ class StaticSiteGenerator:
         self.base_url = base_url.rstrip("/")
         self.output_dir = Path(output_dir)
 
-    def generate_site(self, content_dir: Path, feeds_dir: Path, subdirectory: Optional[str] = None) -> None:
+    def generate_site(
+        self, content_dir: Path, feeds_dir: Path, subdirectory: Optional[str] = None
+    ) -> None:
         """Generate complete static site with all necessary files."""
         # Create deployment directory
         self.output_dir.mkdir(exist_ok=True)
@@ -35,7 +35,11 @@ class StaticSiteGenerator:
             shutil.copytree(feeds_dir, deploy_path / "feeds", dirs_exist_ok=True)
 
         # Copy history explorer files to deployment root
-        history_files = ["history-explorer.html", "history-viewer.js", "feed-viewer.html"]
+        history_files = [
+            "history-explorer.html",
+            "history-viewer.js",
+            "feed-viewer.html",
+        ]
         for file in history_files:
             src_file = content_dir / file
             if src_file.exists():
@@ -72,7 +76,7 @@ class StaticSiteGenerator:
 
     def _generate_index_html(self, deploy_path: Path) -> None:
         """Generate the main index.html page."""
-        html_content = '''<!DOCTYPE html>
+        html_content = """<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -266,7 +270,7 @@ class StaticSiteGenerator:
         loadFeeds();
     </script>
 </body>
-</html>'''
+</html>"""
 
         with open(deploy_path / "index.html", "w") as f:
             f.write(html_content)
@@ -277,7 +281,7 @@ def prepare_github_pages_content(
     feeds_dir: Path,
     base_url: str,
     output_dir: Path = Path("deploy"),
-    subdirectory: Optional[str] = None
+    subdirectory: Optional[str] = None,
 ) -> None:
     """Convenience function to generate static site for GitHub Pages."""
     generator = StaticSiteGenerator(base_url, output_dir)

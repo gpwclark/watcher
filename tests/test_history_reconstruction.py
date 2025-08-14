@@ -1,13 +1,10 @@
 """Tests for history reconstruction functionality."""
 
-import pytest
 from pathlib import Path
 import tempfile
 from datetime import datetime, timezone, timedelta
 from watcher.core.storage import ContentStorage
 from watcher.core.rss_manager import RSSManager
-from watcher.lib import scrape_and_update_feed
-from watcher.core.models import ScraperRequest
 
 
 class TestHistoryReconstruction:
@@ -16,6 +13,7 @@ class TestHistoryReconstruction:
         with tempfile.TemporaryDirectory() as tmpdir:
             # Change to temp directory
             import os
+
             old_cwd = os.getcwd()
             os.chdir(tmpdir)
 
@@ -23,11 +21,11 @@ class TestHistoryReconstruction:
                 storage = ContentStorage("test-feed")
 
                 content_data = {
-                    'content': '<p>Test content</p>',
-                    'hash': 'abc123',
-                    'title': 'Test Page',
-                    'url': 'https://example.com',
-                    'timestamp': datetime.now(timezone.utc).isoformat(),
+                    "content": "<p>Test content</p>",
+                    "hash": "abc123",
+                    "title": "Test Page",
+                    "url": "https://example.com",
+                    "timestamp": datetime.now(timezone.utc).isoformat(),
                 }
 
                 filename, _ = storage.save_content(content_data)
@@ -47,6 +45,7 @@ class TestHistoryReconstruction:
         """Test that RSS feed links include date query parameter."""
         with tempfile.TemporaryDirectory() as tmpdir:
             import os
+
             old_cwd = os.getcwd()
             os.chdir(tmpdir)
 
@@ -56,11 +55,11 @@ class TestHistoryReconstruction:
                 # Create a test item
                 timestamp = datetime.now(timezone.utc)
                 rss_item = {
-                    'title': 'Test Update',
-                    'description': 'Test description with diff\n@@ -1,3 +1,3 @@\n-old\n+new',
-                    'timestamp': timestamp.isoformat(),
-                    'hash': 'abc123',
-                    'filename': '20250811-120000.html',
+                    "title": "Test Update",
+                    "description": "Test description with diff\n@@ -1,3 +1,3 @@\n-old\n+new",
+                    "timestamp": timestamp.isoformat(),
+                    "hash": "abc123",
+                    "filename": "20250811-120000.html",
                 }
 
                 rss_manager.create_or_update_feed(rss_item)
@@ -69,11 +68,11 @@ class TestHistoryReconstruction:
                 feed_content = Path("feeds/test-feed.xml").read_text()
 
                 # Check that link includes date parameter
-                assert '?date=' in feed_content
+                assert "?date=" in feed_content
                 assert timestamp.isoformat() in feed_content
 
                 # Check that diff is in the feed (feedgenerator escapes CDATA)
-                assert '@@ -1,3 +1,3 @@' in feed_content
+                assert "@@ -1,3 +1,3 @@" in feed_content
 
             finally:
                 os.chdir(old_cwd)
@@ -82,6 +81,7 @@ class TestHistoryReconstruction:
         """Test that diffs are generated correctly between versions."""
         with tempfile.TemporaryDirectory() as tmpdir:
             import os
+
             old_cwd = os.getcwd()
             os.chdir(tmpdir)
 
@@ -90,11 +90,11 @@ class TestHistoryReconstruction:
 
                 # Save first version
                 content_data1 = {
-                    'content': '<p>Original content</p>',
-                    'hash': 'hash1',
-                    'title': 'Test Page',
-                    'url': 'https://example.com',
-                    'timestamp': datetime.now(timezone.utc).isoformat(),
+                    "content": "<p>Original content</p>",
+                    "hash": "hash1",
+                    "title": "Test Page",
+                    "url": "https://example.com",
+                    "timestamp": datetime.now(timezone.utc).isoformat(),
                 }
 
                 filename1, diff1 = storage.save_content(content_data1)
@@ -102,17 +102,19 @@ class TestHistoryReconstruction:
 
                 # Save second version
                 content_data2 = {
-                    'content': '<p>Modified content</p>',
-                    'hash': 'hash2',
-                    'title': 'Test Page',
-                    'url': 'https://example.com',
-                    'timestamp': (datetime.now(timezone.utc) + timedelta(minutes=1)).isoformat(),
+                    "content": "<p>Modified content</p>",
+                    "hash": "hash2",
+                    "title": "Test Page",
+                    "url": "https://example.com",
+                    "timestamp": (
+                        datetime.now(timezone.utc) + timedelta(minutes=1)
+                    ).isoformat(),
                 }
 
                 filename2, diff2 = storage.save_content(content_data2)
                 assert diff2 is not None
-                assert '-<p>Original content</p>' in diff2
-                assert '+<p>Modified content</p>' in diff2
+                assert "-<p>Original content</p>" in diff2
+                assert "+<p>Modified content</p>" in diff2
 
             finally:
                 os.chdir(old_cwd)
@@ -121,6 +123,7 @@ class TestHistoryReconstruction:
         """Test that RSS feed links to latest content file."""
         with tempfile.TemporaryDirectory() as tmpdir:
             import os
+
             old_cwd = os.getcwd()
             os.chdir(tmpdir)
 
@@ -141,11 +144,11 @@ class TestHistoryReconstruction:
 
                 # Create feed
                 rss_item = {
-                    'title': 'Test',
-                    'description': 'Test',
-                    'timestamp': datetime.now(timezone.utc).isoformat(),
-                    'hash': 'abc123',
-                    'filename': '20250811-120000.html',
+                    "title": "Test",
+                    "description": "Test",
+                    "timestamp": datetime.now(timezone.utc).isoformat(),
+                    "hash": "abc123",
+                    "filename": "20250811-120000.html",
                 }
 
                 rss_manager.create_or_update_feed(rss_item)

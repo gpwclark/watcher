@@ -3,17 +3,21 @@
 from dataclasses import dataclass
 from typing import Optional
 
+
 @dataclass
 class ScraperRequest:
     """Request object for scraping a URL."""
+
     url: str
     feed_name: str
     base_url: Optional[str] = None
     min_hours: Optional[float] = None  # Minimum hours between checks
 
+
 @dataclass
 class ScraperResult:
     """Result of a scraping operation."""
+
     success: bool
     changed: bool
     filename: Optional[str] = None

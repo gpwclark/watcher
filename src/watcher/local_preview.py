@@ -38,15 +38,23 @@ class PreviewServer:
             ["git", "ls-remote", "--heads", "origin", "gh-pages"],
             cwd=self.repo_path,
             capture_output=True,
-            text=True
+            text=True,
         )
 
         if "gh-pages" in result.stdout:
             # Clone only gh-pages branch
             subprocess.run(
-                ["git", "clone", "-b", "gh-pages", "--single-branch", str(self.repo_path), "gh-pages"],
+                [
+                    "git",
+                    "clone",
+                    "-b",
+                    "gh-pages",
+                    "--single-branch",
+                    str(self.repo_path),
+                    "gh-pages",
+                ],
                 cwd=temp_path,
-                check=True
+                check=True,
             )
             return temp_path / "gh-pages"
         else:
@@ -65,7 +73,9 @@ class PreviewServer:
 
         if gh_content.exists():
             shutil.copytree(gh_content, self.repo_path / "content", dirs_exist_ok=True)
-            print(f"Copied existing content: {len(list(gh_content.rglob('*.html')))} files")
+            print(
+                f"Copied existing content: {len(list(gh_content.rglob('*.html')))} files"
+            )
 
         if gh_feeds.exists():
             shutil.copytree(gh_feeds, self.repo_path / "feeds", dirs_exist_ok=True)
@@ -73,9 +83,13 @@ class PreviewServer:
 
         # Run watcher-batch
         cmd = [
-            sys.executable, "-m", "watcher.cli_batch",
-            "--config", "sites.toml",
-            "--base-url", base_url
+            sys.executable,
+            "-m",
+            "watcher.cli_batch",
+            "--config",
+            "sites.toml",
+            "--base-url",
+            base_url,
         ]
 
         subprocess.run(cmd, cwd=self.repo_path, check=True)
@@ -106,11 +120,13 @@ class PreviewServer:
         class QuietHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
             def log_message(self, format, *args):
                 # Only log errors
-                if args[1] != '200':
+                if args[1] != "200":
                     super().log_message(format, *args)
 
         def serve():
-            with socketserver.TCPServer(("", self.port), QuietHTTPRequestHandler) as httpd:
+            with socketserver.TCPServer(
+                ("", self.port), QuietHTTPRequestHandler
+            ) as httpd:
                 self.server = httpd
                 print(f"\n🚀 Preview server running at http://localhost:{self.port}")
                 print("Press Ctrl+C to stop\n")
@@ -125,7 +141,9 @@ class PreviewServer:
             shutil.rmtree(self.temp_dir)
             print(f"Cleaned up temporary directory: {self.temp_dir}")
 
-    def run(self, subdirectory: Optional[str] = None, skip_watcher: bool = False) -> None:
+    def run(
+        self, subdirectory: Optional[str] = None, skip_watcher: bool = False
+    ) -> None:
         """Run the preview server."""
         try:
             # Clone gh-pages branch
@@ -157,21 +175,20 @@ class PreviewServer:
 
 def main():
     """Main entry point for preview server."""
-    parser = argparse.ArgumentParser(description="Preview watcher GitHub Pages site locally")
+    parser = argparse.ArgumentParser(
+        description="Preview watcher GitHub Pages site locally"
+    )
     parser.add_argument(
-        "--port",
-        type=int,
-        default=8000,
-        help="Port to run server on (default: 8000)"
+        "--port", type=int, default=8000, help="Port to run server on (default: 8000)"
     )
     parser.add_argument(
         "--subdirectory",
-        help="Subdirectory to deploy to (e.g., 'tracker' for /tracker/)"
+        help="Subdirectory to deploy to (e.g., 'tracker' for /tracker/)",
     )
     parser.add_argument(
         "--skip-watcher",
         action="store_true",
-        help="Skip running watcher-batch (use existing content/feeds)"
+        help="Skip running watcher-batch (use existing content/feeds)",
     )
 
     args = parser.parse_args()

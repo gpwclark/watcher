@@ -1,6 +1,5 @@
 """Tests for diff utilities."""
 
-import pytest
 from pathlib import Path
 import tempfile
 from watcher.core.diff_utils import DiffUtils

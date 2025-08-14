@@ -28,7 +28,7 @@ def scrape_and_update_feed(request: ScraperRequest) -> ScraperResult:
                 success=True,
                 changed=False,
                 skipped=True,
-                error_message=f"Skipped - checked too recently (min_hours={request.min_hours})"
+                error_message=f"Skipped - checked too recently (min_hours={request.min_hours})",
             )
 
         # Fetch content
@@ -37,22 +37,20 @@ def scrape_and_update_feed(request: ScraperRequest) -> ScraperResult:
             return ScraperResult(
                 success=False,
                 changed=False,
-                error_message="Failed to fetch content from URL"
+                error_message="Failed to fetch content from URL",
             )
 
         # Save content if changed
         save_result = storage.save_content(content_data)
         if not save_result:
             return ScraperResult(
-                success=True,
-                changed=False,
-                content_hash=content_data['hash']
+                success=True, changed=False, content_hash=content_data["hash"]
             )
 
         filename, diff_content = save_result
 
         # Create description with diff if available
-        description = content_data.get('description', f'Update from {request.url}')
+        description = content_data.get("description", f"Update from {request.url}")
         if diff_content:
             # Include full diff without truncation, wrapped in pre/code tags
             # The RSS manager will wrap this in CDATA sections
@@ -60,11 +58,11 @@ def scrape_and_update_feed(request: ScraperRequest) -> ScraperResult:
 
         # Update RSS feed
         rss_item = {
-            'title': content_data['title'],
-            'description': description,
-            'timestamp': content_data['timestamp'],
-            'hash': content_data['hash'],
-            'filename': filename,
+            "title": content_data["title"],
+            "description": description,
+            "timestamp": content_data["timestamp"],
+            "hash": content_data["hash"],
+            "filename": filename,
         }
 
         rss_manager.create_or_update_feed(rss_item)
@@ -74,12 +72,8 @@ def scrape_and_update_feed(request: ScraperRequest) -> ScraperResult:
             changed=True,
             filename=filename,
             feed_path=f"feeds/{request.feed_name}.xml",
-            content_hash=content_data['hash']
+            content_hash=content_data["hash"],
         )
 
     except Exception as e:
-        return ScraperResult(
-            success=False,
-            changed=False,
-            error_message=str(e)
-        )
+        return ScraperResult(success=False, changed=False, error_message=str(e))

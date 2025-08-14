@@ -10,20 +10,21 @@ from .core.models import ScraperRequest
 def main():
     """Main CLI entry point."""
     parser = argparse.ArgumentParser(
-        description='Git-scraping tool with RSS feed generation',
-        prog='watcher'
+        description="Git-scraping tool with RSS feed generation", prog="watcher"
     )
-    parser.add_argument('url', help='URL to scrape')
-    parser.add_argument('feed_name', help='Name for the RSS feed (e.g., "jank-progress")')
-    parser.add_argument('--base-url', help='Base URL for RSS links (defaults to GitHub repo URL)')
+    parser.add_argument("url", help="URL to scrape")
+    parser.add_argument(
+        "feed_name", help='Name for the RSS feed (e.g., "jank-progress")'
+    )
+    parser.add_argument(
+        "--base-url", help="Base URL for RSS links (defaults to GitHub repo URL)"
+    )
 
     args = parser.parse_args()
 
     # Create request object
     request = ScraperRequest(
-        url=args.url,
-        feed_name=args.feed_name,
-        base_url=args.base_url
+        url=args.url, feed_name=args.feed_name, base_url=args.base_url
     )
 
     print(f"Scraping {request.url} for feed '{request.feed_name}'...")
@@ -43,8 +44,8 @@ def main():
     print(f"Updated RSS feed: {result.feed_path}")
 
     # Set output for GitHub Actions
-    if os.environ.get('GITHUB_ACTIONS'):
-        print(f"::set-output name=changed::true")
+    if os.environ.get("GITHUB_ACTIONS"):
+        print("::set-output name=changed::true")
         print(f"::set-output name=filename::{result.filename}")
         print(f"::set-output name=feed_path::{result.feed_path}")
 

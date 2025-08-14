@@ -12,31 +12,29 @@ from .static_site import prepare_github_pages_content
 def main():
     """Process multiple sites from a TOML configuration file."""
     parser = argparse.ArgumentParser(
-        description='Process multiple sites from a TOML file',
-        prog='watcher-batch'
+        description="Process multiple sites from a TOML file", prog="watcher-batch"
     )
     parser.add_argument(
-        '--config',
-        default='sites.toml',
-        help='Path to TOML configuration file (default: sites.toml)'
+        "--config",
+        default="sites.toml",
+        help="Path to TOML configuration file (default: sites.toml)",
     )
     parser.add_argument(
-        '--base-url',
-        help='Base URL for RSS links (defaults to GitHub repo URL)'
+        "--base-url", help="Base URL for RSS links (defaults to GitHub repo URL)"
     )
     parser.add_argument(
-        '--generate-site',
-        action='store_true',
-        help='Generate static site files for GitHub Pages'
+        "--generate-site",
+        action="store_true",
+        help="Generate static site files for GitHub Pages",
     )
     parser.add_argument(
-        '--output-dir',
-        default='deploy',
-        help='Output directory for static site (default: deploy)'
+        "--output-dir",
+        default="deploy",
+        help="Output directory for static site (default: deploy)",
     )
     parser.add_argument(
-        '--subdirectory',
-        help='Subdirectory for deployment (e.g., "tracker" for /tracker/)'
+        "--subdirectory",
+        help='Subdirectory for deployment (e.g., "tracker" for /tracker/)',
     )
 
     args = parser.parse_args()
@@ -48,13 +46,13 @@ def main():
         sys.exit(1)
 
     try:
-        with open(config_path, 'rb') as f:
+        with open(config_path, "rb") as f:
             config = tomllib.load(f)
     except Exception as e:
         print(f"Error reading configuration: {e}")
         sys.exit(1)
 
-    sites = config.get('sites', [])
+    sites = config.get("sites", [])
     if not sites:
         print("No sites found in configuration")
         sys.exit(1)
@@ -68,8 +66,8 @@ def main():
 
     # Process each site
     for site in sites:
-        url = site.get('url')
-        feed_name = site.get('feed_name')
+        url = site.get("url")
+        feed_name = site.get("feed_name")
 
         if not url or not feed_name:
             print(f"Skipping invalid site entry: {site}")
@@ -79,13 +77,10 @@ def main():
         print(f"\nProcessing {feed_name} ({url})...")
 
         # Get optional min_hours from config
-        min_hours = site.get('min_hours')
+        min_hours = site.get("min_hours")
 
         request = ScraperRequest(
-            url=url,
-            feed_name=feed_name,
-            base_url=args.base_url,
-            min_hours=min_hours
+            url=url, feed_name=feed_name, base_url=args.base_url, min_hours=min_hours
         )
 
         try:
@@ -100,14 +95,14 @@ def main():
                 print(f"  Updated: {result.feed_path}")
                 changed += 1
             else:
-                print(f"  No changes detected")
+                print("  No changes detected")
 
         except Exception as e:
             print(f"  Unexpected error: {e}")
             errors += 1
 
     # Summary
-    print(f"\nSummary:")
+    print("\nSummary:")
     print(f"  Total sites: {total}")
     print(f"  Updated: {changed}")
     print(f"  Errors: {errors}")
@@ -115,7 +110,7 @@ def main():
 
     # Generate static site if requested
     if args.generate_site:
-        print(f"\nGenerating static site...")
+        print("\nGenerating static site...")
         content_dir = Path("content")
         feeds_dir = Path("feeds")
         output_dir = Path(args.output_dir)
@@ -131,7 +126,7 @@ def main():
                 feeds_dir=feeds_dir,
                 base_url=args.base_url or "",
                 output_dir=output_dir,
-                subdirectory=args.subdirectory
+                subdirectory=args.subdirectory,
             )
             print(f"Static site generated in: {output_dir}")
         except Exception as e:
