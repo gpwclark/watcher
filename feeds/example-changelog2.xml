@@ -1,5 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>example-changelog2 Updates</title><link>https://gpwclark.github.io/watcher/content/example-changelog2/20250815-000717599690.html</link><description>Updates from example-changelog2</description><language>en</language><lastBuildDate>Fri, 15 Aug 2025 00:07:17 +0000</lastBuildDate><item><title>Countdown to  New Year 2026 in Chicago</title><link>https://gpwclark.github.io/watcher/content/example-changelog2/20250815-000717599690.html?date=2025-08-15T00:07:17.599486+00:00</link><description><![CDATA[Count the seconds to the New Year in any location or time zone.
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>example-changelog2 Updates</title><link>https://gpwclark.github.io/watcher/content/example-changelog2/20250815-023546263637.html</link><description>Updates from example-changelog2</description><language>en</language><lastBuildDate>Fri, 15 Aug 2025 02:35:46 +0000</lastBuildDate><item><title>Countdown to  New Year 2026 in Roanoke Rapids</title><link>https://gpwclark.github.io/watcher/content/example-changelog2/20250815-023546263637.html?date=2025-08-15T02:35:46.263429+00:00</link><description><![CDATA[Count the seconds to the New Year in any location or time zone.
+
+<pre><code>@@ -3,22 +3,22 @@
+ <br>
+ <p>[](/counters/fullscreen.html?mode=m&year=2026)</p>
+ <pre>139       days</pre>
+-<pre>3341      hours</pre>
+-<pre>200512    minutes</pre>
+-<p>12030763  seconds</p>
++<pre>3338      hours</pre>
++<pre>200304    minutes</pre>
++<p>12018254  seconds</p>
+ <br>
+ <br>
+-<p>until Thursday, January 1, 2026 ([Chicago](/worldclock/usa/chicago) time)</p>
++<p>until Thursday, January 1, 2026 ([Roanoke Rapids](/worldclock/usa/roanoke-rapids) time)</p>
+ <br>
+ <p>[](/counters/fullscreen.html?mode=a&year=2026)</p>
+ <br>
+-<p>139 days, 5 hours, 52 minutes, 43 seconds</p>
++<p>139 days, 2 hours, 24 minutes, 14 seconds</p>
+ <br>
+-<p>until Thursday, January 1, 2026 ([Chicago](/worldclock/usa/chicago) time)</p>
++<p>until Thursday, January 1, 2026 ([Roanoke Rapids](/worldclock/usa/roanoke-rapids) time)</p>
+ <br>
+ <p>[One hour wrong? Daylight Saving Time!](/countdown/one-hour-off)</p>
+ <br>
+-<p>Current time is Thursday, August 14, 2025 at 7:07:17 pm [CDT](/time/zones/cdt) (local time in [](/worldclock/usa/chicago)[Chicago](/worldclock/usa/chicago))</p>
++<p>Current time is Thursday, August 14, 2025 at 10:35:46 pm [EDT](/time/zones/edt) (local time in [](/worldclock/usa/roanoke-rapids)[Roanoke Rapids](/worldclock/usa/roanoke-rapids))</p>
+ <br>
+ <p>You may need to press Reload or Refresh on your browser to update the numbers.</p>
+ <br></code></pre>]]></description><pubDate>Fri, 15 Aug 2025 02:35:46 +0000</pubDate><guid>example-changelog2-b04eb5d5</guid></item><item><title>Countdown to  New Year 2026 in Chicago</title><link>https://gpwclark.github.io/watcher/content/example-changelog2/20250815-000717599690.html?date=2025-08-15T00:07:17.599486+00:00</link><description><![CDATA[Count the seconds to the New Year in any location or time zone.
 
 <pre><code>@@ -3,22 +3,22 @@
  <br>
