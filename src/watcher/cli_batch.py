@@ -110,7 +110,7 @@ def main():
             feed_name=feed_name,
             base_url=args.base_url,
             min_hours=min_hours,
-            exclude_tags=exclude_tags
+            exclude_tags=exclude_tags,
         )
 
         try:

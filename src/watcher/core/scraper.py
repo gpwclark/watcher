@@ -11,7 +11,13 @@ from bs4 import BeautifulSoup
 class ContentScraper:
     def __init__(self, url: str, exclude_tags: Optional[List[str]] = None):
         self.url = url
-        self.exclude_tags = exclude_tags or ["script", "style", "nav", "header", "footer"]
+        self.exclude_tags = exclude_tags or [
+            "script",
+            "style",
+            "nav",
+            "header",
+            "footer",
+        ]
 
     def fetch_content(self) -> Optional[Dict[str, str]]:
         """Fetch and extract content from the URL using inscriptis."""

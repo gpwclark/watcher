@@ -30,7 +30,11 @@ class TestContentScraper:
         mock_title_tag.text = "Test Title"
         mock_soup.find.side_effect = lambda tag, **kwargs: {
             "title": mock_title_tag,
-            "meta": MagicMock(get=lambda key, default: "Test Description" if key == "content" else default),
+            "meta": MagicMock(
+                get=lambda key, default: "Test Description"
+                if key == "content"
+                else default
+            ),
             "body": MagicMock(),
         }.get(tag)
         mock_soup.find_all.return_value = []
