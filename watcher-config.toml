@@ -30,3 +30,7 @@ feed_name = "odni"
 url = "https://www.cisa.gov/news-events/news"
 feed_name = "cisa-gov-news"
 
+[[watcher.sites]]
+url = "https://genie.stanford.edu/"
+feed_name = "stanford-geniue-home-assistant-news"
+min_hours = 168
