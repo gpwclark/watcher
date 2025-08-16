@@ -1,5 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>example-changelog2 Updates</title><link>https://gpwclark.github.io/watcher/content/example-changelog2/20250816-060237273050.html</link><description>Updates from example-changelog2</description><language>en</language><lastBuildDate>Sat, 16 Aug 2025 06:02:37 +0000</lastBuildDate><item><title>Countdown to  New Year 2026 in Des Moines</title><link>https://gpwclark.github.io/watcher/content/example-changelog2/20250816-060237273050.html?date=2025-08-16T06:02:37.272841+00:00</link><description><![CDATA[Count the seconds to the New Year in any location or time zone.
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>example-changelog2 Updates</title><link>https://gpwclark.github.io/watcher/content/example-changelog2/20250816-120520094125.html</link><description>Updates from example-changelog2</description><language>en</language><lastBuildDate>Sat, 16 Aug 2025 12:05:20 +0000</lastBuildDate><item><title>Countdown to  New Year 2026 in Chicago</title><link>https://gpwclark.github.io/watcher/content/example-changelog2/20250816-120520094125.html?date=2025-08-16T12:05:20.093851+00:00</link><description><![CDATA[Count the seconds to the New Year in any location or time zone.
+
+<pre><code>@@ -3,22 +3,22 @@
+ <br>
+ <p>[](/counters/fullscreen.html?mode=m&year=2026)</p>
+ <pre>137       days</pre>
+-<pre>3311      hours</pre>
+-<pre>198717    minutes</pre>
+-<p>11923043  seconds</p>
++<pre>3305      hours</pre>
++<pre>198354    minutes</pre>
++<p>11901280  seconds</p>
+ <br>
+ <br>
+-<p>until Thursday, January 1, 2026 ([Des Moines](/worldclock/usa/des-moines) time)</p>
++<p>until Thursday, January 1, 2026 ([Chicago](/worldclock/usa/chicago) time)</p>
+ <br>
+ <p>[](/counters/fullscreen.html?mode=a&year=2026)</p>
+ <br>
+-<p>137 days, 23 hours, 57 minutes, 23 seconds</p>
++<p>137 days, 17 hours, 54 minutes, 40 seconds</p>
+ <br>
+-<p>until Thursday, January 1, 2026 ([Des Moines](/worldclock/usa/des-moines) time)</p>
++<p>until Thursday, January 1, 2026 ([Chicago](/worldclock/usa/chicago) time)</p>
+ <br>
+ <p>[One hour wrong? Daylight Saving Time!](/countdown/one-hour-off)</p>
+ <br>
+-<p>Current time is Saturday, August 16, 2025 at 1:02:37 am [CDT](/time/zones/cdt) (local time in [](/worldclock/usa/des-moines)[Des Moines](/worldclock/usa/des-moines))</p>
++<p>Current time is Saturday, August 16, 2025 at 7:05:20 am [CDT](/time/zones/cdt) (local time in [](/worldclock/usa/chicago)[Chicago](/worldclock/usa/chicago))</p>
+ <br>
+ <p>You may need to press Reload or Refresh on your browser to update the numbers.</p>
+ <br></code></pre>]]></description><pubDate>Sat, 16 Aug 2025 12:05:20 +0000</pubDate><guid>example-changelog2-d5f84e75</guid></item><item><title>Countdown to  New Year 2026 in Des Moines</title><link>https://gpwclark.github.io/watcher/content/example-changelog2/20250816-060237273050.html?date=2025-08-16T06:02:37.272841+00:00</link><description><![CDATA[Count the seconds to the New Year in any location or time zone.
 
 <pre><code>@@ -2,21 +2,23 @@
  <p>](/)</p>
@@ -584,4 +615,4 @@
 +<p>Current time is Wednesday, August 13, 2025 at 10:52:04 pm [EDT](/time/zones/edt) (local time in [](/worldclock/usa/roanoke-rapids)[Roanoke Rapids](/worldclock/usa/roanoke-rapids))</p>
  <br>
  <p>You may need to press Reload or Refresh on your browser to update the numbers.</p>
- <br></code></pre>]]></description><pubDate>Thu, 14 Aug 2025 02:52:04 +0000</pubDate><guid>example-changelog2-4f0b6d48</guid></item><item><title>Countdown to  New Year 2026 in Sperryville</title><link>https://gpwclark.github.io/watcher/content/example-changelog2/20250814-023630929172.html?date=2025-08-14T02:36:30.929003+00:00</link><description><![CDATA[Count the seconds to the New Year in any location or time zone.]]></description><pubDate>Thu, 14 Aug 2025 02:36:30 +0000</pubDate><guid>example-changelog2-527941f5</guid></item></channel></rss>
+ <br></code></pre>]]></description><pubDate>Thu, 14 Aug 2025 02:52:04 +0000</pubDate><guid>example-changelog2-4f0b6d48</guid></item></channel></rss>
