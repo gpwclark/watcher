@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Getting Started with FastAPI</title>
+    <meta name="description" content="Build modern APIs with Python FastAPI framework">
+</head>
+<body>
+    <article>
+        <h1>Getting Started with FastAPI</h1>
+        <p>Last updated: March 15, 2024</p>
+        
+        <p>FastAPI is a modern, fast web framework for building APIs with Python 3.7+ based on standard Python type hints.</p>
+        
+        <h2>Installation</h2>
+        <p>To get started, install FastAPI and an ASGI server:</p>
+        <pre><code>pip install fastapi uvicorn</code></pre>
+        
+        <h2>Hello World Example</h2>
+        <pre><code>
+from fastapi import FastAPI
+
+app = FastAPI()
+
+@app.get("/")
+def read_root():
+    return {"Hello": "World"}
+        </code></pre>
+        
+        <p>Version 1.0 - Initial release</p>
+    </article>
+</body>
+</html>

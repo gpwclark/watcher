@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Getting Started with FastAPI - Complete Guide</title>
+    <meta name="description" content="Build modern APIs with Python FastAPI framework - Complete Tutorial">
+</head>
+<body>
+    <article>
+        <h1>Getting Started with FastAPI - Complete Guide</h1>
+        <p>Last updated: March 25, 2024</p>
+        
+        <p>FastAPI is a modern, fast web framework for building APIs with Python 3.8+ based on standard Python type hints. It's one of the fastest Python frameworks available, with performance comparable to NodeJS and Go.</p>
+        
+        <h2>Installation</h2>
+        <p>To get started, install FastAPI and an ASGI server:</p>
+        <pre><code>pip install "fastapi[all]"</code></pre>
+        
+        <h2>Hello World Example</h2>
+        <pre><code>
+from fastapi import FastAPI
+from pydantic import BaseModel
+
+app = FastAPI()
+
+class Item(BaseModel):
+    name: str
+    price: float
+
+@app.get("/")
+async def read_root():
+    return {"Hello": "World", "framework": "FastAPI"}
+
+@app.post("/items/")
+async def create_item(item: Item):
+    return {"item": item, "message": "Item created successfully"}
+        </code></pre>
+        
+        <h2>Automatic Documentation</h2>
+        <p>FastAPI automatically generates interactive API documentation. Access it at /docs for Swagger UI or /redoc for ReDoc.</p>
+        
+        <h2>New: Database Integration</h2>
+        <p>FastAPI works great with SQLAlchemy and async databases. Check out the official tutorial for database integration patterns.</p>
+        
+        <h2>Performance Tips</h2>
+        <ul>
+            <li>Use async/await for I/O operations</li>
+            <li>Enable response caching where appropriate</li>
+            <li>Use Pydantic models for validation</li>
+        </ul>
+        
+        <p>Version 3.0 - Added Pydantic models, database section, and performance tips</p>
+    </article>
+</body>
+</html>

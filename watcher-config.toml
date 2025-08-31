@@ -1,32 +1,38 @@
 [[watcher.sites]]
-url = "https://jank-lang.org/progress/"
-feed_name = "jank-progress"
-min_hours = 24  # Check once a day
-# exclude_tags = ["script", "style", "nav", "header", "footer"]  # Default tags excluded
-
-[[watcher.sites]]
-url = "https://www.timeanddate.com/counters/newyear.html"
-feed_name = "example-changelog2"
-
-[[watcher.sites]]
 url = "https://www.timeanddate.com/counters/newyear.html"
 feed_name = "example-changelog"
+min_hours = 24 # once a day
 
 [[watcher.sites]]
 url = "https://www.nih.gov/news-events/news-releases"
 feed_name = "nih-news"
+min_hours = 168  # once every 7 days
 # Example: Also exclude aside and form elements for this site
 # exclude_tags = ["script", "style", "nav", "header", "footer", "aside", "form"]
 
 [[watcher.sites]]
-url = "https://disa.mil/NewsandEvents"
-feed_name = "disa-mil-news"
+url = "https://jank-lang.org/progress/"
+feed_name = "jank-progress"
+min_hours = 168
+# exclude_tags = ["script", "style", "nav", "header", "footer"]  # Default tags excluded
+
+
+#[[watcher.sites]]
+#url = "https://disa.mil/NewsandEvents"
+#feed_name = "disa-mil-news"
+#min_hours = 672 # once every 4 weeks
+#
+#[[watcher.sites]]
+#url = "https://www.dni.gov/index.php/newsroom/press-releases"
+#feed_name = "odni"
+#min_hours = 672
+#
+#[[watcher.sites]]
+#url = "https://www.cisa.gov/news-events/news"
+#feed_name = "cisa-gov-news"
+#min_hours = 672
 
 [[watcher.sites]]
-url = "https://www.dni.gov/index.php/newsroom/press-releases"
-feed_name = "odni"
-
-[[watcher.sites]]
-url = "https://www.cisa.gov/news-events/news"
-feed_name = "cisa-gov-news"
-
+url = "https://www.espn.com/soccer/table/_/league/eng.1"
+feed_name = "espn-2024-2025-premier-league-status"
+min_hours = 0

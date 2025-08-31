@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Introduction to Docker Containers - Extended Guide</title>
+    <meta name="description" content="Learn the basics of Docker containerization with advanced topics">
+</head>
+<body>
+    <article>
+        <h1>Introduction to Docker Containers - Extended Guide</h1>
+        <p>Published: February 10, 2024 | Updated: March 25, 2024</p>
+        
+        <p>Docker is a platform that uses containerization to make it easier to create, deploy, and run applications. It has become an essential tool in modern DevOps practices.</p>
+        
+        <h2>What is Docker?</h2>
+        <p>Docker allows you to package an application with all of its dependencies into a standardized unit called a container. Containers are lightweight and portable.</p>
+        
+        <h2>Key Concepts</h2>
+        <ul>
+            <li><strong>Images:</strong> Read-only templates used to create containers</li>
+            <li><strong>Containers:</strong> Running instances of images</li>
+            <li><strong>Dockerfile:</strong> Text file with instructions to build images</li>
+            <li><strong>Docker Hub:</strong> Cloud-based registry for Docker images</li>
+            <li><strong>Volumes:</strong> Persistent data storage for containers</li>
+        </ul>
+        
+        <h2>Basic Commands</h2>
+        <pre><code>
+# Pull an image
+docker pull ubuntu:latest
+
+# Run a container
+docker run -it --name mycontainer ubuntu bash
+
+# List all containers
+docker ps -a
+
+# Stop a container
+docker stop mycontainer
+
+# Remove a container
+docker rm mycontainer
+        </code></pre>
+        
+        <h2>Docker Compose</h2>
+        <p>Docker Compose is a tool for defining and running multi-container Docker applications. Create a docker-compose.yml file:</p>
+        <pre><code>
+version: '3'
+services:
+  web:
+    image: nginx
+    ports:
+      - "80:80"
+  db:
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: secret
+        </code></pre>
+        
+        <h2>Best Practices</h2>
+        <ol>
+            <li>Keep images small and focused</li>
+            <li>Use official base images when possible</li>
+            <li>Don't run containers as root</li>
+            <li>Use .dockerignore files</li>
+        </ol>
+        
+        <p>Version 2.0 - Added Docker Compose section and best practices</p>
+    </article>
+</body>
+</html>

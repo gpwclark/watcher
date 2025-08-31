@@ -38,6 +38,9 @@ class ContentStorage:
         last_update = metadata.get("last_update")
         if not last_update:
             return True
+        elif min_hours == 0:
+            # min_hours 0 means only ever grab the data once.
+            return False
 
         try:
             from dateutil import parser

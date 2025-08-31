@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Getting Started with FastAPI</title>
+    <meta name="description" content="Build modern APIs with Python FastAPI framework - Updated Guide">
+</head>
+<body>
+    <article>
+        <h1>Getting Started with FastAPI</h1>
+        <p>Last updated: March 20, 2024</p>
+        
+        <p>FastAPI is a modern, fast web framework for building APIs with Python 3.7+ based on standard Python type hints. It's one of the fastest Python frameworks available.</p>
+        
+        <h2>Installation</h2>
+        <p>To get started, install FastAPI and an ASGI server:</p>
+        <pre><code>pip install fastapi uvicorn[standard]</code></pre>
+        
+        <h2>Hello World Example</h2>
+        <pre><code>
+from fastapi import FastAPI
+
+app = FastAPI()
+
+@app.get("/")
+async def read_root():
+    return {"Hello": "World", "framework": "FastAPI"}
+        </code></pre>
+        
+        <h2>New Feature: Automatic Documentation</h2>
+        <p>FastAPI automatically generates interactive API documentation. Access it at /docs for Swagger UI or /redoc for ReDoc.</p>
+        
+        <p>Version 2.0 - Added async support and documentation section</p>
+    </article>
+</body>
+</html>

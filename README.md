@@ -9,6 +9,10 @@ Automatically track changes to websites and generate RSS feeds with a GitHub Pag
 -  Visual diffs showing exactly what changed
 -  Complete history of all changes
 -  Zero infrastructure - runs entirely on GitHub Actions
+-  Errors if given feeds are giving you trouble
+    - the example shows that dni.gov and cisa.gov don't like to be scraped, but the library makes sure to pass on the
+      underlying cause of the error, dni bravely declares 403, whereas cisa holds your hand until the timeout, but at
+      least you know!
 
 View live example: [https://gpwclark.github.io/watcher/](https://gpwclark.github.io/watcher/)
 
