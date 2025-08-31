@@ -9,15 +9,34 @@ from bs4 import BeautifulSoup
 
 
 class ContentScraper:
-    def __init__(self, url: str, exclude_tags: Optional[List[str]] = None):
+    def __init__(
+        self,
+        url: str,
+        exclude_tags: Optional[List[str]] = None,
+        include_tags: Optional[List[str]] = None,
+        exclude_ids: Optional[List[str]] = None,
+        include_ids: Optional[List[str]] = None,
+        exclude_classes: Optional[List[str]] = None,
+        include_classes: Optional[List[str]] = None,
+    ):
         self.url = url
-        self.exclude_tags = exclude_tags or [
-            "script",
-            "style",
-            "nav",
-            "header",
-            "footer",
-        ]
+        
+        # Validate mutual exclusivity
+        if exclude_tags and include_tags:
+            raise ValueError("Cannot use both exclude_tags and include_tags")
+        if exclude_ids and include_ids:
+            raise ValueError("Cannot use both exclude_ids and include_ids")
+        if exclude_classes and include_classes:
+            raise ValueError("Cannot use both exclude_classes and include_classes")
+        
+        self.exclude_tags = exclude_tags or (
+            ["script", "style", "nav", "header", "footer"] if not include_tags else []
+        )
+        self.include_tags = include_tags
+        self.exclude_ids = exclude_ids or []
+        self.include_ids = include_ids
+        self.exclude_classes = exclude_classes or []
+        self.include_classes = include_classes
 
     def fetch_content(self) -> Optional[Dict[str, str]]:
         """Fetch and extract content from the URL using inscriptis."""
@@ -44,12 +63,64 @@ class ContentScraper:
             )
             description = desc_tag.get("content", "").strip() if desc_tag else ""
 
-            # Remove unwanted elements
-            for element in soup.find_all(self.exclude_tags):
-                element.decompose()
-
-            # Get the body or main content
+            # Apply filtering based on configuration
             body = soup.find("body") or soup
+            
+            # If include_tags is specified, keep only those tags
+            if self.include_tags:
+                # Create a new soup with only included elements
+                included_elements = []
+                for tag in self.include_tags:
+                    included_elements.extend(body.find_all(tag))
+                
+                # Create new body with only included elements
+                new_body = BeautifulSoup("<body></body>", "html.parser").body
+                for elem in included_elements:
+                    new_body.append(elem.extract())
+                body = new_body
+            else:
+                # Otherwise, remove excluded tags
+                for element in body.find_all(self.exclude_tags):
+                    element.decompose()
+            
+            # Handle ID-based filtering
+            if self.include_ids:
+                # Keep only elements with specified IDs
+                included_elements = []
+                for id_name in self.include_ids:
+                    elem = body.find(id=id_name)
+                    if elem:
+                        included_elements.append(elem)
+                
+                # Create new body with only included elements
+                new_body = BeautifulSoup("<body></body>", "html.parser").body
+                for elem in included_elements:
+                    new_body.append(elem.extract())
+                body = new_body
+            elif self.exclude_ids:
+                # Remove elements with specified IDs
+                for id_name in self.exclude_ids:
+                    elem = body.find(id=id_name)
+                    if elem:
+                        elem.decompose()
+            
+            # Handle class-based filtering
+            if self.include_classes:
+                # Keep only elements with specified classes
+                included_elements = []
+                for class_name in self.include_classes:
+                    included_elements.extend(body.find_all(class_=class_name))
+                
+                # Create new body with only included elements
+                new_body = BeautifulSoup("<body></body>", "html.parser").body
+                for elem in included_elements:
+                    new_body.append(elem.extract())
+                body = new_body
+            elif self.exclude_classes:
+                # Remove elements with specified classes
+                for class_name in self.exclude_classes:
+                    for elem in body.find_all(class_=class_name):
+                        elem.decompose()
 
             # Extract text using inscriptis with custom config
             # Using 'strict' profile as base, which preserves tables well

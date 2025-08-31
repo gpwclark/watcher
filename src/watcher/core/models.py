@@ -13,6 +13,11 @@ class ScraperRequest:
     base_url: Optional[str] = None
     min_hours: Optional[float] = None  # Minimum hours between checks
     exclude_tags: Optional[List[str]] = None  # Tags to remove during scraping
+    include_tags: Optional[List[str]] = None  # Only include these tags (exclusive with exclude_tags)
+    exclude_ids: Optional[List[str]] = None  # IDs to exclude
+    include_ids: Optional[List[str]] = None  # Only include these IDs (exclusive with exclude_ids)
+    exclude_classes: Optional[List[str]] = None  # Classes to exclude
+    include_classes: Optional[List[str]] = None  # Only include these classes (exclusive with exclude_classes)
 
 
 @dataclass

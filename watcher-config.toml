@@ -35,4 +35,4 @@ min_hours = 168
 [[watcher.sites]]
 url = "https://www.espn.com/soccer/table/_/league/eng.1"
 feed_name = "espn-2024-2025-premier-league-status"
-min_hours = 0
+min_hours = 672
