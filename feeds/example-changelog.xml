@@ -1,5 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>example-changelog Updates</title><link>https://gpwclark.github.io/watcher/content/example-changelog/20250904-000739434637.html</link><description>Updates from example-changelog</description><language>en</language><lastBuildDate>Thu, 04 Sep 2025 00:07:39 +0000</lastBuildDate><item><title>Countdown to  New Year 2026 in Roanoke Rapids</title><link>https://gpwclark.github.io/watcher/content/example-changelog/20250904-000739434637.html?date=2025-09-04T00:07:39.434398+00:00</link><description><![CDATA[Count the seconds to the New Year in any location or time zone.
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>example-changelog Updates</title><link>https://gpwclark.github.io/watcher/content/example-changelog/20250904-060251645162.html</link><description>Updates from example-changelog</description><language>en</language><lastBuildDate>Thu, 04 Sep 2025 06:02:51 +0000</lastBuildDate><item><title>Countdown to  New Year 2026 in Sperryville</title><link>https://gpwclark.github.io/watcher/content/example-changelog/20250904-060251645162.html?date=2025-09-04T06:02:51.644996+00:00</link><description><![CDATA[Count the seconds to the New Year in any location or time zone.
+
+<pre><code>@@ -4,23 +4,23 @@
+ <p>[](/eclipse/lunar/2025-september-7)</p>
+ <br>
+ <p>[](/counters/fullscreen.html?mode=m&year=2026)</p>
+-<pre>119       days</pre>
+-<pre>2860      hours</pre>
+-<pre>171652    minutes</pre>
+-<p>10299141  seconds</p>
++<pre>118       days</pre>
++<pre>2854      hours</pre>
++<pre>171297    minutes</pre>
++<p>10277829  seconds</p>
+ <br>
+ <br>
+-<p>until Thursday, January 1, 2026 ([Roanoke Rapids](/worldclock/usa/roanoke-rapids) time)</p>
++<p>until Thursday, January 1, 2026 ([Sperryville](/worldclock/usa/sperryville) time)</p>
+ <br>
+ <p>[](/counters/fullscreen.html?mode=a&year=2026)</p>
+ <br>
+-<p>119 days, 4 hours, 52 minutes, 21 seconds</p>
++<p>118 days, 22 hours, 57 minutes, 9 seconds</p>
+ <br>
+-<p>until Thursday, January 1, 2026 ([Roanoke Rapids](/worldclock/usa/roanoke-rapids) time)</p>
++<p>until Thursday, January 1, 2026 ([Sperryville](/worldclock/usa/sperryville) time)</p>
+ <br>
+ <p>[One hour wrong? Daylight Saving Time!](/countdown/one-hour-off)</p>
+ <br>
+-<p>Current time is Wednesday, September 3, 2025 at 8:07:39 pm [EDT](/time/zones/edt) (local time in [](/worldclock/usa/roanoke-rapids)[Roanoke Rapids](/worldclock/usa/roanoke-rapids))</p>
++<p>Current time is Thursday, September 4, 2025 at 2:02:51 am [EDT](/time/zones/edt) (local time in [](/worldclock/usa/sperryville)[Sperryville](/worldclock/usa/sperryville))</p>
+ <br>
+ <p>You may need to press Reload or Refresh on your browser to update the numbers.</p>
+ <br></code></pre>]]></description><pubDate>Thu, 04 Sep 2025 06:02:51 +0000</pubDate><guid>example-changelog-a7f2b644</guid></item><item><title>Countdown to  New Year 2026 in Roanoke Rapids</title><link>https://gpwclark.github.io/watcher/content/example-changelog/20250904-000739434637.html?date=2025-09-04T00:07:39.434398+00:00</link><description><![CDATA[Count the seconds to the New Year in any location or time zone.
 
 <pre><code>@@ -5,22 +5,22 @@
  <br>
@@ -586,35 +619,4 @@
 +<p>Current time is Saturday, August 30, 2025 at 8:03:19 am [EDT](/time/zones/edt) (local time in [](/worldclock/usa/sperryville)[Sperryville](/worldclock/usa/sperryville))</p>
  <br>
  <p>You may need to press Reload or Refresh on your browser to update the numbers.</p>
- <br></code></pre>]]></description><pubDate>Sat, 30 Aug 2025 12:03:19 +0000</pubDate><guid>example-changelog-12f04200</guid></item><item><title>Countdown to  New Year 2026 in Sperryville</title><link>https://gpwclark.github.io/watcher/content/example-changelog/20250830-060308042857.html?date=2025-08-30T06:03:08.042615+00:00</link><description><![CDATA[Count the seconds to the New Year in any location or time zone.
-
-<pre><code>@@ -4,23 +4,23 @@
- <p>[](/eclipse/lunar/2025-september-7)</p>
- <br>
- <p>[](/counters/fullscreen.html?mode=m&year=2026)</p>
--<pre>124       days</pre>
--<pre>2980      hours</pre>
--<pre>178853    minutes</pre>
--<p>10731185  seconds</p>
-+<pre>123       days</pre>
-+<pre>2974      hours</pre>
-+<pre>178496    minutes</pre>
-+<p>10709812  seconds</p>
- <br>
- <br>
- <p>until Thursday, January 1, 2026 ([Sperryville](/worldclock/usa/sperryville) time)</p>
- <br>
- <p>[](/counters/fullscreen.html?mode=a&year=2026)</p>
- <br>
--<p>124 days, 4 hours, 53 minutes, 5 seconds</p>
-+<p>123 days, 22 hours, 56 minutes, 52 seconds</p>
- <br>
- <p>until Thursday, January 1, 2026 ([Sperryville](/worldclock/usa/sperryville) time)</p>
- <br>
- <p>[One hour wrong? Daylight Saving Time!](/countdown/one-hour-off)</p>
- <br>
--<p>Current time is Friday, August 29, 2025 at 8:06:55 pm [EDT](/time/zones/edt) (local time in [](/worldclock/usa/sperryville)[Sperryville](/worldclock/usa/sperryville))</p>
-+<p>Current time is Saturday, August 30, 2025 at 2:03:08 am [EDT](/time/zones/edt) (local time in [](/worldclock/usa/sperryville)[Sperryville](/worldclock/usa/sperryville))</p>
- <br>
- <p>You may need to press Reload or Refresh on your browser to update the numbers.</p>
- <br></code></pre>]]></description><pubDate>Sat, 30 Aug 2025 06:03:08 +0000</pubDate><guid>example-changelog-a200cd89</guid></item></channel></rss>
+ <br></code></pre>]]></description><pubDate>Sat, 30 Aug 2025 12:03:19 +0000</pubDate><guid>example-changelog-12f04200</guid></item></channel></rss>
