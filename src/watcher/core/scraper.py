@@ -20,7 +20,7 @@ class ContentScraper:
         include_classes: Optional[List[str]] = None,
     ):
         self.url = url
-        
+
         # Validate mutual exclusivity
         if exclude_tags and include_tags:
             raise ValueError("Cannot use both exclude_tags and include_tags")
@@ -28,7 +28,7 @@ class ContentScraper:
             raise ValueError("Cannot use both exclude_ids and include_ids")
         if exclude_classes and include_classes:
             raise ValueError("Cannot use both exclude_classes and include_classes")
-        
+
         self.exclude_tags = exclude_tags or (
             ["script", "style", "nav", "header", "footer"] if not include_tags else []
         )
@@ -38,12 +38,21 @@ class ContentScraper:
         self.exclude_classes = exclude_classes or []
         self.include_classes = include_classes
 
-    def fetch_content(self) -> Optional[Dict[str, str]]:
-        """Fetch and extract content from the URL using inscriptis."""
+    def fetch_content(
+        self, proxy_url: Optional[str] = None
+    ) -> Optional[Dict[str, str]]:
+        """Fetch and extract content from the URL using inscriptis.
+
+        Args:
+            proxy_url: Optional transformed URL to use (e.g., through a proxy service)
+        """
         try:
+            # Use proxy URL if provided, otherwise use original URL
+            fetch_url = proxy_url if proxy_url else self.url
+
             # Download the webpage
             response = requests.get(
-                self.url,
+                fetch_url,
                 timeout=30,
                 headers={"User-Agent": "Mozilla/5.0 (compatible; Watcher/1.0)"},
             )
@@ -65,14 +74,14 @@ class ContentScraper:
 
             # Apply filtering based on configuration
             body = soup.find("body") or soup
-            
+
             # If include_tags is specified, keep only those tags
             if self.include_tags:
                 # Create a new soup with only included elements
                 included_elements = []
                 for tag in self.include_tags:
                     included_elements.extend(body.find_all(tag))
-                
+
                 # Create new body with only included elements
                 new_body = BeautifulSoup("<body></body>", "html.parser").body
                 for elem in included_elements:
@@ -82,7 +91,7 @@ class ContentScraper:
                 # Otherwise, remove excluded tags
                 for element in body.find_all(self.exclude_tags):
                     element.decompose()
-            
+
             # Handle ID-based filtering
             if self.include_ids:
                 # Keep only elements with specified IDs
@@ -91,7 +100,7 @@ class ContentScraper:
                     elem = body.find(id=id_name)
                     if elem:
                         included_elements.append(elem)
-                
+
                 # Create new body with only included elements
                 new_body = BeautifulSoup("<body></body>", "html.parser").body
                 for elem in included_elements:
@@ -103,14 +112,14 @@ class ContentScraper:
                     elem = body.find(id=id_name)
                     if elem:
                         elem.decompose()
-            
+
             # Handle class-based filtering
             if self.include_classes:
                 # Keep only elements with specified classes
                 included_elements = []
                 for class_name in self.include_classes:
                     included_elements.extend(body.find_all(class_=class_name))
-                
+
                 # Create new body with only included elements
                 new_body = BeautifulSoup("<body></body>", "html.parser").body
                 for elem in included_elements:

@@ -1,0 +1,81 @@
+# Example watcher configuration with proxy support and defaults
+
+# Proxy configurations (optional)
+[proxies]
+
+# Example ScrapingAnt proxy configuration
+# Requires SCRAPINGANT_API_KEY environment variable
+[proxies.scrapingant]
+type = "url_template"
+template = "https://api.scrapingant.com/v2/general?url={encoded_url}&x-api-key={env:SCRAPINGANT_API_KEY}"
+encoding = "url"  # url, base64, or none
+env_vars = ["SCRAPINGANT_API_KEY"]
+
+# Example ScraperAPI proxy configuration
+# Requires SCRAPER_API_KEY environment variable
+[proxies.scraperapi]
+type = "url_template"
+template = "http://api.scraperapi.com?api_key={env:SCRAPER_API_KEY}&url={encoded_url}"
+encoding = "url"
+env_vars = ["SCRAPER_API_KEY"]
+
+# Example custom proxy with base64 encoding
+[proxies.custom_proxy]
+type = "url_template"
+template = "https://proxy.example.com/fetch?target={encoded_url}&key={env:CUSTOM_PROXY_KEY}"
+encoding = "base64"
+env_vars = ["CUSTOM_PROXY_KEY"]
+
+# Default settings for all watch sites
+[watcher.defaults]
+proxies = []  # List of proxy IDs to use (in order of preference) - uncomment proxies above first!
+proxy_mode = "on_failure"  # "always", "on_failure", or "never"
+max_retries = 3  # Maximum number of retry attempts
+min_hours = 168  # Default: check once a week
+max_items = 100  # Maximum RSS items to keep
+exclude_tags = ["script", "style", "nav", "header", "footer"]  # Default tags to exclude
+# exclude_ids = []  # IDs to exclude
+# exclude_classes = []  # Classes to exclude
+
+# Individual watch sites (inherits from defaults)
+[[watcher.sites]]
+url = "https://www.timeanddate.com/counters/newyear.html"
+feed_name = "example-changelog"
+min_hours = 24  # Override default: check once a day
+
+[[watcher.sites]]
+url = "https://www.nih.gov/news-events/news-releases"
+feed_name = "nih-news"
+# Uses all defaults (min_hours=168, no proxies, etc.)
+
+[[watcher.sites]]
+url = "https://restricted.example.com/feed"
+feed_name = "restricted-site"
+proxies = ["scrapingant", "scraperapi"]  # Try these proxies on failure
+proxy_mode = "always"  # Always use proxy for this site
+max_retries = 5  # More retries for important sites
+
+[[watcher.sites]]
+url = "https://example.com/public-api"
+feed_name = "public-api"
+proxy_mode = "never"  # Never use proxy for this site
+min_hours = 1  # Check every hour
+
+[[watcher.sites]]
+url = "https://jank-lang.org/progress/"
+feed_name = "jank-progress"
+exclude_tags = ["script", "style", "nav", "header", "footer", "aside"]  # Additional exclusions
+
+# Example with include_tags (only keep specific elements)
+[[watcher.sites]]
+url = "https://example.com/blog"
+feed_name = "blog-articles"
+include_tags = ["article", "main"]  # Only include these tags
+min_hours = 12
+
+# Example with ID-based filtering
+[[watcher.sites]]
+url = "https://example.com/status"
+feed_name = "status-page"
+include_ids = ["status-container", "updates"]  # Only include elements with these IDs
+proxies = ["scrapingant"]  # Use proxy if needed

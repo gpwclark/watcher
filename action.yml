@@ -82,6 +82,13 @@ runs:
             echo "Feed files copied: $(find feeds -name "*.xml" | wc -l)"
           fi
 
+          # Preserve statistics files
+          if [ -d "gh-pages-content/.watcher_stats" ]; then
+            echo "Copying existing statistics..."
+            cp -r gh-pages-content/.watcher_stats .
+            echo "Stats files copied: $(find .watcher_stats -name "*.json" | wc -l)"
+          fi
+
           git worktree remove gh-pages-content
         else
           echo "No gh-pages branch found - this appears to be the first run"
@@ -153,6 +160,7 @@ runs:
         mkdir -p /tmp/watcher-content
         cp -r content /tmp/watcher-content/ 2>/dev/null || true
         cp -r feeds /tmp/watcher-content/ 2>/dev/null || true
+        cp -r .watcher_stats /tmp/watcher-content/ 2>/dev/null || true
 
         # Create or checkout gh-pages branch
         if git show-ref --quiet refs/remotes/origin/gh-pages; then
@@ -168,12 +176,13 @@ runs:
         # Copy back the generated content
         cp -r /tmp/watcher-content/content . 2>/dev/null || true
         cp -r /tmp/watcher-content/feeds . 2>/dev/null || true
+        cp -r /tmp/watcher-content/.watcher_stats . 2>/dev/null || true
         
         # Add .nojekyll to prevent GitHub Pages from processing
         touch .nojekyll
         
         # Add and commit
-        git add content feeds .nojekyll || true
+        git add content feeds .watcher_stats .nojekyll || true
         if ! git diff --staged --quiet; then
           git commit -m "Update tracked content - $(date +'%Y-%m-%d %H:%M:%S')"
           git push origin gh-pages

@@ -30,17 +30,17 @@
     {
       "attr_path": "just",
       "broken": false,
-      "derivation": "/nix/store/wqisryfhn6sf52za791hr7xch738683a-just-1.42.4.drv",
+      "derivation": "/nix/store/6mjww5r2p7y2zkflqqymszd2s970qa2g-just-1.42.4.drv",
       "description": "Handy way to save and run project-specific commands",
       "install_id": "just",
       "license": "CC0-1.0",
-      "locked_url": "https://github.com/flox/nixpkgs?rev=005433b926e16227259a1843015b5b2b7f7d1fc3",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=d7600c775f877cd87b4f5a831c28aa94137377aa",
       "name": "just-1.42.4",
       "pname": "just",
-      "rev": "005433b926e16227259a1843015b5b2b7f7d1fc3",
-      "rev_count": 843472,
-      "rev_date": "2025-08-12T19:39:21Z",
-      "scrape_date": "2025-08-14T00:26:13.389708Z",
+      "rev": "d7600c775f877cd87b4f5a831c28aa94137377aa",
+      "rev_count": 854036,
+      "rev_date": "2025-08-30T08:25:00Z",
+      "scrape_date": "2025-08-31T03:28:53.932694Z",
       "stabilities": [
         "unstable"
       ],
@@ -51,9 +51,9 @@
         "out"
       ],
       "outputs": {
-        "doc": "/nix/store/pq9fksdkn6sbq3lli4z5y37085d5l43d-just-1.42.4-doc",
-        "man": "/nix/store/gih21nbjpx4ip4d4l2h0g3hi6664k147-just-1.42.4-man",
-        "out": "/nix/store/rfqsf7a8dym7bxd8bjfhndnmx7gvbgph-just-1.42.4"
+        "doc": "/nix/store/klxxc0zhxcqispvh2abcj4hdakx54mbc-just-1.42.4-doc",
+        "man": "/nix/store/p0db19jxqx8bya45bx5bckp5bidjhp34-just-1.42.4-man",
+        "out": "/nix/store/v1qkql9pcw7l3ywq3g4l664cxqry6agp-just-1.42.4"
       },
       "system": "aarch64-darwin",
       "group": "toplevel",
@@ -62,17 +62,17 @@
     {
       "attr_path": "just",
       "broken": false,
-      "derivation": "/nix/store/mf8sg9f7jfqsq5ifdw752kn6v3m1y91v-just-1.42.4.drv",
+      "derivation": "/nix/store/p0zbr8ah6y9zqi2fn978by4vj226vh2p-just-1.42.4.drv",
       "description": "Handy way to save and run project-specific commands",
       "install_id": "just",
       "license": "CC0-1.0",
-      "locked_url": "https://github.com/flox/nixpkgs?rev=005433b926e16227259a1843015b5b2b7f7d1fc3",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=d7600c775f877cd87b4f5a831c28aa94137377aa",
       "name": "just-1.42.4",
       "pname": "just",
-      "rev": "005433b926e16227259a1843015b5b2b7f7d1fc3",
-      "rev_count": 843472,
-      "rev_date": "2025-08-12T19:39:21Z",
-      "scrape_date": "2025-08-14T01:59:41.634438Z",
+      "rev": "d7600c775f877cd87b4f5a831c28aa94137377aa",
+      "rev_count": 854036,
+      "rev_date": "2025-08-30T08:25:00Z",
+      "scrape_date": "2025-08-31T03:37:19.295772Z",
       "stabilities": [
         "unstable"
       ],
@@ -83,9 +83,9 @@
         "out"
       ],
       "outputs": {
-        "doc": "/nix/store/z7vj1b56v3z7i64r20aa8y61ayqppqfp-just-1.42.4-doc",
-        "man": "/nix/store/83901a2c4v4cgv1b2kx7l6m9wd174sp8-just-1.42.4-man",
-        "out": "/nix/store/8xcqlacbwjfz518ca5hgjrf8208wjp8g-just-1.42.4"
+        "doc": "/nix/store/jlsyd7ssywc94mncbscnpingpx4v2bx1-just-1.42.4-doc",
+        "man": "/nix/store/vs6qzb2kbs4q36ihvyqrs48ppiizsm61-just-1.42.4-man",
+        "out": "/nix/store/kps5abz6mypy4q75mz7w27yjhidshq66-just-1.42.4"
       },
       "system": "aarch64-linux",
       "group": "toplevel",
@@ -94,17 +94,17 @@
     {
       "attr_path": "just",
       "broken": false,
-      "derivation": "/nix/store/y0njpr6g2r7rfsd6hvb60b97l02bh7gl-just-1.42.4.drv",
+      "derivation": "/nix/store/20msb19cffdgsdxvc39cm3iasrg589b2-just-1.42.4.drv",
       "description": "Handy way to save and run project-specific commands",
       "install_id": "just",
       "license": "CC0-1.0",
-      "locked_url": "https://github.com/flox/nixpkgs?rev=005433b926e16227259a1843015b5b2b7f7d1fc3",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=d7600c775f877cd87b4f5a831c28aa94137377aa",
       "name": "just-1.42.4",
       "pname": "just",
-      "rev": "005433b926e16227259a1843015b5b2b7f7d1fc3",
-      "rev_count": 843472,
-      "rev_date": "2025-08-12T19:39:21Z",
-      "scrape_date": "2025-08-14T02:32:17.633063Z",
+      "rev": "d7600c775f877cd87b4f5a831c28aa94137377aa",
+      "rev_count": 854036,
+      "rev_date": "2025-08-30T08:25:00Z",
+      "scrape_date": "2025-08-31T03:45:27.025996Z",
       "stabilities": [
         "unstable"
       ],
@@ -115,9 +115,9 @@
         "out"
       ],
       "outputs": {
-        "doc": "/nix/store/cbqy754s1xm921iw2gg97pmg9q6n7nd5-just-1.42.4-doc",
-        "man": "/nix/store/1xj03nldjkkhgkih64iyakgfdj6pxwrx-just-1.42.4-man",
-        "out": "/nix/store/xv86najr5k1r4fvg6yf8ha3m8b6bhdbj-just-1.42.4"
+        "doc": "/nix/store/yszimvs4a58vkjsmkrnn40bqw6vcx510-just-1.42.4-doc",
+        "man": "/nix/store/xaaq1qigagsrq12gbs1bs7l0924zb4li-just-1.42.4-man",
+        "out": "/nix/store/qcr5qp9b1qxvch1g7mhhiii4iy8a6936-just-1.42.4"
       },
       "system": "x86_64-darwin",
       "group": "toplevel",
@@ -126,17 +126,17 @@
     {
       "attr_path": "just",
       "broken": false,
-      "derivation": "/nix/store/ngn8fq25qbfa8nk88vwyp8gbrc78g2n2-just-1.42.4.drv",
+      "derivation": "/nix/store/f1byb9lx16980aidr9bxm2jdavhbymqv-just-1.42.4.drv",
       "description": "Handy way to save and run project-specific commands",
       "install_id": "just",
       "license": "CC0-1.0",
-      "locked_url": "https://github.com/flox/nixpkgs?rev=005433b926e16227259a1843015b5b2b7f7d1fc3",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=d7600c775f877cd87b4f5a831c28aa94137377aa",
       "name": "just-1.42.4",
       "pname": "just",
-      "rev": "005433b926e16227259a1843015b5b2b7f7d1fc3",
-      "rev_count": 843472,
-      "rev_date": "2025-08-12T19:39:21Z",
-      "scrape_date": "2025-08-14T03:13:28.694403Z",
+      "rev": "d7600c775f877cd87b4f5a831c28aa94137377aa",
+      "rev_count": 854036,
+      "rev_date": "2025-08-30T08:25:00Z",
+      "scrape_date": "2025-08-31T03:52:56.278512Z",
       "stabilities": [
         "unstable"
       ],
@@ -147,9 +147,9 @@
         "out"
       ],
       "outputs": {
-        "doc": "/nix/store/h5p6n1hg051hjs02jwlvbndlmx73nj45-just-1.42.4-doc",
-        "man": "/nix/store/bhry505vmc1rfpnr9yn1486488nsbpsg-just-1.42.4-man",
-        "out": "/nix/store/wnbn0xb6mzzbl594d51hqqvch1lnzhpb-just-1.42.4"
+        "doc": "/nix/store/k995237q4xi65l31frjj5nsv66hk0nd4-just-1.42.4-doc",
+        "man": "/nix/store/zb9iygav9lrahv66yg3knwhhwbfgc3ds-just-1.42.4-man",
+        "out": "/nix/store/7i77iqa2rdg13ly0pnjr717qvlkckdzw-just-1.42.4"
       },
       "system": "x86_64-linux",
       "group": "toplevel",
@@ -158,27 +158,27 @@
     {
       "attr_path": "uv",
       "broken": false,
-      "derivation": "/nix/store/r73cws9f03q1bb6yiynf7cydq620r7hw-uv-0.8.2.drv",
+      "derivation": "/nix/store/g2kfc67p7fg7q5zpri6432d36ak1bsj3-uv-0.8.6.drv",
       "description": "Extremely fast Python package installer and resolver, written in Rust",
       "install_id": "uv",
       "license": "[ Apache-2.0, MIT ]",
-      "locked_url": "https://github.com/flox/nixpkgs?rev=005433b926e16227259a1843015b5b2b7f7d1fc3",
-      "name": "uv-0.8.2",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=d7600c775f877cd87b4f5a831c28aa94137377aa",
+      "name": "uv-0.8.6",
       "pname": "uv",
-      "rev": "005433b926e16227259a1843015b5b2b7f7d1fc3",
-      "rev_count": 843472,
-      "rev_date": "2025-08-12T19:39:21Z",
-      "scrape_date": "2025-08-14T00:27:16.729256Z",
+      "rev": "d7600c775f877cd87b4f5a831c28aa94137377aa",
+      "rev_count": 854036,
+      "rev_date": "2025-08-30T08:25:00Z",
+      "scrape_date": "2025-08-31T03:30:14.661960Z",
       "stabilities": [
         "unstable"
       ],
       "unfree": false,
-      "version": "0.8.2",
+      "version": "0.8.6",
       "outputs_to_install": [
         "out"
       ],
       "outputs": {
-        "out": "/nix/store/db9y1b002zlnyjgpsnbl9hvlwsiqajl4-uv-0.8.2"
+        "out": "/nix/store/hxazvw40v90nic1yjx23cdkj6hqqlywa-uv-0.8.6"
       },
       "system": "aarch64-darwin",
       "group": "toplevel",
@@ -187,27 +187,27 @@
     {
       "attr_path": "uv",
       "broken": false,
-      "derivation": "/nix/store/h31r5jskn5fjad9xffsagc30kb0pxxar-uv-0.8.2.drv",
+      "derivation": "/nix/store/5m6laj37dkg7jpxmr69dnb3q2m422d1a-uv-0.8.6.drv",
       "description": "Extremely fast Python package installer and resolver, written in Rust",
       "install_id": "uv",
       "license": "[ Apache-2.0, MIT ]",
-      "locked_url": "https://github.com/flox/nixpkgs?rev=005433b926e16227259a1843015b5b2b7f7d1fc3",
-      "name": "uv-0.8.2",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=d7600c775f877cd87b4f5a831c28aa94137377aa",
+      "name": "uv-0.8.6",
       "pname": "uv",
-      "rev": "005433b926e16227259a1843015b5b2b7f7d1fc3",
-      "rev_count": 843472,
-      "rev_date": "2025-08-12T19:39:21Z",
-      "scrape_date": "2025-08-14T02:01:44.564146Z",
+      "rev": "d7600c775f877cd87b4f5a831c28aa94137377aa",
+      "rev_count": 854036,
+      "rev_date": "2025-08-30T08:25:00Z",
+      "scrape_date": "2025-08-31T03:39:23.192130Z",
       "stabilities": [
         "unstable"
       ],
       "unfree": false,
-      "version": "0.8.2",
+      "version": "0.8.6",
       "outputs_to_install": [
         "out"
       ],
       "outputs": {
-        "out": "/nix/store/bdps6h2gn2rysavc3cq2slqnjlsyyk03-uv-0.8.2"
+        "out": "/nix/store/li6y1v2mjj30fd5prwkawidq5lcn9ja9-uv-0.8.6"
       },
       "system": "aarch64-linux",
       "group": "toplevel",
@@ -216,27 +216,27 @@
     {
       "attr_path": "uv",
       "broken": false,
-      "derivation": "/nix/store/9fc1gmai85rmaiaj91kj348pgapv6fzy-uv-0.8.2.drv",
+      "derivation": "/nix/store/324hhmwqzqphn6vq37i4zkv3glamr2vg-uv-0.8.6.drv",
       "description": "Extremely fast Python package installer and resolver, written in Rust",
       "install_id": "uv",
       "license": "[ Apache-2.0, MIT ]",
-      "locked_url": "https://github.com/flox/nixpkgs?rev=005433b926e16227259a1843015b5b2b7f7d1fc3",
-      "name": "uv-0.8.2",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=d7600c775f877cd87b4f5a831c28aa94137377aa",
+      "name": "uv-0.8.6",
       "pname": "uv",
-      "rev": "005433b926e16227259a1843015b5b2b7f7d1fc3",
-      "rev_count": 843472,
-      "rev_date": "2025-08-12T19:39:21Z",
-      "scrape_date": "2025-08-14T02:33:35.880116Z",
+      "rev": "d7600c775f877cd87b4f5a831c28aa94137377aa",
+      "rev_count": 854036,
+      "rev_date": "2025-08-30T08:25:00Z",
+      "scrape_date": "2025-08-31T03:46:54.123267Z",
       "stabilities": [
         "unstable"
       ],
       "unfree": false,
-      "version": "0.8.2",
+      "version": "0.8.6",
       "outputs_to_install": [
         "out"
       ],
       "outputs": {
-        "out": "/nix/store/91g6383zq1wbiik2an7g6yfrj294c19v-uv-0.8.2"
+        "out": "/nix/store/l37rdvvgc46jpydmyrwlxfhrslbfcnpm-uv-0.8.6"
       },
       "system": "x86_64-darwin",
       "group": "toplevel",
@@ -245,27 +245,27 @@
     {
       "attr_path": "uv",
       "broken": false,
-      "derivation": "/nix/store/yjph3bdnhgzkbnr0a2qhzz3wbspiimpw-uv-0.8.2.drv",
+      "derivation": "/nix/store/fsv3g2p4y7c04678a0bpk6yparh2ysb7-uv-0.8.6.drv",
       "description": "Extremely fast Python package installer and resolver, written in Rust",
       "install_id": "uv",
       "license": "[ Apache-2.0, MIT ]",
-      "locked_url": "https://github.com/flox/nixpkgs?rev=005433b926e16227259a1843015b5b2b7f7d1fc3",
-      "name": "uv-0.8.2",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=d7600c775f877cd87b4f5a831c28aa94137377aa",
+      "name": "uv-0.8.6",
       "pname": "uv",
-      "rev": "005433b926e16227259a1843015b5b2b7f7d1fc3",
-      "rev_count": 843472,
-      "rev_date": "2025-08-12T19:39:21Z",
-      "scrape_date": "2025-08-14T03:15:39.576767Z",
+      "rev": "d7600c775f877cd87b4f5a831c28aa94137377aa",
+      "rev_count": 854036,
+      "rev_date": "2025-08-30T08:25:00Z",
+      "scrape_date": "2025-08-31T03:54:59.318915Z",
       "stabilities": [
         "unstable"
       ],
       "unfree": false,
-      "version": "0.8.2",
+      "version": "0.8.6",
       "outputs_to_install": [
         "out"
       ],
       "outputs": {
-        "out": "/nix/store/swq8qrr7n5gkc1b4940q62a3ll52prgl-uv-0.8.2"
+        "out": "/nix/store/hxvcjq4a053l4gm8asl4ynjyhlz2azib-uv-0.8.6"
       },
       "system": "x86_64-linux",
       "group": "toplevel",

@@ -1,3 +1,20 @@
+# Proxy configurations (optional - uncomment and configure to use)
+# [proxies]
+# [proxies.scrapingant]
+# type = "url_template"
+# template = "https://api.scrapingant.com/v2/general?url={encoded_url}&x-api-key={env:SCRAPINGANT_API_KEY}"
+# encoding = "url"
+# env_vars = ["SCRAPINGANT_API_KEY"]
+
+# Default settings for all sites (optional)
+[watcher.defaults]
+min_hours = 168  # Default: check once a week
+exclude_tags = ["script", "style", "nav", "header", "footer"]
+max_retries = 3
+proxy_mode = "on_failure"  # Use proxies only if direct fetch fails
+proxies = []  # Add proxy IDs here if you have proxies configured above
+
+# Watch sites
 [[watcher.sites]]
 url = "https://www.timeanddate.com/counters/newyear.html"
 feed_name = "example-changelog"

@@ -7,8 +7,11 @@ import tomllib
 import traceback
 from pathlib import Path
 from datetime import datetime
-from .lib import scrape_and_update_feed
+from .lib import scrape_and_update_feed, scrape_with_retries
 from .core.models import ScraperRequest
+from .core.proxy_manager import ProxyManager
+from .core.stats_tracker import StatsTracker
+from .core.error_feed import ErrorFeedManager
 from .static_site import prepare_github_pages_content
 
 
@@ -61,6 +64,20 @@ def main():
         print(f"Error reading configuration: {e}")
         sys.exit(1)
 
+    # Initialize managers
+    proxy_manager = None
+    if "proxies" in config:
+        proxy_manager = ProxyManager(config["proxies"])
+        print(f"Loaded {len(proxy_manager.proxies)} proxy configurations")
+
+    stats_tracker = StatsTracker()
+    error_feed_manager = ErrorFeedManager()
+
+    # Get defaults
+    defaults = {}
+    if "watcher" in config and "defaults" in config["watcher"]:
+        defaults = config["watcher"]["defaults"]
+
     # Support both old format (top-level sites array) and new format (nested under watcher.sites)
     sites = []
     if "watcher" in config and "sites" in config["watcher"]:
@@ -99,16 +116,22 @@ def main():
 
         print(f"\nProcessing {feed_name} ({url})...")
 
-        # Get optional min_hours from config
-        min_hours = site.get("min_hours")
+        # Merge site config with defaults
+        site_config = {**defaults, **site}
 
-        # Get optional filtering parameters from config
-        exclude_tags = site.get("exclude_tags")
-        include_tags = site.get("include_tags")
-        exclude_ids = site.get("exclude_ids")
-        include_ids = site.get("include_ids")
-        exclude_classes = site.get("exclude_classes")
-        include_classes = site.get("include_classes")
+        # Get configuration values (site overrides defaults)
+        min_hours = site_config.get("min_hours")
+        exclude_tags = site_config.get("exclude_tags")
+        include_tags = site_config.get("include_tags")
+        exclude_ids = site_config.get("exclude_ids")
+        include_ids = site_config.get("include_ids")
+        exclude_classes = site_config.get("exclude_classes")
+        include_classes = site_config.get("include_classes")
+
+        # Proxy configuration
+        proxies = site_config.get("proxies", [])
+        proxy_mode = site_config.get("proxy_mode", "on_failure")
+        max_retries = site_config.get("max_retries", 3)
 
         request = ScraperRequest(
             url=url,
@@ -124,7 +147,41 @@ def main():
         )
 
         try:
-            result = scrape_and_update_feed(request)
+            # Use enhanced scraper with retries if proxies are configured
+            if proxy_manager and proxies:
+                result = scrape_with_retries(
+                    request=request,
+                    proxy_manager=proxy_manager,
+                    stats_tracker=stats_tracker,
+                    error_feed_manager=error_feed_manager,
+                    proxies=proxies,
+                    proxy_mode=proxy_mode,
+                    max_retries=max_retries,
+                )
+            else:
+                result = scrape_and_update_feed(request)
+                # Still track stats even without proxies
+                if stats_tracker:
+                    if result.success:
+                        stats_tracker.record_feed_attempt(feed_name, success=True)
+                    else:
+                        stats_tracker.record_feed_attempt(
+                            feed_name,
+                            success=False,
+                            error_details=result.error_details
+                            or {"error_message": result.error_message},
+                        )
+                        # Add to error feed
+                        if error_feed_manager and not result.success:
+                            feed_stats = stats_tracker.get_feed_stats(feed_name)
+                            error_feed_manager.add_error(
+                                feed_id=feed_name,
+                                url=url,
+                                error_type="ScraperError",
+                                error_message=result.error_message,
+                                error_details=result.error_details,
+                                feed_stats=feed_stats,
+                            )
 
             if not result.success:
                 print(f"  Error: {result.error_message}")
@@ -194,6 +251,11 @@ def main():
         with open(error_file, "w") as f:
             json.dump(error_details, f, indent=2)
         print(f"\nError details saved to: {error_file}")
+
+    # Generate error RSS feed if there were errors
+    if error_feed_manager.error_items:
+        error_feed_path = error_feed_manager.generate_rss_feed(base_url=args.base_url)
+        print(f"Error RSS feed generated: {error_feed_path}")
 
     # Generate static site if requested
     if args.generate_site:

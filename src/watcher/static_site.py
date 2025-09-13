@@ -42,6 +42,13 @@ class StaticSiteGenerator:
         if errors_file.exists():
             shutil.copy2(errors_file, deploy_path / "errors.json")
 
+        # Copy statistics files if they exist
+        stats_dir = Path(".watcher_stats")
+        if stats_dir.exists():
+            shutil.copytree(
+                stats_dir, deploy_path / ".watcher_stats", dirs_exist_ok=True
+            )
+
         # Copy history explorer files to deployment root
         history_files = [
             "history-explorer.html",
