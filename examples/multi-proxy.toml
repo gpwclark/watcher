@@ -1,0 +1,51 @@
+# Multiple Proxy Configuration Example
+# This shows how to configure multiple proxy services with fallback
+
+[proxies]
+
+# ScrapingAnt - Primary proxy
+[proxies.scrapingant]
+type = "url_template"
+template = "https://api.scrapingant.com/v2/general?url={encoded_url}&x-api-key={env:SCRAPINGANT_API_KEY}"
+encoding = "url"
+env_vars = ["SCRAPINGANT_API_KEY"]
+
+# ScraperAPI - Backup proxy
+[proxies.scraperapi]
+type = "url_template"
+template = "http://api.scraperapi.com?api_key={env:SCRAPER_API_KEY}&url={encoded_url}"
+encoding = "url"
+env_vars = ["SCRAPER_API_KEY"]
+
+# Custom proxy with base64 encoding
+[proxies.custom_proxy]
+type = "url_template"
+template = "https://proxy.example.com/fetch?target={encoded_url}&key={env:CUSTOM_KEY}"
+encoding = "base64"
+env_vars = ["CUSTOM_KEY"]
+
+# Default settings for all sites
+[watcher.defaults]
+min_hours = 168
+max_retries = 5
+proxy_mode = "on_failure"
+# Proxies are tried in order
+proxies = ["scrapingant", "scraperapi", "custom_proxy"]
+exclude_tags = ["script", "style", "nav", "header", "footer"]
+
+# Sites configuration
+[[watcher.sites]]
+url = "https://normal-site.com/feed"
+feed_name = "normal-site"
+# Will use proxy only if direct access fails
+
+[[watcher.sites]]
+url = "https://restricted-site.com/api"
+feed_name = "restricted-api"
+proxy_mode = "always"  # Always use proxy, never try direct
+proxies = ["scraperapi", "scrapingant"]  # Override proxy order
+
+[[watcher.sites]]
+url = "https://public-site.com/data"
+feed_name = "public-data"
+proxy_mode = "never"  # Never use proxy, only direct access

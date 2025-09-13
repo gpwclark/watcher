@@ -1,0 +1,86 @@
+# Complete Configuration Example
+# Shows all features working together
+
+# Proxy Services Configuration
+[proxies]
+
+[proxies.scrapingant]
+type = "url_template"
+template = "https://api.scrapingant.com/v2/general?url={encoded_url}&x-api-key={env:SCRAPINGANT_API_KEY}&browser=false"
+encoding = "url"
+env_vars = ["SCRAPINGANT_API_KEY"]
+
+[proxies.scraperapi]
+type = "url_template"
+template = "http://api.scraperapi.com?api_key={env:SCRAPER_API_KEY}&url={encoded_url}&render=false"
+encoding = "url"
+env_vars = ["SCRAPER_API_KEY"]
+
+# Default Configuration
+[watcher.defaults]
+min_hours = 168                                         # Check weekly by default
+max_retries = 3                                         # Retry failed requests 3 times
+proxy_mode = "on_failure"                               # Use proxy when direct fails
+proxies = ["scrapingant", "scraperapi"]                 # Default proxy chain
+exclude_tags = ["script", "style", "nav", "header", "footer", "iframe"]
+
+# Sites to Track
+[[watcher.sites]]
+url = "https://example.com/changelog"
+feed_name = "example-changelog"
+min_hours = 24                                          # Check daily (override default)
+include_ids = ["changelog", "releases"]                 # Focus on changelog content
+
+[[watcher.sites]]
+url = "https://news.techsite.com/latest"
+feed_name = "tech-news"
+min_hours = 6                                           # Check every 6 hours
+include_tags = ["article"]                              # Only article content
+exclude_classes = ["ads", "sidebar", "comments"]        # Remove distractions
+
+[[watcher.sites]]
+url = "https://restricted.example.com/api/docs"
+feed_name = "restricted-api"
+proxy_mode = "always"                                   # Always use proxy
+proxies = ["scraperapi"]                                # Use specific proxy
+max_retries = 5                                         # More retries for important site
+include_ids = ["api-content"]                           # API documentation only
+
+[[watcher.sites]]
+url = "https://store.example.com/products/laptop-123"
+feed_name = "laptop-price"
+min_hours = 1                                           # Check hourly for price changes
+include_classes = ["price", "availability", "specs"]    # Product details only
+exclude_ids = ["reviews", "related"]                    # Skip reviews
+
+[[watcher.sites]]
+url = "https://gov.example.com/announcements"
+feed_name = "gov-announcements"
+min_hours = 12                                          # Check twice daily
+proxy_mode = "never"                                    # Government site, no proxy needed
+include_classes = ["announcement", "alert", "notice"]   # Official content only
+exclude_tags = []                                       # Override defaults, keep all tags
+
+[[watcher.sites]]
+url = "https://blog.personal.com"
+feed_name = "personal-blog"
+min_hours = 72                                          # Check every 3 days
+include_classes = ["post-content", "entry"]             # Blog posts
+exclude_classes = ["comment", "sidebar", "ad"]          # Clean content
+
+[[watcher.sites]]
+url = "https://docs.framework.com/v3/guides"
+feed_name = "framework-docs"
+min_hours = 168                                         # Weekly check
+include_ids = ["content", "main-doc"]                   # Documentation area
+exclude_classes = ["nav-tree", "search"]                # Remove navigation
+
+[[watcher.sites]]
+url = "https://competitor.com/pricing"
+feed_name = "competitor-pricing"
+min_hours = 24                                          # Daily competitive analysis
+proxy_mode = "always"                                   # Use proxy to avoid detection
+proxies = ["scrapingant", "scraperapi"]                 # Full proxy chain
+max_retries = 10                                        # Very persistent
+include_tags = ["main", "article", "section"]           # Main content
+exclude_classes = ["popup", "modal", "overlay"]         # Skip popups

@@ -165,10 +165,9 @@ class IntegrationTest:
 
         # Load expected hashes if they exist
         expected_hashes_file = Path(__file__).parent / "expected_hashes.json"
-        expected_hashes = None
         if expected_hashes_file.exists():
             with open(expected_hashes_file) as f:
-                expected_hashes = json.load(f)
+                json.load(f)
 
         # Cycle 1: Initial scrape
         cycle1 = results[0]
@@ -221,7 +220,6 @@ class IntegrationTest:
 
     def run(self):
         """Run the complete integration test."""
-        config_path = None
         try:
             # Setup
             test_sites = self.setup()

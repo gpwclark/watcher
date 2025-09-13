@@ -2,6 +2,7 @@
 
 import tempfile
 from pathlib import Path
+import pytest
 from watcher.core.stats_tracker import StatsTracker
 
 
@@ -183,7 +184,3 @@ class TestStatsTracker:
             feed_stats = tracker3.get_feed_stats("test_feed")
             assert feed_stats["total_runs"] == 2
             assert feed_stats["total_failures"] == 1
-
-
-# Add pytest import for approx
-import pytest

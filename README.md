@@ -2,28 +2,28 @@
 
 Automatically track changes to websites and generate RSS feeds with a GitHub Pages site.
 
-## What You Get
+## Features
 
--  A hosted webpage showing all changes to tracked websites
--  RSS feeds for each tracked site with a link to a plain html file that is mostly what you want.
--  Visual diffs showing exactly what changed
--  Complete history of all changes
--  Zero infrastructure - runs entirely on GitHub Actions
--  Errors if given feeds are giving you trouble
-    - the example shows that dni.gov and cisa.gov don't like to be scraped, but the library makes sure to pass on the
-      underlying cause of the error, dni bravely declares 403, whereas cisa holds your hand until the timeout, but at
-      least you know!
+- 📡 **RSS Feeds** - Automatic RSS feed generation for each tracked site
+- 🔍 **Visual Diffs** - See exactly what changed between versions
+- 📊 **Complete History** - All changes preserved with timestamps
+- 🌐 **GitHub Pages** - Zero infrastructure, runs entirely on GitHub
+- 🛡️ **Proxy Support** - Configure multiple proxy services with intelligent retry
+- ⚠️ **Error Tracking** - Comprehensive error reporting with RSS feed
+- 📈 **Statistics** - Track success rates and performance over time
+- 🎯 **Content Filtering** - Extract only the content you need
 
 View live example: [https://gpwclark.github.io/watcher/](https://gpwclark.github.io/watcher/)
 
-## Quick Start 
+## Quick Start
 
-### 1.  Use this repository as a template or create your own with these two files:
+### 1. Create Your Repository
+
+Use this repository as a template or create your own with these two files:
 
 **`watcher-config.toml`** - List the websites you want to track:
 ```toml
 [watcher]
-# Future settings will go here
 
 [[watcher.sites]]
 url = "https://example.com/changelog"
@@ -74,71 +74,195 @@ jobs:
 2. Set Source to "GitHub Actions"
 3. Save
 
-### 3. That's It!
+### 3. Deploy!
 
 Push your files and the action will:
-- Run automatically every 6 hours.
-- Generate RSS feeds that update when changes are detected showing the diffs and linking to the new source.
-- All hosted on GitHub pages, statically.
+- Run automatically on your schedule
+- Generate RSS feeds when changes are detected
+- Deploy everything to GitHub Pages
 
-Your site will be live at: `https://YOUR-USERNAME.github.io/YOUR-REPO/` unless it is in a repo called
-YOUR-USERNAME in which case your site will live at: `https://YOUR-USERNAME.github.io/`
+Your site will be live at: `https://YOUR-USERNAME.github.io/YOUR-REPO/`
 
 ## Configuration
 
-### watcher-config.toml Format
+### Basic Site Configuration
 
 ```toml
-[watcher]
-# Global settings can be added here in the future
-
 [[watcher.sites]]
-url = "https://example.com/changelog"  # Required: URL to track
-feed_name = "example-changelog"        # Required: Name for the feed (alphanumeric + hyphens)
-min_hours = 24                        # Optional: Minimum hours between checks (default: no limit)
+url = "https://example.com/page"       # Required: URL to track
+feed_name = "example-site"             # Required: Feed identifier (alphanumeric + hyphens)
+min_hours = 24                         # Optional: Minimum hours between checks
 ```
 
-### Action Options
+### Default Settings
 
-The action supports these inputs (all have sensible defaults):
+Set defaults that all sites inherit:
 
-```yaml
-- uses: gpwclark/watcher@main
-  with:
-    sites-config: watcher-config.toml    # Path to config file
-    subdirectory: /             # Deploy to root or subdirectory like /tracker
-    generate-site: true         # Generate the GitHub Pages site
-    deploy-to-pages: true       # Deploy to GitHub Pages
-    commit-to-gh-pages: true    # Save history to gh-pages branch
+```toml
+[watcher.defaults]
+min_hours = 168                        # Check weekly by default
+max_retries = 3                        # Retry failed requests
+proxy_mode = "on_failure"              # Use proxies when direct fails
+exclude_tags = ["script", "style", "nav", "header", "footer"]
+```
+
+### Content Filtering
+
+Extract only the content you need:
+
+```toml
+[[watcher.sites]]
+url = "https://news-site.com/article"
+feed_name = "news-articles"
+
+# Tag-based filtering
+include_tags = ["article", "main"]     # Only keep these tags
+# OR
+exclude_tags = ["nav", "footer", "aside"]  # Remove these tags
+
+# ID-based filtering  
+include_ids = ["main-content", "post"]  # Only keep these IDs
+# OR
+exclude_ids = ["sidebar", "ads"]        # Remove these IDs
+
+# Class-based filtering
+include_classes = ["article-body", "content"]  # Only keep these classes
+# OR
+exclude_classes = ["advertisement", "popup"]   # Remove these classes
+```
+
+**Note:** Include and exclude options for the same filter type cannot be used together.
+
+### Proxy Configuration
+
+Add proxy services for sites that block direct access:
+
+```toml
+[proxies]
+
+[proxies.scrapingant]
+type = "url_template"
+template = "https://api.scrapingant.com/v2/general?url={encoded_url}&x-api-key={env:SCRAPINGANT_API_KEY}"
+encoding = "url"  # Options: url, base64, none
+env_vars = ["SCRAPINGANT_API_KEY"]
+
+[watcher.defaults]
+proxy_mode = "on_failure"  # Options: always, on_failure, never
+proxies = ["scrapingant"]  # Proxy services to use
+
+[[watcher.sites]]
+url = "https://restricted.site.com"
+feed_name = "restricted"
+proxy_mode = "always"      # Always use proxy for this site
+```
+
+Set API keys as GitHub secrets or environment variables:
+```bash
+export SCRAPINGANT_API_KEY="your-key-here"
 ```
 
 ### Update Frequency
 
-Change the cron schedule in your workflow:
+Adjust the cron schedule in your workflow:
+
 ```yaml
-on:
-  schedule:
-    - cron: '0 * * * *'     # Every hour
-    - cron: '0 */6 * * *'   # Every 6 hours (default)
-    - cron: '0 0 * * *'     # Daily at midnight
-    - cron: '0 0 * * 0'     # Weekly on Sunday
+- cron: '0 * * * *'     # Every hour
+- cron: '0 */6 * * *'   # Every 6 hours (default)
+- cron: '0 0 * * *'     # Daily at midnight
+- cron: '0 0 * * 0'     # Weekly on Sunday
 ```
-## Examples of What to Track
+
+## Monitoring
+
+### Error Tracking
+
+Errors are tracked and available at:
+- **RSS Feed**: `feeds/errors.xml`
+- **JSON Details**: `errors.json`
+- **Web Interface**: Displayed on your GitHub Pages site
+
+### Statistics
+
+Performance metrics are preserved across runs:
+- **Feed Stats**: `.watcher_stats/feed_stats.json`
+- **Proxy Stats**: `.watcher_stats/proxy_stats.json`
+
+Access via GitHub Pages:
+```
+https://[username].github.io/[repo]/.watcher_stats/feed_stats.json
+```
+
+## Action Options
+
+Configure the GitHub Action with these inputs:
+
+```yaml
+- uses: gpwclark/watcher@main
+  with:
+    sites-config: watcher-config.toml    # Config file path
+    subdirectory: /                      # Deploy location
+    generate-site: true                  # Generate GitHub Pages site
+    deploy-to-pages: true                # Deploy to GitHub Pages
+    commit-to-gh-pages: true             # Save history to gh-pages branch
+```
+
+## Examples
+
+### News Site with Content Filtering
+```toml
+[[watcher.sites]]
+url = "https://news.example.com"
+feed_name = "news"
+include_tags = ["article"]
+exclude_classes = ["ads", "comments", "related"]
+min_hours = 6
+```
+
+### Documentation with Proxy
+```toml
+[[watcher.sites]]
+url = "https://docs.example.com/api"
+feed_name = "api-docs"
+proxy_mode = "always"
+proxies = ["scrapingant"]
+include_ids = ["content", "main"]
+```
+
+### Price Tracking
+```toml
+[[watcher.sites]]
+url = "https://store.example.com/product/12345"
+feed_name = "product-price"
+include_classes = ["price", "availability"]
+min_hours = 1
+```
+
+## Local Development
+
+Test locally with:
+```bash
+flox activate -- uv run watcher-preview
+```
+
+## What to Track
 
 - Product prices and availability
 - Job postings
-- News headlines
 - Documentation updates
-- Competition websites
 - Government announcements
-- Government pages that change
-- Government pages that might change
-- Government pages that might should not change but you'd like to know either way
+- News headlines
+- API changes
 - Event schedules
-- API documentation
+- Competition websites
+- Any webpage that changes over time
 
-## Local testing
+## Advanced Examples
 
-flox activate -- uv run watcher-preview
+For more complex configurations, see:
+- [examples/multi-proxy.toml](examples/multi-proxy.toml) - Multiple proxy setup
+- [examples/filtering.toml](examples/filtering.toml) - Advanced content filtering
+- [examples/complete.toml](examples/complete.toml) - Full configuration with all features
 
-runs a server locally!
+## License
+
+MIT

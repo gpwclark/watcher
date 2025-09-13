@@ -1,0 +1,68 @@
+# Advanced Content Filtering Examples
+# Shows various ways to filter content from tracked pages
+
+[watcher]
+
+# News Article - Extract only main content
+[[watcher.sites]]
+url = "https://news.example.com/latest"
+feed_name = "news-main"
+# Only keep article tags
+include_tags = ["article", "main"]
+# Remove ads and related content
+exclude_classes = ["advertisement", "related-articles", "comments-section"]
+
+# Documentation Site - Focus on content area
+[[watcher.sites]]
+url = "https://docs.example.com/api/reference"
+feed_name = "api-docs"
+# Only keep the documentation content div
+include_ids = ["docs-content", "api-reference"]
+# Override default excludes to keep code examples
+exclude_tags = []
+
+# Blog - Remove sidebars and keep posts
+[[watcher.sites]]
+url = "https://blog.example.com"
+feed_name = "blog-posts"
+# Keep only post content
+include_classes = ["post-content", "entry-content", "article-body"]
+# Remove sidebar and footer widgets
+exclude_ids = ["sidebar", "footer-widgets", "newsletter-signup"]
+
+# Forum Thread - Extract discussions
+[[watcher.sites]]
+url = "https://forum.example.com/thread/12345"
+feed_name = "forum-discussion"
+# Keep post messages
+include_classes = ["post-message", "user-post"]
+# Remove signatures and user stats
+exclude_classes = ["signature", "user-stats", "avatar", "post-meta"]
+
+# E-commerce Product Page
+[[watcher.sites]]
+url = "https://store.example.com/product/abc123"
+feed_name = "product-updates"
+# Focus on product details
+include_ids = ["product-info", "price-container", "availability"]
+# Remove reviews and recommendations
+exclude_classes = ["reviews", "recommendations", "similar-products"]
+
+# Government Announcements - Strict filtering
+[[watcher.sites]]
+url = "https://gov.example.com/announcements"
+feed_name = "gov-announcements"
+# Only official announcement divs
+include_classes = ["announcement", "official-notice"]
+# Remove navigation and everything else
+exclude_tags = ["nav", "header", "footer", "aside", "script", "style"]
+exclude_ids = ["search", "language-selector", "accessibility-tools"]
+
+# Changelog with specific sections
+[[watcher.sites]]
+url = "https://app.example.com/changelog"
+feed_name = "app-changelog"
+# Multiple content areas to track
+include_ids = ["changelog-content", "release-notes", "version-history"]
+# Keep minimal noise
+exclude_classes = ["social-share", "feedback-widget"]
