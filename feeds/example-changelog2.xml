@@ -1,5 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>example-changelog2 Updates</title><link>https://gpwclark.github.io/watcher/content/example-changelog2/20250915-060437235703.html</link><description>Updates from example-changelog2</description><language>en</language><lastBuildDate>Mon, 15 Sep 2025 06:04:37 +0000</lastBuildDate><item><title>Countdown to  New Year 2026 in Chicago</title><link>https://gpwclark.github.io/watcher/content/example-changelog2/20250915-060437235703.html?date=2025-09-15T06:04:37.235438+00:00</link><description><![CDATA[Count the seconds to the New Year in any location or time zone.
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>example-changelog2 Updates</title><link>https://gpwclark.github.io/watcher/content/example-changelog2/20250915-120314080297.html</link><description>Updates from example-changelog2</description><language>en</language><lastBuildDate>Mon, 15 Sep 2025 12:03:14 +0000</lastBuildDate><item><title>Countdown to  New Year 2026 in Roanoke Rapids</title><link>https://gpwclark.github.io/watcher/content/example-changelog2/20250915-120314080297.html?date=2025-09-15T12:03:14.080081+00:00</link><description><![CDATA[Count the seconds to the New Year in any location or time zone.
+
+<pre><code>@@ -5,22 +5,22 @@
+ <br>
+ <p>[](/counters/fullscreen.html?mode=m&year=2026)</p>
+ <pre>107      days</pre>
+-<pre>2591     hours</pre>
+-<p>155515   minutes</p>
+-<p>9330923  seconds</p>
++<pre>2584     hours</pre>
++<p>155096   minutes</p>
++<p>9305806  seconds</p>
+ <br>
+ <br>
+-<p>until Thursday, January 1, 2026 ([Chicago](/worldclock/usa/chicago) time)</p>
++<p>until Thursday, January 1, 2026 ([Roanoke Rapids](/worldclock/usa/roanoke-rapids) time)</p>
+ <br>
+ <p>[](/counters/fullscreen.html?mode=a&year=2026)</p>
+ <br>
+-<p>107 days, 23 hours, 55 minutes, 23 seconds</p>
++<p>107 days, 16 hours, 56 minutes, 46 seconds</p>
+ <br>
+-<p>until Thursday, January 1, 2026 ([Chicago](/worldclock/usa/chicago) time)</p>
++<p>until Thursday, January 1, 2026 ([Roanoke Rapids](/worldclock/usa/roanoke-rapids) time)</p>
+ <br>
+ <p>[One hour wrong? Daylight Saving Time!](/countdown/one-hour-off)</p>
+ <br>
+-<p>Current time is Monday, September 15, 2025 at 1:04:37 am [CDT](/time/zones/cdt) (local time in [](/worldclock/usa/chicago)[Chicago](/worldclock/usa/chicago))</p>
++<p>Current time is Monday, September 15, 2025 at 8:03:14 am [EDT](/time/zones/edt) (local time in [](/worldclock/usa/roanoke-rapids)[Roanoke Rapids](/worldclock/usa/roanoke-rapids))</p>
+ <br>
+ <p>You may need to press Reload or Refresh on your browser to update the numbers.</p>
+ <br></code></pre>]]></description><pubDate>Mon, 15 Sep 2025 12:03:14 +0000</pubDate><guid>example-changelog2-42adf34f</guid></item><item><title>Countdown to  New Year 2026 in Chicago</title><link>https://gpwclark.github.io/watcher/content/example-changelog2/20250915-060437235703.html?date=2025-09-15T06:04:37.235438+00:00</link><description><![CDATA[Count the seconds to the New Year in any location or time zone.
 
 <pre><code>@@ -4,23 +4,23 @@
  <p>[](/eclipse/solar/2025-september-21)</p>
@@ -600,35 +631,4 @@
 +<p>Current time is Wednesday, September 10, 2025 at 11:04:23 am [PDT](/time/zones/pdt) (local time in [](/worldclock/usa/san-jose)[San Jose, California](/worldclock/usa/san-jose))</p>
  <br>
  <p>You may need to press Reload or Refresh on your browser to update the numbers.</p>
- <br></code></pre>]]></description><pubDate>Wed, 10 Sep 2025 18:04:24 +0000</pubDate><guid>example-changelog2-13c4f138</guid></item><item><title>Countdown to  New Year 2026 in Cheyenne</title><link>https://gpwclark.github.io/watcher/content/example-changelog2/20250910-120432072589.html?date=2025-09-10T12:04:32.072340+00:00</link><description><![CDATA[Count the seconds to the New Year in any location or time zone.
-
-<pre><code>@@ -3,22 +3,22 @@
- <br>
- <p>[](/counters/fullscreen.html?mode=m&year=2026)</p>
- <pre>112      days</pre>
--<pre>2711     hours</pre>
--<p>162715   minutes</p>
--<p>9762916  seconds</p>
-+<pre>2706     hours</pre>
-+<p>162415   minutes</p>
-+<p>9744928  seconds</p>
- <br>
- <br>
--<p>until Thursday, January 1, 2026 ([Chicago](/worldclock/usa/chicago) time)</p>
-+<p>until Thursday, January 1, 2026 ([Cheyenne](/worldclock/usa/cheyenne) time)</p>
- <br>
- <p>[](/counters/fullscreen.html?mode=a&year=2026)</p>
- <br>
--<p>112 days, 23 hours, 55 minutes, 16 seconds</p>
-+<p>112 days, 18 hours, 55 minutes, 28 seconds</p>
- <br>
--<p>until Thursday, January 1, 2026 ([Chicago](/worldclock/usa/chicago) time)</p>
-+<p>until Thursday, January 1, 2026 ([Cheyenne](/worldclock/usa/cheyenne) time)</p>
- <br>
- <p>[One hour wrong? Daylight Saving Time!](/countdown/one-hour-off)</p>
- <br>
--<p>Current time is Wednesday, September 10, 2025 at 1:04:44 am [CDT](/time/zones/cdt) (local time in [](/worldclock/usa/chicago)[Chicago](/worldclock/usa/chicago))</p>
-+<p>Current time is Wednesday, September 10, 2025 at 6:04:32 am [MDT](/time/zones/mdt) (local time in [](/worldclock/usa/cheyenne)[Cheyenne](/worldclock/usa/cheyenne))</p>
- <br>
- <p>You may need to press Reload or Refresh on your browser to update the numbers.</p>
- <br></code></pre>]]></description><pubDate>Wed, 10 Sep 2025 12:04:32 +0000</pubDate><guid>example-changelog2-c3874e71</guid></item></channel></rss>
+ <br></code></pre>]]></description><pubDate>Wed, 10 Sep 2025 18:04:24 +0000</pubDate><guid>example-changelog2-13c4f138</guid></item></channel></rss>
