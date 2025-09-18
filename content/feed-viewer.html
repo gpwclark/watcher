@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feed Viewer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .controls {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 12px 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        .search-box:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .feed-list {
+            display: grid;
+            gap: 20px;
+        }
+
+        .feed-item {
+            background: white;
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .feed-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .feed-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 10px;
+        }
+
+        .feed-item-title {
+            font-size: 1.3em;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .feed-item-date {
+            font-size: 0.9em;
+            color: #666;
+            white-space: nowrap;
+        }
+
+        .feed-item-description {
+            color: #555;
+            margin-bottom: 15px;
+            line-height: 1.7;
+        }
+
+        .feed-item-meta {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .feed-item-link {
+            display: inline-flex;
+            align-items: center;
+            padding: 8px 16px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+
+        .feed-item-link:hover {
+            background: #5a67d8;
+        }
+
+        .feed-item-diff {
+            display: inline-flex;
+            align-items: center;
+            padding: 8px 16px;
+            background: #f0f0f0;
+            color: #555;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 0.9em;
+            transition: background 0.2s;
+        }
+
+        .feed-item-diff:hover {
+            background: #e0e0e0;
+        }
+
+        .feed-item-stats {
+            display: inline-flex;
+            gap: 15px;
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        .stat-add {
+            color: #28a745;
+        }
+
+        .stat-remove {
+            color: #dc3545;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+        }
+
+        .error {
+            background: #fee;
+            color: #c33;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 40px;
+            color: #999;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="/" class="back-link">← Back to Tracker</a>
+        
+        <div class="header">
+            <h1 id="feed-title">Feed Viewer</h1>
+            <p id="feed-description">Loading feed...</p>
+        </div>
+
+        <div class="controls">
+            <input type="text" 
+                   class="search-box" 
+                   id="search-box" 
+                   placeholder="Search in titles and descriptions (not raw content)..."
+                   autocomplete="off">
+        </div>
+
+        <div id="feed-list" class="feed-list">
+            <div class="loading">Loading feed items...</div>
+        </div>
+    </div>
+
+    <script>
+    class FeedViewer {
+        constructor() {
+            this.feedName = null;
+            this.feedItems = [];
+            this.filteredItems = [];
+            this.init();
+        }
+
+        async init() {
+            // Get feed parameter from URL
+            const urlParams = new URLSearchParams(window.location.search);
+            this.feedName = urlParams.get('feed');
+
+            if (!this.feedName) {
+                this.showError('No feed specified');
+                return;
+            }
+
+            // Set up search
+            document.getElementById('search-box').addEventListener('input', (e) => {
+                this.filterItems(e.target.value);
+            });
+
+            // Load feed
+            await this.loadFeed();
+        }
+
+        async loadFeed() {
+            try {
+                const response = await fetch(`feeds/${this.feedName}.xml`);
+                if (!response.ok) {
+                    throw new Error('Feed not found');
+                }
+
+                const text = await response.text();
+                const parser = new DOMParser();
+                const xml = parser.parseFromString(text, 'text/xml');
+
+                // Parse feed metadata
+                const channel = xml.querySelector('channel');
+                const title = channel.querySelector('title')?.textContent || this.feedName;
+                const description = channel.querySelector('description')?.textContent || '';
+
+                document.getElementById('feed-title').textContent = title;
+                document.getElementById('feed-description').textContent = description;
+
+                // Parse feed items
+                const items = xml.querySelectorAll('item');
+                this.feedItems = Array.from(items).map(item => {
+                    const descText = item.querySelector('description')?.textContent || '';
+                    
+                    // Parse description - split by diff marker
+                    let description = descText;
+                    let hasDiff = false;
+                    let additions = 0;
+                    let deletions = 0;
+                    
+                    // Check for diff (now in raw CDATA content)
+                    const diffMatch = descText.match(/(.*?)\n\n<pre><code>(@@[\s\S]*)<\/code><\/pre>/);
+                    if (diffMatch) {
+                        description = diffMatch[1].trim();
+                        const diff = diffMatch[2];
+                        hasDiff = true;
+                        
+                        // Count additions and deletions
+                        additions = (diff.match(/^\+[^+]/gm) || []).length;
+                        deletions = (diff.match(/^-[^-]/gm) || []).length;
+                    } else {
+                        // No diff, just use the description
+                        const cleanMatch = descText.match(/^(.*?)(?:\n|$)/);
+                        description = cleanMatch ? cleanMatch[1] : descText;
+                    }
+
+                    const link = item.querySelector('link')?.textContent || '';
+                    const cleanLink = link.split('?')[0]; // Remove query params
+
+                    return {
+                        title: item.querySelector('title')?.textContent || 'Untitled',
+                        description: description,
+                        link: cleanLink,
+                        guid: item.querySelector('guid')?.textContent || '',
+                        pubDate: new Date(item.querySelector('pubDate')?.textContent || ''),
+                        hasDiff: hasDiff,
+                        additions: additions,
+                        deletions: deletions
+                    };
+                }).sort((a, b) => b.pubDate - a.pubDate);
+
+                this.filteredItems = [...this.feedItems];
+                this.renderItems();
+
+            } catch (error) {
+                this.showError(`Failed to load feed: ${error.message}`);
+            }
+        }
+
+        filterItems(searchTerm) {
+            const term = searchTerm.toLowerCase().trim();
+            
+            if (!term) {
+                this.filteredItems = [...this.feedItems];
+            } else {
+                this.filteredItems = this.feedItems.filter(item => {
+                    return item.title.toLowerCase().includes(term) ||
+                           item.description.toLowerCase().includes(term);
+                });
+            }
+
+            this.renderItems();
+        }
+
+        renderItems() {
+            const container = document.getElementById('feed-list');
+
+            if (this.filteredItems.length === 0) {
+                container.innerHTML = '<div class="no-results">No items found</div>';
+                return;
+            }
+
+            container.innerHTML = this.filteredItems.map(item => {
+                const dateStr = item.pubDate.toLocaleString();
+                
+                let diffInfo = '';
+                if (item.hasDiff) {
+                    diffInfo = `
+                        <span class="feed-item-stats">
+                            <span class="stat-add">+${item.additions}</span>
+                            <span class="stat-remove">-${item.deletions}</span>
+                        </span>
+                    `;
+                }
+
+                const diffLink = item.hasDiff ? 
+                    `<a href="history-explorer.html?feed=${this.feedName}" class="feed-item-diff">View Diff</a>` : 
+                    '';
+
+                return `
+                    <div class="feed-item">
+                        <div class="feed-item-header">
+                            <div>
+                                <div class="feed-item-title">${this.escapeHtml(item.title)}</div>
+                                <div class="feed-item-date">${dateStr}</div>
+                            </div>
+                        </div>
+                        <div class="feed-item-description">
+                            ${this.escapeHtml(item.description)}
+                        </div>
+                        <div class="feed-item-meta">
+                            <a href="${item.link}" class="feed-item-link">View Capture</a>
+                            ${diffLink}
+                            ${diffInfo}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        showError(message) {
+            document.getElementById('feed-list').innerHTML = 
+                `<div class="error">${this.escapeHtml(message)}</div>`;
+        }
+
+        escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+    }
+
+    // Initialize when DOM is ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => new FeedViewer());
+    } else {
+        new FeedViewer();
+    }
+    </script>
+</body>
+</html>

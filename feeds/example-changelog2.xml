@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>example-changelog2 Updates</title><link>http://localhost:8000/content/example-changelog2/20250814-051646392315.html</link><description>Updates from example-changelog2</description><language>en</language><lastBuildDate>Thu, 14 Aug 2025 05:16:46 +0000</lastBuildDate><item><title>Countdown to  New Year 2026 in Raleigh</title><link>http://localhost:8000/content/example-changelog2/20250814-051646392315.html?date=2025-08-14T05:16:46.391988+00:00</link><description><![CDATA[Count the seconds to the New Year in any location or time zone.
+
+<pre><code>@@ -5,20 +5,20 @@
+ <pre>139       days</pre>
+ <pre>3359      hours</pre>
+ <pre>201583    minutes</pre>
+-<p>12095019  seconds</p>
++<p>12094994  seconds</p>
+ <br>
+ <br>
+ <p>until Thursday, January 1, 2026 ([Raleigh](/worldclock/usa/raleigh) time)</p>
+ <br>
+ <p>[](/counters/fullscreen.html?mode=a&year=2026)</p>
+ <br>
+-<p>139 days, 23 hours, 43 minutes, 39 seconds</p>
++<p>139 days, 23 hours, 43 minutes, 14 seconds</p>
+ <br>
+ <p>until Thursday, January 1, 2026 ([Raleigh](/worldclock/usa/raleigh) time)</p>
+ <br>
+ <p>[One hour wrong? Daylight Saving Time!](/countdown/one-hour-off)</p>
+ <br>
+-<p>Current time is Thursday, August 14, 2025 at 1:16:21 am [EDT](/time/zones/edt) (local time in [](/worldclock/usa/raleigh)[Raleigh](/worldclock/usa/raleigh))</p>
++<p>Current time is Thursday, August 14, 2025 at 1:16:46 am [EDT](/time/zones/edt) (local time in [](/worldclock/usa/raleigh)[Raleigh](/worldclock/usa/raleigh))</p>
+ <br>
+ <p>You may need to press Reload or Refresh on your browser to update the numbers.</p>
+ <br></code></pre>]]></description><pubDate>Thu, 14 Aug 2025 05:16:46 +0000</pubDate><guid>example-changelog2-602e8659</guid></item><item><title>Countdown to  New Year 2026 in Raleigh</title><link>http://localhost:8081/content/example-changelog2/20250814-051621028048.html?date=2025-08-14T05:16:21.027746+00:00</link><description><![CDATA[Count the seconds to the New Year in any location or time zone.
+
+<pre><code>@@ -4,21 +4,21 @@
+ <p>[](/counters/fullscreen.html?mode=m&year=2026)</p>
+ <pre>139       days</pre>
+ <pre>3359      hours</pre>
+-<pre>201586    minutes</pre>
+-<p>12095209  seconds</p>
++<pre>201583    minutes</pre>
++<p>12095019  seconds</p>
+ <br>
+ <br>
+ <p>until Thursday, January 1, 2026 ([Raleigh](/worldclock/usa/raleigh) time)</p>
+ <br>
+ <p>[](/counters/fullscreen.html?mode=a&year=2026)</p>
+ <br>
+-<p>139 days, 23 hours, 46 minutes, 49 seconds</p>
++<p>139 days, 23 hours, 43 minutes, 39 seconds</p>
+ <br>
+ <p>until Thursday, January 1, 2026 ([Raleigh](/worldclock/usa/raleigh) time)</p>
+ <br>
+ <p>[One hour wrong? Daylight Saving Time!](/countdown/one-hour-off)</p>
+ <br>
+-<p>Current time is Thursday, August 14, 2025 at 1:13:11 am [EDT](/time/zones/edt) (local time in [](/worldclock/usa/raleigh)[Raleigh](/worldclock/usa/raleigh))</p>
++<p>Current time is Thursday, August 14, 2025 at 1:16:21 am [EDT](/time/zones/edt) (local time in [](/worldclock/usa/raleigh)[Raleigh](/worldclock/usa/raleigh))</p>
+ <br>
+ <p>You may need to press Reload or Refresh on your browser to update the numbers.</p>
+ <br></code></pre>]]></description><pubDate>Thu, 14 Aug 2025 05:16:21 +0000</pubDate><guid>example-changelog2-28e9a18f</guid></item><item><title>Countdown to  New Year 2026 in Raleigh</title><link>http://localhost:8000/content/example-changelog2/20250814-051311319795.html?date=2025-08-14T05:13:11.319509+00:00</link><description><![CDATA[Count the seconds to the New Year in any location or time zone.
+
+<pre><code>@@ -4,21 +4,21 @@
+ <p>[](/counters/fullscreen.html?mode=m&year=2026)</p>
+ <pre>139       days</pre>
+ <pre>3359      hours</pre>
+-<pre>201589    minutes</pre>
+-<p>12095377  seconds</p>
++<pre>201586    minutes</pre>
++<p>12095209  seconds</p>
+ <br>
+ <br>
+ <p>until Thursday, January 1, 2026 ([Raleigh](/worldclock/usa/raleigh) time)</p>
+ <br>
+ <p>[](/counters/fullscreen.html?mode=a&year=2026)</p>
+ <br>
+-<p>139 days, 23 hours, 49 minutes, 37 seconds</p>
++<p>139 days, 23 hours, 46 minutes, 49 seconds</p>
+ <br>
+ <p>until Thursday, January 1, 2026 ([Raleigh](/worldclock/usa/raleigh) time)</p>
+ <br>
+ <p>[One hour wrong? Daylight Saving Time!](/countdown/one-hour-off)</p>
+ <br>
+-<p>Current time is Thursday, August 14, 2025 at 1:10:23 am [EDT](/time/zones/edt) (local time in [](/worldclock/usa/raleigh)[Raleigh](/worldclock/usa/raleigh))</p>
++<p>Current time is Thursday, August 14, 2025 at 1:13:11 am [EDT](/time/zones/edt) (local time in [](/worldclock/usa/raleigh)[Raleigh](/worldclock/usa/raleigh))</p>
+ <br>
+ <p>You may need to press Reload or Refresh on your browser to update the numbers.</p>
+ <br></code></pre>]]></description><pubDate>Thu, 14 Aug 2025 05:13:11 +0000</pubDate><guid>example-changelog2-b8b8a4c8</guid></item><item><title>Countdown to  New Year 2026 in Raleigh</title><link>http://localhost:8000/content/example-changelog2/20250814-051023429837.html?date=2025-08-14T05:10:23.429402+00:00</link><description><![CDATA[Count the seconds to the New Year in any location or time zone.
+
+<pre><code>@@ -2,23 +2,23 @@
+ <p>](/)</p>
+ <br>
+ <p>[](/counters/fullscreen.html?mode=m&year=2026)</p>
+-<pre>140       days</pre>
+-<pre>3360      hours</pre>
+-<pre>201649    minutes</pre>
+-<p>12098963  seconds</p>
++<pre>139       days</pre>
++<pre>3359      hours</pre>
++<pre>201589    minutes</pre>
++<p>12095377  seconds</p>
+ <br>
+ <br>
+ <p>until Thursday, January 1, 2026 ([Raleigh](/worldclock/usa/raleigh) time)</p>
+ <br>
+ <p>[](/counters/fullscreen.html?mode=a&year=2026)</p>
+ <br>
+-<p>140 days, 0 hours, 49 minutes, 23 seconds</p>
++<p>139 days, 23 hours, 49 minutes, 37 seconds</p>
+ <br>
+ <p>until Thursday, January 1, 2026 ([Raleigh](/worldclock/usa/raleigh) time)</p>
+ <br>
+ <p>[One hour wrong? Daylight Saving Time!](/countdown/one-hour-off)</p>
+ <br>
+-<p>Current time is Thursday, August 14, 2025 at 12:10:37 am [EDT](/time/zones/edt) (local time in [](/worldclock/usa/raleigh)[Raleigh](/worldclock/usa/raleigh))</p>
++<p>Current time is Thursday, August 14, 2025 at 1:10:23 am [EDT](/time/zones/edt) (local time in [](/worldclock/usa/raleigh)[Raleigh](/worldclock/usa/raleigh))</p>
+ <br>
+ <p>You may need to press Reload or Refresh on your browser to update the numbers.</p>
+ <br></code></pre>]]></description><pubDate>Thu, 14 Aug 2025 05:10:23 +0000</pubDate><guid>example-changelog2-2f7ab61c</guid></item><item><title>Countdown to  New Year 2026 in Raleigh</title><link>http://localhost:8000/content/example-changelog2/20250814-041037629113.html?date=2025-08-14T04:10:37.628813+00:00</link><description><![CDATA[Count the seconds to the New Year in any location or time zone.
+
+<pre><code>@@ -4,21 +4,21 @@
+ <p>[](/counters/fullscreen.html?mode=m&year=2026)</p>
+ <pre>140       days</pre>
+ <pre>3360      hours</pre>
+-<pre>201650    minutes</pre>
+-<p>12099030  seconds</p>
++<pre>201649    minutes</pre>
++<p>12098963  seconds</p>
+ <br>
+ <br>
+ <p>until Thursday, January 1, 2026 ([Raleigh](/worldclock/usa/raleigh) time)</p>
+ <br>
+ <p>[](/counters/fullscreen.html?mode=a&year=2026)</p>
+ <br>
+-<p>140 days, 0 hours, 50 minutes, 30 seconds</p>
++<p>140 days, 0 hours, 49 minutes, 23 seconds</p>
+ <br>
+ <p>until Thursday, January 1, 2026 ([Raleigh](/worldclock/usa/raleigh) time)</p>
+ <br>
+ <p>[One hour wrong? Daylight Saving Time!](/countdown/one-hour-off)</p>
+ <br>
+-<p>Current time is Thursday, August 14, 2025 at 12:09:30 am [EDT](/time/zones/edt) (local time in [](/worldclock/usa/raleigh)[Raleigh](/worldclock/usa/raleigh))</p>
++<p>Current time is Thursday, August 14, 2025 at 12:10:37 am [EDT](/time/zones/edt) (local time in [](/worldclock/usa/raleigh)[Raleigh](/worldclock/usa/raleigh))</p>
+ <br>
+ <p>You may need to press Reload or Refresh on your browser to update the numbers.</p>
+ <br></code></pre>]]></description><pubDate>Thu, 14 Aug 2025 04:10:37 +0000</pubDate><guid>example-changelog2-9fe1d3df</guid></item><item><title>Countdown to  New Year 2026 in Raleigh</title><link>http://localhost:8000/content/example-changelog2/20250814-040930596183.html?date=2025-08-14T04:09:30.595850+00:00</link><description><![CDATA[Count the seconds to the New Year in any location or time zone.
+
+<pre><code>@@ -3,22 +3,22 @@
+ <br>
+ <p>[](/counters/fullscreen.html?mode=m&year=2026)</p>
+ <pre>140       days</pre>
+-<pre>3361      hours</pre>
+-<pre>201662    minutes</pre>
+-<p>12099757  seconds</p>
++<pre>3360      hours</pre>
++<pre>201650    minutes</pre>
++<p>12099030  seconds</p>
+ <br>
+ <br>
+ <p>until Thursday, January 1, 2026 ([Raleigh](/worldclock/usa/raleigh) time)</p>
+ <br>
+ <p>[](/counters/fullscreen.html?mode=a&year=2026)</p>
+ <br>
+-<p>140 days, 1 hour, 2 minutes, 37 seconds</p>
++<p>140 days, 0 hours, 50 minutes, 30 seconds</p>
+ <br>
+ <p>until Thursday, January 1, 2026 ([Raleigh](/worldclock/usa/raleigh) time)</p>
+ <br>
+ <p>[One hour wrong? Daylight Saving Time!](/countdown/one-hour-off)</p>
+ <br>
+-<p>Current time is Wednesday, August 13, 2025 at 11:57:23 pm [EDT](/time/zones/edt) (local time in [](/worldclock/usa/raleigh)[Raleigh](/worldclock/usa/raleigh))</p>
++<p>Current time is Thursday, August 14, 2025 at 12:09:30 am [EDT](/time/zones/edt) (local time in [](/worldclock/usa/raleigh)[Raleigh](/worldclock/usa/raleigh))</p>
+ <br>
+ <p>You may need to press Reload or Refresh on your browser to update the numbers.</p>
+ <br></code></pre>]]></description><pubDate>Thu, 14 Aug 2025 04:09:30 +0000</pubDate><guid>example-changelog2-98c45287</guid></item><item><title>Countdown to  New Year 2026 in Raleigh</title><link>http://localhost:8000/content/example-changelog2/20250814-035723124823.html?date=2025-08-14T03:57:23.124434+00:00</link><description><![CDATA[Count the seconds to the New Year in any location or time zone.
+
+<pre><code>@@ -4,21 +4,21 @@
+ <p>[](/counters/fullscreen.html?mode=m&year=2026)</p>
+ <pre>140       days</pre>
+ <pre>3361      hours</pre>
+-<pre>201663    minutes</pre>
+-<p>12099792  seconds</p>
++<pre>201662    minutes</pre>
++<p>12099757  seconds</p>
+ <br>
+ <br>
+ <p>until Thursday, January 1, 2026 ([Raleigh](/worldclock/usa/raleigh) time)</p>
+ <br>
+ <p>[](/counters/fullscreen.html?mode=a&year=2026)</p>
+ <br>
+-<p>140 days, 1 hour, 3 minutes, 12 seconds</p>
++<p>140 days, 1 hour, 2 minutes, 37 seconds</p>
+ <br>
+ <p>until Thursday, January 1, 2026 ([Raleigh](/worldclock/usa/raleigh) time)</p>
+ <br>
+ <p>[One hour wrong? Daylight Saving Time!](/countdown/one-hour-off)</p>
+ <br>
+-<p>Current time is Wednesday, August 13, 2025 at 11:56:48 pm [EDT](/time/zones/edt) (local time in [](/worldclock/usa/raleigh)[Raleigh](/worldclock/usa/raleigh))</p>
++<p>Current time is Wednesday, August 13, 2025 at 11:57:23 pm [EDT](/time/zones/edt) (local time in [](/worldclock/usa/raleigh)[Raleigh](/worldclock/usa/raleigh))</p>
+ <br>
+ <p>You may need to press Reload or Refresh on your browser to update the numbers.</p>
+ <br></code></pre>]]></description><pubDate>Thu, 14 Aug 2025 03:57:23 +0000</pubDate><guid>example-changelog2-5a037b43</guid></item><item><title>Countdown to  New Year 2026 in Raleigh</title><link>http://localhost:8000/content/example-changelog2/20250814-035648255424.html?date=2025-08-14T03:56:48.255097+00:00</link><description><![CDATA[Count the seconds to the New Year in any location or time zone.
+
+<pre><code>@@ -4,21 +4,21 @@
+ <p>[](/counters/fullscreen.html?mode=m&year=2026)</p>
+ <pre>140       days</pre>
+ <pre>3361      hours</pre>
+-<pre>201665    minutes</pre>
+-<p>12099954  seconds</p>
++<pre>201663    minutes</pre>
++<p>12099792  seconds</p>
+ <br>
+ <br>
+ <p>until Thursday, January 1, 2026 ([Raleigh](/worldclock/usa/raleigh) time)</p>
+ <br>
+ <p>[](/counters/fullscreen.html?mode=a&year=2026)</p>
+ <br>
+-<p>140 days, 1 hour, 5 minutes, 54 seconds</p>
++<p>140 days, 1 hour, 3 minutes, 12 seconds</p>
+ <br>
+ <p>until Thursday, January 1, 2026 ([Raleigh](/worldclock/usa/raleigh) time)</p>
+ <br>
+ <p>[One hour wrong? Daylight Saving Time!](/countdown/one-hour-off)</p>
+ <br>
+-<p>Current time is Wednesday, August 13, 2025 at 11:54:06 pm [EDT](/time/zones/edt) (local time in [](/worldclock/usa/raleigh)[Raleigh](/worldclock/usa/raleigh))</p>
++<p>Current time is Wednesday, August 13, 2025 at 11:56:48 pm [EDT](/time/zones/edt) (local time in [](/worldclock/usa/raleigh)[Raleigh](/worldclock/usa/raleigh))</p>
+ <br>
+ <p>You may need to press Reload or Refresh on your browser to update the numbers.</p>
+ <br></code></pre>]]></description><pubDate>Thu, 14 Aug 2025 03:56:48 +0000</pubDate><guid>example-changelog2-ea68be3a</guid></item><item><title>Countdown to  New Year 2026 in Raleigh</title><link>http://localhost:8000/content/example-changelog2/20250814-035406366131.html?date=2025-08-14T03:54:06.365861+00:00</link><description><![CDATA[Count the seconds to the New Year in any location or time zone.
+
+<pre><code>@@ -4,21 +4,21 @@
+ <p>[](/counters/fullscreen.html?mode=m&year=2026)</p>
+ <pre>140       days</pre>
+ <pre>3361      hours</pre>
+-<pre>201683    minutes</pre>
+-<p>12100988  seconds</p>
++<pre>201665    minutes</pre>
++<p>12099954  seconds</p>
+ <br>
+ <br>
+ <p>until Thursday, January 1, 2026 ([Raleigh](/worldclock/usa/raleigh) time)</p>
+ <br>
+ <p>[](/counters/fullscreen.html?mode=a&year=2026)</p>
+ <br>
+-<p>140 days, 1 hour, 23 minutes, 8 seconds</p>
++<p>140 days, 1 hour, 5 minutes, 54 seconds</p>
+ <br>
+ <p>until Thursday, January 1, 2026 ([Raleigh](/worldclock/usa/raleigh) time)</p>
+ <br>
+ <p>[One hour wrong? Daylight Saving Time!](/countdown/one-hour-off)</p>
+ <br>
+-<p>Current time is Wednesday, August 13, 2025 at 11:36:52 pm [EDT](/time/zones/edt) (local time in [](/worldclock/usa/raleigh)[Raleigh](/worldclock/usa/raleigh))</p>
++<p>Current time is Wednesday, August 13, 2025 at 11:54:06 pm [EDT](/time/zones/edt) (local time in [](/worldclock/usa/raleigh)[Raleigh](/worldclock/usa/raleigh))</p>
+ <br>
+ <p>You may need to press Reload or Refresh on your browser to update the numbers.</p>
+ <br></code></pre>]]></description><pubDate>Thu, 14 Aug 2025 03:54:06 +0000</pubDate><guid>example-changelog2-d1805c64</guid></item><item><title>Countdown to  New Year 2026 in Raleigh</title><link>http://localhost:8000/content/example-changelog2/20250814-033652936687.html?date=2025-08-14T03:36:52.936406+00:00</link><description><![CDATA[Count the seconds to the New Year in any location or time zone.]]></description><pubDate>Thu, 14 Aug 2025 03:36:52 +0000</pubDate><guid>example-changelog2-f3b0490f</guid></item></channel></rss>

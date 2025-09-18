@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>multi_proxy_test Updates</title><link>https://github.com/owner/repo/blob/main/content/multi_proxy_test/20250831-160245576077.html</link><description>Updates from multi_proxy_test</description><language>en</language><lastBuildDate>Sun, 31 Aug 2025 16:02:45 +0000</lastBuildDate><item><title>http://localhost:54893/test</title><link>https://github.com/owner/repo/blob/main/content/multi_proxy_test/20250831-160245576077.html?date=2025-08-31T16:02:45.575326+00:00</link><description><![CDATA[
+
+<pre><code>@@ -1,6 +1 @@
+-<p>Content from origin server</p>
+-<br>
+-<p>Request count: 1</p>
+-<br>
+-<p>Via proxy: True</p>
+-<br>
++<p>Success from proxy2</p></code></pre>]]></description><pubDate>Sun, 31 Aug 2025 16:02:45 +0000</pubDate><guid>multi_proxy_test-15025073</guid></item><item><title>Content Server</title><link>https://github.com/owner/repo/blob/main/content/multi_proxy_test/20250831-160211846374.html?date=2025-08-31T16:02:11.845657+00:00</link><description><![CDATA[None]]></description><pubDate>Sun, 31 Aug 2025 16:02:11 +0000</pubDate><guid>multi_proxy_test-cb574c6f</guid></item></channel></rss>

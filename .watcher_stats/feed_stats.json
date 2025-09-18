@@ -1,0 +1,34 @@
+{
+  "example-changelog": {
+    "total_runs": 4,
+    "total_failures": 0,
+    "consecutive_failures": 0,
+    "last_failure": null,
+    "last_success": "2025-09-18T04:00:14.576678+00:00",
+    "first_run": "2025-08-31T15:48:56.067518+00:00"
+  },
+  "nih-news": {
+    "total_runs": 4,
+    "total_failures": 0,
+    "consecutive_failures": 0,
+    "last_failure": null,
+    "last_success": "2025-09-18T04:00:14.577349+00:00",
+    "first_run": "2025-08-31T15:48:56.363518+00:00"
+  },
+  "jank-progress": {
+    "total_runs": 4,
+    "total_failures": 0,
+    "consecutive_failures": 0,
+    "last_failure": null,
+    "last_success": "2025-09-18T04:00:14.897397+00:00",
+    "first_run": "2025-08-31T15:48:56.713249+00:00"
+  },
+  "espn-2024-2025-premier-league-status": {
+    "total_runs": 4,
+    "total_failures": 0,
+    "consecutive_failures": 0,
+    "last_failure": null,
+    "last_success": "2025-09-18T04:00:14.898893+00:00",
+    "first_run": "2025-08-31T15:48:56.713907+00:00"
+  }
+}
