@@ -1,5 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>example-changelog2 Updates</title><link>https://gpwclark.github.io/watcher/content/example-changelog2/20251024-060317491720.html</link><description>Updates from example-changelog2</description><language>en</language><lastBuildDate>Fri, 24 Oct 2025 06:03:17 +0000</lastBuildDate><item><title>Countdown to  New Year 2026 in Phoenix</title><link>https://gpwclark.github.io/watcher/content/example-changelog2/20251024-060317491720.html?date=2025-10-24T06:03:17.491425+00:00</link><description><![CDATA[Count the seconds to the New Year in any location or time zone.
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>example-changelog2 Updates</title><link>https://gpwclark.github.io/watcher/content/example-changelog2/20251024-120419564472.html</link><description>Updates from example-changelog2</description><language>en</language><lastBuildDate>Fri, 24 Oct 2025 12:04:19 +0000</lastBuildDate><item><title>Countdown to  New Year 2026 in Des Moines</title><link>https://gpwclark.github.io/watcher/content/example-changelog2/20251024-120419564472.html?date=2025-10-24T12:04:19.564177+00:00</link><description><![CDATA[Count the seconds to the New Year in any location or time zone.
+
+<pre><code>@@ -2,21 +2,23 @@
+ <p>](/)</p>
+ <br>
+ <p>[](/counters/fullscreen.html?mode=m&year=2026)</p>
+-<pre>69       days</pre>
+-<pre>1656     hours</pre>
+-<pre>99416    minutes</pre>
+-<p>5965003  seconds</p>
++<pre>68       days</pre>
++<pre>1649     hours</pre>
++<pre>98995    minutes</pre>
++<p>5939741  seconds</p>
+ <br>
+ <br>
+-<p>until Thursday, January 1, 2026 ([Phoenix](/worldclock/usa/phoenix) time)</p>
++<p>until Thursday, January 1, 2026 ([Des Moines](/worldclock/usa/des-moines) time)</p>
+ <br>
+ <p>[](/counters/fullscreen.html?mode=a&year=2026)</p>
+ <br>
+-<p>69 days, 0 hours, 56 minutes, 43 seconds</p>
++<p>68 days, 17 hours, 55 minutes, 41 seconds</p>
+ <br>
+-<p>until Thursday, January 1, 2026 ([Phoenix](/worldclock/usa/phoenix) time)</p>
++<p>until Thursday, January 1, 2026 ([Des Moines](/worldclock/usa/des-moines) time)</p>
+ <br>
+-<p>Current time is Thursday, October 23, 2025 at 11:03:17 pm [MST](/time/zones/mst) (local time in [](/worldclock/usa/phoenix)[Phoenix](/worldclock/usa/phoenix))</p>
++<p>[One hour wrong? Daylight Saving Time!](/countdown/one-hour-off)</p>
++<br>
++<p>Current time is Friday, October 24, 2025 at 7:04:19 am [CDT](/time/zones/cdt) (local time in [](/worldclock/usa/des-moines)[Des Moines](/worldclock/usa/des-moines))</p>
+ <br>
+ <p>You may need to press Reload or Refresh on your browser to update the numbers.</p>
+ <br></code></pre>]]></description><pubDate>Fri, 24 Oct 2025 12:04:19 +0000</pubDate><guid>example-changelog2-79590f6e</guid></item><item><title>Countdown to  New Year 2026 in Phoenix</title><link>https://gpwclark.github.io/watcher/content/example-changelog2/20251024-060317491720.html?date=2025-10-24T06:03:17.491425+00:00</link><description><![CDATA[Count the seconds to the New Year in any location or time zone.
 
 <pre><code>@@ -3,22 +3,20 @@
  <br>
@@ -592,35 +625,4 @@
 +<p>Current time is Sunday, October 19, 2025 at 2:04:13 pm [EDT](/time/zones/edt) (local time in [](/worldclock/usa/roanoke-rapids)[Roanoke Rapids](/worldclock/usa/roanoke-rapids))</p>
  <br>
  <p>You may need to press Reload or Refresh on your browser to update the numbers.</p>
- <br></code></pre>]]></description><pubDate>Sun, 19 Oct 2025 18:04:13 +0000</pubDate><guid>example-changelog2-d4a968bc</guid></item><item><title>Countdown to  New Year 2026 in Chicago</title><link>https://gpwclark.github.io/watcher/content/example-changelog2/20251019-120501020066.html?date=2025-10-19T12:05:01.019780+00:00</link><description><![CDATA[Count the seconds to the New Year in any location or time zone.
-
-<pre><code>@@ -3,22 +3,22 @@
- <br>
- <p>[](/counters/fullscreen.html?mode=m&year=2026)</p>
- <pre>73       days</pre>
--<pre>1775     hours</pre>
--<p>106555   minutes</p>
--<p>6393341  seconds</p>
-+<pre>1769     hours</pre>
-+<p>106195   minutes</p>
-+<p>6371700  seconds</p>
- <br>
- <br>
--<p>until Thursday, January 1, 2026 ([Des Moines](/worldclock/usa/des-moines) time)</p>
-+<p>until Thursday, January 1, 2026 ([Chicago](/worldclock/usa/chicago) time)</p>
- <br>
- <p>[](/counters/fullscreen.html?mode=a&year=2026)</p>
- <br>
--<p>73 days, 23 hours, 55 minutes, 41 seconds</p>
-+<p>73 days, 17 hours, 55 minutes, 0 seconds</p>
- <br>
--<p>until Thursday, January 1, 2026 ([Des Moines](/worldclock/usa/des-moines) time)</p>
-+<p>until Thursday, January 1, 2026 ([Chicago](/worldclock/usa/chicago) time)</p>
- <br>
- <p>[One hour wrong? Daylight Saving Time!](/countdown/one-hour-off)</p>
- <br>
--<p>Current time is Sunday, October 19, 2025 at 1:04:19 am [CDT](/time/zones/cdt) (local time in [](/worldclock/usa/des-moines)[Des Moines](/worldclock/usa/des-moines))</p>
-+<p>Current time is Sunday, October 19, 2025 at 7:05:00 am [CDT](/time/zones/cdt) (local time in [](/worldclock/usa/chicago)[Chicago](/worldclock/usa/chicago))</p>
- <br>
- <p>You may need to press Reload or Refresh on your browser to update the numbers.</p>
- <br></code></pre>]]></description><pubDate>Sun, 19 Oct 2025 12:05:01 +0000</pubDate><guid>example-changelog2-8b584ac0</guid></item></channel></rss>
+ <br></code></pre>]]></description><pubDate>Sun, 19 Oct 2025 18:04:13 +0000</pubDate><guid>example-changelog2-d4a968bc</guid></item></channel></rss>
