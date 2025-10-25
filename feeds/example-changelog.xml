@@ -1,5 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>example-changelog Updates</title><link>https://gpwclark.github.io/watcher/content/example-changelog/20251025-060608772578.html</link><description>Updates from example-changelog</description><language>en</language><lastBuildDate>Sat, 25 Oct 2025 06:06:08 +0000</lastBuildDate><item><title>Countdown to  New Year 2026 in Sperryville</title><link>https://gpwclark.github.io/watcher/content/example-changelog/20251025-060608772578.html?date=2025-10-25T06:06:08.772224+00:00</link><description><![CDATA[Count the seconds to the New Year in any location or time zone.
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>example-changelog Updates</title><link>https://gpwclark.github.io/watcher/content/example-changelog/20251025-120314332491.html</link><description>Updates from example-changelog</description><language>en</language><lastBuildDate>Sat, 25 Oct 2025 12:03:14 +0000</lastBuildDate><item><title>Countdown to  New Year 2026 in Sperryville</title><link>https://gpwclark.github.io/watcher/content/example-changelog/20251025-120314332491.html?date=2025-10-25T12:03:14.332270+00:00</link><description><![CDATA[Count the seconds to the New Year in any location or time zone.
+
+<pre><code>@@ -3,22 +3,22 @@
+ <br>
+ <p>[](/counters/fullscreen.html?mode=m&year=2026)</p>
+ <pre>67       days</pre>
+-<pre>1630     hours</pre>
+-<pre>97853    minutes</pre>
+-<p>5871232  seconds</p>
++<pre>1624     hours</pre>
++<pre>97496    minutes</pre>
++<p>5849806  seconds</p>
+ <br>
+ <br>
+ <p>until Thursday, January 1, 2026 ([Sperryville](/worldclock/usa/sperryville) time)</p>
+ <br>
+ <p>[](/counters/fullscreen.html?mode=a&year=2026)</p>
+ <br>
+-<p>67 days, 22 hours, 53 minutes, 52 seconds</p>
++<p>67 days, 16 hours, 56 minutes, 46 seconds</p>
+ <br>
+ <p>until Thursday, January 1, 2026 ([Sperryville](/worldclock/usa/sperryville) time)</p>
+ <br>
+ <p>[One hour wrong? Daylight Saving Time!](/countdown/one-hour-off)</p>
+ <br>
+-<p>Current time is Saturday, October 25, 2025 at 2:06:08 am [EDT](/time/zones/edt) (local time in [](/worldclock/usa/sperryville)[Sperryville](/worldclock/usa/sperryville))</p>
++<p>Current time is Saturday, October 25, 2025 at 8:03:14 am [EDT](/time/zones/edt) (local time in [](/worldclock/usa/sperryville)[Sperryville](/worldclock/usa/sperryville))</p>
+ <br>
+ <p>You may need to press Reload or Refresh on your browser to update the numbers.</p>
+ <br></code></pre>]]></description><pubDate>Sat, 25 Oct 2025 12:03:14 +0000</pubDate><guid>example-changelog-b36e77d0</guid></item><item><title>Countdown to  New Year 2026 in Sperryville</title><link>https://gpwclark.github.io/watcher/content/example-changelog/20251025-060608772578.html?date=2025-10-25T06:06:08.772224+00:00</link><description><![CDATA[Count the seconds to the New Year in any location or time zone.
 
 <pre><code>@@ -2,23 +2,23 @@
  <p>](/)</p>
@@ -594,35 +623,4 @@
 +<p>Current time is Monday, October 20, 2025 at 11:03:22 am [PDT](/time/zones/pdt) (local time in [](/worldclock/usa/san-jose)[San Jose, California](/worldclock/usa/san-jose))</p>
  <br>
  <p>You may need to press Reload or Refresh on your browser to update the numbers.</p>
- <br></code></pre>]]></description><pubDate>Mon, 20 Oct 2025 18:03:22 +0000</pubDate><guid>example-changelog-798c34d8</guid></item><item><title>Countdown to  New Year 2026 in Sperryville</title><link>https://gpwclark.github.io/watcher/content/example-changelog/20251020-120334470361.html?date=2025-10-20T12:03:34.470175+00:00</link><description><![CDATA[Count the seconds to the New Year in any location or time zone.
-
-<pre><code>@@ -3,22 +3,22 @@
- <br>
- <p>[](/counters/fullscreen.html?mode=m&year=2026)</p>
- <pre>72       days</pre>
--<pre>1751     hours</pre>
--<p>105115   minutes</p>
--<p>6306912  seconds</p>
-+<pre>1744     hours</pre>
-+<p>104696   minutes</p>
-+<p>6281786  seconds</p>
- <br>
- <br>
--<p>until Thursday, January 1, 2026 ([Chicago](/worldclock/usa/chicago) time)</p>
-+<p>until Thursday, January 1, 2026 ([Sperryville](/worldclock/usa/sperryville) time)</p>
- <br>
- <p>[](/counters/fullscreen.html?mode=a&year=2026)</p>
- <br>
--<p>72 days, 23 hours, 55 minutes, 12 seconds</p>
-+<p>72 days, 16 hours, 56 minutes, 26 seconds</p>
- <br>
--<p>until Thursday, January 1, 2026 ([Chicago](/worldclock/usa/chicago) time)</p>
-+<p>until Thursday, January 1, 2026 ([Sperryville](/worldclock/usa/sperryville) time)</p>
- <br>
- <p>[One hour wrong? Daylight Saving Time!](/countdown/one-hour-off)</p>
- <br>
--<p>Current time is Monday, October 20, 2025 at 1:04:48 am [CDT](/time/zones/cdt) (local time in [](/worldclock/usa/chicago)[Chicago](/worldclock/usa/chicago))</p>
-+<p>Current time is Monday, October 20, 2025 at 8:03:34 am [EDT](/time/zones/edt) (local time in [](/worldclock/usa/sperryville)[Sperryville](/worldclock/usa/sperryville))</p>
- <br>
- <p>You may need to press Reload or Refresh on your browser to update the numbers.</p>
- <br></code></pre>]]></description><pubDate>Mon, 20 Oct 2025 12:03:34 +0000</pubDate><guid>example-changelog-e5c8d311</guid></item></channel></rss>
+ <br></code></pre>]]></description><pubDate>Mon, 20 Oct 2025 18:03:22 +0000</pubDate><guid>example-changelog-798c34d8</guid></item></channel></rss>
