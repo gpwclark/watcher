@@ -1,5 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>example-changelog2 Updates</title><link>https://gpwclark.github.io/watcher/content/example-changelog2/20251106-000659035213.html</link><description>Updates from example-changelog2</description><language>en</language><lastBuildDate>Thu, 06 Nov 2025 00:06:59 +0000</lastBuildDate><item><title>Countdown to  New Year 2026 in San Jose, California</title><link>https://gpwclark.github.io/watcher/content/example-changelog2/20251106-000659035213.html?date=2025-11-06T00:06:59.034966+00:00</link><description><![CDATA[Count the seconds to the New Year in any location or time zone.
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>example-changelog2 Updates</title><link>https://gpwclark.github.io/watcher/content/example-changelog2/20251106-060418318444.html</link><description>Updates from example-changelog2</description><language>en</language><lastBuildDate>Thu, 06 Nov 2025 06:04:18 +0000</lastBuildDate><item><title>Countdown to  New Year 2026 in Phoenix</title><link>https://gpwclark.github.io/watcher/content/example-changelog2/20251106-060418318444.html?date=2025-11-06T06:04:18.318188+00:00</link><description><![CDATA[Count the seconds to the New Year in any location or time zone.
+
+<pre><code>@@ -3,20 +3,20 @@
+ <br>
+ <p>[](/counters/fullscreen.html?mode=m&year=2026)</p>
+ <pre>56       days</pre>
+-<pre>1351     hours</pre>
+-<pre>81113    minutes</pre>
+-<p>4866781  seconds</p>
++<pre>1344     hours</pre>
++<pre>80695    minutes</pre>
++<p>4841742  seconds</p>
+ <br>
+ <br>
+-<p>until Thursday, January 1, 2026 ([San Jose, California](/worldclock/usa/san-jose) time)</p>
++<p>until Thursday, January 1, 2026 ([Phoenix](/worldclock/usa/phoenix) time)</p>
+ <br>
+ <p>[](/counters/fullscreen.html?mode=a&year=2026)</p>
+ <br>
+-<p>56 days, 7 hours, 53 minutes, 1 second</p>
++<p>56 days, 0 hours, 55 minutes, 42 seconds</p>
+ <br>
+-<p>until Thursday, January 1, 2026 ([San Jose, California](/worldclock/usa/san-jose) time)</p>
++<p>until Thursday, January 1, 2026 ([Phoenix](/worldclock/usa/phoenix) time)</p>
+ <br>
+-<p>Current time is Wednesday, November 5, 2025 at 4:06:59 pm [PST](/time/zones/pst) (local time in [](/worldclock/usa/san-jose)[San Jose, California](/worldclock/usa/san-jose))</p>
++<p>Current time is Wednesday, November 5, 2025 at 11:04:18 pm [MST](/time/zones/mst) (local time in [](/worldclock/usa/phoenix)[Phoenix](/worldclock/usa/phoenix))</p>
+ <br>
+ <p>You may need to press Reload or Refresh on your browser to update the numbers.</p>
+ <br></code></pre>]]></description><pubDate>Thu, 06 Nov 2025 06:04:18 +0000</pubDate><guid>example-changelog2-b332f4ab</guid></item><item><title>Countdown to  New Year 2026 in San Jose, California</title><link>https://gpwclark.github.io/watcher/content/example-changelog2/20251106-000659035213.html?date=2025-11-06T00:06:59.034966+00:00</link><description><![CDATA[Count the seconds to the New Year in any location or time zone.
 
 <pre><code>@@ -3,20 +3,20 @@
  <br>
@@ -560,37 +589,4 @@
 +<p>Current time is Saturday, November 1, 2025 at 8:04:17 am [EDT](/time/zones/edt) (local time in [](/worldclock/usa/roanoke-rapids)[Roanoke Rapids](/worldclock/usa/roanoke-rapids))</p>
  <br>
  <p>You may need to press Reload or Refresh on your browser to update the numbers.</p>
- <br></code></pre>]]></description><pubDate>Sat, 01 Nov 2025 12:04:17 +0000</pubDate><guid>example-changelog2-9839c433</guid></item><item><title>Countdown to  New Year 2026 in Chicago</title><link>https://gpwclark.github.io/watcher/content/example-changelog2/20251101-060258834857.html?date=2025-11-01T06:02:58.834545+00:00</link><description><![CDATA[Count the seconds to the New Year in any location or time zone.
-
-<pre><code>@@ -2,23 +2,23 @@
- <p>](/)</p>
- <br>
- <p>[](/counters/fullscreen.html?mode=m&year=2026)</p>
--<pre>61       days</pre>
--<pre>1468     hours</pre>
--<pre>88130    minutes</pre>
--<p>5287831  seconds</p>
-+<pre>60       days</pre>
-+<pre>1463     hours</pre>
-+<pre>87837    minutes</pre>
-+<p>5270222  seconds</p>
- <br>
- <br>
--<p>until Thursday, January 1, 2026 ([Sperryville](/worldclock/usa/sperryville) time)</p>
-+<p>until Thursday, January 1, 2026 ([Chicago](/worldclock/usa/chicago) time)</p>
- <br>
- <p>[](/counters/fullscreen.html?mode=a&year=2026)</p>
- <br>
--<p>61 days, 4 hours, 50 minutes, 31 seconds</p>
-+<p>60 days, 23 hours, 57 minutes, 2 seconds</p>
- <br>
--<p>until Thursday, January 1, 2026 ([Sperryville](/worldclock/usa/sperryville) time)</p>
-+<p>until Thursday, January 1, 2026 ([Chicago](/worldclock/usa/chicago) time)</p>
- <br>
- <p>[One hour wrong? Daylight Saving Time!](/countdown/one-hour-off)</p>
- <br>
--<p>Current time is Friday, October 31, 2025 at 8:09:29 pm [EDT](/time/zones/edt) (local time in [](/worldclock/usa/sperryville)[Sperryville](/worldclock/usa/sperryville))</p>
-+<p>Current time is Saturday, November 1, 2025 at 1:02:58 am [CDT](/time/zones/cdt) (local time in [](/worldclock/usa/chicago)[Chicago](/worldclock/usa/chicago))</p>
- <br>
- <p>You may need to press Reload or Refresh on your browser to update the numbers.</p>
- <br></code></pre>]]></description><pubDate>Sat, 01 Nov 2025 06:02:58 +0000</pubDate><guid>example-changelog2-e472706c</guid></item></channel></rss>
+ <br></code></pre>]]></description><pubDate>Sat, 01 Nov 2025 12:04:17 +0000</pubDate><guid>example-changelog2-9839c433</guid></item></channel></rss>
