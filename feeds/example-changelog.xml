@@ -1,5 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>example-changelog Updates</title><link>https://gpwclark.github.io/watcher/content/example-changelog/20251116-060248546797.html</link><description>Updates from example-changelog</description><language>en</language><lastBuildDate>Sun, 16 Nov 2025 06:02:48 +0000</lastBuildDate><item><title>Countdown to  New Year 2026 in Roanoke Rapids</title><link>https://gpwclark.github.io/watcher/content/example-changelog/20251116-060248546797.html?date=2025-11-16T06:02:48.546475+00:00</link><description><![CDATA[Count the seconds to the New Year in any location or time zone.
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>example-changelog Updates</title><link>https://gpwclark.github.io/watcher/content/example-changelog/20251116-120255507175.html</link><description>Updates from example-changelog</description><language>en</language><lastBuildDate>Sun, 16 Nov 2025 12:02:55 +0000</lastBuildDate><item><title>Countdown to  New Year 2026 in Roanoke Rapids</title><link>https://gpwclark.github.io/watcher/content/example-changelog/20251116-120255507175.html?date=2025-11-16T12:02:55.506985+00:00</link><description><![CDATA[Count the seconds to the New Year in any location or time zone.
+
+<pre><code>@@ -3,20 +3,20 @@
+ <br>
+ <p>[](/counters/fullscreen.html?mode=m&year=2026)</p>
+ <pre>45       days</pre>
+-<pre>1102     hours</pre>
+-<pre>66177    minutes</pre>
+-<p>3970632  seconds</p>
++<pre>1096     hours</pre>
++<pre>65817    minutes</pre>
++<p>3949025  seconds</p>
+ <br>
+ <br>
+ <p>until Thursday, January 1, 2026 ([Roanoke Rapids](/worldclock/usa/roanoke-rapids) time)</p>
+ <br>
+ <p>[](/counters/fullscreen.html?mode=a&year=2026)</p>
+ <br>
+-<p>45 days, 22 hours, 57 minutes, 12 seconds</p>
++<p>45 days, 16 hours, 57 minutes, 5 seconds</p>
+ <br>
+ <p>until Thursday, January 1, 2026 ([Roanoke Rapids](/worldclock/usa/roanoke-rapids) time)</p>
+ <br>
+-<p>Current time is Sunday, November 16, 2025 at 1:02:48 am [EST](/time/zones/est) (local time in [](/worldclock/usa/roanoke-rapids)[Roanoke Rapids](/worldclock/usa/roanoke-rapids))</p>
++<p>Current time is Sunday, November 16, 2025 at 7:02:55 am [EST](/time/zones/est) (local time in [](/worldclock/usa/roanoke-rapids)[Roanoke Rapids](/worldclock/usa/roanoke-rapids))</p>
+ <br>
+ <p>You may need to press Reload or Refresh on your browser to update the numbers.</p>
+ <br></code></pre>]]></description><pubDate>Sun, 16 Nov 2025 12:02:55 +0000</pubDate><guid>example-changelog-6d23208e</guid></item><item><title>Countdown to  New Year 2026 in Roanoke Rapids</title><link>https://gpwclark.github.io/watcher/content/example-changelog/20251116-060248546797.html?date=2025-11-16T06:02:48.546475+00:00</link><description><![CDATA[Count the seconds to the New Year in any location or time zone.
 
 <pre><code>@@ -2,21 +2,21 @@
  <p>](/)</p>
@@ -546,33 +573,4 @@
 +<p>Current time is Tuesday, November 11, 2025 at 1:03:08 pm [EST](/time/zones/est) (local time in [](/worldclock/usa/roanoke-rapids)[Roanoke Rapids](/worldclock/usa/roanoke-rapids))</p>
  <br>
  <p>You may need to press Reload or Refresh on your browser to update the numbers.</p>
- <br></code></pre>]]></description><pubDate>Tue, 11 Nov 2025 18:03:08 +0000</pubDate><guid>example-changelog-26874e76</guid></item><item><title>Countdown to  New Year 2026 in Sperryville</title><link>https://gpwclark.github.io/watcher/content/example-changelog/20251111-120327816643.html?date=2025-11-11T12:03:27.816411+00:00</link><description><![CDATA[Count the seconds to the New Year in any location or time zone.
-
-<pre><code>@@ -3,20 +3,20 @@
- <br>
- <p>[](/counters/fullscreen.html?mode=m&year=2026)</p>
- <pre>50       days</pre>
--<pre>1223     hours</pre>
--<pre>73436    minutes</pre>
--<p>4406206  seconds</p>
-+<pre>1216     hours</pre>
-+<pre>73016    minutes</pre>
-+<p>4380993  seconds</p>
- <br>
- <br>
--<p>until Thursday, January 1, 2026 ([Chicago](/worldclock/usa/chicago) time)</p>
-+<p>until Thursday, January 1, 2026 ([Sperryville](/worldclock/usa/sperryville) time)</p>
- <br>
- <p>[](/counters/fullscreen.html?mode=a&year=2026)</p>
- <br>
--<p>50 days, 23 hours, 56 minutes, 46 seconds</p>
-+<p>50 days, 16 hours, 56 minutes, 33 seconds</p>
- <br>
--<p>until Thursday, January 1, 2026 ([Chicago](/worldclock/usa/chicago) time)</p>
-+<p>until Thursday, January 1, 2026 ([Sperryville](/worldclock/usa/sperryville) time)</p>
- <br>
--<p>Current time is Tuesday, November 11, 2025 at 12:03:14 am [CST](/time/zones/cst) (local time in [](/worldclock/usa/chicago)[Chicago](/worldclock/usa/chicago))</p>
-+<p>Current time is Tuesday, November 11, 2025 at 7:03:27 am [EST](/time/zones/est) (local time in [](/worldclock/usa/sperryville)[Sperryville](/worldclock/usa/sperryville))</p>
- <br>
- <p>You may need to press Reload or Refresh on your browser to update the numbers.</p>
- <br></code></pre>]]></description><pubDate>Tue, 11 Nov 2025 12:03:27 +0000</pubDate><guid>example-changelog-9c89aa74</guid></item></channel></rss>
+ <br></code></pre>]]></description><pubDate>Tue, 11 Nov 2025 18:03:08 +0000</pubDate><guid>example-changelog-26874e76</guid></item></channel></rss>
