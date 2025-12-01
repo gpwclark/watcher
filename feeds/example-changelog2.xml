@@ -1,5 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>example-changelog2 Updates</title><link>https://gpwclark.github.io/watcher/content/example-changelog2/20251201-000821465782.html</link><description>Updates from example-changelog2</description><language>en</language><lastBuildDate>Mon, 01 Dec 2025 00:08:21 +0000</lastBuildDate><item><title>Countdown to  New Year 2026 in Roanoke Rapids</title><link>https://gpwclark.github.io/watcher/content/example-changelog2/20251201-000821465782.html?date=2025-12-01T00:08:21.465547+00:00</link><description><![CDATA[Count the seconds to the New Year in any location or time zone.
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>example-changelog2 Updates</title><link>https://gpwclark.github.io/watcher/content/example-changelog2/20251201-060259872661.html</link><description>Updates from example-changelog2</description><language>en</language><lastBuildDate>Mon, 01 Dec 2025 06:02:59 +0000</lastBuildDate><item><title>Countdown to  New Year 2026 in Chicago</title><link>https://gpwclark.github.io/watcher/content/example-changelog2/20251201-060259872661.html?date=2025-12-01T06:02:59.872430+00:00</link><description><![CDATA[Count the seconds to the New Year in any location or time zone.
+
+<pre><code>@@ -2,21 +2,21 @@
+ <p>](/)</p>
+ <br>
+ <p>[](/counters/fullscreen.html?mode=m&year=2026)</p>
+-<pre>31       days</pre>
+-<pre>748      hours</pre>
+-<pre>44931    minutes</pre>
+-<p>2695899  seconds</p>
++<pre>30       days</pre>
++<pre>743      hours</pre>
++<pre>44637    minutes</pre>
++<p>2678221  seconds</p>
+ <br>
+ <br>
+-<p>until Thursday, January 1, 2026 ([Roanoke Rapids](/worldclock/usa/roanoke-rapids) time)</p>
++<p>until Thursday, January 1, 2026 ([Chicago](/worldclock/usa/chicago) time)</p>
+ <br>
+ <p>[](/counters/fullscreen.html?mode=a&year=2026)</p>
+ <br>
+-<p>31 days, 4 hours, 51 minutes, 39 seconds</p>
++<p>30 days, 23 hours, 57 minutes, 1 second</p>
+ <br>
+-<p>until Thursday, January 1, 2026 ([Roanoke Rapids](/worldclock/usa/roanoke-rapids) time)</p>
++<p>until Thursday, January 1, 2026 ([Chicago](/worldclock/usa/chicago) time)</p>
+ <br>
+-<p>Current time is Sunday, November 30, 2025 at 7:08:21 pm [EST](/time/zones/est) (local time in [](/worldclock/usa/roanoke-rapids)[Roanoke Rapids](/worldclock/usa/roanoke-rapids))</p>
++<p>Current time is Monday, December 1, 2025 at 12:02:59 am [CST](/time/zones/cst) (local time in [](/worldclock/usa/chicago)[Chicago](/worldclock/usa/chicago))</p>
+ <br>
+ <p>You may need to press Reload or Refresh on your browser to update the numbers.</p>
+ <br></code></pre>]]></description><pubDate>Mon, 01 Dec 2025 06:02:59 +0000</pubDate><guid>example-changelog2-8759a1c7</guid></item><item><title>Countdown to  New Year 2026 in Roanoke Rapids</title><link>https://gpwclark.github.io/watcher/content/example-changelog2/20251201-000821465782.html?date=2025-12-01T00:08:21.465547+00:00</link><description><![CDATA[Count the seconds to the New Year in any location or time zone.
 
 <pre><code>@@ -3,20 +3,20 @@
  <br>
@@ -558,33 +589,4 @@
 +<p>Current time is Wednesday, November 26, 2025 at 7:03:11 am [EST](/time/zones/est) (local time in [](/worldclock/usa/roanoke-rapids)[Roanoke Rapids](/worldclock/usa/roanoke-rapids))</p>
  <br>
  <p>You may need to press Reload or Refresh on your browser to update the numbers.</p>
- <br></code></pre>]]></description><pubDate>Wed, 26 Nov 2025 12:03:11 +0000</pubDate><guid>example-changelog2-22d42e48</guid></item><item><title>Countdown to  New Year 2026 in San Jose, California</title><link>https://gpwclark.github.io/watcher/content/example-changelog2/20251126-060254853014.html?date=2025-11-26T06:02:54.852753+00:00</link><description><![CDATA[Count the seconds to the New Year in any location or time zone.
-
-<pre><code>@@ -3,20 +3,20 @@
- <br>
- <p>[](/counters/fullscreen.html?mode=m&year=2026)</p>
- <pre>36       days</pre>
--<pre>870      hours</pre>
--<pre>52252    minutes</pre>
--<p>3135169  seconds</p>
-+<pre>865      hours</pre>
-+<pre>51957    minutes</pre>
-+<p>3117426  seconds</p>
- <br>
- <br>
--<p>until Thursday, January 1, 2026 ([Cheyenne](/worldclock/usa/cheyenne) time)</p>
-+<p>until Thursday, January 1, 2026 ([San Jose, California](/worldclock/usa/san-jose) time)</p>
- <br>
- <p>[](/counters/fullscreen.html?mode=a&year=2026)</p>
- <br>
--<p>36 days, 6 hours, 52 minutes, 49 seconds</p>
-+<p>36 days, 1 hour, 57 minutes, 6 seconds</p>
- <br>
--<p>until Thursday, January 1, 2026 ([Cheyenne](/worldclock/usa/cheyenne) time)</p>
-+<p>until Thursday, January 1, 2026 ([San Jose, California](/worldclock/usa/san-jose) time)</p>
- <br>
--<p>Current time is Tuesday, November 25, 2025 at 5:07:11 pm [MST](/time/zones/mst) (local time in [](/worldclock/usa/cheyenne)[Cheyenne](/worldclock/usa/cheyenne))</p>
-+<p>Current time is Tuesday, November 25, 2025 at 10:02:54 pm [PST](/time/zones/pst) (local time in [](/worldclock/usa/san-jose)[San Jose, California](/worldclock/usa/san-jose))</p>
- <br>
- <p>You may need to press Reload or Refresh on your browser to update the numbers.</p>
- <br></code></pre>]]></description><pubDate>Wed, 26 Nov 2025 06:02:54 +0000</pubDate><guid>example-changelog2-b40481ca</guid></item></channel></rss>
+ <br></code></pre>]]></description><pubDate>Wed, 26 Nov 2025 12:03:11 +0000</pubDate><guid>example-changelog2-22d42e48</guid></item></channel></rss>
