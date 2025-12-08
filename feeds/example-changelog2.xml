@@ -1,5 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>example-changelog2 Updates</title><link>https://gpwclark.github.io/watcher/content/example-changelog2/20251207-180231860375.html</link><description>Updates from example-changelog2</description><language>en</language><lastBuildDate>Sun, 07 Dec 2025 18:02:31 +0000</lastBuildDate><item><title>Countdown to  New Year 2026 in Roanoke Rapids</title><link>https://gpwclark.github.io/watcher/content/example-changelog2/20251207-180231860375.html?date=2025-12-07T18:02:31.860202+00:00</link><description><![CDATA[Count the seconds to the New Year in any location or time zone.
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>example-changelog2 Updates</title><link>https://gpwclark.github.io/watcher/content/example-changelog2/20251208-000735860131.html</link><description>Updates from example-changelog2</description><language>en</language><lastBuildDate>Mon, 08 Dec 2025 00:07:35 +0000</lastBuildDate><item><title>Countdown to  New Year 2026 in Roanoke Rapids</title><link>https://gpwclark.github.io/watcher/content/example-changelog2/20251208-000735860131.html?date=2025-12-08T00:07:35.859890+00:00</link><description><![CDATA[Count the seconds to the New Year in any location or time zone.
+
+<pre><code>@@ -3,20 +3,20 @@
+ <br>
+ <p>[](/counters/fullscreen.html?mode=m&year=2026)</p>
+ <pre>24       days</pre>
+-<pre>586      hours</pre>
+-<pre>35217    minutes</pre>
+-<p>2113049  seconds</p>
++<pre>580      hours</pre>
++<pre>34852    minutes</pre>
++<p>2091145  seconds</p>
+ <br>
+ <br>
+ <p>until Thursday, January 1, 2026 ([Roanoke Rapids](/worldclock/usa/roanoke-rapids) time)</p>
+ <br>
+ <p>[](/counters/fullscreen.html?mode=a&year=2026)</p>
+ <br>
+-<p>24 days, 10 hours, 57 minutes, 29 seconds</p>
++<p>24 days, 4 hours, 52 minutes, 25 seconds</p>
+ <br>
+ <p>until Thursday, January 1, 2026 ([Roanoke Rapids](/worldclock/usa/roanoke-rapids) time)</p>
+ <br>
+-<p>Current time is Sunday, December 7, 2025 at 1:02:31 pm [EST](/time/zones/est) (local time in [](/worldclock/usa/roanoke-rapids)[Roanoke Rapids](/worldclock/usa/roanoke-rapids))</p>
++<p>Current time is Sunday, December 7, 2025 at 7:07:35 pm [EST](/time/zones/est) (local time in [](/worldclock/usa/roanoke-rapids)[Roanoke Rapids](/worldclock/usa/roanoke-rapids))</p>
+ <br>
+ <p>You may need to press Reload or Refresh on your browser to update the numbers.</p>
+ <br></code></pre>]]></description><pubDate>Mon, 08 Dec 2025 00:07:35 +0000</pubDate><guid>example-changelog2-3ce3fcd8</guid></item><item><title>Countdown to  New Year 2026 in Roanoke Rapids</title><link>https://gpwclark.github.io/watcher/content/example-changelog2/20251207-180231860375.html?date=2025-12-07T18:02:31.860202+00:00</link><description><![CDATA[Count the seconds to the New Year in any location or time zone.
 
 <pre><code>@@ -3,20 +3,20 @@
  <br>
@@ -556,33 +583,4 @@
 +<p>Current time is Tuesday, December 2, 2025 at 11:02:58 pm [MST](/time/zones/mst) (local time in [](/worldclock/usa/phoenix)[Phoenix](/worldclock/usa/phoenix))</p>
  <br>
  <p>You may need to press Reload or Refresh on your browser to update the numbers.</p>
- <br></code></pre>]]></description><pubDate>Wed, 03 Dec 2025 06:02:58 +0000</pubDate><guid>example-changelog2-57b5853d</guid></item><item><title>Countdown to  New Year 2026 in San Jose, California</title><link>https://gpwclark.github.io/watcher/content/example-changelog2/20251203-000727421922.html?date=2025-12-03T00:07:27.421660+00:00</link><description><![CDATA[Count the seconds to the New Year in any location or time zone.
-
-<pre><code>@@ -3,20 +3,20 @@
- <br>
- <p>[](/counters/fullscreen.html?mode=m&year=2026)</p>
- <pre>29       days</pre>
--<pre>708      hours</pre>
--<pre>42536    minutes</pre>
--<p>2552207  seconds</p>
-+<pre>703      hours</pre>
-+<pre>42232    minutes</pre>
-+<p>2533953  seconds</p>
- <br>
- <br>
--<p>until Thursday, January 1, 2026 ([Phoenix](/worldclock/usa/phoenix) time)</p>
-+<p>until Thursday, January 1, 2026 ([San Jose, California](/worldclock/usa/san-jose) time)</p>
- <br>
- <p>[](/counters/fullscreen.html?mode=a&year=2026)</p>
- <br>
--<p>29 days, 12 hours, 56 minutes, 47 seconds</p>
-+<p>29 days, 7 hours, 52 minutes, 33 seconds</p>
- <br>
--<p>until Thursday, January 1, 2026 ([Phoenix](/worldclock/usa/phoenix) time)</p>
-+<p>until Thursday, January 1, 2026 ([San Jose, California](/worldclock/usa/san-jose) time)</p>
- <br>
--<p>Current time is Tuesday, December 2, 2025 at 11:03:13 am [MST](/time/zones/mst) (local time in [](/worldclock/usa/phoenix)[Phoenix](/worldclock/usa/phoenix))</p>
-+<p>Current time is Tuesday, December 2, 2025 at 4:07:27 pm [PST](/time/zones/pst) (local time in [](/worldclock/usa/san-jose)[San Jose, California](/worldclock/usa/san-jose))</p>
- <br>
- <p>You may need to press Reload or Refresh on your browser to update the numbers.</p>
- <br></code></pre>]]></description><pubDate>Wed, 03 Dec 2025 00:07:27 +0000</pubDate><guid>example-changelog2-70955b2c</guid></item></channel></rss>
+ <br></code></pre>]]></description><pubDate>Wed, 03 Dec 2025 06:02:58 +0000</pubDate><guid>example-changelog2-57b5853d</guid></item></channel></rss>
