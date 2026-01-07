@@ -1,5 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>example-changelog Updates</title><link>https://gpwclark.github.io/watcher/content/example-changelog/20260106-180250251569.html</link><description>Updates from example-changelog</description><language>en</language><lastBuildDate>Tue, 06 Jan 2026 18:02:50 +0000</lastBuildDate><item><title>Countdown to  New Year 2027 in Sperryville</title><link>https://gpwclark.github.io/watcher/content/example-changelog/20260106-180250251569.html?date=2026-01-06T18:02:50.251272+00:00</link><description><![CDATA[Count the seconds to the New Year in any location or time zone.
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>example-changelog Updates</title><link>https://gpwclark.github.io/watcher/content/example-changelog/20260107-000635718921.html</link><description>Updates from example-changelog</description><language>en</language><lastBuildDate>Wed, 07 Jan 2026 00:06:35 +0000</lastBuildDate><item><title>Countdown to  New Year 2027 in San Jose, California</title><link>https://gpwclark.github.io/watcher/content/example-changelog/20260107-000635718921.html?date=2026-01-07T00:06:35.718640+00:00</link><description><![CDATA[Count the seconds to the New Year in any location or time zone.
+
+<pre><code>@@ -3,20 +3,20 @@
+ <br>
+ <p>[](/counters/fullscreen.html?mode=m&year=2027)</p>
+ <pre>359       days</pre>
+-<pre>8626      hours</pre>
+-<pre>517617    minutes</pre>
+-<p>31057030  seconds</p>
++<pre>8623      hours</pre>
++<pre>517433    minutes</pre>
++<p>31046005  seconds</p>
+ <br>
+ <br>
+-<p>until Friday, January 1, 2027 ([Sperryville](/worldclock/usa/sperryville) time)</p>
++<p>until Friday, January 1, 2027 ([San Jose, California](/worldclock/usa/san-jose) time)</p>
+ <br>
+ <p>[](/counters/fullscreen.html?mode=a&year=2027)</p>
+ <br>
+-<p>359 days, 10 hours, 57 minutes, 10 seconds</p>
++<p>359 days, 7 hours, 53 minutes, 25 seconds</p>
+ <br>
+-<p>until Friday, January 1, 2027 ([Sperryville](/worldclock/usa/sperryville) time)</p>
++<p>until Friday, January 1, 2027 ([San Jose, California](/worldclock/usa/san-jose) time)</p>
+ <br>
+-<p>Current time is Tuesday, January 6, 2026 at 1:02:50 pm [EST](/time/zones/est) (local time in [](/worldclock/usa/sperryville)[Sperryville](/worldclock/usa/sperryville))</p>
++<p>Current time is Tuesday, January 6, 2026 at 4:06:35 pm [PST](/time/zones/pst) (local time in [](/worldclock/usa/san-jose)[San Jose, California](/worldclock/usa/san-jose))</p>
+ <br>
+ <p>You may need to press Reload or Refresh on your browser to update the numbers.</p>
+ <br></code></pre>]]></description><pubDate>Wed, 07 Jan 2026 00:06:35 +0000</pubDate><guid>example-changelog-34b55156</guid></item><item><title>Countdown to  New Year 2027 in Sperryville</title><link>https://gpwclark.github.io/watcher/content/example-changelog/20260106-180250251569.html?date=2026-01-06T18:02:50.251272+00:00</link><description><![CDATA[Count the seconds to the New Year in any location or time zone.
 
 <pre><code>@@ -3,20 +3,20 @@
  <br>
@@ -552,49 +581,4 @@
 +<p>Current time is Thursday, January 1, 2026 at 10:02:53 pm [PST](/time/zones/pst) (local time in [](/worldclock/usa/san-jose)[San Jose, California](/worldclock/usa/san-jose))</p>
  <br>
  <p>You may need to press Reload or Refresh on your browser to update the numbers.</p>
- <br></code></pre>]]></description><pubDate>Fri, 02 Jan 2026 06:02:54 +0000</pubDate><guid>example-changelog-3c8d5666</guid></item><item><title>Countdown to  New Year 2027 in Chicago</title><link>https://gpwclark.github.io/watcher/content/example-changelog/20260102-000742473610.html?date=2026-01-02T00:07:42.473429+00:00</link><description><![CDATA[Count the seconds to the New Year in any location or time zone.
-
-<pre><code>@@ -1,22 +1,22 @@
- <p>[</p>
- <p>](/)</p>
- <br>
--<p>[](/counters/fullscreen.html?mode=m&year=2026)</p>
--<pre>0      days</pre>
--<pre>13     hours</pre>
--<pre>782    minutes</pre>
--<p>46970  seconds</p>
-+<p>[](/counters/fullscreen.html?mode=m&year=2027)</p>
-+<pre>364       days</pre>
-+<pre>8741      hours</pre>
-+<pre>524512    minutes</pre>
-+<p>31470738  seconds</p>
- <br>
- <br>
--<p>since Thursday, January 1, 2026 at 12:00:00 midnight ([Roanoke Rapids](/worldclock/usa/roanoke-rapids) time)</p>
-+<p>until Friday, January 1, 2027 ([Chicago](/worldclock/usa/chicago) time)</p>
- <br>
--<p>[](/counters/fullscreen.html?mode=a&year=2026)</p>
-+<p>[](/counters/fullscreen.html?mode=a&year=2027)</p>
- <br>
--<p>0 days, 13 hours, 2 minutes, 50 seconds</p>
-+<p>364 days, 5 hours, 52 minutes, 18 seconds</p>
- <br>
--<p>since Thursday, January 1, 2026 at 12:00:00 midnight ([Roanoke Rapids](/worldclock/usa/roanoke-rapids) time)</p>
-+<p>until Friday, January 1, 2027 ([Chicago](/worldclock/usa/chicago) time)</p>
- <br>
--<p>Current time is Thursday, January 1, 2026 at 1:02:50 pm [EST](/time/zones/est) (local time in [](/worldclock/usa/roanoke-rapids)[Roanoke Rapids](/worldclock/usa/roanoke-rapids))</p>
-+<p>Current time is Thursday, January 1, 2026 at 6:07:42 pm [CST](/time/zones/cst) (local time in [](/worldclock/usa/chicago)[Chicago](/worldclock/usa/chicago))</p>
- <br>
- <p>You may need to press Reload or Refresh on your browser to update the numbers.</p>
- <br>
-@@ -26,7 +26,7 @@
- <br>
- <p>The links below will open in a new popup window, some popup-blockers might block them from opening.</p>
- <br>
--<p>  * [Days - hours - minutes - seconds (main display)](/counters/fullscreen.html?mode=m&year=2026)</p>
--<p>  * [Days - hours - minutes - seconds (alternative)](/counters/fullscreen.html?mode=a&year=2026)</p>
--<p>  * [Clock only](/counters/fullscreen.html?mode=c&year=2026)</p>
-+<p>  * [Days - hours - minutes - seconds (main display)](/counters/fullscreen.html?mode=m&year=2027)</p>
-+<p>  * [Days - hours - minutes - seconds (alternative)](/counters/fullscreen.html?mode=a&year=2027)</p>
-+<p>  * [Clock only](/counters/fullscreen.html?mode=c&year=2027)</p>
- <p>Advertising</p></code></pre>]]></description><pubDate>Fri, 02 Jan 2026 00:07:42 +0000</pubDate><guid>example-changelog-af1965b6</guid></item></channel></rss>
+ <br></code></pre>]]></description><pubDate>Fri, 02 Jan 2026 06:02:54 +0000</pubDate><guid>example-changelog-3c8d5666</guid></item></channel></rss>
