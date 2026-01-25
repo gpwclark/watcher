@@ -1,5 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>example-changelog2 Updates</title><link>https://gpwclark.github.io/watcher/content/example-changelog2/20260125-060247012296.html</link><description>Updates from example-changelog2</description><language>en</language><lastBuildDate>Sun, 25 Jan 2026 06:02:47 +0000</lastBuildDate><item><title>Countdown to  New Year 2027 in Roanoke Rapids</title><link>https://gpwclark.github.io/watcher/content/example-changelog2/20260125-060247012296.html?date=2026-01-25T06:02:47.011983+00:00</link><description><![CDATA[Count the seconds to the New Year in any location or time zone.
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>example-changelog2 Updates</title><link>https://gpwclark.github.io/watcher/content/example-changelog2/20260125-120304892878.html</link><description>Updates from example-changelog2</description><language>en</language><lastBuildDate>Sun, 25 Jan 2026 12:03:04 +0000</lastBuildDate><item><title>Countdown to  New Year 2027 in Des Moines</title><link>https://gpwclark.github.io/watcher/content/example-changelog2/20260125-120304892878.html?date=2026-01-25T12:03:04.892624+00:00</link><description><![CDATA[Count the seconds to the New Year in any location or time zone.
+
+<pre><code>@@ -3,20 +3,20 @@
+ <br>
+ <p>[](/counters/fullscreen.html?mode=m&year=2027)</p>
+ <pre>340       days</pre>
+-<pre>8182      hours</pre>
+-<pre>490977    minutes</pre>
+-<p>29458634  seconds</p>
++<pre>8177      hours</pre>
++<pre>490676    minutes</pre>
++<p>29440616  seconds</p>
+ <br>
+ <br>
+-<p>until Friday, January 1, 2027 ([Roanoke Rapids](/worldclock/usa/roanoke-rapids) time)</p>
++<p>until Friday, January 1, 2027 ([Des Moines](/worldclock/usa/des-moines) time)</p>
+ <br>
+ <p>[](/counters/fullscreen.html?mode=a&year=2027)</p>
+ <br>
+-<p>340 days, 22 hours, 57 minutes, 14 seconds</p>
++<p>340 days, 17 hours, 56 minutes, 56 seconds</p>
+ <br>
+-<p>until Friday, January 1, 2027 ([Roanoke Rapids](/worldclock/usa/roanoke-rapids) time)</p>
++<p>until Friday, January 1, 2027 ([Des Moines](/worldclock/usa/des-moines) time)</p>
+ <br>
+-<p>Current time is Sunday, January 25, 2026 at 1:02:46 am [EST](/time/zones/est) (local time in [](/worldclock/usa/roanoke-rapids)[Roanoke Rapids](/worldclock/usa/roanoke-rapids))</p>
++<p>Current time is Sunday, January 25, 2026 at 6:03:04 am [CST](/time/zones/cst) (local time in [](/worldclock/usa/des-moines)[Des Moines](/worldclock/usa/des-moines))</p>
+ <br>
+ <p>You may need to press Reload or Refresh on your browser to update the numbers.</p>
+ <br></code></pre>]]></description><pubDate>Sun, 25 Jan 2026 12:03:04 +0000</pubDate><guid>example-changelog2-ad50c0d5</guid></item><item><title>Countdown to  New Year 2027 in Roanoke Rapids</title><link>https://gpwclark.github.io/watcher/content/example-changelog2/20260125-060247012296.html?date=2026-01-25T06:02:47.011983+00:00</link><description><![CDATA[Count the seconds to the New Year in any location or time zone.
 
 <pre><code>@@ -2,21 +2,21 @@
  <p>](/)</p>
@@ -554,35 +583,4 @@
 +<p>Current time is Tuesday, January 20, 2026 at 10:04:22 am [PST](/time/zones/pst) (local time in [](/worldclock/usa/san-jose)[San Jose, California](/worldclock/usa/san-jose))</p>
  <br>
  <p>You may need to press Reload or Refresh on your browser to update the numbers.</p>
- <br></code></pre>]]></description><pubDate>Tue, 20 Jan 2026 18:04:23 +0000</pubDate><guid>example-changelog2-af019809</guid></item><item><title>Countdown to  New Year 2027 in Chicago</title><link>https://gpwclark.github.io/watcher/content/example-changelog2/20260120-120317961295.html?date=2026-01-20T12:03:17.961095+00:00</link><description><![CDATA[Count the seconds to the New Year in any location or time zone.
-
-<pre><code>@@ -2,21 +2,21 @@
- <p>](/)</p>
- <br>
- <p>[](/counters/fullscreen.html?mode=m&year=2027)</p>
--<pre>346       days</pre>
--<pre>8305      hours</pre>
--<pre>498356    minutes</pre>
--<p>29901365  seconds</p>
-+<pre>345       days</pre>
-+<pre>8297      hours</pre>
-+<pre>497876    minutes</pre>
-+<p>29872603  seconds</p>
- <br>
- <br>
--<p>until Friday, January 1, 2027 ([San Jose, California](/worldclock/usa/san-jose) time)</p>
-+<p>until Friday, January 1, 2027 ([Chicago](/worldclock/usa/chicago) time)</p>
- <br>
- <p>[](/counters/fullscreen.html?mode=a&year=2027)</p>
- <br>
--<p>346 days, 1 hour, 56 minutes, 5 seconds</p>
-+<p>345 days, 17 hours, 56 minutes, 43 seconds</p>
- <br>
--<p>until Friday, January 1, 2027 ([San Jose, California](/worldclock/usa/san-jose) time)</p>
-+<p>until Friday, January 1, 2027 ([Chicago](/worldclock/usa/chicago) time)</p>
- <br>
--<p>Current time is Monday, January 19, 2026 at 10:03:55 pm [PST](/time/zones/pst) (local time in [](/worldclock/usa/san-jose)[San Jose, California](/worldclock/usa/san-jose))</p>
-+<p>Current time is Tuesday, January 20, 2026 at 6:03:17 am [CST](/time/zones/cst) (local time in [](/worldclock/usa/chicago)[Chicago](/worldclock/usa/chicago))</p>
- <br>
- <p>You may need to press Reload or Refresh on your browser to update the numbers.</p>
- <br></code></pre>]]></description><pubDate>Tue, 20 Jan 2026 12:03:17 +0000</pubDate><guid>example-changelog2-3d56e24f</guid></item></channel></rss>
+ <br></code></pre>]]></description><pubDate>Tue, 20 Jan 2026 18:04:23 +0000</pubDate><guid>example-changelog2-af019809</guid></item></channel></rss>
