@@ -1,5 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>example-changelog2 Updates</title><link>https://gpwclark.github.io/watcher/content/example-changelog2/20260215-061511816863.html</link><description>Updates from example-changelog2</description><language>en</language><lastBuildDate>Sun, 15 Feb 2026 06:15:11 +0000</lastBuildDate><item><title>Countdown to  New Year 2027 in Cheyenne</title><link>https://gpwclark.github.io/watcher/content/example-changelog2/20260215-061511816863.html?date=2026-02-15T06:15:11.816625+00:00</link><description><![CDATA[Count the seconds to the New Year in any location or time zone.
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>example-changelog2 Updates</title><link>https://gpwclark.github.io/watcher/content/example-changelog2/20260215-120338217550.html</link><description>Updates from example-changelog2</description><language>en</language><lastBuildDate>Sun, 15 Feb 2026 12:03:38 +0000</lastBuildDate><item><title>Countdown to  New Year 2027 in San Jose, California</title><link>https://gpwclark.github.io/watcher/content/example-changelog2/20260215-120338217550.html?date=2026-02-15T12:03:38.217292+00:00</link><description><![CDATA[Count the seconds to the New Year in any location or time zone.
+
+<pre><code>@@ -2,21 +2,21 @@
+ <p>](/)</p>
+ <br>
+ <p>[](/counters/fullscreen.html?mode=m&year=2027)</p>
+-<pre>320       days</pre>
+-<pre>7680      hours</pre>
+-<pre>460844    minutes</pre>
+-<p>27650689  seconds</p>
++<pre>319       days</pre>
++<pre>7675      hours</pre>
++<pre>460556    minutes</pre>
++<p>27633382  seconds</p>
+ <br>
+ <br>
+-<p>until Friday, January 1, 2027 ([Cheyenne](/worldclock/usa/cheyenne) time)</p>
++<p>until Friday, January 1, 2027 ([San Jose, California](/worldclock/usa/san-jose) time)</p>
+ <br>
+ <p>[](/counters/fullscreen.html?mode=a&year=2027)</p>
+ <br>
+-<p>320 days, 0 hours, 44 minutes, 49 seconds</p>
++<p>319 days, 19 hours, 56 minutes, 22 seconds</p>
+ <br>
+-<p>until Friday, January 1, 2027 ([Cheyenne](/worldclock/usa/cheyenne) time)</p>
++<p>until Friday, January 1, 2027 ([San Jose, California](/worldclock/usa/san-jose) time)</p>
+ <br>
+-<p>Current time is Saturday, February 14, 2026 at 11:15:11 pm [MST](/time/zones/mst) (local time in [](/worldclock/usa/cheyenne)[Cheyenne](/worldclock/usa/cheyenne))</p>
++<p>Current time is Sunday, February 15, 2026 at 4:03:38 am [PST](/time/zones/pst) (local time in [](/worldclock/usa/san-jose)[San Jose, California](/worldclock/usa/san-jose))</p>
+ <br>
+ <p>You may need to press Reload or Refresh on your browser to update the numbers.</p>
+ <br></code></pre>]]></description><pubDate>Sun, 15 Feb 2026 12:03:38 +0000</pubDate><guid>example-changelog2-fd08e579</guid></item><item><title>Countdown to  New Year 2027 in Cheyenne</title><link>https://gpwclark.github.io/watcher/content/example-changelog2/20260215-061511816863.html?date=2026-02-15T06:15:11.816625+00:00</link><description><![CDATA[Count the seconds to the New Year in any location or time zone.
 
 <pre><code>@@ -3,20 +3,20 @@
  <br>
@@ -556,33 +587,4 @@
 +<p>Current time is Tuesday, February 10, 2026 at 11:18:39 am [MST](/time/zones/mst) (local time in [](/worldclock/usa/cheyenne)[Cheyenne](/worldclock/usa/cheyenne))</p>
  <br>
  <p>You may need to press Reload or Refresh on your browser to update the numbers.</p>
- <br></code></pre>]]></description><pubDate>Tue, 10 Feb 2026 18:18:39 +0000</pubDate><guid>example-changelog2-b867b163</guid></item><item><title>Countdown to  New Year 2027 in Phoenix</title><link>https://gpwclark.github.io/watcher/content/example-changelog2/20260210-121238728753.html?date=2026-02-10T12:12:38.728580+00:00</link><description><![CDATA[Count the seconds to the New Year in any location or time zone.
-
-<pre><code>@@ -2,21 +2,21 @@
- <p>](/)</p>
- <br>
- <p>[](/counters/fullscreen.html?mode=m&year=2027)</p>
--<pre>325       days</pre>
--<pre>7800      hours</pre>
--<pre>468038    minutes</pre>
--<p>28082284  seconds</p>
-+<pre>324       days</pre>
-+<pre>7794      hours</pre>
-+<pre>467687    minutes</pre>
-+<p>28061242  seconds</p>
- <br>
- <br>
- <p>until Friday, January 1, 2027 ([Phoenix](/worldclock/usa/phoenix) time)</p>
- <br>
- <p>[](/counters/fullscreen.html?mode=a&year=2027)</p>
- <br>
--<p>325 days, 0 hours, 38 minutes, 4 seconds</p>
-+<p>324 days, 18 hours, 47 minutes, 22 seconds</p>
- <br>
- <p>until Friday, January 1, 2027 ([Phoenix](/worldclock/usa/phoenix) time)</p>
- <br>
--<p>Current time is Monday, February 9, 2026 at 11:21:56 pm [MST](/time/zones/mst) (local time in [](/worldclock/usa/phoenix)[Phoenix](/worldclock/usa/phoenix))</p>
-+<p>Current time is Tuesday, February 10, 2026 at 5:12:38 am [MST](/time/zones/mst) (local time in [](/worldclock/usa/phoenix)[Phoenix](/worldclock/usa/phoenix))</p>
- <br>
- <p>You may need to press Reload or Refresh on your browser to update the numbers.</p>
- <br></code></pre>]]></description><pubDate>Tue, 10 Feb 2026 12:12:38 +0000</pubDate><guid>example-changelog2-f8c7c024</guid></item></channel></rss>
+ <br></code></pre>]]></description><pubDate>Tue, 10 Feb 2026 18:18:39 +0000</pubDate><guid>example-changelog2-b867b163</guid></item></channel></rss>
