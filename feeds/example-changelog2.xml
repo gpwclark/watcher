@@ -1,5 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>example-changelog2 Updates</title><link>https://gpwclark.github.io/watcher/content/example-changelog2/20260311-181407087476.html</link><description>Updates from example-changelog2</description><language>en</language><lastBuildDate>Wed, 11 Mar 2026 18:14:07 +0000</lastBuildDate><item><title>Countdown to  New Year 2027 in Sperryville</title><link>https://gpwclark.github.io/watcher/content/example-changelog2/20260311-181407087476.html?date=2026-03-11T18:14:07.087156+00:00</link><description><![CDATA[Count the seconds to the New Year in any location or time zone.
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>example-changelog2 Updates</title><link>https://gpwclark.github.io/watcher/content/example-changelog2/20260312-000909304670.html</link><description>Updates from example-changelog2</description><language>en</language><lastBuildDate>Thu, 12 Mar 2026 00:09:09 +0000</lastBuildDate><item><title>Countdown to  New Year 2027 in Ephrata</title><link>https://gpwclark.github.io/watcher/content/example-changelog2/20260312-000909304670.html?date=2026-03-12T00:09:09.304477+00:00</link><description><![CDATA[Count the seconds to the New Year in any location or time zone.
+
+<pre><code>@@ -3,22 +3,22 @@
+ <br>
+ <p>[](/counters/fullscreen.html?mode=m&year=2027)</p>
+ <pre>295       days</pre>
+-<pre>7090      hours</pre>
+-<pre>425445    minutes</pre>
+-<p>25526753  seconds</p>
++<pre>7087      hours</pre>
++<pre>425270    minutes</pre>
++<p>25516251  seconds</p>
+ <br>
+ <br>
+-<p>until Friday, January 1, 2027 ([Sperryville](/worldclock/usa/sperryville) time)</p>
++<p>until Friday, January 1, 2027 ([Ephrata](/worldclock/usa/ephrata) time)</p>
+ <br>
+ <p>[](/counters/fullscreen.html?mode=a&year=2027)</p>
+ <br>
+-<p>295 days, 10 hours, 45 minutes, 53 seconds</p>
++<p>295 days, 7 hours, 50 minutes, 51 seconds</p>
+ <br>
+-<p>until Friday, January 1, 2027 ([Sperryville](/worldclock/usa/sperryville) time)</p>
++<p>until Friday, January 1, 2027 ([Ephrata](/worldclock/usa/ephrata) time)</p>
+ <br>
+ <p>[One hour wrong? Daylight Saving Time!](/countdown/one-hour-off)</p>
+ <br>
+-<p>Current time is Wednesday, March 11, 2026 at 2:14:07 pm [EDT](/time/zones/edt) (local time in [](/worldclock/usa/sperryville)[Sperryville](/worldclock/usa/sperryville))</p>
++<p>Current time is Wednesday, March 11, 2026 at 5:09:09 pm [PDT](/time/zones/pdt) (local time in [](/worldclock/usa/ephrata)[Ephrata](/worldclock/usa/ephrata))</p>
+ <br>
+ <p>You may need to press Reload or Refresh on your browser to update the numbers.</p>
+ <br></code></pre>]]></description><pubDate>Thu, 12 Mar 2026 00:09:09 +0000</pubDate><guid>example-changelog2-71e2fc4a</guid></item><item><title>Countdown to  New Year 2027 in Sperryville</title><link>https://gpwclark.github.io/watcher/content/example-changelog2/20260311-181407087476.html?date=2026-03-11T18:14:07.087156+00:00</link><description><![CDATA[Count the seconds to the New Year in any location or time zone.
 
 <pre><code>@@ -3,22 +3,22 @@
  <br>
@@ -582,31 +613,4 @@
 +<p>Current time is Saturday, March 7, 2026 at 12:06:23 am [CST](/time/zones/cst) (local time in [](/worldclock/usa/chicago)[Chicago](/worldclock/usa/chicago))</p>
  <br>
  <p>You may need to press Reload or Refresh on your browser to update the numbers.</p>
- <br></code></pre>]]></description><pubDate>Sat, 07 Mar 2026 06:06:23 +0000</pubDate><guid>example-changelog2-56976d2b</guid></item><item><title>Countdown to  New Year 2027 in Cheyenne</title><link>https://gpwclark.github.io/watcher/content/example-changelog2/20260307-000925427729.html?date=2026-03-07T00:09:25.427446+00:00</link><description><![CDATA[Count the seconds to the New Year in any location or time zone.
-
-<pre><code>@@ -3,20 +3,20 @@
- <br>
- <p>[](/counters/fullscreen.html?mode=m&year=2027)</p>
- <pre>300       days</pre>
--<pre>7212      hours</pre>
--<pre>432771    minutes</pre>
--<p>25966282  seconds</p>
-+<pre>7206      hours</pre>
-+<pre>432410    minutes</pre>
-+<p>25944635  seconds</p>
- <br>
- <br>
- <p>until Friday, January 1, 2027 ([Cheyenne](/worldclock/usa/cheyenne) time)</p>
- <br>
- <p>[](/counters/fullscreen.html?mode=a&year=2027)</p>
- <br>
--<p>300 days, 12 hours, 51 minutes, 22 seconds</p>
-+<p>300 days, 6 hours, 50 minutes, 35 seconds</p>
- <br>
- <p>until Friday, January 1, 2027 ([Cheyenne](/worldclock/usa/cheyenne) time)</p>
- <br>
--<p>Current time is Friday, March 6, 2026 at 11:08:38 am [MST](/time/zones/mst) (local time in [](/worldclock/usa/cheyenne)[Cheyenne](/worldclock/usa/cheyenne))</p>
-+<p>Current time is Friday, March 6, 2026 at 5:09:25 pm [MST](/time/zones/mst) (local time in [](/worldclock/usa/cheyenne)[Cheyenne](/worldclock/usa/cheyenne))</p>
- <br>
- <p>You may need to press Reload or Refresh on your browser to update the numbers.</p>
- <br></code></pre>]]></description><pubDate>Sat, 07 Mar 2026 00:09:25 +0000</pubDate><guid>example-changelog2-eadd3ce8</guid></item></channel></rss>
+ <br></code></pre>]]></description><pubDate>Sat, 07 Mar 2026 06:06:23 +0000</pubDate><guid>example-changelog2-56976d2b</guid></item></channel></rss>
