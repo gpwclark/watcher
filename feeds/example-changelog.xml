@@ -1,5 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>example-changelog Updates</title><link>https://gpwclark.github.io/watcher/content/example-changelog/20260322-001013128267.html</link><description>Updates from example-changelog</description><language>en</language><lastBuildDate>Sun, 22 Mar 2026 00:10:13 +0000</lastBuildDate><item><title>Countdown to  New Year 2027 in Cheyenne</title><link>https://gpwclark.github.io/watcher/content/example-changelog/20260322-001013128267.html?date=2026-03-22T00:10:13.128063+00:00</link><description><![CDATA[Count the seconds to the New Year in any location or time zone.
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>example-changelog Updates</title><link>https://gpwclark.github.io/watcher/content/example-changelog/20260322-061357228734.html</link><description>Updates from example-changelog</description><language>en</language><lastBuildDate>Sun, 22 Mar 2026 06:13:57 +0000</lastBuildDate><item><title>Countdown to  New Year 2027 in Des Moines</title><link>https://gpwclark.github.io/watcher/content/example-changelog/20260322-061357228734.html?date=2026-03-22T06:13:57.228408+00:00</link><description><![CDATA[Count the seconds to the New Year in any location or time zone.
+
+<pre><code>@@ -2,23 +2,23 @@
+ <p>](/)</p>
+ <br>
+ <p>[](/counters/fullscreen.html?mode=m&year=2027)</p>
+-<pre>285       days</pre>
+-<pre>6846      hours</pre>
+-<pre>410809    minutes</pre>
+-<p>24648587  seconds</p>
++<pre>284       days</pre>
++<pre>6839      hours</pre>
++<pre>410386    minutes</pre>
++<p>24623163  seconds</p>
+ <br>
+ <br>
+-<p>until Friday, January 1, 2027 ([Cheyenne](/worldclock/usa/cheyenne) time)</p>
++<p>until Friday, January 1, 2027 ([Des Moines](/worldclock/usa/des-moines) time)</p>
+ <br>
+ <p>[](/counters/fullscreen.html?mode=a&year=2027)</p>
+ <br>
+-<p>285 days, 6 hours, 49 minutes, 47 seconds</p>
++<p>284 days, 23 hours, 46 minutes, 3 seconds</p>
+ <br>
+-<p>until Friday, January 1, 2027 ([Cheyenne](/worldclock/usa/cheyenne) time)</p>
++<p>until Friday, January 1, 2027 ([Des Moines](/worldclock/usa/des-moines) time)</p>
+ <br>
+ <p>[One hour wrong? Daylight Saving Time!](/countdown/one-hour-off)</p>
+ <br>
+-<p>Current time is Saturday, March 21, 2026 at 6:10:13 pm [MDT](/time/zones/mdt) (local time in [](/worldclock/usa/cheyenne)[Cheyenne](/worldclock/usa/cheyenne))</p>
++<p>Current time is Sunday, March 22, 2026 at 1:13:57 am [CDT](/time/zones/cdt) (local time in [](/worldclock/usa/des-moines)[Des Moines](/worldclock/usa/des-moines))</p>
+ <br>
+ <p>You may need to press Reload or Refresh on your browser to update the numbers.</p>
+ <br></code></pre>]]></description><pubDate>Sun, 22 Mar 2026 06:13:57 +0000</pubDate><guid>example-changelog-1a6d204c</guid></item><item><title>Countdown to  New Year 2027 in Cheyenne</title><link>https://gpwclark.github.io/watcher/content/example-changelog/20260322-001013128267.html?date=2026-03-22T00:10:13.128063+00:00</link><description><![CDATA[Count the seconds to the New Year in any location or time zone.
 
 <pre><code>@@ -3,22 +3,22 @@
  <br>
@@ -582,37 +615,4 @@
 +<p>Current time is Tuesday, March 17, 2026 at 8:11:29 am [EDT](/time/zones/edt) (local time in [](/worldclock/usa/sperryville)[Sperryville](/worldclock/usa/sperryville))</p>
  <br>
  <p>You may need to press Reload or Refresh on your browser to update the numbers.</p>
- <br></code></pre>]]></description><pubDate>Tue, 17 Mar 2026 12:11:29 +0000</pubDate><guid>example-changelog-cf6b06cc</guid></item><item><title>Countdown to  New Year 2027 in Roanoke Rapids, North Carolina</title><link>https://gpwclark.github.io/watcher/content/example-changelog/20260317-061928425202.html?date=2026-03-17T06:19:28.424897+00:00</link><description><![CDATA[Count the seconds to the New Year in any location or time zone.
-
-<pre><code>@@ -2,23 +2,23 @@
- <p>](/)</p>
- <br>
- <p>[](/counters/fullscreen.html?mode=m&year=2027)</p>
--<pre>290       days</pre>
--<pre>6965      hours</pre>
--<pre>417949    minutes</pre>
--<p>25076961  seconds</p>
-+<pre>289       days</pre>
-+<pre>6958      hours</pre>
-+<pre>417520    minutes</pre>
-+<p>25051232  seconds</p>
- <br>
- <br>
--<p>until Friday, January 1, 2027 ([Chicago](/worldclock/usa/chicago) time)</p>
-+<p>until Friday, January 1, 2027 ([Roanoke Rapids, North Carolina](/worldclock/usa/roanoke-rapids) time)</p>
- <br>
- <p>[](/counters/fullscreen.html?mode=a&year=2027)</p>
- <br>
--<p>290 days, 5 hours, 49 minutes, 21 seconds</p>
-+<p>289 days, 22 hours, 40 minutes, 32 seconds</p>
- <br>
--<p>until Friday, January 1, 2027 ([Chicago](/worldclock/usa/chicago) time)</p>
-+<p>until Friday, January 1, 2027 ([Roanoke Rapids, North Carolina](/worldclock/usa/roanoke-rapids) time)</p>
- <br>
- <p>[One hour wrong? Daylight Saving Time!](/countdown/one-hour-off)</p>
- <br>
--<p>Current time is Monday, March 16, 2026 at 7:10:39 pm [CDT](/time/zones/cdt) (local time in [](/worldclock/usa/chicago)[Chicago](/worldclock/usa/chicago))</p>
-+<p>Current time is Tuesday, March 17, 2026 at 2:19:28 am [EDT](/time/zones/edt) (local time in [](/worldclock/usa/roanoke-rapids)[Roanoke Rapids, North Carolina](/worldclock/usa/roanoke-rapids))</p>
- <br>
- <p>You may need to press Reload or Refresh on your browser to update the numbers.</p>
- <br></code></pre>]]></description><pubDate>Tue, 17 Mar 2026 06:19:28 +0000</pubDate><guid>example-changelog-433b7bad</guid></item></channel></rss>
+ <br></code></pre>]]></description><pubDate>Tue, 17 Mar 2026 12:11:29 +0000</pubDate><guid>example-changelog-cf6b06cc</guid></item></channel></rss>
