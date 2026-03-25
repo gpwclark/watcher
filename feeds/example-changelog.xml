@@ -1,5 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>example-changelog Updates</title><link>https://gpwclark.github.io/watcher/content/example-changelog/20260325-061941121802.html</link><description>Updates from example-changelog</description><language>en</language><lastBuildDate>Wed, 25 Mar 2026 06:19:41 +0000</lastBuildDate><item><title>Countdown to  New Year 2027 in Chicago</title><link>https://gpwclark.github.io/watcher/content/example-changelog/20260325-061941121802.html?date=2026-03-25T06:19:41.121506+00:00</link><description><![CDATA[Count the seconds to the New Year in any location or time zone.
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>example-changelog Updates</title><link>https://gpwclark.github.io/watcher/content/example-changelog/20260325-121118296561.html</link><description>Updates from example-changelog</description><language>en</language><lastBuildDate>Wed, 25 Mar 2026 12:11:18 +0000</lastBuildDate><item><title>Countdown to  New Year 2027 in Des Moines</title><link>https://gpwclark.github.io/watcher/content/example-changelog/20260325-121118296561.html?date=2026-03-25T12:11:18.296215+00:00</link><description><![CDATA[Count the seconds to the New Year in any location or time zone.
+
+<pre><code>@@ -3,22 +3,22 @@
+ <br>
+ <p>[](/counters/fullscreen.html?mode=m&year=2027)</p>
+ <pre>281       days</pre>
+-<pre>6767      hours</pre>
+-<pre>406060    minutes</pre>
+-<p>24363619  seconds</p>
++<pre>6761      hours</pre>
++<pre>405708    minutes</pre>
++<p>24342522  seconds</p>
+ <br>
+ <br>
+-<p>until Friday, January 1, 2027 ([Chicago](/worldclock/usa/chicago) time)</p>
++<p>until Friday, January 1, 2027 ([Des Moines](/worldclock/usa/des-moines) time)</p>
+ <br>
+ <p>[](/counters/fullscreen.html?mode=a&year=2027)</p>
+ <br>
+-<p>281 days, 23 hours, 40 minutes, 19 seconds</p>
++<p>281 days, 17 hours, 48 minutes, 42 seconds</p>
+ <br>
+-<p>until Friday, January 1, 2027 ([Chicago](/worldclock/usa/chicago) time)</p>
++<p>until Friday, January 1, 2027 ([Des Moines](/worldclock/usa/des-moines) time)</p>
+ <br>
+ <p>[One hour wrong? Daylight Saving Time!](/countdown/one-hour-off)</p>
+ <br>
+-<p>Current time is Wednesday, March 25, 2026 at 1:19:41 am [CDT](/time/zones/cdt) (local time in [](/worldclock/usa/chicago)[Chicago](/worldclock/usa/chicago))</p>
++<p>Current time is Wednesday, March 25, 2026 at 7:11:18 am [CDT](/time/zones/cdt) (local time in [](/worldclock/usa/des-moines)[Des Moines](/worldclock/usa/des-moines))</p>
+ <br>
+ <p>You may need to press Reload or Refresh on your browser to update the numbers.</p>
+ <br></code></pre>]]></description><pubDate>Wed, 25 Mar 2026 12:11:18 +0000</pubDate><guid>example-changelog-f1929cea</guid></item><item><title>Countdown to  New Year 2027 in Chicago</title><link>https://gpwclark.github.io/watcher/content/example-changelog/20260325-061941121802.html?date=2026-03-25T06:19:41.121506+00:00</link><description><![CDATA[Count the seconds to the New Year in any location or time zone.
 
 <pre><code>@@ -2,23 +2,23 @@
  <p>](/)</p>
@@ -592,35 +623,4 @@
 +<p>Current time is Friday, March 20, 2026 at 1:08:23 pm [CDT](/time/zones/cdt) (local time in [](/worldclock/usa/chicago)[Chicago](/worldclock/usa/chicago))</p>
  <br>
  <p>You may need to press Reload or Refresh on your browser to update the numbers.</p>
- <br></code></pre>]]></description><pubDate>Fri, 20 Mar 2026 18:08:23 +0000</pubDate><guid>example-changelog-ee48d5a7</guid></item><item><title>Countdown to  New Year 2027 in Phoenix</title><link>https://gpwclark.github.io/watcher/content/example-changelog/20260320-120625939072.html?date=2026-03-20T12:06:25.938814+00:00</link><description><![CDATA[Count the seconds to the New Year in any location or time zone.
-
-<pre><code>@@ -3,22 +3,20 @@
- <br>
- <p>[](/counters/fullscreen.html?mode=m&year=2027)</p>
- <pre>286       days</pre>
--<pre>6887      hours</pre>
--<pre>413265    minutes</pre>
--<p>24795931  seconds</p>
-+<pre>6882      hours</pre>
-+<pre>412973    minutes</pre>
-+<p>24778415  seconds</p>
- <br>
- <br>
--<p>until Friday, January 1, 2027 ([Chicago](/worldclock/usa/chicago) time)</p>
-+<p>until Friday, January 1, 2027 ([Phoenix](/worldclock/usa/phoenix) time)</p>
- <br>
- <p>[](/counters/fullscreen.html?mode=a&year=2027)</p>
- <br>
--<p>286 days, 23 hours, 45 minutes, 31 seconds</p>
-+<p>286 days, 18 hours, 53 minutes, 35 seconds</p>
- <br>
--<p>until Friday, January 1, 2027 ([Chicago](/worldclock/usa/chicago) time)</p>
-+<p>until Friday, January 1, 2027 ([Phoenix](/worldclock/usa/phoenix) time)</p>
- <br>
--<p>[One hour wrong? Daylight Saving Time!](/countdown/one-hour-off)</p>
--<br>
--<p>Current time is Friday, March 20, 2026 at 1:14:29 am [CDT](/time/zones/cdt) (local time in [](/worldclock/usa/chicago)[Chicago](/worldclock/usa/chicago))</p>
-+<p>Current time is Friday, March 20, 2026 at 5:06:25 am [MST](/time/zones/mst) (local time in [](/worldclock/usa/phoenix)[Phoenix](/worldclock/usa/phoenix))</p>
- <br>
- <p>You may need to press Reload or Refresh on your browser to update the numbers.</p>
- <br></code></pre>]]></description><pubDate>Fri, 20 Mar 2026 12:06:25 +0000</pubDate><guid>example-changelog-1cf11255</guid></item></channel></rss>
+ <br></code></pre>]]></description><pubDate>Fri, 20 Mar 2026 18:08:23 +0000</pubDate><guid>example-changelog-ee48d5a7</guid></item></channel></rss>
