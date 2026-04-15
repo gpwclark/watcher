@@ -1,5 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>example-changelog Updates</title><link>https://gpwclark.github.io/watcher/content/example-changelog/20260415-121609724640.html</link><description>Updates from example-changelog</description><language>en</language><lastBuildDate>Wed, 15 Apr 2026 12:16:09 +0000</lastBuildDate><item><title>Countdown to  New Year 2027 in Roanoke Rapids, North Carolina</title><link>https://gpwclark.github.io/watcher/content/example-changelog/20260415-121609724640.html?date=2026-04-15T12:16:09.724376+00:00</link><description><![CDATA[Count the seconds to the New Year in any location or time zone.
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>example-changelog Updates</title><link>https://gpwclark.github.io/watcher/content/example-changelog/20260415-182110444387.html</link><description>Updates from example-changelog</description><language>en</language><lastBuildDate>Wed, 15 Apr 2026 18:21:10 +0000</lastBuildDate><item><title>Countdown to  New Year 2027 in Roanoke Rapids, North Carolina</title><link>https://gpwclark.github.io/watcher/content/example-changelog/20260415-182110444387.html?date=2026-04-15T18:21:10.444223+00:00</link><description><![CDATA[Count the seconds to the New Year in any location or time zone.
+
+<pre><code>@@ -3,22 +3,22 @@
+ <br>
+ <p>[](/counters/fullscreen.html?mode=m&year=2027)</p>
+ <pre>260       days</pre>
+-<pre>6256      hours</pre>
+-<pre>375403    minutes</pre>
+-<p>22524231  seconds</p>
++<pre>6250      hours</pre>
++<pre>375038    minutes</pre>
++<p>22502330  seconds</p>
+ <br>
+ <br>
+ <p>until Friday, January 1, 2027 ([Roanoke Rapids, North Carolina](/worldclock/usa/roanoke-rapids) time)</p>
+ <br>
+ <p>[](/counters/fullscreen.html?mode=a&year=2027)</p>
+ <br>
+-<p>260 days, 16 hours, 43 minutes, 51 seconds</p>
++<p>260 days, 10 hours, 38 minutes, 50 seconds</p>
+ <br>
+ <p>until Friday, January 1, 2027 ([Roanoke Rapids, North Carolina](/worldclock/usa/roanoke-rapids) time)</p>
+ <br>
+ <p>[One hour wrong? Daylight Saving Time!](/countdown/one-hour-off)</p>
+ <br>
+-<p>Current time is Wednesday, April 15, 2026 at 8:16:09 am [EDT](/time/zones/edt) (local time in [](/worldclock/usa/roanoke-rapids)[Roanoke Rapids, North Carolina](/worldclock/usa/roanoke-rapids))</p>
++<p>Current time is Wednesday, April 15, 2026 at 2:21:10 pm [EDT](/time/zones/edt) (local time in [](/worldclock/usa/roanoke-rapids)[Roanoke Rapids, North Carolina](/worldclock/usa/roanoke-rapids))</p>
+ <br>
+ <p>You may need to press Reload or Refresh on your browser to update the numbers.</p>
+ <br></code></pre>]]></description><pubDate>Wed, 15 Apr 2026 18:21:10 +0000</pubDate><guid>example-changelog-1dc289c1</guid></item><item><title>Countdown to  New Year 2027 in Roanoke Rapids, North Carolina</title><link>https://gpwclark.github.io/watcher/content/example-changelog/20260415-121609724640.html?date=2026-04-15T12:16:09.724376+00:00</link><description><![CDATA[Count the seconds to the New Year in any location or time zone.
 
 <pre><code>@@ -2,23 +2,23 @@
  <p>](/)</p>
@@ -592,35 +621,4 @@
 +<p>Current time is Friday, April 10, 2026 at 8:13:01 pm [EDT](/time/zones/edt) (local time in [](/worldclock/usa/roanoke-rapids)[Roanoke Rapids, North Carolina](/worldclock/usa/roanoke-rapids))</p>
  <br>
  <p>You may need to press Reload or Refresh on your browser to update the numbers.</p>
- <br></code></pre>]]></description><pubDate>Sat, 11 Apr 2026 00:13:01 +0000</pubDate><guid>example-changelog-e81b1211</guid></item><item><title>Countdown to  New Year 2027 in Roanoke Rapids, North Carolina</title><link>https://gpwclark.github.io/watcher/content/example-changelog/20260410-181334628899.html?date=2026-04-10T18:13:34.628691+00:00</link><description><![CDATA[Count the seconds to the New Year in any location or time zone.
-
-<pre><code>@@ -3,22 +3,22 @@
- <br>
- <p>[](/counters/fullscreen.html?mode=m&year=2027)</p>
- <pre>265       days</pre>
--<pre>6377      hours</pre>
--<pre>382667    minutes</pre>
--<p>22960029  seconds</p>
-+<pre>6370      hours</pre>
-+<pre>382246    minutes</pre>
-+<p>22934786  seconds</p>
- <br>
- <br>
--<p>until Friday, January 1, 2027 ([Des Moines](/worldclock/usa/des-moines) time)</p>
-+<p>until Friday, January 1, 2027 ([Roanoke Rapids, North Carolina](/worldclock/usa/roanoke-rapids) time)</p>
- <br>
- <p>[](/counters/fullscreen.html?mode=a&year=2027)</p>
- <br>
--<p>265 days, 17 hours, 47 minutes, 9 seconds</p>
-+<p>265 days, 10 hours, 46 minutes, 26 seconds</p>
- <br>
--<p>until Friday, January 1, 2027 ([Des Moines](/worldclock/usa/des-moines) time)</p>
-+<p>until Friday, January 1, 2027 ([Roanoke Rapids, North Carolina](/worldclock/usa/roanoke-rapids) time)</p>
- <br>
- <p>[One hour wrong? Daylight Saving Time!](/countdown/one-hour-off)</p>
- <br>
--<p>Current time is Friday, April 10, 2026 at 7:12:51 am [CDT](/time/zones/cdt) (local time in [](/worldclock/usa/des-moines)[Des Moines](/worldclock/usa/des-moines))</p>
-+<p>Current time is Friday, April 10, 2026 at 2:13:34 pm [EDT](/time/zones/edt) (local time in [](/worldclock/usa/roanoke-rapids)[Roanoke Rapids, North Carolina](/worldclock/usa/roanoke-rapids))</p>
- <br>
- <p>You may need to press Reload or Refresh on your browser to update the numbers.</p>
- <br></code></pre>]]></description><pubDate>Fri, 10 Apr 2026 18:13:34 +0000</pubDate><guid>example-changelog-a1bf3664</guid></item></channel></rss>
+ <br></code></pre>]]></description><pubDate>Sat, 11 Apr 2026 00:13:01 +0000</pubDate><guid>example-changelog-e81b1211</guid></item></channel></rss>
