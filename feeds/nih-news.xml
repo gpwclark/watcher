@@ -1,5 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>nih-news Updates</title><link>https://gpwclark.github.io/watcher/content/nih-news/20260427-182338989960.html</link><description>Updates from nih-news</description><language>en</language><lastBuildDate>Mon, 27 Apr 2026 18:23:38 +0000</lastBuildDate><item><title>News Releases | National Institutes of Health (NIH)</title><link>https://gpwclark.github.io/watcher/content/nih-news/20260427-182338989960.html?date=2026-04-27T18:23:38.989663+00:00</link><description><![CDATA[News releases from the National Institutes of Health.
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>nih-news Updates</title><link>https://gpwclark.github.io/watcher/content/nih-news/20260501-121603341841.html</link><description>Updates from nih-news</description><language>en</language><lastBuildDate>Fri, 01 May 2026 12:16:03 +0000</lastBuildDate><item><title>News Releases | National Institutes of Health (NIH)</title><link>https://gpwclark.github.io/watcher/content/nih-news/20260501-121603341841.html?date=2026-05-01T12:16:03.341592+00:00</link><description><![CDATA[News releases from the National Institutes of Health.
+
+<pre><code>@@ -21,6 +21,13 @@
+ <p>Filter by Year (optional) - Any -20252024202320222021202020192018</p>
+ <p>  * [</p>
+ <br>
++<pre>    Adding weekly GLP-1 to cognitive behavioral therapy further reduces heavy drinking</pre>
++<br>
++<pre>    April 30, 2026 — Clinical trial suggests semaglutide may help patients with alcohol use disorder and obesity.</pre>
++<br>
++<pre>    ](/news-events/news-releases/adding-weekly-glp-1-cognitive-behavioral-therapy-further-reduces-heavy-drinking)</pre>
++<p>  * [</p>
++<br>
+ <pre>    Symptom-based approach treats opioid withdrawal in newborns with minimal drug exposure</pre>
+ <br>
+ <pre>    April 27, 2026 — NIH-funded clinical trial shows that the new approach could also decrease time in the hospital.</pre>
+@@ -82,13 +89,6 @@
+ <pre>    March 30, 2026 — She will provide strategic counsel to the NIH Director and other key leaders within NIH, in addition to managing process, operations, and information flows.</pre>
+ <br>
+ <pre>    ](/news-events/news-releases/dr-elisabeth-armstrong-named-nih-chief-staff)</pre>
+-<p>  * [</p>
+-<br>
+-<pre>    Chronic inflammation leaves long-lasting impression on gut stem cells, increasing colorectal cancer risk</pre>
+-<br>
+-<pre>    March 25, 2026 — NIH-funded animal study finds heritable memories of damage persisted in cells months after inflammation ceased.</pre>
+-<br>
+-<pre>    ](/news-events/news-releases/chronic-inflammation-leaves-long-lasting-impression-gut-stem-cells-increasing-colorectal-cancer-risk)</pre>
+ <br>
+ <p>For the Press</p>
+ <br></code></pre>]]></description><pubDate>Fri, 01 May 2026 12:16:03 +0000</pubDate><guid>nih-news-c3d3fd54</guid></item><item><title>News Releases | National Institutes of Health (NIH)</title><link>https://gpwclark.github.io/watcher/content/nih-news/20260427-182338989960.html?date=2026-04-27T18:23:38.989663+00:00</link><description><![CDATA[News releases from the National Institutes of Health.
 
 <pre><code>@@ -21,6 +21,13 @@
  <p>Filter by Year (optional) - Any -20252024202320222021202020192018</p>
@@ -559,14 +588,4 @@
 -<pre>    ](/news-events/news-releases/nih-led-study-reveals-role-mobile-dna-elements-lung-cancer-progression)</pre>
  <br>
  <p>For the Press</p>
- <br></code></pre>]]></description><pubDate>Thu, 05 Feb 2026 00:10:35 +0000</pubDate><guid>nih-news-db92c424</guid></item><item><title>News Releases | National Institutes of Health (NIH)</title><link>https://gpwclark.github.io/watcher/content/nih-news/20260204-181224551573.html?date=2026-02-04T18:12:24.551256+00:00</link><description><![CDATA[News releases from the National Institutes of Health.
-
-<pre><code>@@ -6,8 +6,6 @@
- <p>Secure .gov websites use HTTPS</p>
- <p>A lock (A locked padlock) or https:// means you’ve safely connected to the .gov website. Share sensitive information only on official, secure websites.</p>
- <br>
--<p>Because of a lapse in government funding, the information on this website may not be up to date, transactions submitted via the website may not be processed, and the agency may not be able to respond to inquiries until appropriations are enacted. The NIH Clinical Center (the research hospital of NIH) is open. For more details about its operating status, please visit [cc.nih.gov](http://cc.nih.gov/). Updates regarding government operating status and resumption of normal operations can be found at [opm.gov](https://www.opm.gov).</p>
--<br>
- <p>Breadcrumb</p>
- <br>
- <p>  * [ News Releases ](/news-events/news-releases)</p></code></pre>]]></description><pubDate>Wed, 04 Feb 2026 18:12:24 +0000</pubDate><guid>nih-news-a6e4c310</guid></item></channel></rss>
+ <br></code></pre>]]></description><pubDate>Thu, 05 Feb 2026 00:10:35 +0000</pubDate><guid>nih-news-db92c424</guid></item></channel></rss>
