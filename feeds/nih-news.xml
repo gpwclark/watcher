@@ -1,5 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>nih-news Updates</title><link>https://gpwclark.github.io/watcher/content/nih-news/20260902-153524524816.html</link><description>Updates from nih-news</description><language>en</language><lastBuildDate>Wed, 02 Sep 2026 15:35:24 +0000</lastBuildDate><item><title>News Releases | National Institutes of Health (NIH)</title><link>https://gpwclark.github.io/watcher/content/nih-news/20260902-153524524816.html?date=2026-09-02T15:35:24.524450+00:00</link><description><![CDATA[News releases from the National Institutes of Health.
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>nih-news Updates</title><link>https://gpwclark.github.io/watcher/content/nih-news/20260902-201609369092.html</link><description>Updates from nih-news</description><language>en</language><lastBuildDate>Wed, 02 Sep 2026 20:16:09 +0000</lastBuildDate><item><title>News Releases | National Institutes of Health (NIH)</title><link>https://gpwclark.github.io/watcher/content/nih-news/20260902-201609369092.html?date=2026-09-02T20:16:09.368620+00:00</link><description><![CDATA[News releases from the National Institutes of Health.
+
+<pre><code>@@ -27,6 +27,13 @@
+ <p>Filter by Year (optional) - Any -202620252024202320222021202020192018</p>
+ <p>  * [</p>
+ <br>
++<pre>    Physician-scientist and informatics leader Dr. Peter Embí to helm NIH’s National Library of Medicine</pre>
++<br>
++<pre>    September 2, 2026 — He is anticipated to begin his role on Sept. 10, 2026.</pre>
++<br>
++<pre>    ](/news-events/news-releases/physician-scientist-informatics-leader-dr-peter-embi-helm-nihs-national-library-medicine)</pre>
++<p>  * [</p>
++<br>
+ <pre>    GLP-1 treatment late in life extends lifespan in animal model</pre>
+ <br>
+ <pre>    September 2, 2026 — Medication produced benefits beyond what was achieved by calorie restriction alone.</pre>
+@@ -88,13 +95,6 @@
+ <pre>    August 5, 2026 — NIH-funded international research collaboration catalogues 25 tumor types from thousands of patient donors.</pre>
+ <br>
+ <pre>    ](/news-events/news-releases/human-cancer-models-accelerate-research-precision-therapies)</pre>
+-<p>  * [</p>
+-<br>
+-<pre>    A child’s language may predict the arrival of depression and anxiety disorders years before onset</pre>
+-<br>
+-<pre>    July 31, 2026 — NIH-funded, AI-powered analysis of interviews suggests that a youth’s framing of stressful events is a strong indicator of risk for future disorders.</pre>
+-<br>
+-<pre>    ](/news-events/news-releases/childs-language-may-predict-arrival-depression-anxiety-disorders-years-before-onset)</pre>
+ <br>
+ <p>For the Press</p>
+ <br></code></pre>]]></description><pubDate>Wed, 02 Sep 2026 20:16:09 +0000</pubDate><guid>nih-news-3195f44c</guid></item><item><title>News Releases | National Institutes of Health (NIH)</title><link>https://gpwclark.github.io/watcher/content/nih-news/20260902-153524524816.html?date=2026-09-02T15:35:24.524450+00:00</link><description><![CDATA[News releases from the National Institutes of Health.
 
 <pre><code>@@ -27,6 +27,13 @@
  <p>Filter by Year (optional) - Any -202620252024202320222021202020192018</p>
@@ -483,33 +512,4 @@
 -<pre>    ](/news-events/news-releases/nih-researchers-identify-avenue-enhanced-glp-1-induced-weight-loss)</pre>
  <br>
  <p>For the Press</p>
- <br></code></pre>]]></description><pubDate>Tue, 30 Jun 2026 18:32:55 +0000</pubDate><guid>nih-news-79826581</guid></item><item><title>News Releases | National Institutes of Health (NIH)</title><link>https://gpwclark.github.io/watcher/content/nih-news/20260617-184520640842.html?date=2026-06-17T18:45:20.640524+00:00</link><description><![CDATA[News releases from the National Institutes of Health.
-
-<pre><code>@@ -21,6 +21,13 @@
- <p>Filter by Year (optional) - Any -20252024202320222021202020192018</p>
- <p>  * [</p>
- <br>
-+<pre>    Researchers discover single-cell brain activity that underlies human speech</pre>
-+<br>
-+<pre>    June 17, 2026 — With neuronal data, AI models predicted grammar, meaning, and context of spoken sentences.</pre>
-+<br>
-+<pre>    ](/news-events/news-releases/researchers-discover-single-cell-brain-activity-underlies-human-speech)</pre>
-+<p>  * [</p>
-+<br>
- <pre>    For adults with prediabetes, lifestyle intervention lowered risk of developing multiple chronic conditions</pre>
- <br>
- <pre>    June 15, 2026 — NIH-supported, long-term clinical trial found no difference between metformin and placebo.</pre>
-@@ -82,13 +89,6 @@
- <pre>    May 22, 2026 — Modulating intracellular signaling may extend drug effects.</pre>
- <br>
- <pre>    ](/news-events/news-releases/nih-researchers-identify-avenue-enhanced-glp-1-induced-weight-loss)</pre>
--<p>  * [</p>
--<br>
--<pre>    NIH-supported project expands access to care for children with amblyopia</pre>
--<br>
--<pre>    May 15, 2026 — Open-access tool guides eye doctors without specific pediatric eye care training in amblyopia diagnosis and management.</pre>
--<br>
--<pre>    ](/news-events/news-releases/nih-supported-project-expands-access-care-children-amblyopia)</pre>
- <br>
- <p>For the Press</p>
- <br></code></pre>]]></description><pubDate>Wed, 17 Jun 2026 18:45:20 +0000</pubDate><guid>nih-news-c582d2be</guid></item></channel></rss>
+ <br></code></pre>]]></description><pubDate>Tue, 30 Jun 2026 18:32:55 +0000</pubDate><guid>nih-news-79826581</guid></item></channel></rss>
