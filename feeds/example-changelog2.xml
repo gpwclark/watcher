@@ -1,5 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>example-changelog2 Updates</title><link>https://gpwclark.github.io/watcher/content/example-changelog2/20261116-141603532833.html</link><description>Updates from example-changelog2</description><language>en</language><lastBuildDate>Mon, 16 Nov 2026 14:16:03 +0000</lastBuildDate><item><title>Countdown to  New Year 2027 in Washington DC, District of Columbia</title><link>https://gpwclark.github.io/watcher/content/example-changelog2/20261116-141603532833.html?date=2026-11-16T14:16:03.532483+00:00</link><description><![CDATA[Count the seconds to the New Year in any location or time zone.
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>example-changelog2 Updates</title><link>https://gpwclark.github.io/watcher/content/example-changelog2/20261117-011601550589.html</link><description>Updates from example-changelog2</description><language>en</language><lastBuildDate>Tue, 17 Nov 2026 01:16:01 +0000</lastBuildDate><item><title>Countdown to  New Year 2027 in Phoenix</title><link>https://gpwclark.github.io/watcher/content/example-changelog2/20261117-011601550589.html?date=2026-11-17T01:16:01.550316+00:00</link><description><![CDATA[Count the seconds to the New Year in any location or time zone.
+
+<pre><code>@@ -3,20 +3,20 @@
+ <br>
+ <p>[](/counters/fullscreen.html?mode=m&year=2027)</p>
+ <pre>45       days</pre>
+-<pre>1094     hours</pre>
+-<pre>65683    minutes</pre>
+-<p>3941037  seconds</p>
++<pre>1085     hours</pre>
++<pre>65143    minutes</pre>
++<p>3908639  seconds</p>
+ <br>
+ <br>
+-<p>until Friday, January 1, 2027 ([Washington DC, District of Columbia](/worldclock/usa/washington-dc) time)</p>
++<p>until Friday, January 1, 2027 ([Phoenix](/worldclock/usa/phoenix) time)</p>
+ <br>
+ <p>[](/counters/fullscreen.html?mode=a&year=2027)</p>
+ <br>
+-<p>45 days, 14 hours, 43 minutes, 57 seconds</p>
++<p>45 days, 5 hours, 43 minutes, 59 seconds</p>
+ <br>
+-<p>until Friday, January 1, 2027 ([Washington DC, District of Columbia](/worldclock/usa/washington-dc) time)</p>
++<p>until Friday, January 1, 2027 ([Phoenix](/worldclock/usa/phoenix) time)</p>
+ <br>
+-<p>Current time is Monday, November 16, 2026 at 9:16:03 am [EST](/time/zones/est) (local time in [](/worldclock/usa/washington-dc)[Washington DC, District of Columbia](/worldclock/usa/washington-dc))</p>
++<p>Current time is Monday, November 16, 2026 at 6:16:01 pm [MST](/time/zones/mst) (local time in [](/worldclock/usa/phoenix)[Phoenix](/worldclock/usa/phoenix))</p>
+ <br>
+ <p>You may need to press Reload or Refresh on your browser to update the numbers.</p>
+ <br></code></pre>]]></description><pubDate>Tue, 17 Nov 2026 01:16:01 +0000</pubDate><guid>example-changelog2-6204f9b7</guid></item><item><title>Countdown to  New Year 2027 in Washington DC, District of Columbia</title><link>https://gpwclark.github.io/watcher/content/example-changelog2/20261116-141603532833.html?date=2026-11-16T14:16:03.532483+00:00</link><description><![CDATA[Count the seconds to the New Year in any location or time zone.
 
 <pre><code>@@ -2,21 +2,21 @@
  <p>](/)</p>
@@ -580,35 +609,4 @@
 +<p>Current time is Saturday, April 18, 2026 at 8:14:54 pm [EDT](/time/zones/edt) (local time in [](/worldclock/usa/sperryville)[Sperryville](/worldclock/usa/sperryville))</p>
  <br>
  <p>You may need to press Reload or Refresh on your browser to update the numbers.</p>
- <br></code></pre>]]></description><pubDate>Sun, 19 Apr 2026 00:14:54 +0000</pubDate><guid>example-changelog2-4fa6daa1</guid></item><item><title>Countdown to  New Year 2027 in Des Moines</title><link>https://gpwclark.github.io/watcher/content/example-changelog2/20260418-180912763266.html?date=2026-04-18T18:09:12.762958+00:00</link><description><![CDATA[Count the seconds to the New Year in any location or time zone.
-
-<pre><code>@@ -3,22 +3,22 @@
- <br>
- <p>[](/counters/fullscreen.html?mode=m&year=2027)</p>
- <pre>257       days</pre>
--<pre>6184      hours</pre>
--<pre>371092    minutes</pre>
--<p>22265542  seconds</p>
-+<pre>6179      hours</pre>
-+<pre>370790    minutes</pre>
-+<p>22247448  seconds</p>
- <br>
- <br>
--<p>until Friday, January 1, 2027 ([Sperryville](/worldclock/usa/sperryville) time)</p>
-+<p>until Friday, January 1, 2027 ([Des Moines](/worldclock/usa/des-moines) time)</p>
- <br>
- <p>[](/counters/fullscreen.html?mode=a&year=2027)</p>
- <br>
--<p>257 days, 16 hours, 52 minutes, 22 seconds</p>
-+<p>257 days, 11 hours, 50 minutes, 48 seconds</p>
- <br>
--<p>until Friday, January 1, 2027 ([Sperryville](/worldclock/usa/sperryville) time)</p>
-+<p>until Friday, January 1, 2027 ([Des Moines](/worldclock/usa/des-moines) time)</p>
- <br>
- <p>[One hour wrong? Daylight Saving Time!](/countdown/one-hour-off)</p>
- <br>
--<p>Current time is Saturday, April 18, 2026 at 8:07:38 am [EDT](/time/zones/edt) (local time in [](/worldclock/usa/sperryville)[Sperryville](/worldclock/usa/sperryville))</p>
-+<p>Current time is Saturday, April 18, 2026 at 1:09:12 pm [CDT](/time/zones/cdt) (local time in [](/worldclock/usa/des-moines)[Des Moines](/worldclock/usa/des-moines))</p>
- <br>
- <p>You may need to press Reload or Refresh on your browser to update the numbers.</p>
- <br></code></pre>]]></description><pubDate>Sat, 18 Apr 2026 18:09:12 +0000</pubDate><guid>example-changelog2-5a7f0524</guid></item></channel></rss>
+ <br></code></pre>]]></description><pubDate>Sun, 19 Apr 2026 00:14:54 +0000</pubDate><guid>example-changelog2-4fa6daa1</guid></item></channel></rss>
