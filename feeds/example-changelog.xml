@@ -1,5 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>example-changelog Updates</title><link>https://gpwclark.github.io/watcher/content/example-changelog/20261120-192458178928.html</link><description>Updates from example-changelog</description><language>en</language><lastBuildDate>Fri, 20 Nov 2026 19:24:58 +0000</lastBuildDate><item><title>Countdown to  New Year 2027 in Hermiston</title><link>https://gpwclark.github.io/watcher/content/example-changelog/20261120-192458178928.html?date=2026-11-20T19:24:58.178662+00:00</link><description><![CDATA[Count the seconds to the New Year in any location or time zone.
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>example-changelog Updates</title><link>https://gpwclark.github.io/watcher/content/example-changelog/20261121-044451013096.html</link><description>Updates from example-changelog</description><language>en</language><lastBuildDate>Sat, 21 Nov 2026 04:44:51 +0000</lastBuildDate><item><title>Countdown to  New Year 2027 in San Antonio</title><link>https://gpwclark.github.io/watcher/content/example-changelog/20261121-044451013096.html?date=2026-11-21T04:44:51.012801+00:00</link><description><![CDATA[Count the seconds to the New Year in any location or time zone.
+
+<pre><code>@@ -3,20 +3,20 @@
+ <br>
+ <p>[](/counters/fullscreen.html?mode=m&year=2027)</p>
+ <pre>41       days</pre>
+-<pre>996      hours</pre>
+-<pre>59795    minutes</pre>
+-<p>3587702  seconds</p>
++<pre>985      hours</pre>
++<pre>59115    minutes</pre>
++<p>3546910  seconds</p>
+ <br>
+ <br>
+-<p>until Friday, January 1, 2027 ([Hermiston](/worldclock/usa/hermiston) time)</p>
++<p>until Friday, January 1, 2027 ([San Antonio](/worldclock/usa/san-antonio) time)</p>
+ <br>
+ <p>[](/counters/fullscreen.html?mode=a&year=2027)</p>
+ <br>
+-<p>41 days, 12 hours, 35 minutes, 2 seconds</p>
++<p>41 days, 1 hour, 15 minutes, 10 seconds</p>
+ <br>
+-<p>until Friday, January 1, 2027 ([Hermiston](/worldclock/usa/hermiston) time)</p>
++<p>until Friday, January 1, 2027 ([San Antonio](/worldclock/usa/san-antonio) time)</p>
+ <br>
+-<p>Current time is Friday, November 20, 2026 at 11:24:58 am [PST](/time/zones/pst) (local time in [](/worldclock/usa/hermiston)[Hermiston](/worldclock/usa/hermiston))</p>
++<p>Current time is Friday, November 20, 2026 at 10:44:50 pm [CST](/time/zones/cst) (local time in [](/worldclock/usa/san-antonio)[San Antonio](/worldclock/usa/san-antonio))</p>
+ <br>
+ <p>You may need to press Reload or Refresh on your browser to update the numbers.</p>
+ <br></code></pre>]]></description><pubDate>Sat, 21 Nov 2026 04:44:51 +0000</pubDate><guid>example-changelog-6cced3c3</guid></item><item><title>Countdown to  New Year 2027 in Hermiston</title><link>https://gpwclark.github.io/watcher/content/example-changelog/20261120-192458178928.html?date=2026-11-20T19:24:58.178662+00:00</link><description><![CDATA[Count the seconds to the New Year in any location or time zone.
 
 <pre><code>@@ -3,20 +3,20 @@
  <br>
@@ -562,37 +591,4 @@
 +<p>Current time is Friday, November 13, 2026 at 4:59:59 pm [CST](/time/zones/cst) (local time in [](/worldclock/usa/san-antonio)[San Antonio](/worldclock/usa/san-antonio))</p>
  <br>
  <p>You may need to press Reload or Refresh on your browser to update the numbers.</p>
- <br></code></pre>]]></description><pubDate>Fri, 13 Nov 2026 22:59:59 +0000</pubDate><guid>example-changelog-0f8b0a2b</guid></item><item><title>Countdown to  New Year 2027 in Roanoke Rapids, North Carolina</title><link>https://gpwclark.github.io/watcher/content/example-changelog/20261113-133709071193.html?date=2026-11-13T13:37:09.070855+00:00</link><description><![CDATA[Count the seconds to the New Year in any location or time zone.
-
-<pre><code>@@ -2,23 +2,21 @@
- <p>](/)</p>
- <br>
- <p>[](/counters/fullscreen.html?mode=m&year=2027)</p>
--<pre>255       days</pre>
--<pre>6126      hours</pre>
--<pre>367601    minutes</pre>
--<p>22056114  seconds</p>
-+<pre>48       days</pre>
-+<pre>1167     hours</pre>
-+<pre>70042    minutes</pre>
-+<p>4202571  seconds</p>
- <br>
- <br>
--<p>until Friday, January 1, 2027 ([Cheyenne](/worldclock/usa/cheyenne) time)</p>
-+<p>until Friday, January 1, 2027 ([Roanoke Rapids, North Carolina](/worldclock/usa/roanoke-rapids) time)</p>
- <br>
- <p>[](/counters/fullscreen.html?mode=a&year=2027)</p>
- <br>
--<p>255 days, 6 hours, 41 minutes, 54 seconds</p>
-+<p>48 days, 15 hours, 22 minutes, 51 seconds</p>
- <br>
--<p>until Friday, January 1, 2027 ([Cheyenne](/worldclock/usa/cheyenne) time)</p>
-+<p>until Friday, January 1, 2027 ([Roanoke Rapids, North Carolina](/worldclock/usa/roanoke-rapids) time)</p>
- <br>
--<p>[One hour wrong? Daylight Saving Time!](/countdown/one-hour-off)</p>
--<br>
--<p>Current time is Monday, April 20, 2026 at 6:18:06 pm [MDT](/time/zones/mdt) (local time in [](/worldclock/usa/cheyenne)[Cheyenne](/worldclock/usa/cheyenne))</p>
-+<p>Current time is Friday, November 13, 2026 at 8:37:09 am [EST](/time/zones/est) (local time in [](/worldclock/usa/roanoke-rapids)[Roanoke Rapids, North Carolina](/worldclock/usa/roanoke-rapids))</p>
- <br>
- <p>You may need to press Reload or Refresh on your browser to update the numbers.</p>
- <br></code></pre>]]></description><pubDate>Fri, 13 Nov 2026 13:37:09 +0000</pubDate><guid>example-changelog-23514148</guid></item></channel></rss>
+ <br></code></pre>]]></description><pubDate>Fri, 13 Nov 2026 22:59:59 +0000</pubDate><guid>example-changelog-0f8b0a2b</guid></item></channel></rss>
