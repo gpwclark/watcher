@@ -1,5 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>example-changelog Updates</title><link>https://gpwclark.github.io/watcher/content/example-changelog/20261128-004940329843.html</link><description>Updates from example-changelog</description><language>en</language><lastBuildDate>Sat, 28 Nov 2026 00:49:40 +0000</lastBuildDate><item><title>Countdown to  New Year 2027 in San Antonio</title><link>https://gpwclark.github.io/watcher/content/example-changelog/20261128-004940329843.html?date=2026-11-28T00:49:40.329725+00:00</link><description><![CDATA[Count the seconds to the New Year in any location or time zone.
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>example-changelog Updates</title><link>https://gpwclark.github.io/watcher/content/example-changelog/20261128-144357521241.html</link><description>Updates from example-changelog</description><language>en</language><lastBuildDate>Sat, 28 Nov 2026 14:43:57 +0000</lastBuildDate><item><title>Countdown to  New Year 2027 in Washington DC, District of Columbia</title><link>https://gpwclark.github.io/watcher/content/example-changelog/20261128-144357521241.html?date=2026-11-28T14:43:57.520960+00:00</link><description><![CDATA[Count the seconds to the New Year in any location or time zone.
+
+<pre><code>@@ -2,21 +2,21 @@
+ <p>](/)</p>
+ <br>
+ <p>[](/counters/fullscreen.html?mode=m&year=2027)</p>
+-<pre>34       days</pre>
+-<pre>821      hours</pre>
+-<pre>49270    minutes</pre>
+-<p>2956220  seconds</p>
++<pre>33       days</pre>
++<pre>806      hours</pre>
++<pre>48376    minutes</pre>
++<p>2902563  seconds</p>
+ <br>
+ <br>
+-<p>until Friday, January 1, 2027 ([San Antonio](/worldclock/usa/san-antonio) time)</p>
++<p>until Friday, January 1, 2027 ([Washington DC, District of Columbia](/worldclock/usa/washington-dc) time)</p>
+ <br>
+ <p>[](/counters/fullscreen.html?mode=a&year=2027)</p>
+ <br>
+-<p>34 days, 5 hours, 10 minutes, 20 seconds</p>
++<p>33 days, 14 hours, 16 minutes, 3 seconds</p>
+ <br>
+-<p>until Friday, January 1, 2027 ([San Antonio](/worldclock/usa/san-antonio) time)</p>
++<p>until Friday, January 1, 2027 ([Washington DC, District of Columbia](/worldclock/usa/washington-dc) time)</p>
+ <br>
+-<p>Current time is Friday, November 27, 2026 at 6:49:40 pm [CST](/time/zones/cst) (local time in [](/worldclock/usa/san-antonio)[San Antonio](/worldclock/usa/san-antonio))</p>
++<p>Current time is Saturday, November 28, 2026 at 9:43:57 am [EST](/time/zones/est) (local time in [](/worldclock/usa/washington-dc)[Washington DC, District of Columbia](/worldclock/usa/washington-dc))</p>
+ <br>
+ <p>You may need to press Reload or Refresh on your browser to update the numbers.</p>
+ <br></code></pre>]]></description><pubDate>Sat, 28 Nov 2026 14:43:57 +0000</pubDate><guid>example-changelog-c7895d12</guid></item><item><title>Countdown to  New Year 2027 in San Antonio</title><link>https://gpwclark.github.io/watcher/content/example-changelog/20261128-004940329843.html?date=2026-11-28T00:49:40.329725+00:00</link><description><![CDATA[Count the seconds to the New Year in any location or time zone.
 
 <pre><code>@@ -3,20 +3,20 @@
  <br>
@@ -560,33 +591,4 @@
 +<p>Current time is Friday, November 20, 2026 at 1:17:52 am [EST](/time/zones/est) (local time in [](/worldclock/usa/roanoke-rapids)[Roanoke Rapids, North Carolina](/worldclock/usa/roanoke-rapids))</p>
  <br>
  <p>You may need to press Reload or Refresh on your browser to update the numbers.</p>
- <br></code></pre>]]></description><pubDate>Fri, 20 Nov 2026 06:17:52 +0000</pubDate><guid>example-changelog-4bc4922c</guid></item><item><title>Countdown to  New Year 2027 in Washington DC, District of Columbia</title><link>https://gpwclark.github.io/watcher/content/example-changelog/20261120-000007059041.html?date=2026-11-20T00:00:07.058790+00:00</link><description><![CDATA[Count the seconds to the New Year in any location or time zone.
-
-<pre><code>@@ -3,20 +3,20 @@
- <br>
- <p>[](/counters/fullscreen.html?mode=m&year=2027)</p>
- <pre>42       days</pre>
--<pre>1022     hours</pre>
--<pre>61326    minutes</pre>
--<p>3679588  seconds</p>
-+<pre>1012     hours</pre>
-+<pre>60779    minutes</pre>
-+<p>3646793  seconds</p>
- <br>
- <br>
--<p>until Friday, January 1, 2027 ([Roanoke Rapids, North Carolina](/worldclock/usa/roanoke-rapids) time)</p>
-+<p>until Friday, January 1, 2027 ([Washington DC, District of Columbia](/worldclock/usa/washington-dc) time)</p>
- <br>
- <p>[](/counters/fullscreen.html?mode=a&year=2027)</p>
- <br>
--<p>42 days, 14 hours, 6 minutes, 28 seconds</p>
-+<p>42 days, 4 hours, 59 minutes, 53 seconds</p>
- <br>
--<p>until Friday, January 1, 2027 ([Roanoke Rapids, North Carolina](/worldclock/usa/roanoke-rapids) time)</p>
-+<p>until Friday, January 1, 2027 ([Washington DC, District of Columbia](/worldclock/usa/washington-dc) time)</p>
- <br>
--<p>Current time is Thursday, November 19, 2026 at 9:53:32 am [EST](/time/zones/est) (local time in [](/worldclock/usa/roanoke-rapids)[Roanoke Rapids, North Carolina](/worldclock/usa/roanoke-rapids))</p>
-+<p>Current time is Thursday, November 19, 2026 at 7:00:07 pm [EST](/time/zones/est) (local time in [](/worldclock/usa/washington-dc)[Washington DC, District of Columbia](/worldclock/usa/washington-dc))</p>
- <br>
- <p>You may need to press Reload or Refresh on your browser to update the numbers.</p>
- <br></code></pre>]]></description><pubDate>Fri, 20 Nov 2026 00:00:07 +0000</pubDate><guid>example-changelog-2bf5d491</guid></item></channel></rss>
+ <br></code></pre>]]></description><pubDate>Fri, 20 Nov 2026 06:17:52 +0000</pubDate><guid>example-changelog-4bc4922c</guid></item></channel></rss>
